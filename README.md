@@ -17,7 +17,7 @@
 |奇虎360|算法实习生|北京/其他|3.31|[网申](http://chrcmp.chinahr.com/views/2019-qihu360/index.html)|内推码：暂无|无|牛客讨论区|
 |爱奇艺|C++开发工程师|北京|4月中旬|[网申](https://zhaopin.iqiyi.com/job-school.html)|内推码：zNG4KR|无|信息学院qq群|
 |蚂蚁金服|算法实习生|杭州/其他|3-5月|邮箱：xiaoxue.sxx@antfin.com|邮件标题：【姓名】+【学校】+【应聘岗位】|无|信息学院qq群|
-|华为|算法实习生|成都/其他|3月28|[网申]()|无|无|信息学院qq群|
+|华为|算法实习生|成都/其他|3月28|[网申](http://career.huawei.com/reccampportal/campus4_index.html#campus4/pages/joblist/jobList.html?jobFamClsCode=JFC1&type=0)|无|无|信息学院qq群|
 |菜鸟网络|算法实习生|杭州/北京|未知|qq：1193304376|1193304376@qq.com|无|无|信息学院qq群|
 |oppo手机|算法实习生|北京|未知|[网申](https://oppo.zhaopin.com/jobs.html)|内推码：15209235173|无|信息学院qq群|
 |创新工厂人工智能工程院|机器人/自动化实习生|北京|未知|投递邮箱：hr@chuangxin.com|投递格式：姓名+岗位(实习生)+可到岗日期|无|我爱计算机视觉公众号|

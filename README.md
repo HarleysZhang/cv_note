@@ -31,5 +31,5 @@
 |上海媒智科技|计算机视觉算法实习生|上海|未知|内推邮箱：chenxi.huang@media-smart.cn|简历格式：姓名+电话号码+全职/实习+CVer推荐|无|CVer公众号|
 |旷视科技|算法研究员实习生|北京市海淀区|长期有效|内推邮箱：ur@megvii.com|简历命名：姓名+电话+岗位+CVer推荐(**免笔试**)|无|CVer公众号|
 |淘宝-智能制造事业部|图形图像算法实习生|杭州|未知|内推邮箱：yuanliang.syl@alibaba-inc.com|简历命名格式：姓名+电话号码+应聘岗位+CVer推荐|无|CVer公众号|
-
+|360安全集团|机器学习算法实习生|北京|未知|[网申](http://chrcmp.chinahr.com/pages/360safe/jobs)|内推码:nAJvUTY2(免简历筛选)|无|qq群|
 ## [深度学习面试题](https://github.com/HarleysZhang/2019_algorithm_intern_information/blob/master/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E9%9D%A2%E8%AF%95%E9%A2%98.md)

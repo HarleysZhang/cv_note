@@ -24,7 +24,7 @@
 |旷世科技detection组|算法实习生|北京|未知|投递邮箱： zhangzhiqiang@megvii.com|暂无内推|无|我爱计算机视觉公众号|
 |锐明技术|计算机视觉算法实习生|深圳/重庆|未知|[网申](http://streamax.zhiye.com/Campus)|暂无内推|无|我爱计算机视觉公众号|
 |作业帮|计算机视觉方向实习生|北京|未知|投递邮箱：wujunbin@zuoyebang.com|暂无内推|无|我爱计算机视觉公众号|
-|爱YTUH莫科技|算法实习生|深圳|未知|投递邮箱：hr@mall-ai.com|暂无内推|无|我爱计算机视觉|
+|爱莫科技|算法实习生|深圳|未知|投递邮箱：hr@mall-ai.com|暂无内推|无|我爱计算机视觉|
 |阿里巴巴业务平台事业部|算法-机器学习实习生|杭州|3月12-4月23|[网申](https://campus.alibaba.com/index.htm)|暂无内推|无|知乎|
 |拼多多|算法实习生|上海/其他|3月15-4月30|[网申](https://www.pinduoduo.com/home/campus/)|暂无内推|无|朋友推荐|
 |小马智行|计算机视觉实习生|北京市海淀区|未知|内推邮箱：zhijie@pony.ai|简历命名：姓名+岗位+CVer推荐+实习开始时间+可实习月数|无|CVer公众号|
@@ -32,4 +32,8 @@
 |旷视科技|算法研究员实习生|北京市海淀区|长期有效|内推邮箱：ur@megvii.com|简历命名：姓名+电话+岗位+CVer推荐(**免笔试**)|无|CVer公众号|
 |淘宝-智能制造事业部|图形图像算法实习生|杭州|未知|内推邮箱：yuanliang.syl@alibaba-inc.com|简历命名格式：姓名+电话号码+应聘岗位+CVer推荐|无|CVer公众号|
 |360安全集团|机器学习算法实习生|北京|未知|[网申](http://chrcmp.chinahr.com/pages/360safe/jobs)|内推码:nAJvUTY2(免简历筛选)|无|qq群|
+|图森未来|感知算法实习生等|北京|未知|内推邮箱:yifyang29@gmail.com|简历命名格式：姓名+电话号码+应聘岗位|无|我爱计算机视觉公众号|
+|最右|视频图像算法工程师实习|北京|未知|内推邮箱:sunhaiyong2014@xiaochuankeji.cn|简历命名格式：CVer推荐+姓名+电话+社招/校招/实习|CVer公众号|
+|爱奇艺智能平台部-视频分析组视频理解算法实习生|北京中关村|未知|内推邮箱:zhangyuntao@qiyi.com|简历命名格式：CVer推荐+学校+研究方向+实习开始时间+毕业时间|CVer公众号|
+
 ## [深度学习面试题](https://github.com/HarleysZhang/2019_algorithm_intern_information/blob/master/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E9%9D%A2%E8%AF%95%E9%A2%98.md)

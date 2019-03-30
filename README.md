@@ -34,6 +34,6 @@
 |360安全集团|机器学习算法实习生|北京|未知|[网申](http://chrcmp.chinahr.com/pages/360safe/jobs)|内推码:nAJvUTY2(免简历筛选)|无|qq群|
 |图森未来|感知算法实习生等|北京|未知|内推邮箱:yifyang29@gmail.com|简历命名格式：姓名+电话号码+应聘岗位|无|我爱计算机视觉公众号|
 |最右|视频图像算法工程师实习|北京|未知|内推邮箱:sunhaiyong2014@xiaochuankeji.cn|简历命名格式：CVer推荐+姓名+电话+社招/校招/实习|CVer公众号|
-|爱奇艺智能平台部-视频分析组视频理解算法实习生|北京中关村|未知|内推邮箱:zhangyuntao@qiyi.com|简历命名格式：CVer推荐+学校+研究方向+实习开始时间+毕业时间|CVer公众号|
+|爱奇艺智能平台部-视频分析组|视频理解算法实习生|北京中关村|未知|内推邮箱:zhangyuntao@qiyi.com|简历命名格式：CVer推荐+学校+研究方向+实习开始时间+毕业时间|CVer公众号|
 
 ## [深度学习面试题](https://github.com/HarleysZhang/2019_algorithm_intern_information/blob/master/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E9%9D%A2%E8%AF%95%E9%A2%98.md)

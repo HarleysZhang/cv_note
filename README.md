@@ -38,7 +38,7 @@
 |爱奇艺智能平台部-视频分析组|视频理解算法实习生|北京中关村|未知|内推邮箱:zhangyuntao@qiyi.com|简历命名格式：CVer推荐+学校+研究方向+实习开始时间+毕业时间|CVer公众号|
 |依图科技|校招、实习、社招|上海、北京、杭州|长期|![依图科技-校招内推](images/依图科技-校招内推.png)|微信扫描二维码（长期有效），链接中的岗位均可投递||
 
-## [深度学习面试题](https://github.com/HarleysZhang/2019_algorithm_intern_information/blob/master/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E9%9D%A2%E8%AF%95%E9%A2%98.md)
+## [深度学习面试题](https://github.com/HarleysZhang/2019_algorithm_intern_information/blob/master/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E9%9D%A2%E8%AF%95%E9%A2%98.md)
 
 ## 2020年校招可投递公司-计算机视觉/机器学习算法工程师
 侧重于于计算机视觉/图像/机器学习算法工程师岗位,公司排名几乎部分先后。

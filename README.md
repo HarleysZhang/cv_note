@@ -1,5 +1,5 @@
 ## 前言
-本仓库的知识点和文章对于我主要用于我个人复习和作知识点总结使用，部分内容参考自`github项目/网络资料/书籍`等，由于时间和能力有限，有些知识点其实掌握得还不够深和全面, 我推荐阅读以下github仓库项目（有些已经停止更新, 当作参考）
+本仓库的知识点和文章对于我主要用于我个人复习和作知识点总结使用，部分内容参考自`github项目/网络资料/书籍`等，由于时间和能力有限，有些知识点其实掌握得还不够深和全面, 我推荐阅读以下 `github` 仓库项目（有些已经停止更新, 当作参考）
 + [Algorithm_Interview_Notes-Chinese](https://github.com/imhuay/Algorithm_Interview_Notes-Chinese)
 + [关于Python的面试题](https://github.com/taizilongxu/interview_python)
 + [CS-Notes](https://github.com/CyC2018/CS-Notes)

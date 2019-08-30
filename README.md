@@ -1,3 +1,10 @@
+## 前言
+本仓库的知识点和文章对于我主要用于我个人复习和作知识点总结使用，部分内容参考自`github项目/网络资料/书籍`等，由于时间和能力有限，有些知识点其实掌握得还不够深和全面, 我推荐阅读以下github仓库项目（有些已经停止更新, 当作参考）
++ [Algorithm_Interview_Notes-Chinese](https://github.com/imhuay/Algorithm_Interview_Notes-Chinese)
++ [关于Python的面试题](https://github.com/taizilongxu/interview_python)
++ [CS-Notes](https://github.com/CyC2018/CS-Notes)
++ [用动画的形式呈现解LeetCode题目的思路](https://github.com/MisterBooo/LeetCodeAnimation)
+
 ## 算法/图像/CS基础/编程语言(`RoadMap`)
 + [计算机基础](https://github.com/HarleysZhang/2019_algorithm_intern_information/tree/master/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80)
 + [数据结构与算法](https://github.com/HarleysZhang/2019_algorithm_intern_information/tree/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95)
@@ -6,13 +13,6 @@
 + [机器学习](https://github.com/HarleysZhang/2019_algorithm_intern_information/tree/master/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0)
 + [深度学习](https://github.com/HarleysZhang/2019_algorithm_intern_information/tree/master/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0)
 + [计算机视觉](https://github.com/HarleysZhang/2019_algorithm_intern_information/tree/master/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89)
-
-## 前言
-本仓库的知识点和文章对于我主要用于我个人复习和作知识点总结使用，部分内容参考自`github项目/网络资料/书籍`等，由于时间和能力有限，有些知识点其实掌握得还不够深和全面, 我推荐阅读以下github仓库项目（有些已经停止更新, 当作参考）
-+ [Algorithm_Interview_Notes-Chinese](https://github.com/imhuay/Algorithm_Interview_Notes-Chinese)
-+ [关于Python的面试题](https://github.com/taizilongxu/interview_python)
-+ [CS-Notes](https://github.com/CyC2018/CS-Notes)
-+ [用动画的形式呈现解LeetCode题目的思路](https://github.com/MisterBooo/LeetCodeAnimation)
 
 ## 2019春招算法实习岗位表
 2019年春招近期实习岗位汇总，还有待完善，持续更新，也希望各位一起更新。

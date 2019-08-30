@@ -15,6 +15,48 @@
 ++i 先自增1，再返回，i++，先返回 i，再自增1.
 ## const关键字作用
 `const`类型的对象在程序执行期间不能被修改改变。
+## 实例方法/静态方法/类方法
+`python` 类语法中有三种方法，**实例方法，静态方法，类方法**，它们的区别如下：
++ 实例方法只能被实例对象调用，静态方法(由 `@staticmethod` 装饰器来声明)、类方法(由 `@classmethod` 装饰器来声明)，可以被类或类的实例对象调用;
++ 实例方法，第一个参数必须要默认传实例对象，一般习惯用self。静态方法，参数没有要求。类方法，第一个参数必须要默认传类，一般习惯用 `cls` .
+
+实例代码如下：
+```Python
+class Foo(object):
+    """类三种方法语法形式
+    """
+    def instance_method(self):
+        print("是类{}的实例方法，只能被实例对象调用".format(Foo))
+
+    @staticmethod
+    def static_method():
+        print("是静态方法")
+
+    @classmethod
+    def class_method(cls):
+        print("是类方法")
+
+
+foo = Foo()
+foo.instance_method()
+foo.static_method()
+foo.class_method()
+print('##############')
+Foo.static_method()
+Foo.class_method()
+```
+程序执行后输出如下：
+> 是类<class '__main__.Foo'>的实例方法，只能被实例对象调用
+是静态方法
+是类方法
+##############
+是静态方法
+是类方法
+
+## __new__和__init__方法的区别
++ `__init__` 方法并不是真正意义上的构造函数, `__new__` 方法才是(类的构造函数是类的一种特殊的成员函数，它会**在每次创建类的新对象时执行**);
++ `__new__` 方法用于创建对象并返回对象，当返回对象时会自动调用 `__init__` 方法进行初始化, `__new__` 方法比 `__init__` 方法更早执行;
++ `__new__` 方法是**静态方法**，而 `__init__` 是**实例方法**。
 ## Python的函数参数传递
 > 参考这两个链接，stackoverflow的最高赞那个讲得很详细
 [How do I pass a variable by reference?](https://stackoverflow.com/questions/986006/how-do-i-pass-a-variable-by-reference)

@@ -201,7 +201,7 @@ print(str2int('12300'))
 print(str2int('0012345'))  # 0012345
 ```
 ## Python深拷贝、浅拷贝区别
-> Python中的大多数对象，比如列表、字典、NumPy数组，和用户定义的类型（类），都是可变的。意味着这些对象或包含的值可以被修改。但也有些对象是不可变的，例如数值型、字符串型string和元组tuple。
+> Python中的大多数对象，比如列表list、字典dict、集合set、NumPy数组，和用户定义的类型（类），都是可变的。意味着这些对象或包含的值可以被修改。但也有些对象是不可变的，例如数值型int、字符串型str和元组tuple。
 
 **1、复制不可变数据类型：**
 
@@ -252,3 +252,4 @@ d =  [1, 2, 3, ['a', 'b', 'c']]
 2. [110道Python面试题（真题）](https://zhuanlan.zhihu.com/p/54430650)
 3. [关于Python的面试题](https://github.com/taizilongxu/interview_Python#15-__new__%E5%92%8C__init__%E7%9A%84%E5%8C%BA%E5%88%AB)
 4. [继承和多态](http://funhacks.net/explore-python/Class/inheritance_and_polymorphism.html)
+

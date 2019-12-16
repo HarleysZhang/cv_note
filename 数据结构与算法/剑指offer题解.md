@@ -18,7 +18,7 @@
 2. [牛顿迭代求sqrt](https://leetcode.com/problems/sqrtx/). ✓
 3. 通过均匀硬币生成1到N随机数
 4. Logistic回归如何防止过拟合. ✓
-5. 打印二叉树的某一行.
+5. 打印二叉树的某一行(层序遍历).
 6. [维护一个数据流的滚动方差](https://leetcode.com/problems/moving-average-from-data-stream/description/)
 7. 如何判断两个链表是否相交并找出交点.
 8. 两个栈实现队列, 判断链表是否有环. ✓

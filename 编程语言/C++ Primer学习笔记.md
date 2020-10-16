@@ -216,4 +216,3 @@ class Bulk_quote: public Quote{...}
 - 15.8 容器与继承
 
 ### 第16章 模板与泛型编程
-

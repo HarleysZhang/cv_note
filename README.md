@@ -1,5 +1,5 @@
 ## 前言
-本仓库的知识点和文章对于我主要用于我个人复习和作知识点总结使用，部分内容参考自`github项目/网络资料/书籍`等，由于时间和能力有限，有些知识点其实掌握得还不够深和全面, 我推荐阅读以下 `github` 仓库项目（有些已经停止更新, 当作参考）
+本仓库的知识点和文章主要用于个人复习和作知识点总结使用，部分内容参考自`github项目/网络资料/书籍`和[个人博客](https://www.armcv.cn/)等，由于时间和能力有限，有些知识点其实掌握得还不够深和全面, 我推荐额外阅读以下 `github` 仓库项目（有些已经停止更新, 当作参考）
 + [Algorithm_Interview_Notes-Chinese](https://github.com/imhuay/Algorithm_Interview_Notes-Chinese)
 + [关于Python的面试题](https://github.com/taizilongxu/interview_python)
 + [CS-Notes](https://github.com/CyC2018/CS-Notes)
@@ -15,9 +15,9 @@
 + [深度学习](https://github.com/HarleysZhang/2019_algorithm_intern_information/tree/master/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0)
 + [计算机视觉](https://github.com/HarleysZhang/2019_algorithm_intern_information/tree/master/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89)
 
-## 2019春招算法实习岗位表
-2019年春招近期实习岗位汇总，还有待完善，持续更新，也希望各位一起更新。
-注意：大部分岗位都是面向2020年毕业的学生。
+## 2020春招算法实习岗位表
+2020 年春招近期实习岗位汇总，还有待完善，持续更新，也希望各位一起更新。
+注意：大部分岗位都是面向 2021 年毕业的学生。
 
 |公司|招聘岗位|工作地点|截止时间|投递方式|内推方式|是否投递|信息来源|
 |---|-------|-------|------|-------|-------|------|-------|

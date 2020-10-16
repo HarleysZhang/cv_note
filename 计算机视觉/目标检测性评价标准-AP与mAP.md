@@ -393,3 +393,5 @@ def voc_eval(detpath,
 + [Soft-NMS](https://hellozhaozheng.github.io/z_post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89-SoftNMS-ICCV2017/)
 + [Recent Advances in Deep Learning for Object Detection](https://arxiv.org/abs/1908.03673v1)
 + [A Simple and Fast Implementation of Faster R-CNN](https://github.com/chenyuntc/simple-faster-rcnn-pytorch)
++ [分类模型评估指标——准确率、精准率、召回率、F1、ROC曲线、AUC曲线](https://easyai.tech/ai-definition/accuracy-precision-recall-f1-roc-auc/)
++ [ 一文让你彻底理解准确率，精准率，召回率，真正率，假正率，ROC/AUC](https://www.6aiq.com/article/1549986548173)

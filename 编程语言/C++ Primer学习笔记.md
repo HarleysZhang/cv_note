@@ -33,18 +33,13 @@
 
 - 3.1 命名空间的using声明
 - 3.2 标准库类型 string
-
 	- string表示可变长字符序列
 	- 定义和初始化string
-
 		-  string s1 = "value"：一般初始化方式
 		- string s2： 默认初始化
 		- string s3(n, 'c')：把 s3 初始化为连续 n 个字符 c 组成的串
-
 	- string的操作
-
 		- 输入输出字符串
-
 			- string s1 = "hello world"
 cout << s1 << endl; //输出s1字符串（打印hello world）
 			- string s1, s2;
@@ -86,36 +81,24 @@ cin >> s1 >> s2; //把第一个输入读取到s1中，第二个读取到s2中
 
 ### 第9章 顺序容器
 
+
+[嵌入式视觉](https://www.armcv.cn)
 - 9.1 顺序容器概述
-
-	- 容器定义
-
+  - 容器定义
 		- 一个容器就是一些特定类型对象的集合，顺序容器为程序员提供控制元素存储和访问顺序的能力
 
 	- 顺序容器类型
-
 		- vector
-
 			- 可变大小数组
-
 		- deque
-
 			- 双端队列
-
 		- list
-
 			- 双向链表
-
 		- forward_list
-
 			- 单向链表
-
 		- array
-
 			- 固定大小数组
-
 		- string
-
 			- 与 vector 相似的容器，但专门用于保存字符。
 
 	- 如何选择顺序容器类型
@@ -179,10 +162,8 @@ cin >> s1 >> s2; //把第一个输入读取到s1中，第二个读取到s2中
 
 	- 面向对象程序设计（object-oriented programming）的核心思想是数据抽象、继承和动态绑定。
 	- 继承
-
-		- 通过继承联系在一起的类构成一种层次关系。
-		- 派生类定义实例：
-class Bulk_quote: public Quote{...}
+        - 通过继承联系在一起的类构成一种层次关系。
+    	- 派生类定义实例：class Bulk_quote: public Quote{...}
 		- 每个基类前都可以有访问说明符，其作用是控制派生类从基类继承而来的成员是否对派生类可见。
 
 	- 动态绑定：

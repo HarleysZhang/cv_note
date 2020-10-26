@@ -1,12 +1,13 @@
 ## 前言
 本仓库的知识点和文章主要用于个人复习和作知识点总结使用，部分内容参考自`github项目/网络资料/书籍`和[个人博客](https://www.armcv.cn/)等，由于时间和能力有限，有些知识点其实掌握得还不够深和全面, 我推荐额外阅读以下 `github` 仓库项目（有些已经停止更新, 当作参考）
+
 + [Algorithm_Interview_Notes-Chinese](https://github.com/imhuay/Algorithm_Interview_Notes-Chinese)
 + [关于Python的面试题](https://github.com/taizilongxu/interview_python)
 + [CS-Notes](https://github.com/CyC2018/CS-Notes)
 + [用动画的形式呈现解LeetCode题目的思路](https://github.com/MisterBooo/LeetCodeAnimation)
 
-
 ## 算法/图像/CS基础/编程语言(`RoadMap`)
+
 + [计算机基础](https://github.com/HarleysZhang/2019_algorithm_intern_information/tree/master/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80)
 + [数据结构与算法](https://github.com/HarleysZhang/2019_algorithm_intern_information/tree/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95)
 + [数字图像处理](https://github.com/HarleysZhang/2019_algorithm_intern_information/tree/master/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86)
@@ -16,6 +17,7 @@
 + [计算机视觉](https://github.com/HarleysZhang/2019_algorithm_intern_information/tree/master/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89)
 
 ## 2020春招算法实习岗位表
+
 2020 年春招近期实习岗位汇总，还有待完善，持续更新，也希望各位一起更新。
 注意：大部分岗位都是面向 2021 年毕业的学生。
 
@@ -58,6 +60,7 @@
 ## [深度学习面试题](https://github.com/HarleysZhang/2019_algorithm_intern_information/blob/master/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E9%9D%A2%E8%AF%95%E9%A2%98.md)
 
 ## 2020年校招可投递公司-计算机视觉/机器学习算法工程师
+
 侧重于于计算机视觉/图像/机器学习算法工程师岗位,公司排名几乎部分先后。
 
 |神级公司|互联网公司|AI独角兽公司|其他大公司|是否投递|
@@ -97,4 +100,3 @@
 |无|巨人网络/盛大游戏|酷家乐|华米/绿米|无|
 |无|最右/快看漫画|码隆科技||无|
 |无|猫眼娱乐/多牛传媒|||无|
-

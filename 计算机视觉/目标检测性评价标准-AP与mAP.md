@@ -1,6 +1,8 @@
 ## 前言
 **不同的问题和不同的数据集都会有不同的模型评价指标，比如分类问题，数据集类别平衡的情况下可以使用准确率作为评价指标，但是现实中的数据集几乎都是类别不平衡的，所以一般都是采用 `AP` 作为分类的评价指标，分别计算每个类别的 `AP`，再计算`mAP`**。
+
 ## mAP定义及相关概念
+
 |评价指标|定义及理解|
 |-------|--------|
 |`mAP`|mean Average Precision, 即各类别AP的平均值|
@@ -11,16 +13,21 @@
 |`TP`|IoU>0.5的检测框数量（同一Ground Truth只计算一次）|
 |`FP`|IoU<=0.5的检测框，或者是检测到同一个GT的多余检测框的数量|
 |`FN`|没有检测到的GT的数量|
+
 ## 一，评价标准的基本概念
+
 为了了解模型的泛化能力，即判断模型的好坏，我们需要用某个指标来衡量，有了评价指标，就可以对比不同模型的优劣，并通过这个指标来进一步调参优化模型。**对于分类和回归两类监督模型，分别有各自的评判标准**。
 
 ### 1.1，准确率、精确率、召回率、F1
+
 #### 准确率
+
 **准确率 – Accuracy**，预测正确的结果占总样本的百分比，公式如下：$准确率 = (TP+TN)/(TP+TN+FP+FN)$.
 
 > 虽然准确率可以判断总的正确率，但是在样本不平衡 的情况下，并不能作为很好的指标来衡量结果。举个简单的例子，比如在一个总样本中，正样本占 90%，负样本占 10%，样本是严重不平衡的。对于这种情况，我们只需要将全部样本预测为正样本即可得到 90% 的高准确率，但实际上我们并没有很用心的分类，只是随便无脑一分而已。这就说明了：由于样本不平衡的问题，导致了得到的高准确率结果含有很大的水分。即如果样本不平衡，准确率就会失效。
 
 #### 精确率、召回率
+
 精确率（查准率）`P`、召回率（查全率）`R` 的计算涉及到混淆矩阵的定义，混淆矩阵表格如下：
 |名称|定义|
 |---|---|
@@ -60,6 +67,7 @@
 + PR 曲线与 ROC 曲线的相同点是都采用了 `TPR (Recall)`，都可以用 AUC 来衡量分类器的效果。不同点是 `ROC` 曲线使用了 `FPR`，而 `PR` 曲线使用了 `Precision`，因此**PR曲线的两个指标都聚焦于正例**。类别不平衡问题中由于主要关心正例，所以在此情况下PR曲线被广泛认为优于ROC曲线。
 
 ### 1.5，F1 分数
+
 如果想要找到 $P$ 和 $R$ 二者之间的一个平衡点，我们就需要一个新的指标：$F1$ 分数。$F1$ 分数同时考虑了查准率和查全率，让二者同时达到最高，取一个平衡。$F1$ 计算公式如下：
 
 $$F1 = \frac{2*P*R}{P+R} = \frac{2*TP}{样例总数+TP-TN}$$
@@ -73,16 +81,20 @@ $$F_{\beta} = \frac{1+\beta^{2}*P*R}{(\beta^{2}*P)+R}$$
 不同的计算机视觉问题，对两类错误有不同的偏好，常常在某一类错误不多于一定阈值的情况下，努力减少另一类错误。在目标检测中，**mAP**（mean Average Precision）作为一个统一的指标将这两种错误兼顾考虑。
 
 ### 1.6，二分类、多分类指标计算
+
 #### 二分类
+
 $$F1\ score = \frac{2 \times P \times R}{(P + R)}$$
 其中，准确率(precise) $P = TP / (TP + FP)$，召回率(recall) $R = TP / (TP + FN)$.
 
 #### 多分类
+
 + **Macro F1**: 将 `n` 分类的评价拆成 `n` 个二分类的评价，计算每个二分类的 `F1 score`，`n` 个 `F1 score` 的平均值即为 `Macro F1`。
 + **Micro F1**: 将 n 分类的评价拆成 n 个二分类的评价，将 n 个二分类评价的TP、FP、RN对应相加，计算评价准确率和召回率，由这 `2` 个准确率和召回率计算的F1 score 即为 Micro F1。
 + 一般来讲，Macro F1、Micro F1 值高的分类效果好。`Macro F1`受样本数量少的类别影响大。
 
 ### 1.7，mAP指标理解
+
 `AP` 衡量的是训练好的模型在每个类别上的好坏，`mAP` 衡量的是模型在所有类别上的好坏，得到 AP 后 mAP 的计算就变得很简单了，就是取所有 `AP` 的平均值。`AP` 的计算公式比较复杂（所以单独作一章节内容），详细内容参考下文。
 
 `mAP` 这个术语有不同的定义。此度量指标通常用于信息检索、图像分类和目标检测领域。然而这两个领域计算 `mAP` 的方式却不相同。这里我们只谈论目标检测中的 `mAP` 计算方法。
@@ -90,15 +102,13 @@ $$F1\ score = \frac{2 \times P \times R}{(P + R)}$$
 `mAP` 常作为目标检测算法的评价指标，具体来说就是，对于每张图片检测模型会输出多个预测框（远超真实框的个数），我们使用 `IoU` (Intersection Over Union，交并比)来标记预测框是否预测准确。标记完成后，随着预测框的增多，查全率 `R` 总会上升，**在不同查全率 `R` 水平下对准确率 `P` 做平均，即得到AP**，最后再对所有类别按其所占比例做平均，即得到 `mAP` 指标。
 
 ## 二，AP计算概述
-**目标检测领域常用的评估标准是**：`mAP`(mean average precision)，计算 mAP 需要先计算 `AP`，计算 `AP` 需涉及到 `precision` 和 `recall` 的计算，而这两者的计算又需设计 `TP`、`FP`、`FN` 的计算。
-
-`AP` 的计算一般先涉及到 `P-R` 曲线（precision-recall curve）的绘制，P-R曲线下面与x轴围成的面积称为`average precison（AP）`。下图是一个二分类问题的P-R曲线：
 
 ![分类问题的PR曲线图](../images/分类PR曲线图.png)
 
 知道了`AP` 的定义，下一步就是理解`AP`计算的实现，理论上可以通过积分来计算`AP`，公式如下：
 $$AP=\int_0^1 P(r) dr$$
 但通常情况下都是使用近似或者插值的方法来计算 AP。
+
 ### 2.1，近似计算AP
 
 $$AP = \sum_{k=1}^{N}P(k)\Delta r(k)$$
@@ -108,6 +118,7 @@ $$AP = \sum_{k=1}^{N}P(k)\Delta r(k)$$
 + 这里 `N` 为数据总量，`k` 为每个样本点的索引， $Δr(k)=r(k)−r(k−1)$。
 
 **近似计算**`AP`和绘制`PR`曲线代码如下：
+
 ```Python
 import numpy as np
 import matplotlib.pyplot as plt
@@ -159,6 +170,7 @@ def draw_PR_curve(predict_scores, eval_labels, name, cls_idx=1):
 ```
 
 ### 2.2，插值计算AP
+
 插值计算(`Interpolated average precision`) AP 的公式的演变过程这里不做讨论，详情可以参考这篇[文章](https://arleyzhang.github.io/articles/c521a01c/)，我这里的公式和图也是参考此文章的。`11点插值计算方式计算AP公式`如下：
 
 ![11点插值计算方式计算AP公式](../images/插值计算AP公式.png)
@@ -174,7 +186,9 @@ def draw_PR_curve(predict_scores, eval_labels, name, cls_idx=1):
 ![PASCAL论文给出的11点计算AP公式](../images/11点计算AP公式.png)
 
 ## 三，AP计算实现
+
 1, 在给定 `recal` 和 `precision` 的条件下计算 `AP`：
+
 ```Python
 def voc_ap(rec, prec, use_07_metric=False):
     """ 
@@ -210,7 +224,9 @@ def voc_ap(rec, prec, use_07_metric=False):
         ap = np.sum((mrec[i + 1] - mrec[i]) * mpre[i + 1])
     return ap
 ```
+
 2，给定目标检测结果文件和测试集标签文件 `xml` 等计算 `AP`：
+
 ```Python
 def parse_rec(filename):
     """ Parse a PASCAL VOC xml file 
@@ -376,6 +392,7 @@ def voc_eval(detpath,
 ```
 
 ## 四，map计算方法
+
 因为 mAP 值的计算是对数据集中所有类别的 AP 值求平均，所以我们要计算 mAP，首先得知道某一类别的 AP 值怎么求。不同数据集的某类别的 AP 计算方法大同小异，主要分为三种：
 
 （1）在 `VOC2007`，只需要选取当Recall >= 0, 0.1, 0.2, ..., 1共11个点时的Precision最大值，然后AP就是这11个Precision的平均值，map就是所有类别AP值的平均。`VOC` 数据集中计算 `AP` 的代码（用的是插值计算方法，代码出自[py-faster-rcnn仓库](https://github.com/rbgirshick/py-faster-rcnn/blob/master/lib/datasets/voc_eval.py)）
@@ -385,13 +402,15 @@ def voc_eval(detpath,
 （3）`COCO` 数据集，设定多个 IOU 阈值（0.5-0.95,0.05为步长），在每一个IOU阈值下都有某一类别的 AP 值，然后求不同 IOU 阈值下的 AP 平均，就是所求的最终的某类别的AP值。
 
 ## 五，目标检测度量标准汇总
+
 ![目标检测指标汇总](../images/目标检测度量标准汇总.jpg)
 
 ## 参考资料
+
 + [目标检测评价标准-AP mAP](https://Harleyzhang.github.io/articles/c521a01c/)
 + [目标检测的性能评价指标](https://zhuanlan.zhihu.com/p/70306015?utm_source=wechat_session&utm_medium=social&utm_oi=571954943427219456)
 + [Soft-NMS](https://hellozhaozheng.github.io/z_post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89-SoftNMS-ICCV2017/)
 + [Recent Advances in Deep Learning for Object Detection](https://arxiv.org/abs/1908.03673v1)
 + [A Simple and Fast Implementation of Faster R-CNN](https://github.com/chenyuntc/simple-faster-rcnn-pytorch)
 + [分类模型评估指标——准确率、精准率、召回率、F1、ROC曲线、AUC曲线](https://easyai.tech/ai-definition/accuracy-precision-recall-f1-roc-auc/)
-+ [ 一文让你彻底理解准确率，精准率，召回率，真正率，假正率，ROC/AUC](https://www.6aiq.com/article/1549986548173)
++ [一文让你彻底理解准确率，精准率，召回率，真正率，假正率，ROC/AUC](https://www.6aiq.com/article/1549986548173)

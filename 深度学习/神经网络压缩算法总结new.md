@@ -20,7 +20,7 @@
 > 一般地，行阶梯型矩阵的秩等于其“台阶数”-非零行的行数。
 
 **低秩近似算法能减小计算开销的原理**如下：
-给定权重矩阵 $W\epsilon R^{m*n}$ , 若能将其表示为若干个低秩矩阵的组合，即 $W=\sum_{i=1}^{n}\alpha_{i}M_{i}$ , 其中 $W\epsilon R^{m*n}$ 为低秩矩阵，其秩为 $r_{i}$ , 并满足 $r_{i}<<min(m,n)$ ，则其每一个低秩矩阵都可分解为小规模矩阵的乘积，$M_{i}=G_{i}H_{i}^{T}$ ，其中 $G_{i}\epsilon R^{m*r_{i}}$ ，$H_{i}\epsilon R^{m*r_{i}}$。当 $r_{i}$ 取值很小时，便能大幅降低总体的存储和计算开销。
+给定权重矩阵  ![](http://latex.codecogs.com/gif.latex?W%5Cepsilon%20R%5E%7Bm%2An%7D)  , 若能将其表示为若干个低秩矩阵的组合，即  ![](http://latex.codecogs.com/gif.latex?W%3D%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%5Calpha_%7Bi%7DM_%7Bi%7D)  , 其中  ![](http://latex.codecogs.com/gif.latex?W%5Cepsilon%20R%5E%7Bm%2An%7D)  为低秩矩阵，其秩为  ![](http://latex.codecogs.com/gif.latex?r_%7Bi%7D)  , 并满足  ![](http://latex.codecogs.com/gif.latex?r_%7Bi%7D%3C%3Cmin%28m%2Cn%29)  ，则其每一个低秩矩阵都可分解为小规模矩阵的乘积， ![](http://latex.codecogs.com/gif.latex?M_%7Bi%7D%3DG_%7Bi%7DH_%7Bi%7D%5E%7BT%7D)  ，其中  ![](http://latex.codecogs.com/gif.latex?G_%7Bi%7D%5Cepsilon%20R%5E%7Bm%2Ar_%7Bi%7D%7D)  ， ![](http://latex.codecogs.com/gif.latex?H_%7Bi%7D%5Cepsilon%20R%5E%7Bm%2Ar_%7Bi%7D%7D) 。当  ![](http://latex.codecogs.com/gif.latex?r_%7Bi%7D)  取值很小时，便能大幅降低总体的存储和计算开销。
 
 基于以上想法，Sindhwani 等人提出使用结构化矩阵来进行低秩分解的算法，具体原理可自行参考论文。另一种比较简便的方法是使用矩阵分解来降低权重矩阵的参数，如 Denton 等人提出使用`奇异值分解`（Singular Value Decomposition，简称 SVD）分解来重构全连接层的权重。
 
@@ -55,11 +55,15 @@
 2. 标量量化会在一定程度上降低网络的精度，为避免这个弊端，很多算法考虑结构化的向量方法，其中一种是乘积向量`（Product Quantization, PQ）`，详情咨询查阅论文。
 3. 以PQ方法为基础，Wu等人设计了一种通用的网络量化算法：`QCNN(quantized CNN)`，主要思想在于Wu等人认为最小化每一层网络输出的重构误差，比最小化量化误差更有效。
 
-标量量化算法基本思路是，对于每一个权重矩阵 $W\epsilon R^{1*mn}$，首先将其转化为向量形式：$w\epsilon R^{1*mn}$。之后对该权重向量的元素进行 $k$ 个簇的聚类，这可借助于经典的 `k-均值（k-means）聚类`算法快速完成：
+标量量化算法基本思路是，对于每一个权重矩阵  ![](http://latex.codecogs.com/gif.latex?W%5Cepsilon%20R%5E%7B1%2Amn%7D) ，首先将其转化为向量形式： ![](http://latex.codecogs.com/gif.latex?w%5Cepsilon%20R%5E%7B1%2Amn%7D) 。之后对该权重向量的元素进行  ![](http://latex.codecogs.com/gif.latex?k)  个簇的聚类，这可借助于经典的 `k-均值（k-means）聚类`算法快速完成：
 
-$$\underset{c}{arg min}\sum_{i}^{mn}\sum_{j}^{k}\begin{Vmatrix}​w_{i}-c_{j}\end{Vmatrix}_{2}^{2}$$
 
-这样，只需将 $k$ 个聚类中心（$c_{j}$，标量）存储在码本中，而原权重矩阵则只负责记录各自聚类中心在码本中索引。如果不考虑码本的存储开销，该算法能将存储空间减少为原来的 $log_{2}(k)/32$。基于 $k$ 均值算法的标量量化在很多应用中非常有效。参数量化与码本微调过程图如下：
+
+![](http://latex.codecogs.com/gif.latex?%5Cunderset%7Bc%7D%7Barg%20min%7D%5Csum_%7Bi%7D%5E%7Bmn%7D%5Csum_%7Bj%7D%5E%7Bk%7D%5Cbegin%7BVmatrix%7D%E2%80%8Bw_%7Bi%7D-c_%7Bj%7D%5Cend%7BVmatrix%7D_%7B2%7D%5E%7B2%7D)
+
+
+
+这样，只需将  ![](http://latex.codecogs.com/gif.latex?k)  个聚类中心（ ![](http://latex.codecogs.com/gif.latex?c_%7Bj%7D) ，标量）存储在码本中，而原权重矩阵则只负责记录各自聚类中心在码本中索引。如果不考虑码本的存储开销，该算法能将存储空间减少为原来的  ![](http://latex.codecogs.com/gif.latex?log_%7B2%7D%28k%29/32) 。基于  ![](http://latex.codecogs.com/gif.latex?k)  均值算法的标量量化在很多应用中非常有效。参数量化与码本微调过程图如下：
 
 ![参数量化与码本微调过程图](../images/参数量化与码本微调过程图.png)
 
@@ -71,7 +75,7 @@ $$\underset{c}{arg min}\sum_{i}^{mn}\sum_{j}^{k}\begin{Vmatrix}​w_{i}-c_{j}\en
 
 ## 四，二值化网络
 
-1. 二值化网络可以视为量化方法的一种极端情况：所有的权重参数取值只能为 $\pm 1$ ，也就是使用 `1bit`来存储`Weight` 和 `Feature`。在普通神经网络中，一个参数是由单精度浮点数来表示的，参数的二值化能将存储开销降低为原来的 `1/32`。
+1. 二值化网络可以视为量化方法的一种极端情况：所有的权重参数取值只能为  ![](http://latex.codecogs.com/gif.latex?%5Cpm%201)  ，也就是使用 `1bit`来存储`Weight` 和 `Feature`。在普通神经网络中，一个参数是由单精度浮点数来表示的，参数的二值化能将存储开销降低为原来的 `1/32`。
 2. 二值化神经网络以其高的模型压缩率和在前传中计算速度上的优势，近几年格外受到重视和发展，成为神经网络模型研究中的非常热门的一个研究方向。但是，第一篇真正意义上将神经网络中的权重值和激活函数值同时做到二值化的是 `Courbariaux` 等人 2016 年发表的名为《Binarynet: Training deep neural networks with weights and activations constrained to +1 or -1》的一篇论文。**这篇论文第一次给出了关于如何对网络进行二值化和如何训练二值化神经网络的方法**。
 3. CNN 网络一个典型的模块是由卷积(`Conv`)->批标准化(`BNorm`)->激活(`Activ`)->池化(`Pool`)这样的顺序操作组成的。对于异或神经网络，设计出的模块是由批标准化(`BNorm`)->**二值化激活(BinActiv)**->二值化卷积(`BinConv`)->池化(`Pool`)的顺序操作完成。这样做的原因是批标准化以后，保证了输入均值为 `0`，然后进行二值化激活，保证了数据为 `-1` 或者 `+1`，然后进行二值化卷积，这样能最大程度上减少特征信息的损失。二值化残差网络结构定义实例代码如下：
 
@@ -92,7 +96,7 @@ def residual_unit(data, num_filter, stride, dim_match, num_bits=1):
 
 ### 4.1，二值网络的梯度下降
 
-现在的神经网络几乎都是基于梯度下降算法来训练的，但是二值网络的权重只有 $\pm 1$，无法直接计算梯度信息，也无法进行权重更新。为解决这个问题，[Courbariaux](https://arxiv.org/pdf/1602.02830v1.pdf) 等人提出二值连接（binary connect）算法，该算法采取单精度与二值结合的方式来训练二值神经网络（），这是第一次给出了关于如何对网络进行二值化和如何训练二值化神经网络的方法。过程如下：
+现在的神经网络几乎都是基于梯度下降算法来训练的，但是二值网络的权重只有  ![](http://latex.codecogs.com/gif.latex?%5Cpm%201) ，无法直接计算梯度信息，也无法进行权重更新。为解决这个问题，[Courbariaux](https://arxiv.org/pdf/1602.02830v1.pdf) 等人提出二值连接（binary connect）算法，该算法采取单精度与二值结合的方式来训练二值神经网络（），这是第一次给出了关于如何对网络进行二值化和如何训练二值化神经网络的方法。过程如下：
 
 1. 权重 `weight` 初始化为浮点
 2. 前向传播 `Forward Pass`:
@@ -110,32 +114,38 @@ def residual_unit(data, num_filter, stride, dim_match, num_bits=1):
 
 权重二值化一般有两种选择：
 
-+ 直接根据权重的正负进行二值化：$x^{b}=sign(x)$。符号函数 `sign(x)` 定义如下：
-$$
-sign(x) = \left\{ \begin{matrix}
--1 & x < 0 \\ 
-0 & x = 0 \\ 
-1 & x > 0
-\end{matrix}\right\}
-$$
++ 直接根据权重的正负进行二值化： ![](http://latex.codecogs.com/gif.latex?x%5E%7Bb%7D%3Dsign%28x%29) 。符号函数 `sign(x)` 定义如下：
+
+
+![](http://latex.codecogs.com/gif.latex?sign%28x%29%20%3D%20%5Cleft%5C%7B%20%5Cbegin%7Bmatrix%7D%0A-1%20%26%20x%20%3C%200%20%5C%5C%20%0A0%20%26%20x%20%3D%200%20%5C%5C%20%0A1%20%26%20x%20%3E%200%0A%5Cend%7Bmatrix%7D%5Cright%5C%7D)
+
+
 ![sign(x)公式](../images/sign(x)公式.png)
-+ 进行随机的二值化，即对每一个权重，以一定概率取 $\pm 1$
++ 进行随机的二值化，即对每一个权重，以一定概率取  ![](http://latex.codecogs.com/gif.latex?%5Cpm%201) 
 
 **2，如何计算二值权重的梯度？**
 
-二值权重的梯度为0，无法进行参数更新。为解决这个问题，需要**对符号函数进行放松**，即用 $Htanh(x) = max(-1, min(1,x))$ 来代替 $sinx(x)$。当 x 在区间 [-1,1] 时，存在梯度值 1，否则梯度为 0 。
+二值权重的梯度为0，无法进行参数更新。为解决这个问题，需要**对符号函数进行放松**，即用  ![](http://latex.codecogs.com/gif.latex?Htanh%28x%29%20%3D%20max%28-1%2C%20min%281%2Cx%29%29)  来代替  ![](http://latex.codecogs.com/gif.latex?sinx%28x%29) 。当 x 在区间 [-1,1] 时，存在梯度值 1，否则梯度为 0 。
 
 ### 4.3，二值连接算法改进
 
 之前的二值连接算法只对权重进行了二值化，但是网络的中间输出值依然是单精度的，于是 Rastegari 等人对此进行了改进，提出用**单精度对角阵与二值矩阵之积来近似表示原矩阵的算法**，以提升二值网络的分类性能，弥补二值网络在精度上弱势。该算法将原卷积运算分解为如下过程：
-$$I \times W\approx (I \times B)\alpha$$
 
-其中 $I\epsilon \mathbb{R}^{c\times w_{in}\times h_{in}}$ 为该层的输入张量，$I \epsilon \mathbb{R}^{c\times w\times h}$ 为该层的一个滤波器，$B=sign(W)\epsilon \{+1, -1\}^{c \times w\times h}$为该滤波器所对应的二值权重。
 
-这里，Rastegari 等人认为单靠二值运算，很难达到原单精度卷积元素的结果，于是他们使用了一个单精度放缩因子 $\alpha \epsilon \mathbb{R}^{+}$ 来对二值滤波器卷积后的结果进行放缩。而$\alpha$ 的取值，则可根据优化目标：
-$$min \left \|| W -\alpha B \right \||^{2}$$
+![](http://latex.codecogs.com/gif.latex?I%20%5Ctimes%20W%5Capprox%20%28I%20%5Ctimes%20B%29%5Calpha)
 
-得到$\alpha = \frac{1}{n}\left \|| W \right \||_{\iota _{1}}$。二值连接改进的算法训练过程与之前的算法大致相同，不同的地方在于梯度的计算过程还考虑了 $\alpha$ 的影响。由于  $\alpha$ 这个单精度的缩放因子的存在，有效降低了重构误差，并首次在 ImageNet 数据集上取得了与 Alex-Net 相当的精度。如下图所示：
+
+
+其中  ![](http://latex.codecogs.com/gif.latex?I%5Cepsilon%20%5Cmathbb%7BR%7D%5E%7Bc%5Ctimes%20w_%7Bin%7D%5Ctimes%20h_%7Bin%7D%7D)  为该层的输入张量， ![](http://latex.codecogs.com/gif.latex?I%20%5Cepsilon%20%5Cmathbb%7BR%7D%5E%7Bc%5Ctimes%20w%5Ctimes%20h%7D)  为该层的一个滤波器， ![](http://latex.codecogs.com/gif.latex?B%3Dsign%28W%29%5Cepsilon%20%5C%7B%2B1%2C%20-1%5C%7D%5E%7Bc%20%5Ctimes%20w%5Ctimes%20h%7D) 为该滤波器所对应的二值权重。
+
+这里，Rastegari 等人认为单靠二值运算，很难达到原单精度卷积元素的结果，于是他们使用了一个单精度放缩因子  ![](http://latex.codecogs.com/gif.latex?%5Calpha%20%5Cepsilon%20%5Cmathbb%7BR%7D%5E%7B%2B%7D)  来对二值滤波器卷积后的结果进行放缩。而 ![](http://latex.codecogs.com/gif.latex?%5Calpha)  的取值，则可根据优化目标：
+
+
+![](http://latex.codecogs.com/gif.latex?min%20%5Cleft%20%5C%7C%7C%20W%20-%5Calpha%20B%20%5Cright%20%5C%7C%7C%5E%7B2%7D)
+
+
+
+得到 ![](http://latex.codecogs.com/gif.latex?%5Calpha%20%3D%20%5Cfrac%7B1%7D%7Bn%7D%5Cleft%20%5C%7C%7C%20W%20%5Cright%20%5C%7C%7C_%7B%5Ciota%20_%7B1%7D%7D) 。二值连接改进的算法训练过程与之前的算法大致相同，不同的地方在于梯度的计算过程还考虑了  ![](http://latex.codecogs.com/gif.latex?%5Calpha)  的影响。由于   ![](http://latex.codecogs.com/gif.latex?%5Calpha)  这个单精度的缩放因子的存在，有效降低了重构误差，并首次在 ImageNet 数据集上取得了与 Alex-Net 相当的精度。如下图所示：
 
 ![二值化网络精度对比](../images/二值化算法精度.png)
 可以看到的是`权重二值化神经网络（BWN）`和全精度神经网络的精确度几乎一样，但是与异或神经网络（XNOR-Net）相比而言，Top-1 和 Top-5 都有 10+% 的损失。
@@ -160,7 +170,11 @@ student模型最终的损失函数由两部分组成：
 + 第一项是由小模型的预测结果与大模型的“软标签”所构成的交叉熵（cross entroy）;
 + 第二项为预测结果与普通类别标签的交叉熵。
 
-软标签计算公式：$$q_{i} = \frac{z_{i}/T}{\sum_{j}z_{j}/T}$$
+软标签计算公式：
+
+![](http://latex.codecogs.com/gif.latex?q_%7Bi%7D%20%3D%20%5Cfrac%7Bz_%7Bi%7D/T%7D%7B%5Csum_%7Bj%7Dz_%7Bj%7D/T%7D)
+
+
 
 这两个损失函数的重要程度可通过一定的权重进行调节，在实际应用中， `T` 的取值会影响最终的结果，一般而言，较大的 T 能够获得较高的准确度，T（蒸馏温度参数） 属于知识蒸馏模型训练超参数的一种。**T是一个可调节的超参数、T值越大、概率分布越软（论文中的描述），曲线便越平滑**，相当于在迁移学习的过程中添加了扰动，从而使得学生网络在借鉴学习的时候更有效、泛化能力更强，这其实就是一种抑制过拟合的策略。知识蒸馏的整个过程如下图：
 

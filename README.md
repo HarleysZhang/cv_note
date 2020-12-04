@@ -1,6 +1,8 @@
 ## 前言
 本仓库的知识点和文章主要用于个人复习和作知识点总结使用，部分内容参考自`github项目/网络资料/书籍`和[个人博客](https://www.armcv.cn/)等，由于时间和能力有限，有些知识点其实掌握得还不够深和全面, 我推荐额外阅读以下 `github` 仓库项目（有些已经停止更新, 当作参考）
 
+> 强调一下如何从“零”起步，首先确保基础打好。建议完整修完一门国外经典课程（从课程视频、作业到项目），然后完整阅读一本机器学习或者深度学习教科书，同时熟练掌握一门基本的编程语言以及深度学习框架。参考[中国人民大学赵鑫：AI 科研入坑指南](https://mp.weixin.qq.com/s/UH7UIq7ajwpdR6fZ9CfG6Q)。
+
 + [Algorithm_Interview_Notes-Chinese](https://github.com/imhuay/Algorithm_Interview_Notes-Chinese)
 + [关于Python的面试题](https://github.com/taizilongxu/interview_python)
 + [CS-Notes](https://github.com/CyC2018/CS-Notes)

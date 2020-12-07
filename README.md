@@ -36,7 +36,7 @@
 |平安科技|计算机视觉实习生|北京/深圳|3.19|[网申](http://campus.pingan.com/tech/position)|内推码：PvqgIB|无|牛客讨论区|
 |抖音火山|计算机视觉算法实习生|北京/其他|未知|[网申](https://job.bytedance.com/campus/position)|内推码：QURKAW2|无|牛客讨论区|
 |招银网络科技|算法实习生|深圳/杭州/成都/|6.30|[网申](https://mp.weixin.qq.com/s/7l6GZ88yynwb3jwRhx76KA)|内推码：9171XYCD、9211LYCD|无|牛客讨论区|
-|奇虎360|算法实习生|北京/其他|3.31|[网申](http://chrcmp.chinahr.com/views/2019-qihu360/index.html)|内推码：暂无|无|牛客讨论区|
+|奇虎360|算法/安全/研发实习生|北京/苏州/其他|3.31|[网申](http://chrcmp.chinahr.com/views/2019-qihu360/index.html)|内推码：暂无|无|牛客讨论区|
 |爱奇艺|C++开发工程师|北京|4月中旬|[网申](https://zhaopin.iqiyi.com/job-school.html)|内推码：zNG4KR|无|信息学院qq群|
 |蚂蚁金服|算法实习生|杭州/其他|3-5月|邮箱：xiaoxue.sxx@antfin.com|邮件标题：【姓名】+【学校】+【应聘岗位】|无|信息学院qq群|
 |华为|算法实习生|成都/其他|3月28|[网申](http://career.huawei.com/reccampportal/campus4_index.html#campus4/pages/joblist/jobList.html?jobFamClsCode=JFC1&type=0)|无|无|信息学院qq群|

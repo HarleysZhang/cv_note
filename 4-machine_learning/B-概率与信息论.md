@@ -28,7 +28,7 @@
 
 **随机变量**（`random variable`）是可以随机地取不同值的变量，它可以是离散或者连续的。
 
-我们通常用无格式字体 (`plain typeface`) 中的小写字母来表示随机变量本身，而用手写体中的小写字母来表示随机变量能够取到的值。例如， $x_1$ 和 $x_2$ 都是随机变量 $\textup{x}$ 可能的取值。对于向量值变量，我们会将随机变量写成 $\mathbf{x}$，它的一个可能取值为 $\boldsymbol{x}$。就其本身而言，一个随机变量只是对可能的状态的描述；它必须伴随着一个概率分布来指定每个状态的可能性。
+我们通常用无格式字体 (`plain typeface`) 中的小写字母来表示随机变量本身，而用手写体中的小写字母来表示随机变量能够取到的值。例如， $x_1$ 和 $x_2$ 都是随机变量 $\textrm{x}$ 可能的取值。对于向量值变量，我们会将随机变量写成 $\mathbf{x}$，它的一个可能取值为 $\boldsymbol{x}$。就其本身而言，一个随机变量只是对可能的状态的描述；它必须伴随着一个概率分布来指定每个状态的可能性。
 
 ### 概率分布
 
@@ -38,13 +38,13 @@
 
 离散型变量的概率分布可以用**概率质量函数**（`probability mass function, PMF`）.我们通常用大写字母 $P$来表示概率质量函数，通常每一个随机变量都会有一个不同的概率质量函数。
 
-概率质量函数可以同时作用于多个随机变量。这种多个变量的概率分布被称为**联合概率分布**（`joint probability distribution`）。 $P(x = \textup{x},y = \textup{y})$ 表示 $x = \textup{x}$ 和 $y = \textup{y}$ 同时发生的概率，简写为 $P(x，y)$。
+概率质量函数可以同时作用于多个随机变量。这种多个变量的概率分布被称为**联合概率分布**（`joint probability distribution`）。 $P(x = \textrm{x},y = \textrm{y})$ 表示 $x = \textrm{x}$ 和 $y = \textrm{y}$ 同时发生的概率，简写为 $P(x，y)$。
 
 概率质量函数将随机变量能够取得的每个状态映射到随机变量取得该状态的概率。如果一个函数 $P$ 是随机变量 x 的 `PMF`，必须满足以下条件：
 
 + $P$ 的定义域必须是 x 所有可能状态的集合。
-+ $\forall x \in \textup{x}, 0 \leqslant  P(x)\leqslant 1$。不可能发生的事件概率为 `0`，，能够确保一定发生的事件概率为 `1`。
-+ $\sum_{x \in \textup{x}}P(x)=1$。**归一化**（`normalized`）。
++ $\forall x \in \textrm{x}, 0 \leqslant  P(x)\leqslant 1$。不可能发生的事件概率为 `0`，，能够确保一定发生的事件概率为 `1`。
++ $\sum_{x \in \textrm{x}}P(x)=1$。**归一化**（`normalized`）。
 
 常见的离散概率分布族有：
 + 伯努利分布
@@ -57,8 +57,8 @@
 
 连续型随机变量的概率分布用**概率密度函数**（`probability desity function, PDF`）来描述。如过一个函数 $p$ 是概率密度函数，其必须满足以下条件：
 
-+ $p$ 的定义域必须是 $\textup{x}$ 所有可能状态的集合。
-+ $\forall x \in \textup{x}, p(x)\geqslant 0$。注意，并不要求 $p(x)\leqslant 1$。
++ $p$ 的定义域必须是 $\textrm{x}$ 所有可能状态的集合。
++ $\forall x \in \textrm{x}, p(x)\geqslant 0$。注意，并不要求 $p(x)\leqslant 1$。
 + $\int p(x)dx=1$。
 
 我们可以对概率密度函数求积分来获得点集的真实概率质量。特别地，$x$ 落在集合 $\mathbb{S}$ 中的概率可以通过 $p(x)$ 对这个集合求积分来得到。在单变量的例子中，$x$ 落在区间 $[a,b]$ 的概率是 $\int_{[a,b]}p(x)dx$。
@@ -74,7 +74,7 @@
 有时候，我们知道了一组变量的联合概率分布，但想要了解其中一个子集的概率分布。这种定义在子集上的概率分布被称为**边缘概率分布**（`marginal probability distribution`）。
 
 假设有离散型随机变量 $x$ 和 $y$，知道 $P(x,y)$，可以依据下面的**求和法则**（`sum rule`）来计算 $P(x)$：
-$$\forall x \in \textup{x},P(\textup{x}=x)=\sum_{y}P(\textup{x}=x, \textup{y}=y)$$
+$$\forall x \in \textrm{x},P(\textrm{x}=x)=\sum_{y}P(\textrm{x}=x, \textrm{y}=y)$$
 
 ”边缘概率“的名称来源于手算边缘概率的计算过程。当 $P(x,y)$ 的每个值被写在由每行表示不同的 $x$ 值，每列表示不同的 $y$ 值形成的网格中时，对网格中的每行求和是很自然的事情，然后将求和的结果 $P(x)$ 写在每行右边的纸的边缘处。
 
@@ -83,11 +83,11 @@ $$p(x) = \int p(x,y)dy$$
 
 ### 条件概率
 
-某个事件，在给定其他事件发生时出现的概率叫做条件概率。将给定 $\textup{x} = x$， $\textup{y} = y$ 发生的条件概率记为 $P(\textup{y} = y|\textup{x} = x)$，计算公式如下：
+某个事件，在给定其他事件发生时出现的概率叫做条件概率。将给定 $\textrm{x} = x$， $\textrm{y} = y$ 发生的条件概率记为 $P(\textrm{y} = y|\textrm{x} = x)$，计算公式如下：
 
-$$P(\textup{y}=y|\textup{x}=x)=\frac{P(\textup{y}=y, \textup{x}=x)}{P(\textup{x}=x)}$$
+$$P(\textrm{y}=y|\textrm{x}=x)=\frac{P(\textrm{y}=y, \textrm{x}=x)}{P(\textrm{x}=x)}$$
 
-条件概率只在 $P(\textup{x}=x)\geqslant 0$ 时有定义。我们不能计算给定在永远不会发生的事件上
+条件概率只在 $P(\textrm{x}=x)\geqslant 0$ 时有定义。我们不能计算给定在永远不会发生的事件上
 的条件概率。
 
 ### 条件概率的链式法则
@@ -103,8 +103,8 @@ P(a,b,c) &= P(s|b,c)P(b|c)P(c)
 
 ### 独立性和条件独立性
 
-两个随机变量 $\textup{x}$ 和 $\textup{y}$，如果它们的概率分布可以表示成两个因子的乘积形式，并且一个因子只包含 $\textup{x}$ 另一个因子只包含 $\textup{y}$，我们就称这两个随机变量是**相互独立**的（`independent`）：
-$$\forall x \in \textup{x},y \in \textup{y},p(\textup{x}=x, \textup{y}=y)=p(\textup{x}=x)p(\textup{y}=y)$$
+两个随机变量 $\textrm{x}$ 和 $\textrm{y}$，如果它们的概率分布可以表示成两个因子的乘积形式，并且一个因子只包含 $\textrm{x}$ 另一个因子只包含 $\textrm{y}$，我们就称这两个随机变量是**相互独立**的（`independent`）：
+$$\forall x \in \textrm{x},y \in \textrm{y},p(\textrm{x}=x, \textrm{y}=y)=p(\textrm{x}=x)p(\textrm{y}=y)$$
 
 两个相互独立的随机变量同时发生的概率可以通过各自发生的概率的乘积得到。
 
@@ -113,19 +113,19 @@ $$\forall x \in \textup{x},y \in \textup{y},p(\textup{x}=x, \textup{y}=y)=p(\tex
 
 在概率论和统计学中，一个离散型随机变量的期望值（`epectation`）是实验中每次可能的结果乘以其结果概率的总和。函数 $f(x)$ 关于某分布 $P(x)$ 的**期望**（`expectation`）或期望值（`expected value`）是指，当 $x$ 由 $P$ 产生，$f$ 作用于 $x$ 时，$f(x)$ 的平均值。对于离散型随机变量，期望可以通过求和得到：
 
-$$\mathbb{E}_{\textup{x}\sim P}[f(x)]=\sum_{x}P(x)f(x)$$
+$$ \mathbb{E}_{\textrm{x}\sim P} [f(x)]=\sum_{x} P(x)f(x)$$
 
 对于连续型随机变量可以通过求积分得到：
 
-$$\mathbb{E}_{\textup{x}\sim p}[f(x)]=\int p(x)f(x)dx$$
+$$ \mathbb{E}_{\textrm{x}\sim p}[f(x)]=\int p(x)f(x)dx$$
 
 期望是线性的：
 
-$$\mathbb{E}_{\textup{x}}[\alpha f(x)+\beta g(x)] = \alpha \mathbb{E}_{\textup{x}}[f(x)] + \beta \mathbb{E}_{\textup{x}}[g(x)]$$
+$$ \mathbb{E}_{\textrm{x}}[\alpha f(x)+\beta g(x)] = \alpha \mathbb{E}_{\textrm{x}}[f(x)] + \beta \mathbb{E}_{\textrm{x}} [g(x)]$$
 
 其中 $\alpha$ 和 $\beta$ 不依赖于 $x$。
 
-**方差**（`variance`）衡量的是当我们对 $x$ 依据它的概率分布进行采样时，随机变量 $\textup{x}$ 的函数值会呈现多大的差异，或者说一个随机变量的方差描述的是它的离散程度，也就是该变量离其期望值的距离。方差定义如下：
+**方差**（`variance`）衡量的是当我们对 $x$ 依据它的概率分布进行采样时，随机变量 $\textrm{x}$ 的函数值会呈现多大的差异，或者说一个随机变量的方差描述的是它的离散程度，也就是该变量离其期望值的距离。方差定义如下：
 $$Var(f(x)) = \mathbb{E}[(f(x)-\mathbb{E}[f(x)])^2]$$
 
 当方差很小时，$f(x)$ 的值形成的簇比较接近它们的期望值。方差的平方根被称为标准差（`standard deviation`）。

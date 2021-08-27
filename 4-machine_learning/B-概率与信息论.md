@@ -43,7 +43,7 @@
 概率质量函数将随机变量能够取得的每个状态映射到随机变量取得该状态的概率。如果一个函数 $P$ 是随机变量 x 的 `PMF`，必须满足以下条件：
 
 + $P$ 的定义域必须是 x 所有可能状态的集合。
-+ $\forall x \in \textrm{x}, 0 \leqslant  P(x)\leqslant 1$。不可能发生的事件概率为 `0`，，能够确保一定发生的事件概率为 `1`。
++ $\forall x \in \textrm{x}, 0 \leq  P(x)\leq 1$。不可能发生的事件概率为 `0`，，能够确保一定发生的事件概率为 `1`。
 + $\sum_{x \in \textrm{x}}P(x)=1$。**归一化**（`normalized`）。
 
 常见的离散概率分布族有：
@@ -58,7 +58,7 @@
 连续型随机变量的概率分布用**概率密度函数**（`probability desity function, PDF`）来描述。如过一个函数 $p$ 是概率密度函数，其必须满足以下条件：
 
 + $p$ 的定义域必须是 $\textrm{x}$ 所有可能状态的集合。
-+ $\forall x \in \textrm{x}, p(x)\geqslant 0$。注意，并不要求 $p(x)\leqslant 1$。
++ $\forall x \in \textrm{x}, p(x)\geq 0$。注意，并不要求 $p(x)\leq 1$。
 + $\int p(x)dx=1$。
 
 我们可以对概率密度函数求积分来获得点集的真实概率质量。特别地，$x$ 落在集合 $\mathbb{S}$ 中的概率可以通过 $p(x)$ 对这个集合求积分来得到。在单变量的例子中，$x$ 落在区间 $[a,b]$ 的概率是 $\int_{[a,b]}p(x)dx$。
@@ -87,7 +87,7 @@ $$p(x) = \int p(x,y)dy$$
 
 $$P(\textrm{y}=y|\textrm{x}=x)=\frac{P(\textrm{y}=y, \textrm{x}=x)}{P(\textrm{x}=x)}$$
 
-条件概率只在 $P(\textrm{x}=x)\geqslant 0$ 时有定义。我们不能计算给定在永远不会发生的事件上
+条件概率只在 $P(\textrm{x}=x)\geq 0$ 时有定义。我们不能计算给定在永远不会发生的事件上
 的条件概率。
 
 ### 条件概率的链式法则
@@ -98,8 +98,6 @@ P(a,b,c) &= P(a|b,c)P(b,c) \\
 P(b,c) &= P(b|c)P(c) \\
 P(a,b,c) &= P(s|b,c)P(b|c)P(c)
 \end{aligned}$$
-
-![条件概率的链式法则](../data/images/dl/条件概率的链式法则.png)
 
 ### 独立性和条件独立性
 
@@ -113,7 +111,7 @@ $$\forall x \in \textrm{x},y \in \textrm{y},p(\textrm{x}=x, \textrm{y}=y)=p(\tex
 
 在概率论和统计学中，一个离散型随机变量的期望值（`epectation`）是实验中每次可能的结果乘以其结果概率的总和。函数 $f(x)$ 关于某分布 $P(x)$ 的**期望**（`expectation`）或期望值（`expected value`）是指，当 $x$ 由 $P$ 产生，$f$ 作用于 $x$ 时，$f(x)$ 的平均值。对于离散型随机变量，期望可以通过求和得到：
 
-$$ \mathbb{E}_{\textrm{x}\sim P} [f(x)]=\sum_{x} P(x)f(x)$$
+$$ \mathbb{E}_{\textrm{x}\sim P}[f(x)]=\sum_{x} P(x)f(x)$$
 
 对于连续型随机变量可以通过求积分得到：
 

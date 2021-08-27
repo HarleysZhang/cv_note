@@ -111,20 +111,20 @@ $$\forall x \in \textrm{x},y \in \textrm{y},p(\textrm{x}=x, \textrm{y}=y)=p(\tex
 
 在概率论和统计学中，一个离散型随机变量的期望值（`epectation`）是实验中每次可能的结果乘以其结果概率的总和。函数 $f(x)$ 关于某分布 $P(x)$ 的**期望**（`expectation`）或期望值（`expected value`）是指，当 $x$ 由 $P$ 产生，$f$ 作用于 $x$ 时，$f(x)$ 的平均值。对于离散型随机变量，期望可以通过求和得到：
 
-$$ \mathbb{E}_{\textrm{x}\sim P}[f(x)]=\sum_{x} P(x)f(x)$$
+$$ \mathbb{E}_{\textrm{x}\sim P}[f(x)] = \sum_{x} P(x)f(x)$$
 
 对于连续型随机变量可以通过求积分得到：
 
-$$ \mathbb{E}_{\textrm{x}\sim p}[f(x)]=\int p(x)f(x)dx$$
+$$ \mathbb{E}_{\textrm{x}\sim p}[f(x)] = \int p(x)f(x)dx$$
 
 期望是线性的：
 
-$$ \mathbb{E}_{\textrm{x}}[\alpha f(x)+\beta g(x)] = \alpha \mathbb{E}_{\textrm{x}}[f(x)] + \beta \mathbb{E}_{\textrm{x}} [g(x)]$$
+$$ \mathbb{E}_{\textrm{x}}[\alpha f(x) + \beta g(x)] = \alpha \mathbb{E}_{\textrm{x}}[f(x)] + \beta \mathbb{E}_{\textrm{x}} [g(x)]$$
 
 其中 $\alpha$ 和 $\beta$ 不依赖于 $x$。
 
 **方差**（`variance`）衡量的是当我们对 $x$ 依据它的概率分布进行采样时，随机变量 $\textrm{x}$ 的函数值会呈现多大的差异，或者说一个随机变量的方差描述的是它的离散程度，也就是该变量离其期望值的距离。方差定义如下：
-$$Var(f(x)) = \mathbb{E}[(f(x)-\mathbb{E}[f(x)])^2]$$
+$$Var(f(x)) = \mathbb{E}[(f(x) - \mathbb{E}[f(x)])^2]$$
 
 当方差很小时，$f(x)$ 的值形成的簇比较接近它们的期望值。方差的平方根被称为标准差（`standard deviation`）。
 

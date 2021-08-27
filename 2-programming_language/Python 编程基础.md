@@ -1,6 +1,24 @@
-目录
----
-[toc]
+- [Python global 语句的作用](#python-global-语句的作用)
+- [lambda 匿名函数好处](#lambda-匿名函数好处)
+- [Python 错误处理](#python-错误处理)
+- [Python 内置错误类型](#python-内置错误类型)
+- [简述 any() 和 all() 方法](#简述-any-和-all-方法)
+- [Python 中什么元素为假？](#python-中什么元素为假)
+- [提高 Python 运行效率的方法](#提高-python-运行效率的方法)
+- [Python 单例模式](#python-单例模式)
+- [为什么 Python 不提供函数重载](#为什么-python-不提供函数重载)
+- [实例方法/静态方法/类方法](#实例方法静态方法类方法)
+- [\_\_new\_\_和 \_\_init \_\_方法的区别](#__new__和-__init-__方法的区别)
+- [Python 的函数参数传递](#python-的函数参数传递)
+- [Python 实现对函参做类型检查](#python-实现对函参做类型检查)
+- [为什么说 Python 是动态语言](#为什么说-python-是动态语言)
+- [Python 装饰器理解](#python-装饰器理解)
+- [map 与 reduce 函数用法解释](#map-与-reduce-函数用法解释)
+- [Python 深拷贝、浅拷贝区别](#python-深拷贝浅拷贝区别)
+- [Python 继承多态理解](#python-继承多态理解)
+  - [总结](#总结)
+- [Python 面向对象的原则](#python-面向对象的原则)
+- [参考资料](#参考资料)
 
 ## Python global 语句的作用
 

@@ -102,6 +102,7 @@ P(a,b,c) &= P(s|b,c)P(b|c)P(c)
 ### 独立性和条件独立性
 
 两个随机变量 $\textrm{x}$ 和 $\textrm{y}$，如果它们的概率分布可以表示成两个因子的乘积形式，并且一个因子只包含 $\textrm{x}$ 另一个因子只包含 $\textrm{y}$，我们就称这两个随机变量是**相互独立**的（`independent`）：
+
 $$\forall x \in \textrm{x},y \in \textrm{y},p(\textrm{x}=x, \textrm{y}=y)=p(\textrm{x}=x)p(\textrm{y}=y)$$
 
 两个相互独立的随机变量同时发生的概率可以通过各自发生的概率的乘积得到。
@@ -144,6 +145,14 @@ $$\sigma(x) = \frac{1}{1+exp(-x)}$$
 `sigmoid` 函数在变量取绝对值非常大的正值或负值时会出现**饱和**（`saturate`）现象，意味着函数会变得很平，并且对输入的微小改变会变得不敏感。
 
 ![sigmoid函数示意图](../data/images/dl/sigmoid函数示意图.png)
+
+`sigmoid` 函数的一些性质在后续学习 `BP` 算法等内容时会很有用，我们需要牢记：
+
+$$
+\sigma(x) = \frac{exp(x)}{exp(x)+exp(0)} \\
+\frac{d}{dx}\sigma(x) = \sigma(x)(1 - \sigma(x)) \\
+1 - \sigma(x) = \sigma(-x)
+$$
 
 ### 信息论
 

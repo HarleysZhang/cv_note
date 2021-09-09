@@ -28,12 +28,11 @@
 
 $$
 \begin{align*}
-& MACC = H \times W \times 1 \times 1 \times \frac{c_{1}}{g}\frac{c_{2}}{g} \times g = \frac{hwc_{1}c_{2}}{g} \\
-& FLOPs = 2 \times MACC \\
-& Params = g \times \frac{c_2}{g}\times\frac{c_1}{g} \times 1\times 1 + c_2 = \frac{c_{1}c_{2}}{g} \\
-& MAC = HW(c_1 + c_2) + \frac{c_{1}c_{2}}{g} \\
-\end{align*}
-$$
+& MACC = H \times W \times 1 \times 1 \times \frac{c_{1}}{g}\frac{c_{2}}{g} \times g = \frac{hwc_{1}c_{2}}{g} \\\\
+& FLOPs = 2 \times MACC \\\\
+& Params = g \times \frac{c_2}{g}\times\frac{c_1}{g} \times 1\times 1 + c_2 = \frac{c_{1}c_{2}}{g} \\\\
+& MAC = HW(c_1 + c_2) + \frac{c_{1}c_{2}}{g} \\\\
+\end{align*}$$
 
 从以上公式可以得出分组卷积的参数量和计算量是标准卷积的 $\frac{1}{g}$ 的结论 ，但其实对分组卷积过程进行深入理解之后也可以直接得出以上结论。
 
@@ -83,9 +82,9 @@ Figure 4 中的“极限” Inception 模块与本文的主角-深度可分离�
 
 $$
 \begin{align*}
-\frac{Depthwise \ Separable \ Conv}{Standard \ Conv} &= \frac{M \times D_{G}^{2}(D_{K}^{2} + N)}{N \times D_{G}^{2} \times D_{K}^{2} \times M} \\
-&= \frac{D_{K}^{2} + N}{D_{K}^{2} \times N} \\
-&= \frac{1}{N} + \frac{1}{D_{K}^{2}} \\
+\frac{Depthwise \ Separable \ Conv}{Standard \ Conv} &= \frac{M \times D_{G}^{2}(D_{K}^{2} + N)}{N \times D_{G}^{2} \times D_{K}^{2} \times M} \\\\
+&= \frac{D_{K}^{2} + N}{D_{K}^{2} \times N} \\\\
+&= \frac{1}{N} + \frac{1}{D_{K}^{2}} \\\\
 \end{align*}
 $$ 
 

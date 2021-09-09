@@ -2,6 +2,7 @@
 - [ResNet](#resnet)
 - [Inceptionv3](#inceptionv3)
 - [ResNeXt](#resnext)
+- [Darknet53](#darknet53)
 - [CSPNet](#cspnet)
 - [参考资料](#参考资料)
 
@@ -39,6 +40,12 @@ ResNeXt 的卷积 block 和 Resnet 对比图如下所示。
 ResNeXt和Resnet的模型结构参数对比图如下图所示。
 
 ![resnext的结构参数和resnet的对比图](../data/images/backbone/resnext的结构参数和resnet的对比图.png)
+
+## Darknet53
+
+`Darknet53` 模型结构连接图，如下图所示。
+
+![darknet53](../data/images/backbone/darknet53.png)
 
 ## CSPNet
 

@@ -33,7 +33,7 @@
 
 > 二维卷积是一个相当简单的操作：从卷积核开始，这是一个小的权值矩阵。这个卷积核在 2 维输入数据上「滑动」，对当前输入的部分元素进行矩阵乘法，然后将结果汇为单个输出像素。
 
-![卷积过程](../../data/images/二维卷积操作动态图.gif)
+![卷积过程](../data/images/二维卷积操作动态图.gif)
 
 公式解释，参考[这里](https://zhuanlan.zhihu.com/p/70306015?utm_source=wechat_session&utm_medium=social&utm_oi=571954943427219456)，如下：
 
@@ -98,7 +98,7 @@ $T_i$ 为输入向量的长度， $T_o$ 为输出向量的长度，公式的第�
 
 在这种情况下，利用率（Utilization）是可以有效地用于实际工作负载的芯片的原始计算能力的百分比。深度学习和神经网络使用相对数量较少的计算原语（computational primitives），而这些数量很少的计算原语却占用了大部分计算时间。矩阵乘法（MM）和转置是基本操作。MM 由乘法累加（MAC）操作组成。OPs/s（每秒完成操作的数量）指标通过每秒可以完成多少个 MAC（每次乘法和累加各被认为是 1 个 operation，因此 MAC 实际上是 2 个 OP）得到。所以我们可以将利用率定义为实际使用的运算能力和原始运算能力的比值：
 
-![算力利用率公式](../../data/images/算力利用率计算公式.png)
+![算力利用率公式](../data/images/算力利用率计算公式.png)
 
 $$ mac\ utilization = \frac {used\ Ops/s}{raw\ OPs/s} = \frac {FLOPs/time(s)}{Raw\_FLOPs}(Raw\_FLOPs = 1.7T\ at\ 3519)$$
 

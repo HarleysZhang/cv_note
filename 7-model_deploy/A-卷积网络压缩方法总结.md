@@ -119,8 +119,8 @@ def residual_unit(data, num_filter, stride, dim_match, num_bits=1):
 + 直接根据权重的正负进行二值化：$x^{b}=sign(x)$。符号函数 `sign(x)` 定义如下：
 $$
 sign(x) = \left\{\begin{matrix}
--1 & x < 0 \\ 
-0 & x = 0 \\ 
+-1 & x < 0 \\\\
+0 & x = 0 \\\\
 1 & x > 0
 \end{matrix}\right.
 $$

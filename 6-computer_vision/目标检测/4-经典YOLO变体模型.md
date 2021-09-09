@@ -30,6 +30,8 @@
 - 实验证实了 `FPN` 结构本质上是一种 `once-for-all` 结构;
 - 利用上述方法研制了 `YOLOv4-tiny` 和 `YOLO4v4-large` 模型。
 
+以往模型缩放，如 `EfficientDet` 无非是首先选择网络基础模块，它往往又好又快，然后针对影响目标检测的重要参数如：网络宽度 $w$、深度 $d$、输入图像分辨率`size` 等进行（满足一定条件下按照一定规律）调参，或者 `NAS` 自动调参。
+
 ### 2，相关工作
 
 #### 2.1，模型缩放
@@ -80,7 +82,8 @@ r1 &=  (b \times 1^2\times \frac{b}{4} + \frac{b}{4} \times 3^2\times \frac{b}{4
 
 1，**使计算复杂度少于 $O(whkb^2)$**。
 
-作者分析了高效利用参数的网络：`DenseNet` 和 `OSANet` 的计算量，分别为 $O(whgbk)$、$O(max(whbg, whkg2))$。两者的计算复杂度阶数均小于 `ResNet` 系列的 $O(whkb^2)$。因此，作者利用 `OSANet` 设计了计算复杂度较小的 `tiny` 模型。
+作者分析了高效利用参数的网络：`DenseNet` 和 `OSANet` 的计算量，分别为 $O(whgbk)$、$O(max(whbg, whkg^2))$。两者的计算复杂度阶数均小于 `ResNet` 系列的 $O(whkb^2)$。因此，我们基于 `OSANet` 设计 `tiny` 模型，因为它具有更小的计算复杂度。
+> 这里的 `OSANet` 其实是 [VoVNet](http://xxx.itp.ac.cn/pdf/1904.09730.pdf) 网络，专门为 `GPU` 平台设计的更高效的 `backbone` 网络架构。
 
 ![OSA和Dense layer的计算复杂度](../../data/images/scaled-yolov4/OSA和Dense-layer的计算复杂度.png)
 
@@ -130,7 +133,9 @@ r1 &=  (b \times 1^2\times \frac{b}{4} + \frac{b}{4} \times 3^2\times \frac{b}{4
 
 #### 4.2，YOLOv4-tiny
 
-我们将使用 `PCB` 架构的 `CSPOSANet` 作为 `YOLOv4` `backbone`。我们设 $g = b/2$ 为增长率，最终使其增长到 $b/2 + kg = 2b$。通过计算，我们得到 $k = 3$。`YOLOv4` 的卷积块（`computational block`）结构如图 `3` 所示。对于每个阶段的通道数量和 `neck` 网络结构，我们采用 `YOLOv3-tiny` 一样的设计。
+`YOLOv4-tiny` 是为低端 `GPU` 设备设计的，设计将遵循 `3.2` 节中提到的原则。
+
+我们将使用 `PCB`（`partial in computational block`） 架构的 `CSPOSANet` 作为 `YOLOv4` `backbone`。我们设 $g = b/2$ 为增长率，最终使其增长到 $b/2 + kg = 2b$。通过计算，我们得到 $k = 3$。`YOLOv4` 的卷积块（`computational block`）结构如图 `3` 所示。对于每个阶段的通道数量和 `neck` 网络结构，我们采用 `YOLOv3-tiny` 一样的设计。
 
 ![YOLOv4-tiny的计算块结构](../../data/images/scaled-yolov4/YOLOv4-tiny的计算块结构.png)
 
@@ -150,9 +155,9 @@ r1 &=  (b \times 1^2\times \frac{b}{4} + \frac{b}{4} \times 3^2\times \frac{b}{4
 
 ### 总结
 
-通篇论文看下来，感觉最主要的贡献在于通过理论和实验证了模型缩放的原则，进一步拓展了 `CSPNet` 方法，并基于此设计了一个全新的 `Scaled-YOLOv4`，`Scaled-YOLOv4` 网络的卷积模块都是使用了 `CSP` 方法构造的。
+通篇论文看下来，感觉最主要的贡献在于通过理论系统分析和实验证了模型缩放的原则，进一步拓展了 `CSPNet` 方法，并基于此设计了一个全新的 `Scaled-YOLOv4`，`Scaled-YOLOv4` 网络的卷积模块都有使用 `CSP`。总的感觉就是针对不同的 `GPU` 平台，根据作者分析出来的模型缩放理论，且符合一些原则的情况下，选择不同的模型宽度和深度参数，并，让模型更深更宽。
 
-`anchor-free` 的方法，如 `centernet` 是不需要复杂的后处理，如 `NMS`。`Backbone` 模型的宽度、深度、模块的瓶颈比（`bottleneck`）、输入图像分辨率等参数的关系。
+> `anchor-free` 的方法，如 `centernet` 是不需要复杂的后处理，如 `NMS`。`Backbone` 模型的宽度、深度、模块的瓶颈比（`bottleneck`）、输入图像分辨率等参数的关系。
 
 ## 参考资料
 

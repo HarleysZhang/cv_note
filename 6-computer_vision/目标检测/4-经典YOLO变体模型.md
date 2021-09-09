@@ -119,6 +119,9 @@ r1 &=  (b \times 1^2\times \frac{b}{4} + \frac{b}{4} \times 3^2\times \frac{b}{4
 
 1，**Backbone**
 
+为了获得更好的速度/精度权衡，我们将第一个 `CSP` 阶段转换为原始的 `DarkNet` 的残差层。
+> 没能理解这段内容。
+
 2，**Neck**
 
 ![CSP-YOLOv4的neck调整](../../data/images/scaled-yolov4/CSP-YOLOv4的neck调整.png)
@@ -137,6 +140,8 @@ r1 &=  (b \times 1^2\times \frac{b}{4} + \frac{b}{4} \times 3^2\times \frac{b}{4
 
 ![sacled-yolov4-large版本模型结构图](../../data/images/scaled-yolov4/sacled-yolov4-large版本模型结构图.png)
 
+我们通过设计 $size^{input}$, #stage 来对 `backbone` 执行复合缩放。我们把每个 `stage` 的深度设置为 $2^{d_{s_{i}}}$。$d_s$ 范围为 $[1, 3, 15, 15, 7, 7, 7]$。与之前的 `ResNet` 的卷积划分为 `4` 个 `stage` 不同，这里最多划分为 `7` 个 `stage`（`YOLOv4-P7`）。
+
 ### 5，实验
 
 与其他实时目标检测检测器进行比较，对比实验结果如表 `11` 所示。
@@ -152,3 +157,4 @@ r1 &=  (b \times 1^2\times \frac{b}{4} + \frac{b}{4} \times 3^2\times \frac{b}{4
 ## 参考资料
 
 - [Scaled-YOLOv4: Scaling Cross Stage Partial Network](https://arxiv.org/abs/2011.08036)
+- [Scaled-YOLOv4: Scaling Cross Stage Partial Network 论文翻译](https://blog.csdn.net/Q1u1NG/article/details/109765162)

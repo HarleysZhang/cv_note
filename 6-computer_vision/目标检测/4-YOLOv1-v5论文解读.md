@@ -63,6 +63,7 @@
   - [5.3，实验结果](#53实验结果)
 - [其他YOLO变体](#其他yolo变体)
   - [1，Scaled YOLOv4](#1scaled-yolov4)
+    - [总结](#总结)
 - [参考资料](#参考资料)
 
 ## 一，YOLOv1
@@ -1095,6 +1096,8 @@ $$
 
 ### 1，Scaled YOLOv4
 
+> `Scaled YOLOv4` 的二作就是 `YOLOv4` 的作者 `Alexey Bochkovskiy`。
+
 实验结果表明，基于 `CSP` 方法的 `YOLOv4` 目标检测模型在保持最优速度和准确率的前提下，同时也具有向上/向下可伸缩性，可用于不同大小的网络。由此，作者提出了一种网络缩放方法，它不仅改变深度、宽度、分辨率，而且还改变网络的结构。
 
 **主要工作**。`Scaled YOLOv4` 的主要工作如下：
@@ -1106,12 +1109,17 @@ $$
 - 利用上述方法研制了 `YOLOv4-tiny` 和 `YOLO4v4-large` 模型。
 
 **模型缩放**。传统的模型缩放是指改变模型的深度，如 `VGG` 变体，以及后边可以训练更深层的 `ResNet` 网络等；后面 `agoruyko` 等人开始考虑模型的宽度，通过改变卷积层卷积核的数量来实现模型缩放，并设计了 `Wide ResNet`，同样的精度下，它的参数量尽管比原始 `ResNet` 多，但是推理速度却更快。随后的 `DenseNet` 和 `ResNeXt` 也设计了一个复合缩放版本，将深度和宽度都考虑在内。
-> `Scaled YOLOv4` 的二作就是 `YOLOv4` 的作者 `Alexey Bochkovskiy`。
 
-`anchor-free` 的方法，如 `centernet` 是不需要复杂的后处理，如 `NMS`
+**模型缩放原则**。
+`anchor-free` 的方法，如 `centernet` 是不需要复杂的后处理，如 `NMS`。`Backbone` 模型的宽度、深度、模块的瓶颈比（`bottleneck`）、输入图像分辨率等参数的关系。
 
-`Backbone` 模型的宽度、深度、模块的瓶颈比（`bottleneck`）、输入图像分辨率等参数的关系。
+**模型结构**。`Sacled-YOLOv4` `large` 版本的模型结构图，如下图所示。
 
+![sacled-yolov4-large版本模型结构图](../../data/images/scaled-yolov4/sacled-yolov4-large版本模型结构图.png)
+
+#### 总结
+
+通篇论文看下来，感觉最主要的贡献在于通过理论和实验证了模型缩放的原则，进一步拓展了 `CSPNet` 方法，并基于此设计了一个全新的 `Scaled-YOLOv4`，`Scaled-YOLOv4` 网络的卷积模块都是使用了 `CSP` 方法构造的。
 
 ## 参考资料
 
@@ -1125,5 +1133,4 @@ $$
 + https://github.com/BobLiu20/YOLOv3_PyTorch/blob/master/nets/yolo_loss.py
 + https://github.com/Peterisfar/YOLOV3/blob/03a834f88d57f6cf4c5016a1365d631e8bbbacea/utils/datasets.py#L88
 + [深入浅出Yolo系列之Yolov3&Yolov4&Yolov5&Yolox核心基础知识完整讲解](https://zhuanlan.zhihu.com/p/143747206)
-+ EVOLUTION OF YOLO ALGORITHM AND YOLOV5: THE STATE-OF-THE-ART
-OBJECT DETECTION ALGORITHM
++ `EVOLUTION OF YOLO ALGORITHM AND YOLOV5: THE STATE-OF-THE-ART OBJECT DETECTION ALGORITHM`

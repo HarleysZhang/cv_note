@@ -79,9 +79,11 @@
 
 ![Figure2](../../data/images/VoVNet/Figure2.png)
 
+OSA 把中间的密集连接都去掉了，各个卷积层之间的相互关系图是图 7 的下面第 2 行，可以看到蓝色的部分 (联系大部分不紧密的部分) 明显减少了很多，也就是说 OSA 模块的每个连接都是相对有用的。
+
 上图分析了 DenseNet 中，浅层 feature map 对深层 feature map 的贡献。可以看出，前者对后者的贡献很少。所以我们提出假设 1：中间层聚合能力和最后层的聚合能力成反比。也就是说，中间层特征层对的聚合能力越好，那么最后的 feature map 的聚合能力就越弱。
 
-因此，让中间的 feature maps 的聚合能力弱化或者减少其相关性，会更利于最后feature map 表达能力的提升。因为可以进一步提出假设，**相比于它们造成的损耗而言，中间特征层的 dense connection 并不重要**。为了验证假设，我们重新设计了一个新模块，该模块仅在每个块的最后一层聚合其中间特征。
+因此，让中间的 feature maps 的聚合能力弱化或者减少其相关性，会更利于最后feature map 表达能力的提升。因为可以进一步提出假设 2，**相比于它们造成的损耗而言，中间特征层的 dense connection 并不重要**。为了验证假设，我们重新设计了一个新模块，该模块仅在每个块的最后一层聚合其中间特征。
 
 ### 3.2，One-Shot Aggregation
 
@@ -102,6 +104,10 @@
 如下图所示，分别构建了 VoVNet-27-slim，VoVNet-39， VoVNet-57。注意，其中downsampling 层是通过 3x3 stride=2 的 max pooling 实现的，conv 表示的是 Conv-BN-ReLU 的顺序连接。
 
 ![VoVNet网络结构概览](../../data/images/VoVNet/VoVNet网络结构概览.png)
+
+ VOVNet 由 5 个阶段组成，各个阶段的输出特征大小依次降为原来的一半。VOVNet-27 前 2 个 stage 的连接图如下所示。
+
+![VOVNet-27前2个stage](../../data/images/VoVNet/VOVNet-27前2个stage.jpg)
 
 ## 4，实验
 
@@ -164,3 +170,4 @@ GPU 的能耗计算公式如下：
 - [论文笔记VovNet（专注GPU计算、能耗高效的网络结构）](https://zhuanlan.zhihu.com/p/79677425)
 - [An Energy and GPU-Computation Efficient Backbone Network
 for Real-Time Object Detection](https://arxiv.org/abs/1904.09730)
+- [实时目标检测的新backbone网络：VOVNet](https://zhuanlan.zhihu.com/p/393740052)

@@ -3,9 +3,10 @@
 - [Inceptionv3](#inceptionv3)
 - [ResNeXt](#resnext)
 - [Darknet53](#darknet53)
+- [DenseNet](#densenet)
 - [CSPNet](#cspnet)
-  - [VoVNet](#vovnet)
-  - [一些结论](#一些结论)
+- [VoVNet](#vovnet)
+- [一些结论](#一些结论)
 - [参考资料](#参考资料)
 
 ## VGG
@@ -26,6 +27,8 @@
 `Resnet` 网络参数表如下图所示。
 
 ![resnet网络参数表](../data/images/backbone/resnet网络参数表.png)
+
+> 看了后续的 `ResNeXt`、`ResNetv2`、`Densenet`、`CSPNet`、`VOVNet` 等论文，越发觉得 `ResNet` 真的算是 `Backone` 领域划时代的工作了，因为它让**深层**神经网络可以训练，基本解决了深层神经网络训练过程中的梯度消失问题，并给出了系统性的解决方案（两种残差结构），即系统性的让网络变得更“深”了。而让网络变得更“宽”的工作，至今也没有一个公认的最佳方案（`Inception`、`ResNeXt` 等后续没有广泛应用），难道是因为网络变得“宽”不如“深”更重要，亦或是我们还没有找到一个更有效的方案。
 
 ## Inceptionv3
 
@@ -49,13 +52,21 @@ ResNeXt和Resnet的模型结构参数对比图如下图所示。
 
 ![darknet53](../data/images/backbone/darknet53.png)
 
+## DenseNet
+
+> 作者 `Gao Huang` 于 `2018` 年发表的论文 `Densely Connected Convolutional Networks`。
+
+`Densenet` 的卷积块（conv block）结构图如下所示。
+
+![densenet-block结构图](../data/images/backbone/densenet-block结构图.png)
+
 ## CSPNet
 
 `CSP` 方法可以减少模型计算量和提高运行速度的同时，还不降低模型的精度，是一种更高效的网络设计方法，同时还能和 `Resnet`、`Densenet`、`Darknet` 等 `backbone` 结合在一起。
 
 ![Figure3几种不同形式的CSP](../data/images/backbone/Figure3几种不同形式的CSP.png)
 
-### VoVNet
+## VoVNet
 
 `DenseNet` 用更少的参数与 `Flops` 而性能比 `ResNet` 更好，主要是因为`concat` 比 `add` 能保留更多的信息。但是，实际上 `DenseNet` 却比 `ResNet`要慢且消耗更多资源。
 
@@ -74,9 +85,9 @@ ResNeXt和Resnet的模型结构参数对比图如下图所示。
 
 ![各种VoVNet结构](../data/images/backbone/各种VoVNet结构.png)
 
-### 一些结论
+## 一些结论
 
-- 当卷积层的输入输出通道数相等时，内存访问代价（$MAC$）最小。
+- 当卷积层的输入输出通道数相等时，内存访问代价（`MAC`）最小。
 - 影响 `CNN` 功耗的主要因素在于内存访问代价 `MAC`，而不是计算量 `FLOPs`。
 
 ## 参考资料

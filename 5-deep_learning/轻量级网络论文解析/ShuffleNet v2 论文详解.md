@@ -39,10 +39,10 @@
 
 $$
 \begin{split}
-MAC &= hw(c_{1} + c{2}) + c_{1}c_{2} \\
-&= \sqrt{(hw)^{2}(c_{1} + c_{2})^{2}} + \frac{B}{hw} \\
-&\geqslant \sqrt{(hw)^{2}(4c_{1}c_{2})}+ \frac{B}{hw} \\
-&\geqslant 2\sqrt{hwB} + \frac{B}{hw} \\
+MAC &= hw(c_{1} + c{2}) + c_{1}c_{2} \\\\
+&= \sqrt{(hw)^{2}(c_{1} + c_{2})^{2}} + \frac{B}{hw} \\\\
+&\geq \sqrt{(hw)^{2}(4c_{1}c_{2})}+ \frac{B}{hw} \\\\
+&\geq 2\sqrt{hwB} + \frac{B}{hw} \\\\
 \end{split}
 $$
 

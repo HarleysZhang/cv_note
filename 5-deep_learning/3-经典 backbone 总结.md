@@ -1,6 +1,7 @@
 - [VGG](#vgg)
 - [ResNet](#resnet)
 - [Inceptionv3](#inceptionv3)
+- [Resnetv2](#resnetv2)
 - [ResNeXt](#resnext)
 - [Darknet53](#darknet53)
 - [DenseNet](#densenet)
@@ -35,6 +36,10 @@
 常见的一种 `Inception Modules` 结构如下：
 
 ![Inception模块](../data/images/backbone/Inception模块.jpg)
+
+## Resnetv2
+
+作者总结出**恒等映射形式的快捷连接和预激活对于信号在网络中的顺畅传播至关重要**的结论。
 
 ## ResNeXt
 

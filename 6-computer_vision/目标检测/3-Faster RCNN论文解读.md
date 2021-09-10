@@ -28,7 +28,7 @@
 
 ## Conv layers
 
-> 论文中 `Faster RCNN` 虽然支持任意图片输入，但是进入 `Conv layers` 网络之前会对图片进行规整化尺度操作，如可设定图像短边不超过 600，图像长边不超过 1000，我们可以假定 M*N=1000\*600（如果图片少于该尺寸，可以边缘补 0，即图像会有黑色边缘）。
+> 论文中 `Faster RCNN` 虽然支持任意图片输入，但是进入 `Conv layers` 网络之前会对图片进行规整化尺度操作，如可设定图像短边不超过 600，图像长边不超过 1000，我们可以假定 $M\times N=1000\times 600$（如果图片少于该尺寸，可以边缘补 0，即图像会有黑色边缘）。
 
 1. `13` 个 `conv` 层：`kernel_size=3, pad=1, stride=1`，卷积公式：`N = (W − F + 2P )/S+1`，所以可知 `conv` 层不会改变图片大小
 2. `13` 个 `relu` 层: 激活函数，增加非线性，不改变图片大小
@@ -187,7 +187,7 @@ Faster RCNN 官方源码中有三个 `creator` 分别实现不同的功能，不
 + `ProposalTargetCreator`： 负责在训练 RoIHead/Fast R-CNN 的时候，从 RoIs 选择一部分(比如 128 个，正负样本比例 1:3 )用以训练。同时给定训练目标, 返回（sample_RoI, gt_RoI_loc, gt_RoI_label）。
 + `ProposalCreator`： 在 RPN 中，从上万个 anchor 中，选择一定数目（ 2000 或者 300 ），调整大小和位置，生成 RoIs ，用以 Fast R-CNN 训练或者测试。
 
-其中 AnchorTargetCreator 和 ProposalTargetCreator 是为了生成训练的目标，只在训练阶段用到，ProposalCreator 是 RPN 为 Fast R-CNN 生成 RoIs ，在训练和测试阶段都会用到。**三个 `creator` 的共同点在于他们都不需要考虑反向传播**（因此不同框架间可以共享 numpy 实现）。
+其中 AnchorTargetCreator 和 ProposalTargetCreator 类是为了生成训练的目标，只在训练阶段用到，ProposalCreator 是 RPN 为 Fast R-CNN 生成 RoIs ，在训练和测试阶段都会用到。**三个 `creator` 的共同点在于他们都不需要考虑反向传播**（因此不同框架间可以共享 numpy 实现）。
 
 ## 参考资料
 

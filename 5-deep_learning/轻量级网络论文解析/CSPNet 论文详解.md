@@ -2,13 +2,14 @@
 - [1，介绍](#1介绍)
 - [2，相关工作](#2相关工作)
 - [3，改进方法](#3改进方法)
-  - [3.1，Cross Stage Partial Network](#31cross-stage-partial-network)
-  - [3.2，Exact Fusion Model](#32exact-fusion-model)
+	- [3.1，Cross Stage Partial Network](#31cross-stage-partial-network)
+	- [3.2，Exact Fusion Model](#32exact-fusion-model)
 - [4，实验](#4实验)
-  - [4.1，实验细节](#41实验细节)
-  - [4.2，消融实验](#42消融实验)
-  - [4.3，实验总结](#43实验总结)
+	- [4.1，实验细节](#41实验细节)
+	- [4.2，消融实验](#42消融实验)
+	- [4.3，实验总结](#43实验总结)
 - [5，结论](#5结论)
+- [6，代码解读](#6代码解读)
 - [参考资料](#参考资料)
 
 ## 摘要
@@ -31,7 +32,7 @@ CSPNet 和不同 backbone 结合后的效果如下图所示。
 `CSPNet` 提出主要是为了解决三个问题：
 
 1. 增强 CNN 的学习能力，能够在轻量化的同时保持准确性。
-2. 降低计算瓶颈。
+2. 降低计算瓶颈和 DenseNet 的梯度信息重复。
 3. 降低内存成本。
 
 ## 2，相关工作
@@ -48,11 +49,17 @@ CSPNet 和不同 backbone 结合后的效果如下图所示。
 
 1，**DenseNet**
 
+![DenseNet的密集层权重更新公式](../../data/images/CSPNet/DenseNet的密集层权重更新公式.png)
+
+其中 $f$ 为权值更新函数，$g_i$ 为传播到第 $i$ 个密集层的梯度。从公式 (2) 可以发现，大量的度信息被重用来更新不同密集层的权值，这将导致无差异的密集层反复学习复制的梯度信息。
+
 2，**Cross Stage Partial DenseNet.**
 
 作者提出的 `CSPDenseNet` 的单阶段的架构如图 2(b) 所示。`CSPDenseNet` 的一个阶段是由局部密集块和局部过渡层组成（`a partial dense block and a partial transition layer`）。
 
 ![DenseNet和CSPDenseNet结构图](../../data/images/CSPNet/DenseNet和CSPDenseNet结构图.png)
+
+总的来说，作者提出的 CSPDenseNet 保留了 DenseNet 重用特征特性的优点，但同时通过**截断梯度流**防止了过多的重复梯度信息。该思想通过设计一种分层的特征融合策略来实现，并应用于局部过渡层（partial transition layer）。
 
 3，**Partial Dense Block.**
 
@@ -68,8 +75,13 @@ CSPNet 和不同 backbone 结合后的效果如下图所示。
 
 ![Figure3](../../data/images/CSPNet/Figure3.png)
 
-- **Fustion First** 的方式是对两个分支的 feature map 先进行`concatenation` 操作，这样梯度信息可以被重用。
-- **Fusion Last** 的方式 是对 Dense Block 所在分支先进行 `transition` 操作，然后再进行 concatenation， 梯度信息将被截断，因此不会重复使用梯度信息。
+Transition layer 的含义和 DenseNet 类似，是一个 1x1 的卷积层（没有再使用 `average pool`）。上图中 `transition layer` 的位置决定了梯度的结构方式，并且各有优势：
+
+- (c) 图 Fusion First 方式，先将两个部分进行 concatenate，然后再进行输入到Transion layer 中，采用这种做法会是的大量特梯度信息被重用，有利于网络学习；
+- (d) 图 Fusion Last 的方式，先将部分特征输入 Transition layer，然后再进行concatenate，这样梯度信息将被截断，损失了部分的梯度重用，但是由于 Transition 的输入维度比（c）图少，大大减少了计算复杂度。
+- (b) 图中的结构是论文 `CSPNet` 所采用的，其结合了 (c)、(d) 的特点，提升了学习能力的同时也提高了一些计算复杂度。 作者在论文中给出其使用不同 Partial Transition Layer 的实验结果，如下图所示。具体使用哪种结构，我们可以根据条件和使用场景进行调整。
+
+![不同Transition-layer的对比实验](../../data/images/CSPNet/不同Transition-layer的对比实验.png)
 
 5，**Apply CSPNet to Other Architectures.**
 
@@ -101,7 +113,6 @@ EFM 在 COCO 数据集上的消融实验结果。
 
 从实验结果来看，分类问题中，使用 `CSPNet` 可以降低计算量，但是准确率提升很小；在目标检测问题中，使用 `CSPNet` 作为`Backbone` 带来的精度提升比较大，可以有效增强 `CNN` 的学习能力，同时也降低了计算量。
 
-
 ## 5，结论
 
 `CSPNet` 是能够用于移动 `gpu` 或 `cpu` 的轻量级网络架构。
@@ -112,6 +123,94 @@ EFM 在 COCO 数据集上的消融实验结果。
 
 实验结果表明，本文提出的基于 `EFM` 的 `CSPNet` 在移动`GPU` 和 `CPU` 的实时目标检测任务的准确性和推理率方面明显优于竞争对手。
 
+## 6，代码解读
+
+1，Partial Dense Block 的实现，代码可以直接在 Dense Block 代码的基础上稍加修改即可，代码参考 [这里]()。简单的 Dense Block 代码如下：
+
+```python
+class conv2d_bn_relu(nn.Module):
+    """
+    BN_RELU_CONV, 
+    """
+
+    def __init__(self, in_channels: object, out_channels: object, kernel_size: object, stride: object, padding: object,
+                 dilation=1, groups=1, bias=False) -> object:
+        super(BN_Conv2d, self).__init__()
+        layers = [nn.Conv2d(in_channels, out_channels, kernel_size=kernel_size, stride=stride, 
+		padding=padding, dilation=dilation, groups=groups, bias=bias),
+				nn.BatchNorm2d(in_channels),
+				nn.ReLU(inplace=False)]
+
+        self.seq = nn.Sequential(*layers)
+
+    def forward(self, x):
+        return self.seq(x)
+
+class bn_relu_conv2d(nn.Module):
+    """
+    BN_RELU_CONV, 
+    """
+
+    def __init__(self, in_channels: object, out_channels: object, kernel_size: object, stride: object, padding: object,
+                 dilation=1, groups=1, bias=False) -> object:
+        super(BN_Conv2d, self).__init__()
+        layers = [nn.BatchNorm2d(in_channels),
+				  nn.ReLU(inplace=False),
+				  nn.Conv2d(in_channels, out_channels, kernel_size=kernel_size, stride=stride,
+                            padding=padding, dilation=dilation, groups=groups, bias=bias)]
+
+        self.seq = nn.Sequential(*layers)
+
+    def forward(self, x):
+        return self.seq(x)
+
+class DenseBlock(nn.Module):
+
+    def __init__(self, input_channels, num_layers, growth_rate):
+        super(DenseBlock, self).__init__()
+        self.num_layers = num_layers
+        self.k0 = input_channels
+        self.k = growth_rate
+        self.layers = self.__make_layers()
+
+    def __make_layers(self):
+        layer_list = []
+        for i in range(self.num_layers):
+            layer_list.append(nn.Sequential(
+                bn_relu_conv2d(self.k0 + i * self.k, 4 * self.k, 1, 1, 0),
+                bn_relu_conv2d(4 * self.k, self.k, 3, 1, 1)
+            ))
+        return layer_list
+
+    def forward(self, x):
+        feature = self.layers[0](x)
+        out = torch.cat((x, feature), 1)
+        for i in range(1, len(self.layers)):
+            feature = self.layers[i](out)
+            out = torch.cat((feature, out), 1)
+        return out
+		
+# Partial Dense Block 的实现：
+class CSP_DenseBlock(nn.Module):
+
+    def __init__(self, in_channels, num_layers, k, part_ratio=0.5):
+        super(CSP_DenseBlock, self).__init__()
+        self.part1_chnls = int(in_channels * part_ratio)
+        self.part2_chnls = in_channels - self.part1_chnls
+        self.dense = DenseBlock(self.part2_chnls, num_layers, k)
+        trans_chnls = self.part2_chnls + k * num_layers
+        self.transtion = conv2d_bn_relu(trans_chnls, trans_chnls, 1, 1, 0)
+
+    def forward(self, x):
+        part1 = x[:, :self.part1_chnls, :, :]
+        part2 = x[:, self.part1_chnls:, :, :]
+        part2 = self.dense(part2)  # 也可以是残差块单元
+        part2 = self.transtion(part2)  # Fusion lirst
+        out = torch.cat((part1, part2), 1)
+        return out
+```
+
 ## 参考资料
 
 - [增强CNN学习能力的Backbone:CSPNet](https://www.cnblogs.com/pprp/p/12566116.html)
+- [CSPNet——PyTorch实现CSPDenseNet和CSPResNeXt](https://zhuanlan.zhihu.com/p/263555330)

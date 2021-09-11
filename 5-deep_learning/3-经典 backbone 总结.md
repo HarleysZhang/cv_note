@@ -80,7 +80,7 @@ ResNeXt和Resnet的模型结构参数对比图如下图所示。
 
 ## VoVNet
 
-**One-Shot Aggregation（只聚集一次）是指 OSA 模块的 concat 操作只进行一次，即只有最后一层的输入是前面所有层 feature map 的 concat（叠加）**。`OSA` 模块的结构图如图 1(b) 所示。
+**One-Shot Aggregation（只聚集一次）是指 OSA 模块的 concat 操作只进行一次，即只有最后一层($1\times 1$ 卷积)的输入是前面所有层 feature map 的 concat（叠加）**。`OSA` 模块的结构图如图 1(b) 所示。
 
 ![VoVNet](../data/images/backbone/VoVNet.png)
 
@@ -98,6 +98,10 @@ ResNeXt和Resnet的模型结构参数对比图如下图所示。
 - 把大的卷积操作拆分成碎片的小操作将不利于 `GPU` 计算。
 - 设计 `layer` 数量少的网络是更好的选择。
 - 1x1 卷积可以减少计算量，但不利于 GPU 计算。
+
+在 CenterMask 论文提出了 VoVNetv2，其卷积模块结构图如下：
+
+![VoVNetv2](../data/images/backbone/VoVNetv2.png)
 
 ## 一些结论
 

@@ -1,66 +1,66 @@
 - [一，YOLOv1](#一yolov1)
-  - [Abstract](#abstract)
-  - [1. Introduction](#1-introduction)
-  - [2. Unified Detectron](#2-unified-detectron)
-    - [2.1. Network Design](#21-network-design)
-    - [2.2 Training](#22-training)
-    - [2.4. Inferences](#24-inferences)
-    - [4.1 Comparison to Other Real-Time Systems](#41-comparison-to-other-real-time-systems)
-  - [5，代码实现思考](#5代码实现思考)
+	- [Abstract](#abstract)
+	- [1. Introduction](#1-introduction)
+	- [2. Unified Detectron](#2-unified-detectron)
+		- [2.1. Network Design](#21-network-design)
+		- [2.2 Training](#22-training)
+		- [2.4. Inferences](#24-inferences)
+		- [4.1 Comparison to Other Real-Time Systems](#41-comparison-to-other-real-time-systems)
+	- [5，代码实现思考](#5代码实现思考)
 - [二，YOLOv2](#二yolov2)
-  - [摘要](#摘要)
-  - [YOLOv2 的改进](#yolov2-的改进)
-    - [1，中心坐标位置预测的改进](#1中心坐标位置预测的改进)
-    - [2，1 个 gird 只能对应一个目标的改进](#21-个-gird-只能对应一个目标的改进)
-    - [3，backbone 的改进](#3backbone-的改进)
-    - [4，多尺度训练](#4多尺度训练)
-  - [损失函数](#损失函数)
+	- [摘要](#摘要)
+	- [YOLOv2 的改进](#yolov2-的改进)
+		- [1，中心坐标位置预测的改进](#1中心坐标位置预测的改进)
+		- [2，1 个 gird 只能对应一个目标的改进](#21-个-gird-只能对应一个目标的改进)
+		- [3，backbone 的改进](#3backbone-的改进)
+		- [4，多尺度训练](#4多尺度训练)
+	- [损失函数](#损失函数)
 - [三，YOLOv3](#三yolov3)
-  - [摘要](#摘要-1)
-  - [1，介绍](#1介绍)
-  - [2，改进](#2改进)
-    - [2.1，边界框预测](#21边界框预测)
-    - [2.2，分类预测](#22分类预测)
-    - [2.3，跨尺度预测](#23跨尺度预测)
-    - [2.4，新的特征提取网络](#24新的特征提取网络)
-    - [2.5，训练](#25训练)
-  - [3，实验结果](#3实验结果)
-  - [4，失败的尝试](#4失败的尝试)
-  - [5，改进的意义](#5改进的意义)
+	- [摘要](#摘要-1)
+	- [1，介绍](#1介绍)
+	- [2，改进](#2改进)
+		- [2.1，边界框预测](#21边界框预测)
+		- [2.2，分类预测](#22分类预测)
+		- [2.3，跨尺度预测](#23跨尺度预测)
+		- [2.4，新的特征提取网络](#24新的特征提取网络)
+		- [2.5，训练](#25训练)
+	- [3，实验结果](#3实验结果)
+	- [4，失败的尝试](#4失败的尝试)
+	- [5，改进的意义](#5改进的意义)
 - [四，YOLOv4](#四yolov4)
-  - [1，摘要及介绍](#1摘要及介绍)
-  - [2，相关工作](#2相关工作)
-    - [2.1，目标检测方法](#21目标检测方法)
-    - [2.2，Bag of freebies（免费技巧）](#22bag-of-freebies免费技巧)
-    - [2.3，Bag of specials（即插即用模块+后处理方法）](#23bag-of-specials即插即用模块后处理方法)
-  - [3，方法](#3方法)
-    - [3.1，架构选择](#31架构选择)
-    - [3.2，Selection of BoF and BoS](#32selection-of-bof-and-bos)
-    - [3.3，额外的改进](#33额外的改进)
-    - [3.4 YOLOv4](#34-yolov4)
-  - [4，实验](#4实验)
-    - [4.1，实验设置](#41实验设置)
-    - [4.2，对于分类器训练过程中不同特性的影响](#42对于分类器训练过程中不同特性的影响)
-    - [4.3，对于检测器训练过程中不同特性的影响](#43对于检测器训练过程中不同特性的影响)
-    - [4.4，不同骨干和预训练权重对检测器训练的影响](#44不同骨干和预训练权重对检测器训练的影响)
-    - [4.5，不同小批量的大小对检测器训练的影响](#45不同小批量的大小对检测器训练的影响)
-  - [5，结果](#5结果)
-  - [6，YOLOv4 主要改进点](#6yolov4-主要改进点)
-    - [6.1，Backbone 改进](#61backbone-改进)
-      - [6.1.1，CSPDarknet53](#611cspdarknet53)
-      - [6.1.2，Mish 激活](#612mish-激活)
-    - [6.1.3，Dropblock](#613dropblock)
-    - [6.2，Neck 网络改进](#62neck-网络改进)
-    - [6.3，预测的改进](#63预测的改进)
-      - [6.3.1，使用CIoU Loss](#631使用ciou-loss)
-      - [6.3.2，使用DIoU_NMS](#632使用diou_nms)
-    - [6.4，输入端改进](#64输入端改进)
-      - [6.4.1，Mosaic 数据增强](#641mosaic-数据增强)
+	- [1，摘要及介绍](#1摘要及介绍)
+	- [2，相关工作](#2相关工作)
+		- [2.1，目标检测方法](#21目标检测方法)
+		- [2.2，Bag of freebies（免费技巧）](#22bag-of-freebies免费技巧)
+		- [2.3，Bag of specials（即插即用模块+后处理方法）](#23bag-of-specials即插即用模块后处理方法)
+	- [3，方法](#3方法)
+		- [3.1，架构选择](#31架构选择)
+		- [3.2，Selection of BoF and BoS](#32selection-of-bof-and-bos)
+		- [3.3，额外的改进](#33额外的改进)
+		- [3.4 YOLOv4](#34-yolov4)
+	- [4，实验](#4实验)
+		- [4.1，实验设置](#41实验设置)
+		- [4.2，对于分类器训练过程中不同特性的影响](#42对于分类器训练过程中不同特性的影响)
+		- [4.3，对于检测器训练过程中不同特性的影响](#43对于检测器训练过程中不同特性的影响)
+		- [4.4，不同骨干和预训练权重对检测器训练的影响](#44不同骨干和预训练权重对检测器训练的影响)
+		- [4.5，不同小批量的大小对检测器训练的影响](#45不同小批量的大小对检测器训练的影响)
+	- [5，结果](#5结果)
+	- [6，YOLOv4 主要改进点](#6yolov4-主要改进点)
+		- [6.1，Backbone 改进](#61backbone-改进)
+			- [6.1.1，CSPDarknet53](#611cspdarknet53)
+			- [6.1.2，Mish 激活](#612mish-激活)
+		- [6.1.3，Dropblock](#613dropblock)
+		- [6.2，Neck 网络改进](#62neck-网络改进)
+		- [6.3，预测的改进](#63预测的改进)
+			- [6.3.1，使用CIoU Loss](#631使用ciou-loss)
+			- [6.3.2，使用DIoU_NMS](#632使用diou_nms)
+		- [6.4，输入端改进](#64输入端改进)
+			- [6.4.1，Mosaic 数据增强](#641mosaic-数据增强)
 - [五，YOLOv5](#五yolov5)
-  - [5.1，网络架构](#51网络架构)
-  - [5.2，创新点](#52创新点)
-    - [5.2.1，自适应anchor](#521自适应anchor)
-  - [5.3，实验结果](#53实验结果)
+	- [5.1，网络架构](#51网络架构)
+	- [5.2，创新点](#52创新点)
+		- [5.2.1，自适应anchor](#521自适应anchor)
+	- [5.3，实验结果](#53实验结果)
 - [参考资料](#参考资料)
 
 ## 一，YOLOv1
@@ -383,7 +383,7 @@ b_y = \sigma(t_y) + c_y \\\\
 b_w = p_{w}e^{t_w} \\\\
 b_h = p_{h}e^{t_h} $$
 
-其中，$(c_x, c_y)$ 为 `grid` 的左上角坐标，因为 $\sigma$ 表示的是 `sigmoid` 函数，所以边界框的中心坐标会被约束在 `grid` 内部，防止偏移过多。$p_w$、$p_h$ 是先验框（`anchors`）的宽度与高度，其值相对于特征图大小（$W\times H$ = $13\times 13$）而言的，因为划分为 $13 \times 13$ 个 `grid`，所以最后输出的特征图中每个 `grid` 的长和宽均是 `1`。知道了特征图的大小，就可以将边界框相对于整个特征图的位置和大小计算出来（均取值 ${0,1}$）。
+其中，$(c_x, c_y)$ 为 `grid` 的左上角坐标，因为 $\sigma$ 表示的是 `sigmoid` 函数，所以边界框的中心坐标会被约束在 `grid` 内部，防止偏移过多。$p_w$、$p_h$ 是先验框（`anchors`）的宽度与高度，其值相对于特征图大小 $W\times H$ = $13\times 13$ 而言的，因为划分为 $13 \times 13$ 个 `grid`，所以最后输出的特征图中每个 `grid` 的长和宽均是 `1`。知道了特征图的大小，就可以将边界框相对于整个特征图的位置和大小计算出来（均取值 ${0,1}$）。
 
 $$
 b_x = (\sigma(t_x) + c_x)/W \\\\
@@ -396,7 +396,7 @@ $$
 
 在模型推理过程中，模型输出张量的解析，即边界框的解码函数如下：
 
-```Python
+```python
 def decode(self, outputs, input_size):
     '''Transform predicted loc/conf back to real bbox locations and class labels.
     Args:
@@ -676,11 +676,125 @@ def build_targets(p, targets, model):
 
 #### 2.4，新的特征提取网络
 
-我们使用一个新的网络来执行特征提取。它是 `Darknet-19`和新型残差网络方法的融合，由连续的 $3\times 3$ 和 $1\times 1$ 卷积层组合而成，并添加了一些 `shortcut connection`，整体体量更大。因为一共有 `53` 个卷积层，所以我们称为 `Darknet-53`。
+我们使用一个新的网络来执行特征提取。它是 `Darknet-19`和新型残差网络方法的融合，由连续的 $3\times 3$ 和 $1\times 1$ 卷积层组合而成，并添加了一些 `shortcut connection`，整体体量更大。因为一共有 $53 = (1+2+8+8+4)\times 2+4+2+1 $ 个卷积层，所以我们称为 `Darknet-53`。
 
 ![Darknet-53网络参数表](../../data/images/yolov3/darknet-53.png)
 
 总的来说，`DarkNet-53` 不仅使用了全卷积网络，将 `YOLOv2` 中降采样作用 `pooling` 层都换成了 `convolution`(`3x3，stride=2`) 层；而且引入了残差（`residual`）结构，不再使用类似 `VGG` 那样的直连型网络结构，因此可以训练更深的网络，即卷积层数达到了 `53` 层。（更深的网络，特征提取效果会更好）
+
+`Darknet53` 网络的 `Pytorch` 代码如下所示。
+> 代码来源[这里](https://github.com/BobLiu20/YOLOv3_PyTorch.git)
+
+```python
+import torch
+import torch.nn as nn
+import math
+from collections import OrderedDict
+
+__all__ = ['darknet21', 'darknet53']
+
+
+class BasicBlock(nn.Module):
+    """basic residual block for Darknet53，卷积层分别是 1x1 和 3x3
+    """
+    def __init__(self, inplanes, planes):
+        super(BasicBlock, self).__init__()
+        self.conv1 = nn.Conv2d(inplanes, planes[0], kernel_size=1,
+                               stride=1, padding=0, bias=False)
+        self.bn1 = nn.BatchNorm2d(planes[0])
+        self.relu1 = nn.LeakyReLU(0.1)
+        self.conv2 = nn.Conv2d(planes[0], planes[1], kernel_size=3,
+                               stride=1, padding=1, bias=False)
+        self.bn2 = nn.BatchNorm2d(planes[1])
+        self.relu2 = nn.LeakyReLU(0.1)
+
+    def forward(self, x):s
+        residual = x
+
+        out = self.conv1(x)
+        out = self.bn1(out)
+        out = self.relu1(out)
+
+        out = self.conv2(out)
+        out = self.bn2(out)
+        out = self.relu2(out)
+
+        out += residual
+        return out
+
+
+class DarkNet(nn.Module):
+    def __init__(self, layers):
+        super(DarkNet, self).__init__()
+        self.inplanes = 32
+        self.conv1 = nn.Conv2d(3, self.inplanes, kernel_size=3, stride=1, padding=1, bias=False)
+        self.bn1 = nn.BatchNorm2d(self.inplanes)
+        self.relu1 = nn.LeakyReLU(0.1)
+
+        self.layer1 = self._make_layer([32, 64], layers[0])
+        self.layer2 = self._make_layer([64, 128], layers[1])
+        self.layer3 = self._make_layer([128, 256], layers[2])
+        self.layer4 = self._make_layer([256, 512], layers[3])
+        self.layer5 = self._make_layer([512, 1024], layers[4])
+
+        self.layers_out_filters = [64, 128, 256, 512, 1024]
+
+        for m in self.modules():
+            if isinstance(m, nn.Conv2d):
+                n = m.kernel_size[0] * m.kernel_size[1] * m.out_channels
+                m.weight.data.normal_(0, math.sqrt(2. / n))
+            elif isinstance(m, nn.BatchNorm2d):
+                m.weight.data.fill_(1)
+                m.bias.data.zero_()
+
+    def _make_layer(self, planes, blocks):
+        layers = []
+        # 每个阶段的开始都要先 downsample，然后才是 basic residual block for Darknet53
+        layers.append(("ds_conv", nn.Conv2d(self.inplanes, planes[1], kernel_size=3,
+                                stride=2, padding=1, bias=False)))
+        layers.append(("ds_bn", nn.BatchNorm2d(planes[1])))
+        layers.append(("ds_relu", nn.LeakyReLU(0.1)))
+        #  blocks
+        self.inplanes = planes[1]
+        for i in range(0, blocks):
+            layers.append(("residual_{}".format(i), BasicBlock(self.inplanes, planes)))
+        return nn.Sequential(OrderedDict(layers))
+
+    def forward(self, x):
+        x = self.conv1(x)
+        x = self.bn1(x)
+        x = self.relu1(x)
+
+        x = self.layer1(x)
+        x = self.layer2(x)
+        out3 = self.layer3(x)
+        out4 = self.layer4(out3)
+        out5 = self.layer5(out4)
+
+        return out3, out4, out5
+
+def darknet21(pretrained, **kwargs):
+    """Constructs a darknet-21 model.
+    """
+    model = DarkNet([1, 1, 2, 2, 1])
+    if pretrained:
+        if isinstance(pretrained, str):
+            model.load_state_dict(torch.load(pretrained))
+        else:
+            raise Exception("darknet request a pretrained path. got [{}]".format(pretrained))
+    return model
+
+def darknet53(pretrained, **kwargs):
+    """Constructs a darknet-53 model.
+    """
+    model = DarkNet([1, 2, 8, 8, 4])
+    if pretrained:
+        if isinstance(pretrained, str):
+            model.load_state_dict(torch.load(pretrained))
+        else:
+            raise Exception("darknet request a pretrained path. got [{}]".format(pretrained))
+    return model
+```
 
 `3` 个预测分支，对应预测 `3` 种尺度（大、种、小），也都采用了全卷积的结构。
 

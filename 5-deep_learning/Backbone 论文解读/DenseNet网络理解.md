@@ -33,7 +33,7 @@ $[\mathrm{\mathrm{x_0},\mathrm{x_1},...,\mathrm{x_{l-1}}]}$ 表示网络层 $0,.
 
 ![densenet-block结构图](../../data/images/densenet/densenet-block结构图.png)
 
-在 `DenseBlock` 的设计中，作者重点提到了一个参数 $k$，被称为网络的增长率（`growth of the network`）。如果每个 $H_l(\cdot)$ 函数都输出 $k$ 个特征图，那么第 $l$ 层的输入特征图数量为 $k_0 + k\times (l-1)$，$k_0$ 是 `DenseBlock` 的输入特征图数量（即第一个卷积层的输入通道数）。`DenseNet` 网络和其他网络最显著的区别是，$k$ 值可以变得很小，比如 $k=12$，即网络变得很“窄”，但又不影响精度。如表 4 所示。
+在 `DenseBlock` 的设计中，作者重点提到了一个参数 $k$，被称为网络的增长率（`growth of the network`），其实是 `DenseBlock` 中任何一个 $3\times 3$ 卷积层的滤波器个数（输出通道数）。如果每个 $H_l(\cdot)$ 函数都输出 $k$ 个特征图，那么第 $l$ 层的输入特征图数量为 $k_0 + k\times (l-1)$，$k_0$ 是 `DenseBlock` 的输入特征图数量（即第一个卷积层的输入通道数）。`DenseNet` 网络和其他网络最显著的区别是，$k$ 值可以变得很小，比如 $k=12$，即网络变得很“窄”，但又不影响精度。如表 4 所示。
 
 ![densenet对比实验结果](../../data/images/densenet/densenet对比实验结果.png)
 
@@ -50,6 +50,8 @@ $[\mathrm{\mathrm{x_0},\mathrm{x_1},...,\mathrm{x_{l-1}}]}$ 表示网络层 $0,.
 对于 `ImageNet` 数据集，图片输入大小为 $224\times 224$ ，网络结构采用包含 `4` 个 `DenseBlock` 的`DenseNet-BC`，网络第一层是 `stride=2` 的 $7times 7$卷积层，然后是一个 `stride=2` 的 $3\times 3$ MaxPooling 层，而后是 `DenseBlock`。`ImageNet` 数据集所采用的网络配置参数表如表 1 所示：
 
 ![densenet系列网络参数表](../../data/images/densenet/densenet系列网络参数表.png)
+
+网络中每个阶段卷积层的 `feature map` 数量都是 `32`。
 
 ## 优点
 

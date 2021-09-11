@@ -373,7 +373,9 @@ class VoVNet(nn.Module):
         return x
 ```
 
-5，VoVNet 各个版本的实现。vovnet57 中有 `4` 个 `stage`，每个 stage 的 OSP 模块数目依次是 [1,1,4,3]，每个 个 `stage` 内部对应的通道数都是一样的，分别是 [128, 160, 192, 224]。所有版本的 vovnet 的 OSA 模块中的卷积层数都是 `5`。
+5，VoVNet 各个版本的实现。vovnet57 中有 `4` 个 `stage`，每个 stage 的 OSP 模块数目依次是 [1,1,4,3]，每个 个 `stage` 内部对应的通道数都是一样的，分别是 [128, 160, 192, 224]。每个 `stage` 最后的输出通道数分别是 [256, 512, 768, 1024]，由 `concat_ch` 参数指定。
+
+所有版本的 vovnet 的 OSA 模块中的卷积层数都是 `5`。
 
 ```Python
 def _vovnet(arch,

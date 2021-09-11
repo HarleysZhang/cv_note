@@ -1,20 +1,21 @@
 - [摘要](#摘要)
 - [1，介绍](#1介绍)
 - [2，高效网络设计的影响因素](#2高效网络设计的影响因素)
-  - [2.1，内存访问代价](#21内存访问代价)
-  - [2.2，GPU计算效率](#22gpu计算效率)
+	- [2.1，内存访问代价](#21内存访问代价)
+	- [2.2，GPU计算效率](#22gpu计算效率)
 - [3，建议的方法](#3建议的方法)
-  - [3.1，重新思考密集连接](#31重新思考密集连接)
-  - [3.2，One-Shot Aggregation](#32one-shot-aggregation)
-  - [3.3，构建 VoVNet 网络](#33构建-vovnet-网络)
+	- [3.1，重新思考密集连接](#31重新思考密集连接)
+	- [3.2，One-Shot Aggregation](#32one-shot-aggregation)
+	- [3.3，构建 VoVNet 网络](#33构建-vovnet-网络)
 - [4，实验](#4实验)
+- [代码解读](#代码解读)
 - [参考资料](#参考资料)
 
 ## 摘要
 
 > `Youngwan Lee*` 作者于 `2019` 年发表的论文 An Energy and GPU-Computation Efficient Backbone Network for Real-Time Object Detection. 是对 `DenseNet` 网络推理效率低的改进版本。
 
-因为 `DenseNet` 通过用密集连接，来聚合具有不同感受野大小的中间特征，因此它在对象检测任务上上表现出良好的性能。虽然特征重用（`feature reuse`）的使用，让 `DenseNet` 以少量模型参数和 `FLOPs`，也能输出有力的特征，但是使用 `DenseNet` 作为 `backbone` 的目标检测器却表现出了运行速度慢和效率低下的弊端。作者认为是密集连接(`dense connection`)带来的输入通道线性增长，从而导高内存访问成本和能耗。为了提高 `DenseNet` 的效率，作者提出一个新的更高效的网络 `VoVet`，由 `OSA`（`One-Shot Aggregation`，一次聚合）组成。`OSA` **仅在模块的最后一层聚合前面所有层的特征**，这种结构不仅继承了 `DenseNet` 的多感受野表示多种特征的优点，也解决了密集连接效率低下的问题。基于 `VoVNet` 的检测器不仅速度比 `DenseNet` 快 2 倍，能耗也降低了 1.5-4.1 倍。另外，`VoVNet` 网络的速度和效率还优于 `ResNet`，并且其对于小目标检测的性能有了显著提高。
+因为 `DenseNet` 通过用密集连接，来聚合具有不同感受野大小的中间特征，因此它在对象检测任务上表现出良好的性能。虽然特征重用（`feature reuse`）的使用，让 `DenseNet` 以少量模型参数和 `FLOPs`，也能输出有力的特征，但是使用 `DenseNet` 作为 `backbone` 的目标检测器却表现出了运行速度慢和效率低下的弊端。作者认为是密集连接(`dense connection`)带来的输入通道线性增长，从而导高内存访问成本和能耗。为了提高 `DenseNet` 的效率，作者提出一个新的更高效的网络 `VoVet`，由 `OSA`（`One-Shot Aggregation`，一次聚合）组成。`OSA` **仅在模块的最后一层聚合前面所有层的特征**，这种结构不仅继承了 `DenseNet` 的多感受野表示多种特征的优点，也解决了密集连接效率低下的问题。基于 `VoVNet` 的检测器不仅速度比 `DenseNet` 快 2 倍，能耗也降低了 1.5-4.1 倍。另外，`VoVNet` 网络的速度和效率还优于 `ResNet`，并且其对于小目标检测的性能有了显著提高。
 
 ## 1，介绍
 
@@ -98,10 +99,11 @@
 > 这里重点解释下连通性的理解。两层之间的输入权重的绝对值相差越大，即 L1 越大，那么说明卷积核的权重越不一样，前面层对后面层影响越大（`connectivity`），即连通性越好（大）。从实用性角度讲，我们肯定希望相互连接的网络层的连通性越大越好（归一化后是 0~1 范围），这样我的密集连接才起作用了嘛。不然，耗费了计算量、牺牲了效率，但是连通性结果又差，那我还有必要设计成密集连接（`dense connection`）。作者通过图 2 后面的两张图也证明了**DenseBlock 模块中各个层之间的联系大部分都是没用，只有少部分是有用的，即密集连接中大部分网络层的连接是无效的**。
 
 在 Dense Block3 中，对角线附近的红色框表示中间层（`intermediate layers`）上的聚合处于活动状态，但是分类层（`classification layer`）只使用了一小部分中间特征。 相比之下，在 Dense Block1 中，过渡层（`transition layer`）很好地聚合了其大部分输入特征，而中间层则没有。
+> Dense Block3 的分类层和 Dense Block1 的过渡层都是模块的最后一层。
 
-通过前面的观察，我们先假设中间层的聚集强度和最后一层的聚集强度之间存在负相关（中间层特征层的聚合能力越好，那么最后层的聚合能力就越弱。）。如果中间层之间的密集连接导致每一层的特征之间存在相关性，即密集连接使后面的中间层产生更好的特征，但也与前一层的特征相似，则假设成立。在这种情况下，因为这两种特征代表**冗余信息**，所以最后一层不需要学习聚合它们，从而前中间层对最终层的影响变小。
+通过前面的观察，我们先假设中间层的聚集强度和最后一层的聚集强度之间存在负相关（中间层特征层的聚合能力越好，那么最后层的聚合能力就越弱）。如果中间层之间的密集连接导致了每一层的特征之间存在相关性，则密集连接会使后面的中间层产生更好的特征的同时与前一层的特征相似，则假设成立。在这种情况下，因为这两种特征代表**冗余信息**，所以最后一层不需要学习聚合它们，从而前中间层对最终层的影响变小。
 
-因为最后一层的特征都是通过聚集（`aggregated`）所有中间层的特征而产生的，所以，我们希望中间层的这些特征能够互补或者相关性越低越好。因此，进一步提出假设，**相比于造成的损耗，中间特征层的 dense connection 产生的作用有限**。为了验证假设，我们重新设计了一个新的模块 `OSA`，该模块**仅在最后一层聚合块中其他层的特征（`intermediate features`）**，把中间的密集连接都去掉。
+因为最后一层的特征都是通过聚集（`aggregated`）所有中间层的特征而产生的，所以，我们当然希望中间层的这些特征能够互补或者相关性越低越好。因此，进一步提出假设，**相比于造成的损耗，中间特征层的 dense connection 产生的作用有限**。为了验证假设，我们重新设计了一个新的模块 `OSA`，该模块**仅在最后一层聚合块中其他层的特征（`intermediate features`）**，把中间的密集连接都去掉。
 
 ### 3.2，One-Shot Aggregation
 
@@ -109,7 +111,7 @@
 
 ![Figure2-middle-bottom](../../data/images/VoVNet/Figure2-middle-bottom.png)
 
-从图 2（中间）可以观察到，随着中间层上的密集连接被修剪，最终层中的聚合变得更加强烈。同时，蓝色的部分 (联系大部分不紧密的部分) 明显减少了很多，也就是说 OSA 模块的每个连接都是**相对有用的**。
+从图 2（中间）可以观察到，随着中间层上的密集连接被剪掉，最终层中的聚合变得更加强烈。同时，蓝色的部分 (联系大部分不紧密的部分) 明显减少了很多，也就是说 OSA 模块的每个连接都是**相对有用的**。
 
 从图 2（底部）的可以观察到，OSA 模块的过渡层的权重显示出与 DenseNet 不同的模式：来自浅层的特征更多地聚集在过渡层上。由于来自深层的特征对过渡层的影响不大，我们可以在没有显着影响的情况下减少 OSA 模块的层数，得到。令人惊讶的是，使用此模块（5 层网络），我们实现了 5.44% 的错误率，与 DenseNet-40 （模块里有 12 层网络）的错误率（5.24%）相似。这意味着通过密集连接构建深度中间特征的效果不如预期（`This implies that building deep intermediate feature via dense connection is less effective than expected`）。
 
@@ -190,6 +192,242 @@ GPU 的能耗计算公式如下：
 通过替换 Mask R-CNN 的 backbone，也发现 VoVNet 在Inference 速度和准确率上优于 ResNet。
 
 ![mask-rcnn上的实验结果](../../data/images/VoVNet/mask-rcnn上的实验结果.png)
+
+## 代码解读
+
+虽然 VoVNet 在 [CenterMask 论文](https://link.zhihu.com/?target=https%3A//arxiv.org/pdf/1911.06667.pdf) 中衍生出了升级版本 VoVNetv2，但是本文的代码解读还是针对原本的 VoVNet，代码来源[这里](https://github.com/stigma0617/VoVNet.pytorch/blob/master/models_vovnet/vovnet.py)。
+
+1，定义不同类型的卷积函数
+
+```python
+def conv3x3(in_channels, out_channels, module_name, postfix,
+            stride=1, groups=1, kernel_size=3, padding=1):
+    """3x3 convolution with padding. conv3x3, bn, relu的顺序组合
+	"""
+    return [
+        ('{}_{}/conv'.format(module_name, postfix),
+            nn.Conv2d(in_channels, out_channels,
+                      kernel_size=kernel_size,
+                      stride=stride,
+                      padding=padding,
+                      groups=groups,
+                      bias=False)),
+        ('{}_{}/norm'.format(module_name, postfix),
+            nn.BatchNorm2d(out_channels)),
+        ('{}_{}/relu'.format(module_name, postfix),
+            nn.ReLU(inplace=True)),
+    ]
+
+def conv1x1(in_channels, out_channels, module_name, postfix,
+            stride=1, groups=1, kernel_size=1, padding=0):
+    """1x1 convolution"""
+    return [
+        ('{}_{}/conv'.format(module_name, postfix),
+            nn.Conv2d(in_channels, out_channels,
+                      kernel_size=kernel_size,
+                      stride=stride,
+                      padding=padding,
+                      groups=groups,
+                      bias=False)),
+        ('{}_{}/norm'.format(module_name, postfix),
+            nn.BatchNorm2d(out_channels)),
+        ('{}_{}/relu'.format(module_name, postfix),
+            nn.ReLU(inplace=True)),
+    ]
+```
+
+2，其中 `OSA` 模块结构的代码如下。
+
+```python
+class _OSA_module(nn.Module):
+    def __init__(self,
+                 in_ch,
+                 stage_ch,
+                 concat_ch,
+                 layer_per_block,
+                 module_name,
+                 identity=False):
+        super(_OSA_module, self).__init__()
+
+        self.identity = identity # 默认不使用恒等映射
+        self.layers = nn.ModuleList()
+        in_channel = in_ch
+        # stage_ch: 每个 stage 内部的 channel 数
+        for i in range(layer_per_block):
+            self.layers.append(nn.Sequential(
+                OrderedDict(conv3x3(in_channel, stage_ch, module_name, i))))
+            in_channel = stage_ch
+
+        # feature aggregation
+        in_channel = in_ch + layer_per_block * stage_ch
+        # concat_ch: 1×1 卷积输出的 channel 数
+        # 也从 stage2 开始，每个 stage 最开始的输入 channnel 数
+        self.concat = nn.Sequential(
+            OrderedDict(conv1x1(in_channel, concat_ch, module_name, 'concat')))
+
+    def forward(self, x):
+        identity_feat = x
+        output = []
+        output.append(x)
+        for layer in self.layers:  # 中间所有层的顺序连接
+            x = layer(x)
+            output.append(x)
+        # 最后一层的输出要和前面所有层的 feature map 做 concat
+        x = torch.cat(output, dim=1)
+        xt = self.concat(x)
+
+        if self.identity:
+            xt = xt + identity_feat
+
+        return xt
+```
+
+3，定义 `_OSA_stage`，每个 `stage` 有多少个 `OSA` 模块，由 `_vovnet` 函数的 `block_per_stage` 参数指定。
+
+```python
+class _OSA_stage(nn.Sequential):
+	"""
+	in_ch: 每个 stage 阶段最开始的输入通道数（feature map 数量）
+	"""
+    def __init__(self,
+                 in_ch,
+                 stage_ch,
+                 concat_ch,
+                 block_per_stage,
+                 layer_per_block,
+                 stage_num):
+        super(_OSA_stage, self).__init__()
+
+        if not stage_num == 2:
+            self.add_module('Pooling',
+                nn.MaxPool2d(kernel_size=3, stride=2, ceil_mode=True))
+
+        module_name = f'OSA{stage_num}_1'
+        self.add_module(module_name,
+            _OSA_module(in_ch,
+                        stage_ch,
+                        concat_ch,
+                        layer_per_block,
+                        module_name))
+        for i in range(block_per_stage-1):
+            module_name = f'OSA{stage_num}_{i+2}'
+            self.add_module(module_name,
+                _OSA_module(concat_ch,
+                            stage_ch,
+                            concat_ch,
+                            layer_per_block,
+                            module_name,
+                            identity=True))
+```
+
+4，定义 `VOVNet`，
+
+```python
+class VoVNet(nn.Module):
+    def __init__(self, 
+                 config_stage_ch,
+                 config_concat_ch,
+                 block_per_stage,
+                 layer_per_block,
+                 num_classes=1000):
+        super(VoVNet, self).__init__()
+
+        # Stem module --> stage1
+        stem = conv3x3(3,   64, 'stem', '1', 2)
+        stem += conv3x3(64,  64, 'stem', '2', 1)
+        stem += conv3x3(64, 128, 'stem', '3', 2)
+        self.add_module('stem', nn.Sequential(OrderedDict(stem)))
+
+        stem_out_ch = [128]
+        # vovnet-57，in_ch_list 结果是 [128, 256, 512, 768]
+        in_ch_list = stem_out_ch + config_concat_ch[:-1]
+        self.stage_names = []
+        for i in range(4): #num_stages
+            name = 'stage%d' % (i+2)
+            self.stage_names.append(name)
+            self.add_module(name,
+                            _OSA_stage(in_ch_list[i],
+                                       config_stage_ch[i],
+                                       config_concat_ch[i],
+                                       block_per_stage[i],
+                                       layer_per_block,
+                                       i+2))
+
+        self.classifier = nn.Linear(config_concat_ch[-1], num_classes)
+
+        for m in self.modules():
+            if isinstance(m, nn.Conv2d):
+                nn.init.kaiming_normal_(m.weight)
+            elif isinstance(m, (nn.BatchNorm2d, nn.GroupNorm)):
+                nn.init.constant_(m.weight, 1)
+                nn.init.constant_(m.bias, 0)
+            elif isinstance(m, nn.Linear):
+                nn.init.constant_(m.bias, 0)
+
+    def forward(self, x):
+        x = self.stem(x)
+        for name in self.stage_names:
+            x = getattr(self, name)(x)
+        x = F.adaptive_avg_pool2d(x, (1, 1)).view(x.size(0), -1)
+        x = self.classifier(x)
+        return x
+```
+
+5，VoVNet 各个版本的实现。vovnet57 中有 `4` 个 `stage`，每个 stage 的 OSP 模块数目依次是 [1,1,4,3]，`4` 个 `stage` 阶段对应的通道数都是一样的，分别是 [128, 160, 192, 224]。所有版本的 vovnet 的 OSA 模块中的卷积层数都是 `5`。
+
+```Python
+def _vovnet(arch,
+            config_stage_ch,
+            config_concat_ch,
+            block_per_stage,
+            layer_per_block,
+            pretrained,
+            progress,
+            **kwargs):
+    model = VoVNet(config_stage_ch, config_concat_ch,
+                   block_per_stage, layer_per_block,
+                   **kwargs)
+    if pretrained:
+        state_dict = load_state_dict_from_url(model_urls[arch],
+                                              progress=progress)
+        model.load_state_dict(state_dict)
+    return model
+
+def vovnet57(pretrained=False, progress=True, **kwargs):
+    r"""Constructs a VoVNet-57 model as described in 
+    `"An Energy and GPU-Computation Efficient Backbone Networks"
+    <https://arxiv.org/abs/1904.09730>`_.
+    Args:
+        pretrained (bool): If True, returns a model pre-trained on ImageNet
+        progress (bool): If True, displays a progress bar of the download to stderr
+    """
+    return _vovnet('vovnet57', [128, 160, 192, 224], [256, 512, 768, 1024],
+                    [1,1,4,3], 5, pretrained, progress, **kwargs)
+
+def vovnet39(pretrained=False, progress=True, **kwargs):
+    r"""Constructs a VoVNet-39 model as described in
+    `"An Energy and GPU-Computation Efficient Backbone Networks"
+    <https://arxiv.org/abs/1904.09730>`_.
+    Args:
+        pretrained (bool): If True, returns a model pre-trained on ImageNet
+        progress (bool): If True, displays a progress bar of the download to stderr
+    """
+    return _vovnet('vovnet39', [128, 160, 192, 224], [256, 512, 768, 1024],
+                    [1,1,2,2], 5, pretrained, progress, **kwargs)
+
+
+def vovnet27_slim(pretrained=False, progress=True, **kwargs):
+    r"""Constructs a VoVNet-39 model as described in
+    `"An Energy and GPU-Computation Efficient Backbone Networks"
+    <https://arxiv.org/abs/1904.09730>`_.
+    Args:
+        pretrained (bool): If True, returns a model pre-trained on ImageNet
+        progress (bool): If True, displays a progress bar of the download to stderr
+    """
+    return _vovnet('vovnet27_slim', [64, 80, 96, 112], [128, 256, 384, 512],
+                    [1,1,1,1], 5, pretrained, progress, **kwargs)
+
+```
 
 ## 参考资料
 

@@ -2,6 +2,7 @@
 - [网络结构](#网络结构)
 - [优点](#优点)
 - [代码](#代码)
+- [问题](#问题)
 - [参考资料](#参考资料)
 
 ## 摘要
@@ -70,6 +71,7 @@ DenseNet 的泛化性能优于其他网络是可以从理论上证明的：去�
 ## 代码
 
 原则作者开源的 `DenseNet` 提高内存效率版本的代码如下。
+
 ```Python
 # This implementation is based on the DenseNet-BC implementation in torchvision
 # https://github.com/pytorch/vision/blob/master/torchvision/models/densenet.py
@@ -228,6 +230,14 @@ class DenseNet(nn.Module):
         out = self.classifier(out)
         return out
 ```
+
+## 问题
+
+1，这么多的密集连接，是不是全部都是必要的，有没有可能去掉一些也不会影响网络的性能？
+
+作者回答：论文里面有一个热力图（heatmap），直观上刻画了各个连接的强度。从图中可以观察到网络中比较靠后的层确实也会用到非常浅层的特征。
+
+注意，后续的改进版本 VoVNet 设计的 OSP 模块，去掉中间层的密集连接，只有最后一层聚合前面所有层的特征，并做了同一个实验。热力图的结果表明，去掉中间层的聚集密集连接后，最后一层的连接强度变得更好。同时，在 CIFAR-10 上和同 DenseNet 做了对比实验，OSP 的精度和 DenseBlock 相近，但是 MAC 减少了很多，这说明 DenseBlock 的这种密集连接会导致中间层的很多特征冗余的。
 
 ## 参考资料
 

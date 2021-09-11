@@ -1,7 +1,7 @@
 - [摘要](#摘要)
 - [1，介绍](#1介绍)
 - [2，相关工作](#2相关工作)
-- [3，方法](#3方法)
+- [3，改进方法](#3改进方法)
   - [3.1，Cross Stage Partial Network](#31cross-stage-partial-network)
   - [3.2，Exact Fusion Model](#32exact-fusion-model)
 - [4，实验](#4实验)
@@ -12,7 +12,7 @@
 - [参考资料](#参考资料)
 
 ## 摘要
-> `CSPNet` 是作者 `Chien-Yao Wang` 于 `2019` 发表的论文 `CSPNET: A NEW BACKBONE THAT CAN ENHANCE LEARNING CAPABILITY OF CNN`。
+> `CSPNet` 是作者 `Chien-Yao Wang` 于 `2019` 发表的论文 `CSPNET: A NEW BACKBONE THAT CAN ENHANCE LEARNING CAPABILITY OF CNN`。也是对 `DenseNet` 网络推理效率低的改进版本。
 
 作者认为网络推理成本过高的问题是由于**网络优化中的梯度信息重复导致的**。`CSPNet` 通过将梯度的变化从头到尾地集成到特征图中，在减少了计算量的同时可以保证准确率。`CSP`（`Cross Stage Partial Network`，简称 `CSPNet`） 方法可以**减少模型计算量和提高运行速度的同时，还不降低模型的精度**，是一种更高效的网络设计方法，同时还能和`Resnet`、`Densenet`、`Darknet` 等 `backbone` 结合在一起。
 
@@ -38,7 +38,9 @@ CSPNet 和不同 backbone 结合后的效果如下图所示。
 
 **实时目标检测器**。
 
-## 3，方法
+## 3，改进方法
+
+> 原论文命名为 `Method`，但我觉得叫改进方法更能体现章节内容。
 
 ### 3.1，Cross Stage Partial Network
 

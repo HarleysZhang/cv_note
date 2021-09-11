@@ -1,14 +1,17 @@
-- [VGG](#vgg)
-- [ResNet](#resnet)
-- [Inceptionv3](#inceptionv3)
-- [Resnetv2](#resnetv2)
-- [ResNeXt](#resnext)
-- [Darknet53](#darknet53)
-- [DenseNet](#densenet)
-- [CSPNet](#cspnet)
-- [VoVNet](#vovnet)
-- [一些结论](#一些结论)
-- [参考资料](#参考资料)
+# CNN模型总结
+
+- [](#)
+  - [VGG](#vgg)
+  - [ResNet](#resnet)
+  - [Inceptionv3](#inceptionv3)
+  - [Resnetv2](#resnetv2)
+  - [ResNeXt](#resnext)
+  - [Darknet53](#darknet53)
+  - [DenseNet](#densenet)
+  - [CSPNet](#cspnet)
+  - [VoVNet](#vovnet)
+  - [一些结论](#一些结论)
+  - [参考资料](#参考资料)
 
 ## VGG
 
@@ -61,39 +64,47 @@ ResNeXt和Resnet的模型结构参数对比图如下图所示。
 
 > 作者 `Gao Huang` 于 `2018` 年发表的论文 `Densely Connected Convolutional Networks`。
 
-`Densenet` 的卷积块（conv block）结构图如下所示。
+**在密集块（`DenseBlock`）结构中，每一层都会将前面所有层 `concate` 后作为输入**。`DenseBlock`（类似于残差块的密集块结构）结构的 `3` 画法图如下所示：
 
-![densenet-block结构图](../data/images/backbone/densenet-block结构图.png)
+![3种DenseNet结构画法](../data/images/backbone/3种DenseNet结构画法.png)
+
+可以看出 `DenseNet` 论文更侧重的是 `DenseBlock` 内各个卷积层之间的密集连接（`dense connection`）关系，另外两个则是强调每层的输入是前面所有层 feature map 的叠加，反映了 feature map 数量的变化。
 
 ## CSPNet
 
-`CSP` 方法可以减少模型计算量和提高运行速度的同时，还不降低模型的精度，是一种更高效的网络设计方法，同时还能和 `Resnet`、`Densenet`、`Darknet` 等 `backbone` 结合在一起。
+**`CSPDenseNet` 的一个阶段是由局部密集块和局部过渡层组成（`a partial dense block and a partial transition layer`）**。
 
 ![Figure3几种不同形式的CSP](../data/images/backbone/Figure3几种不同形式的CSP.png)
 
+`CSP` 方法可以减少模型计算量和提高运行速度的同时，还不降低模型的精度，是一种更高效的网络设计方法，同时还能和 `Resnet`、`Densenet`、`Darknet` 等 `backbone` 结合在一起。
+
 ## VoVNet
 
-`DenseNet` 用更少的参数与 `Flops` 而性能比 `ResNet` 更好，主要是因为`concat` 比 `add` 能保留更多的信息。但是，实际上 `DenseNet` 却比 `ResNet`要慢且消耗更多资源。
+**One-Shot Aggregation（只聚集一次）是指 OSA 模块的 concat 操作只进行一次，即只有最后一层的输入是前面所有层 feature map 的 concat（叠加）**。`OSA` 模块的结构图如图 1(b) 所示。
+
+![VoVNet](../data/images/backbone/VoVNet.png)
+
+在 `OSA module` 中，每一层产生两种连接，一种是通过 `conv` 和下一层连接，产生 `receptive field` 更大的 `feature map`，另一种是和最后的输出层相连，以聚合足够好的特征。通过使用 `OSA module`，`5` 层 `43` `channels` 的 `DenseNet-40` 的 `MAC` 可以被减少 `30%`（`3.7M -> 2.5M`）。
+
+基于 OSA 模块构建的各种 `VoVNet` 结构参数表如下。
+
+![各种VoVNet结构](../data/images/backbone/各种VoVNet结构.png)
+
+作者认为 `DenseNet` 用更少的参数与 `Flops` 而性能却比 `ResNet` 更好，主要是因为`concat` 比 `add` 能保留更多的信息。但是，实际上 `DenseNet` 却比 `ResNet`要慢且消耗更多资源。
 
 `GPU` 的计算效率：
 
 - `GPU` 特性是擅长 `parallel computation`，`tensor` 越大，`GPU` 使用效率越高。
 - 把大的卷积操作拆分成碎片的小操作将不利于 `GPU` 计算。
 - 设计 `layer` 数量少的网络是更好的选择。
-- `1x1` 卷积来减少计算量，不过这不利于GPU计算。
-
-作者提出了提出 `OSA`（one-shot-aggregation）模块。在 `OSA module` 中，每一层产生两种连接，一种是通过 `conv` 和下一层连接，产生 `receptive field` 更大的 `feature map`，另一种是和最后的输出层相连，以聚合足够好的特征。通过使用 `OSA module`，`5` 层 `43` `channels` 的 `DenseNet-40` 的 `MAC` 可以被减少 `30%`（`3.7M -> 2.5M`）。
-
-![VoVNet](../data/images/backbone/VoVNet.png)
-
-提出的各种 `VoVNet` 结构参数表如下。
-
-![各种VoVNet结构](../data/images/backbone/各种VoVNet结构.png)
+- 1x1 卷积可以减少计算量，但不利于 GPU 计算。
 
 ## 一些结论
 
 - 当卷积层的输入输出通道数相等时，内存访问代价（`MAC`）最小。
-- 影响 `CNN` 功耗的主要因素在于内存访问代价 `MAC`，而不是计算量 `FLOPs`。
+- 影响 CNN 功耗的主要因素在于内存访问代价 MAC，而不是计算量 FLOPs。
+- GPU 擅长并行计算，Tensor 越大，GPU 使用效率越高，把大的卷积操作拆分成碎片的小操作不利于 GPU 计算。
+- 1x1 卷积可以减少计算量，但不利于 GPU 计算。
 
 ## 参考资料
 

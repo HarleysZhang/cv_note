@@ -12,7 +12,7 @@
 
 ## 摘要
 
-> `Youngwan Lee*` 作者于 `2019` 年发表的论文 An Energy and GPU-Computation Efficient Backbone Network for Real-Time Object Detection.
+> `Youngwan Lee*` 作者于 `2019` 年发表的论文 An Energy and GPU-Computation Efficient Backbone Network for Real-Time Object Detection. 是对 `DenseNet` 网络推理效率低的改进版本。
 
 因为 `DenseNet` 通过用密集连接，来聚合具有不同感受野大小的中间特征，因此它在对象检测任务上上表现出良好的性能。虽然特征重用（`feature reuse`）的使用，让 `DenseNet` 以少量模型参数和 `FLOPs`，也能输出有力的特征，但是使用 `DenseNet` 作为 `backbone` 的目标检测器却表现出了运行速度慢和效率低下的弊端。作者认为是密集连接(`dense connection`)带来的输入通道线性增长，从而导高内存访问成本和能耗。为了提高 `DenseNet` 的效率，作者提出一个新的更高效的网络 `VoVet`，由 `OSA`（`One-Shot Aggregation`，一次聚合）组成。`OSA` **仅在模块的最后一层聚合前面所有层的特征**，这种结构不仅继承了 `DenseNet` 的多感受野表示多种特征的优点，也解决了密集连接效率低下的问题。基于 `VoVNet` 的检测器不仅速度比 `DenseNet` 快 2 倍，能耗也降低了 1.5-4.1 倍。另外，`VoVNet` 网络的速度和效率还优于 `ResNet`，并且其对于小目标检测的性能有了显著提高。
 
@@ -30,6 +30,8 @@
 首先，**内存访问代价** `MAC` 是影响能耗的关键因素。如图 1(a) 所示，因为 DenseNet 中的所有特征图都被密集连接用作后续层的输入，因此内存访问成本与网络深度成二次方增加，从而导致计算开销和更多的能耗。
 
 ![OSA和密集连接](../../data/images/VoVNet/OSA和密集连接.png)
+
+从图 (a) 中可以看出，DenseBlock 中的每一层的输入都是前面所有层 feature map 的叠加。而图 (b)只有最后一层的输入是前面所有层 feature map 的叠加。
 
 其次，关于 **GPU 的并行计算**，DenseNet 有计算瓶颈的限制。一般来说，当操作的张量更大时，GPU 的并行利用率会更高[19,29,13]。
 然而，由于为了线性增加输入通道，需要 DenseNet 采用 1×1 卷积 `bottleneck` 架构来减少输入维度和 `FLOPs`，这导致使用较小的操作数张量增加层数。作为结果就是 GPU 计算变得低效。总结就是，`bottleneck` 结构中的 $1\times 1$ 卷积会导致 `GPU` 并行利用率。
@@ -87,7 +89,7 @@ OSA 把中间的密集连接都去掉了，各个卷积层之间的相互关系�
 
 ### 3.2，One-Shot Aggregation
 
-`OSA` 模块的结构图如图 1(b) 所示。
+**One-Shot Aggregation（只聚集一次）是指 OSA 模块的 concat 操作只进行一次，即只有最后一层的输入是前面所有层 feature map 的 concat（叠加）**。`OSA` 模块的结构图如图 1(b) 所示。
 
 ![Figure1](../../data/images/VoVNet/Figure1.png)
 

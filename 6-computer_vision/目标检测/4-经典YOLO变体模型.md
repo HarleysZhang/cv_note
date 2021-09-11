@@ -1,4 +1,5 @@
 - [一，Scaled YOLOv4](#一scaled-yolov4)
+  - [摘要](#摘要)
   - [1，介绍](#1介绍)
   - [2，相关工作](#2相关工作)
     - [2.1，模型缩放](#21模型缩放)
@@ -17,6 +18,10 @@
 ## 一，Scaled YOLOv4
 
 > `Scaled YOLOv4` 的二作就是 `YOLOv4` 的作者 `Alexey Bochkovskiy`。
+
+### 摘要
+
+我们提出了一种网络缩放方法，不仅可以修改深度、宽度、分辨率，还可以修改网络的结构。
 
 ### 1，介绍
 
@@ -53,7 +58,7 @@
 
 ![resnet-resnext-darknet网络计算量和网络深度宽度及输入图像分辨率的关系](../../data/images/scaled-yolov4/resnet-resnext-darknet网络计算量和网络深度宽度及输入图像分辨率的关系.png)
 
-这里以 `Res layer` 为例，进行计算量分析。首先上表的 $r$ 应该是指每个 `stage` 中间的残差单元，而且还是 `bottleneck` 残差单元，因为只有 `stage` 中间的 `bottleneck conv block` 的第一个 $1\times 1$ 卷积层的输入通道数才是输出通道数的 `4` 倍，只有这种情况算出来的计算量 $r$ 才符合表 `1` 的结论。
+这里以 `Res layer` 为例，进行计算量分析。首先上表的 $r$ 应该是指每个 `stage` 中间的残差单元的计算量，而且还是 `bottleneck` 残差单元，因为只有 `stage` 中间的 `bottleneck conv block` 的第一个 $1\times 1$ 卷积层的输入通道数才是输出通道数的 `4` 倍，只有这种情况算出来的计算量 $r$ 才符合表 `1` 的结论。
 
 卷积层 `FLOPs` 的计算公式如下，这里把乘加当作一次计算，公式理解请参考我之前写的 [文章](../../7-model_deploy/B-神经网络模型复杂度分析.md)。
 
@@ -102,7 +107,7 @@ r1 &=  (b \times 1^2\times \frac{b}{4} + \frac{b}{4} \times 3^2\times \frac{b}{4
 
 4，**最小化卷积输入/输出(CIO)**
 
-`CIO` 是一个可以测量 `DRAM IO` 状态的指标。表 `5` 列出了 `OSA`、`CSP` 和我们设计的 `CSPOSANet` 的 `CIO`。当$kg > b/2$ 时，`CSPOSANet` 可以获得最佳的 `CIO`。
+`CIO` 是一个可以测量 `DRAM IO` 状态的指标。表 `5` 列出了 `OSA`、`CSP` 和我们设计的 `CSPOSANet` 的 `CIO`。当 $kg > b/2$ 时，`CSPOSANet` 可以获得最佳的 `CIO`。
 
 ![Table5](../../data/images/scaled-yolov4/Table5.png)
 
@@ -155,7 +160,7 @@ r1 &=  (b \times 1^2\times \frac{b}{4} + \frac{b}{4} \times 3^2\times \frac{b}{4
 
 ### 总结
 
-通篇论文看下来，感觉最主要的贡献在于通过理论系统分析和实验证了模型缩放的原则，进一步拓展了 `CSPNet` 方法，并基于此设计了一个全新的 `Scaled-YOLOv4`，`Scaled-YOLOv4` 网络的卷积模块都有使用 `CSP`。总的感觉就是针对不同的 `GPU` 平台，根据作者分析出来的模型缩放理论，且符合一些原则的情况下，选择不同的模型宽度和深度参数，并，让模型更深更宽。
+通篇论文看下来，感觉最主要的贡献在于通过理论系统分析和实验证了模型缩放的原则，进一步拓展了 `CSPNet` 方法，并基于此设计了一个全新的 `Scaled-YOLOv4`，`Scaled-YOLOv4` 网络的卷积模块都有使用 `CSP`。总的感觉就是针对不同的 `GPU` 平台，根据作者分析出来的模型缩放理论，且符合一些原则的情况下，选择不同的模型宽度和深度参数，并让模型更深更宽。
 
 > `anchor-free` 的方法，如 `centernet` 是不需要复杂的后处理，如 `NMS`。`Backbone` 模型的宽度、深度、模块的瓶颈比（`bottleneck`）、输入图像分辨率等参数的关系。
 

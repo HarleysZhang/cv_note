@@ -81,7 +81,7 @@ RPN 完成 `positive/negative 分类` + `bounding box regression 坐标回归`�
 
 ## bounding box regression 回归
 
-在挑选 `1:1` 正负样本比例的 `anchor` 用作 `RPN` 训练集后，还需要计算 `anchor box` 与 `ground truth` 之间的偏移量: $t_{x}、t_{y}、t_{w}、t_{h}$。对于每个anchor, gt_label 要么为1（前景），要么为0（背景），而 gt_loc 则是由4个位置参数 (tx,ty,tw,th) 组成，这样比直接回归座标更好。在`Faster RCNN`原文，`positive anchor`与`ground truth`之间的平移量 $(t_{x}, t_{y})$ 与尺度因子 $(t_{w}, t_{h})$ 计算公式如下:
+在挑选 `1:1` 正负样本比例的 `anchor` 用作 `RPN` 训练集后，还需要计算  。对于每个 `anchor`, 对应的标签是 `gt_label` 和 `gt_loc`。`gt_label` 要么为 `1`（前景），要么为 `0`（背景），而 `gt_loc` 则是由 `4` 个位置参数 $(t_x,t_y,t_w,t_h)$ 组成，它们是 `anchor box` 与 `ground truth bbox` 之间的偏移量，因为回归偏移量比直接回归座标更好。在 `Faster RCNN`原文，`positive anchor` 与 `ground truth` 之间的偏移量 $(t_{x}, t_{y})$ 与尺度因子 $(t_{w}, t_{h})$ 计算公式如下:
 
 $$t_{x} = (x-x_{a})/w_{a}, t_{y}=(y-y_{a})/h_{a} \\\\
 t_{w} = log(w/w_{a}), t_{h}=log(h/h_{a}) \\\\
@@ -94,7 +94,7 @@ t^{\ast }_{w} = log(w^{*}/w_{a}), t^{\ast }_{h}=log(h^{\ast }/h_{a})$$
 
 ![rpn的loss计算公式](../../data/images/faster-rcnn/rpn的loss计算公式.jpg)
 
-**公式解释**：Here, $i$ is the index of an anchor in a mini-batch and $p_{i}$ is the predicted probability of anchor i being an object. The ground-truth label $p^{\ast }_i$ is 1 if the anchor is positive, and is 0 if the anchor is negative. $t_{i}$ is a vector representing the 4 parameterized coordinates of the predicted bounding box, and $t^{\ast }_i$ is that of theground-truth box associated with a positive anchor.
+**公式解释**：Here, $i$ is the index of an anchor in a mini-batch and $p_{i}$ is the predicted probability of anchor i being an object. The ground-truth label $p_i^{\ast }$ is 1 if the anchor is positive, and is 0 if the anchor is negative. $t_{i}$ is a vector representing the 4 parameterized coordinates of the predicted bounding box, and $t_i^{\ast }$ is that of theground-truth box associated with a positive anchor.
 
 ### RPN 生成 RoIs(Proposal Layer)
 
@@ -119,79 +119,83 @@ t^{\ast }_{w} = log(w^{*}/w_{a}), t^{\ast }_{h}=log(h^{\ast }/h_{a})$$
 
 ![ROI-Head结构图](../../data/images/faster-rcnn/ROI-Head结构图.png)
 
-由于 RoIs 给出的 2000个 候选框，分别对应 feature map 不同大小的区域。首先利用 ProposalTargetCreator 挑选出 128 个 sample_rois, 然后使用了RoI Pooling 将这些不同尺寸的区域全部 `pooling` 到同一个尺度（7×7）上，输出7*7大小的 feature map，送入后续的**全连接网络**。
+由于 `RoIs` 给出的 `2000` 个 候选框，分别对应 `feature map` 不同大小的区域。首先利用 `ProposalTargetCreator` 挑选出 `128` 个 `sample_rois`, 然后使用了 `RoI Pooling` 将这些不同尺寸的区域全部 `pooling` 到同一个尺度 $7\times 7$ 上，并输出 $7\times 7$ 大小的 `feature map` 送入后续的**两个全连接层**。两个全连接层分别完成类别分类和 `bbox` 回归的作用：
 
-- FC 21 用来分类，预测 `RoIs` 属于哪个类别（20个类+背景）
-- FC 84 用来回归位置（21个类，每个类都有4个位置参数）
+- `FC 21` 用来分类，预测 `RoIs` 属于哪个类别（20个类+背景）
+- `FC 84` 用来回归位置（21个类，每个类都有4个位置参数）
+
+> 论文中之所以设定为 pooling 成 7×7 的尺度，其实是为了能够共享权重。这样除了用到 VGG 前几层的卷积之外，最后的全连接层也可以继续利用。当所有的 RoIs 都被pooling 成（512×7×7）的 feature map 后，将它 reshape 成一个一维的向量，就可以利用 VGG16 预训练的权重来初始化前两层全连接（`FC 4096`）。
 
 ### Roi pooling
 
-`RoI pooling` 负责将 128 个RoI区域对应的 feature map 进行截取，而后利用 `RoI pooling` 层输出 7*7 大小的 feature map，送入后续的全连接网络。从论文给出的 `Faster R-CNN`网络结构图中，可以看到 `Rol pooling` 层有 2 个输入：
+`RoI pooling` 负责将 `128` 个 `RoI` 区域对应的 `feature map` 进行截取，而后利用 `RoI pooling` 层输出 $7\times 7$ 大小的 `feature map`，送入后续的**全连接网络**。从论文给出的 `Faster R-CNN` 网络结构图中，可以看到 `Rol pooling` 层有 2 个输入：
 
 + 原始的 `feature maps`
-+ `RPN` 输出的 `RoIs` (proposal boxes, 大小各不相同）
++ `RPN` 输出的 `RoIs` (`proposal boxes`, 大小各不相同）
 
-**RoI Pooling 的两次量化过程以及 RoI Align 如何改进**：
+**RoI Pooling 的两次量化过程**：
 
-(1)、**在原图上生成的 region proposal** 映射到 feature map 需要除以 16 或者 32 的时候，边界出现小数，这是第一次量化。
-(2)、在每个 `roi` 里划分成 `k×k` (7×7) 的 bins，对每个 bin 中均匀选取多少个采样点，然后进行 max pooling，也会出现小数，这是第二次量化。
+(1) **在原图上生成的 region proposal** 映射到 `feature map` 上，需要除以 $16/32$（下采样倍数），这时候边界会出现小数，自然就需要量化。
+(2) 在每个 `roi` 里划分成 $k\times k$ ($7\times 7$) 的 `bins`，对每个 `bin` 中均匀选取多少个采样点，然后进行 `max pooling`，也会出现小数，自然就产生了第二次量化。
 
-`ROI Align` 并不需要对两步量化中产生的浮点数坐标的像素值都进行计算，而是设计了一套优雅的流程。如下图，其中虚线代表的是一个 feature map，实线代表的是一个 roi (在这个例子中，一个 roi 是分成了 2*2 个bins)，实心点代表的是采样点，每个 bin 中有 4 个采样点。我们通过双线性插值的方法根据采样点周围的四个点计算每一个采样点的值，然后对着四个采样点执行最大池化操作得到当前 bin 的像素值。
+**RoI Align 如何改进**:
+
+`ROI Align` 并不需要对两步量化中产生的浮点数坐标的像素值都进行计算，而是设计了一套优雅的流程。如下图，其中虚线代表的是一个 `feature map`，实线代表的是一个 `roi` (在这个例子中，一个 `roi` 是分成了 $2\times 2$ 个 `bins`)，实心点代表的是采样点，每个 `bin` 中有 `4` 个采样点。我们通过双线性插值的方法根据采样点周围的四个点计算每一个采样点的值，然后对着四个采样点执行最大池化操作得到当前 `bin` 的像素值。
 
 ![ROI-Align](../../data/images/faster-rcnn/ROI-Align.png)
 
-`RoI Align` 做法：假定采样点数为 4，即表示，对于每个 2.97 x 2.97 的 bin，**平分四份小矩形，每一份取其中心点位置，而中心点位置的像素，采用双线性插值法进行计算**，这样就会得到四个小数坐标点的像素值。
+`RoI Align` 具体做法：假定采样点数为 `4`，即表示，对于每个 $2.97\times 2.97$ 的 `bin`，**平分四份小矩形，每一份取其中心点位置，而中心点位置的像素，采用双线性插值法进行计算**，这样就会得到四个小数坐标点的像素值。
 
 ### ROI Head 训练
 
 RPN 会产生大约 2000 个 RoIs ，ROI Head 在给出的 2000 个 RoIs 候选框基础上**继续分类(目标分类)和位置参数回归**。注意，这 2000 个 RoIs 不是都拿去训练，而是**利用 ProposalTargetCreator（官方源码可以查看类定义） 选择 128 个 RoIs 用以训练**。选择的规则如下：
 
-+ `RoIs` 和 `gt_bboxes` 的IoU大于 `0.5` 的，选择一些（比如 32 个）作为正样本
-+ 选择 RoIs 和 gt_bboxes 的IoU小于等于 `0（或者 0.1 ）`的选择一些（比如 128 - 32 = 96 个）作为负样本
++ 在和 `gt_bboxes` 的 `IoU` 大于 `0.5` 的 `RoIs` 内，选择一些（比如 `32` 个）作为正样本
++ 在和 `gt_bboxes` 的 `IoU` 小于等于 `0`（或者 `0.1` ）`RoIs` 内，的选择一些（比如 $128 - 32 = 96$ 个）作为负样本
 
-选择出的 `128` 个 RoIs，正负样本比例为 `3:1`，在源码中为了便于训练，还对他们的 `gt_roi_loc` 进行标准化处理（减去均值除以标准差）。
-和 `RPN` 一样，对于分类问题, 直接利用**交叉熵损失**. 而对于位置的回归损失,一样采用 **Smooth_L1 Loss**, 只不过只对正样本计算损失，而且是只对正样本中的这个类别 4 个参数计算损失。举例来说：
+选择出的 `128` 个 `RoIs`，其正负样本比例为 `3:1`，在源码中为了便于训练，还对他们的 `gt_roi_loc` 进行标准化处理（减去均值除以标准差）。
 
-+ 一个 RoI 在经过 FC 84 后会输出一个 `84` 维的 loc 向量. 如果这个 RoI 是负样本, 则这 84 维向量不参与计算 L1_Loss
-+ 如果这个 RoI 是正样本,属于 label K, 那么它的第 K×4，K×4+1 ，K×4+2， K×4+3 这4个数参与计算损失，其余的不参与计算损失。
+- 对于分类问题, 和 `RPN` 一样，直接利用**交叉熵损失**。
+- 对于位置的回归损失，也采用 **Smooth_L1 Loss**, 只不过**只对正样本计算损失**，而且是只对正样本中的对应类别的 $4$ 个参数计算损失。举例来说：
+  - 一个 `RoI` 在经过 `FC84` 后会输出一个 `84` 维的 `loc` 向量。 如果这个 `RoI` 是负样本, 则这 `84` 维向量不参与计算 `L1_Loss`。
+  - 如果这个 `RoI` 是正样本，且属于 类别 $k$, 那么向量的第 $(k×4，k×4+1 ，k×4+2， k×4+3)$ 这 $4$ 位置的值参与计算损失，其余的不参与计算损失。
 
 ### ROI Head 测试
 
-ROI Head 测试的时候对所有的 `RoIs`（大概 `300` 个左右) 计算概率，并利用位置参数调整预测候选框的位置。然后再用一遍极大值抑制（之前在RPN的ProposalCreator用过）。
-这里注意：
+`ROI Head` 测试的时候对所有的 `RoIs`（大概 `300` 个左右) 计算概率，并利用位置参数调整预测候选框的位置，然后**再**用一遍极大值抑制（之前在 `RPN` 的`ProposalCreator` 也用过）。这里注意：
 
-+ 在 RPN 的时候，已经对 `anchor` 做了一遍 `NMS`，在 `Fast RCNN` 测试的时候，还要再做一遍，**所以在Faster RCNN框架中，NMS操作总共有 2 次**。
-+ 在 RPN 的时候，已经对 anchor 的位置做了回归调整，在 `Fast RCNN` 阶段还要对 RoI 再做一遍
-+ 在 RPN 阶段分类是二分类，而 Fast RCNN/ROI Head 阶段是 21 分类
++ 在 `RPN` 的时候，已经对 `anchor` 做了一遍 `NMS`，在 `Fast RCNN` 测试的时候，还要再做一遍，**所以在Faster RCNN框架中，NMS操作总共有 2 次**。
++ 在 `RPN` 的时候，已经对 `anchor` 的位置做了回归调整，在 `Fast RCNN` 阶段还要对 `RoI` 再做一遍。
++ 在 `RPN` 阶段分类是二分类，而 `Fast RCNN/ROI Head` 阶段是 `21` 分类。
 
 ## 概念理解
 
-在阅读 Faster RCNN 论文和源码中，我们经常会涉及到一些概念的理解。
+在阅读 `Faster RCNN` 论文和源码中，我们经常会涉及到一些概念的理解。
 
 ### 四类损失
 
-在训练 Faster RCNN 的时候有四个损失：
+在训练 `Faster RCNN` 的时候有四个损失：
 
-+ RPN 分类损失：`anchor` 是否为前景（二分类）
-+ RPN位置回归损失：anchor 位置微调
-+ RoI 分类损失：RoI 所属类别（21分类，多了一个类作为背景）
-+ RoI 位置回归损失：继续对 RoI 位置微调
++ `RPN` 分类损失：`anchor` 是否为前景（二分类）
++ `RPN` 位置回归损失：`anchor` 位置微调
++ `RoI` 分类损失：`RoI` 所属类别（`21` 分类，多了一个类作为背景）
++ `RoI` 位置回归损失：继续对 `RoI` 位置微调
 
 **四个损失相加作为最后的损失，反向传播，更新参数**。
 
 ### 三个 creator
 
-Faster RCNN 官方源码中有三个 `creator` 分别实现不同的功能，不能弄混，各自功能如下：
+Faster RCNN 官方源码中有三个 `creator` 类分别实现不同的功能，不能弄混，各自功能如下：
 
-+ `AnchorTargetCreator` ： 负责在训练 RPN 的时候，从上万个 anchor 中选择一些(比如 256 )进行训练，以使得正负样本比例大概是1:1. 同时给出训练的位置参数目标。 即返回 gt_rpn_loc 和 gt_rpn_label 。
-+ `ProposalTargetCreator`： 负责在训练 RoIHead/Fast R-CNN 的时候，从 RoIs 选择一部分(比如 128 个，正负样本比例 1:3 )用以训练。同时给定训练目标, 返回（sample_RoI, gt_RoI_loc, gt_RoI_label）。
-+ `ProposalCreator`： 在 RPN 中，从上万个 anchor 中，选择一定数目（ 2000 或者 300 ），调整大小和位置，生成 RoIs ，用以 Fast R-CNN 训练或者测试。
++ `AnchorTargetCreator` ： 负责在训练 `RPN` 的时候，从上万个 `anchors` 中选择一些(比如 `256` )进行训练，并使得正负样本比例大概是 `1:1`。同时给出训练的位置参数目标，即返回 `gt_rpn_loc` 和 `gt_rpn_label`。
++ `ProposalTargetCreator`： 负责在训练 `RoIHead/Fast R-CNN` 的时候，从 `RoIs` 选择一部分(比如 `128` 个，正负样本比例 `1:3`)用以训练。同时给定训练目标, 返回（`sample_RoI`, `gt_RoI_loc`, `gt_RoI_label`）。
++ `ProposalCreator`： 在 `RPN` 中，从上万个 `anchor` 中，选择一定数目（ `2000` 或者 `300` ），调整大小和位置，生成 `RoIs` ，用以 `Fast R-CNN` 训练或者测试。
 
-其中 AnchorTargetCreator 和 ProposalTargetCreator 类是为了生成训练的目标，只在训练阶段用到，ProposalCreator 是 RPN 为 Fast R-CNN 生成 RoIs ，在训练和测试阶段都会用到。**三个 `creator` 的共同点在于他们都不需要考虑反向传播**（因此不同框架间可以共享 numpy 实现）。
+其中 `AnchorTargetCreator` 和 `ProposalTargetCreator` 类是为了生成训练的目标，只在训练阶段用到，`ProposalCreator` 是 `RPN` 为 `Fast R-CNN` 生成 `RoIs` ，在训练和测试阶段都会用到。**三个 `creator` 的共同点在于他们都不需要考虑反向传播**（因此不同框架间可以共享 `numpy` 实现）。
 
 ## 参考资料
 
-[一文读懂Faster RCNN](https://zhuanlan.zhihu.com/p/31426458)
-[从编程实现角度学习Faster RCNN](https://zhuanlan.zhihu.com/p/32404424)
-[你真的学会了RoI Pooling了吗](https://zhuanlan.zhihu.com/p/59692298)
-[Faster RCNN 学习笔记](https://www.cnblogs.com/wangyong/p/8513563.html)
+- [一文读懂Faster RCNN](https://zhuanlan.zhihu.com/p/31426458)
+- [从编程实现角度学习Faster RCNN](https://zhuanlan.zhihu.com/p/32404424)
+- [你真的学会了RoI Pooling了吗](https://zhuanlan.zhihu.com/p/59692298)
+- [Faster RCNN 学习笔记](https://www.cnblogs.com/wangyong/p/8513563.html)

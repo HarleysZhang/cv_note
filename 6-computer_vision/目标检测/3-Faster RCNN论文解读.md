@@ -83,18 +83,18 @@ RPN 完成 `positive/negative 分类` + `bounding box regression 坐标回归`�
 
 在挑选 `1:1` 正负样本比例的 `anchor` 用作 `RPN` 训练集后，还需要计算 `anchor box` 与 `ground truth` 之间的偏移量: $t_{x}、t_{y}、t_{w}、t_{h}$。对于每个anchor, gt_label 要么为1（前景），要么为0（背景），而 gt_loc 则是由4个位置参数 (tx,ty,tw,th) 组成，这样比直接回归座标更好。在`Faster RCNN`原文，`positive anchor`与`ground truth`之间的平移量 $(t_{x}, t_{y})$ 与尺度因子 $(t_{w}, t_{h})$ 计算公式如下:
 
-$t_{x} = (x-x_{a})/w_{a}, t_{y}=(y-y_{a})/h_{a},$
-$t_{w} = log(w/w_{a}), t_{h}=log(h/h_{a}),$
-$t^{*}_{x} = (x^{*}-x_{a})/w_{a}, t^{*}_{y}=(y^{*}-y_{a})/h_{a},$
-$t^{*}_{w} = log(w^{*}/w_{a}), t^{*}_{h}=log(h^{*}/h_{a}),$
+$$t_{x} = (x-x_{a})/w_{a}, t_{y}=(y-y_{a})/h_{a} \\\\
+t_{w} = log(w/w_{a}), t_{h}=log(h/h_{a}) \\\\
+t^{\ast }_{x} = (x^{\ast }-x_{a})/w_{a}, t^{\ast }_{y}=(y^{\ast }-y_{a})/h_{a} \\\\
+t^{\ast }_{w} = log(w^{*}/w_{a}), t^{\ast }_{h}=log(h^{\ast }/h_{a})$$
 
-参数解释：where $x, y, w,$ and h denote the box’s center coordinates and its width and height. Variables $x, x_{a}$, and $x^{*}$ are for the predicted box, anchor box, and groundtruth box respectively (likewise for $y, w, h$).
+参数解释：where $x, y, w,$ and $h$ denote the box’s center coordinates and its width and height. Variables $x, x_{a}$, and $x^{*}$ are for the predicted box, anchor box, and groundtruth box respectively (likewise for $y, w, h$).
 
 计算分类损失用的是交叉熵损失，而计算回归损失用的是 Smooth_l1_loss. 在计算回归损失的时候，只计算正样本（前景）的损失，不计算负样本的位置损失。loss 计算公式如下：
 
 ![rpn的loss计算公式](../../data/images/faster-rcnn/rpn的loss计算公式.jpg)
 
-**公式解释：**Here,  $i$  is the index of an anchor in a mini-batch and $p_{i}$ is the predicted probability of anchor i being an object. The ground-truth label $p^{*}_{i}$ is 1 if the anchor is positive, and is 0 if the anchor is negative. $t_{i}$ is a vector representing the 4 parameterized coordinates of the predicted bounding box, and $t^{*}_{i}$ is that of theground-truth box associated with a positive anchor.
+**公式解释**：Here, $i$ is the index of an anchor in a mini-batch and $p_{i}$ is the predicted probability of anchor i being an object. The ground-truth label $p^{\ast }_i$ is 1 if the anchor is positive, and is 0 if the anchor is negative. $t_{i}$ is a vector representing the 4 parameterized coordinates of the predicted bounding box, and $t^{\ast }_i$ is that of theground-truth box associated with a positive anchor.
 
 ### RPN 生成 RoIs(Proposal Layer)
 

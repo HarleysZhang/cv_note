@@ -124,19 +124,19 @@ t^{\ast }_{w} = log(w^{*}/w_{a}), t^{\ast }_{h}=log(h^{\ast }/h_{a})$$
 - `FC 21` 用来分类，预测 `RoIs` 属于哪个类别（20个类+背景）
 - `FC 84` 用来回归位置（21个类，每个类都有4个位置参数）
 
-> 论文中之所以设定为 pooling 成 7×7 的尺度，其实是为了能够共享权重。这样除了用到 VGG 前几层的卷积之外，最后的全连接层也可以继续利用。当所有的 RoIs 都被pooling 成（512×7×7）的 feature map 后，将它 reshape 成一个一维的向量，就可以利用 VGG16 预训练的权重来初始化前两层全连接（`FC 4096`）。
+> 论文中之所以设定为 pooling 成 7×7 的尺度，其实是为了网络输出是固定大小的`vector or matrix`，从而能够共享 VGG 后面两个全连接层的权重。当所有的 RoIs 都被pooling 成（512×7×7）的 feature map 后，将它 reshape 成一个一维的向量，就可以利用 VGG16 预训练的权重来初始化前两层全连接（`FC 4096`）。
 
 ### Roi pooling
 
-`RoI pooling` 负责将 `128` 个 `RoI` 区域对应的 `feature map` 进行截取，而后利用 `RoI pooling` 层输出 $7\times 7$ 大小的 `feature map`，送入后续的**全连接网络**。从论文给出的 `Faster R-CNN` 网络结构图中，可以看到 `Rol pooling` 层有 2 个输入：
+`RoI pooling` 负责将 `128` 个 `RoI` 区域对应的 `feature map` 进行截取，而后利用 `RoI pooling` 层输出 $7\times 7$ 大小的 `feature map`，送入后续的**全连接网络**。从论文给出的 `Faster R-CNN` 网络结构图中，可以看到 `Rol pooling` 层有 `2` 个输入：
 
 + 原始的 `feature maps`
 + `RPN` 输出的 `RoIs` (`proposal boxes`, 大小各不相同）
 
 **RoI Pooling 的两次量化过程**：
 
-(1) **在原图上生成的 region proposal** 映射到 `feature map` 上，需要除以 $16/32$（下采样倍数），这时候边界会出现小数，自然就需要量化。
-(2) 在每个 `roi` 里划分成 $k\times k$ ($7\times 7$) 的 `bins`，对每个 `bin` 中均匀选取多少个采样点，然后进行 `max pooling`，也会出现小数，自然就产生了第二次量化。
+(1) 因为 `proposal`是对应 $M\times N$ 的原图尺寸，所以**在原图上生成的 region proposal** 需要映射到 `feature map` 上，需要除以 $16/32$（下采样倍数），这时候边界会出现小数，自然就需要量化。
+(2) 将 `proposal` 对应的 `feature map` 区域水平划分成 $k\times k$ ($7\times 7$) 的 `bins`，并对每个 `bin` 中均匀选取多少个采样点，然后进行 `max pooling`，也会出现小数，自然就产生了第二次量化。
 
 **RoI Align 如何改进**:
 

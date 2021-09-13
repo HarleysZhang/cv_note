@@ -4,7 +4,6 @@
   - [Anchors](#anchors)
   - [生成 RPN 网络训练集](#生成-rpn-网络训练集)
   - [positive/negative 二分类](#positivenegative-二分类)
-- [bounding box regression 回归](#bounding-box-regression-回归)
   - [RPN 生成 RoIs(Proposal Layer)](#rpn-生成-roisproposal-layer)
   - [RPN 网络总结](#rpn-网络总结)
 - [ROIHead/Fast R-CNN](#roiheadfast-r-cnn)
@@ -56,7 +55,7 @@ RPN 完成 `positive/negative 分类` + `bounding box regression 坐标回归`�
  [ -80. -168. 95. 183.]
  [-168. -344. 183. 359.]]
 
-其中每行的 4 个值 $(x_{1},  y_{1},  x_{2},  y_{2})$ 表矩形左上和右下角点坐标。9 个矩形共有 3 种形状，长宽比为大约为 $width:height \epsilon  \{1:1, 1:2, 2:1\}$ 三种，如下图。**实际上通过 anchors 就引入了检测中常用到的多尺度方法**。
+其中每行的 4 个值 $(x_{1},  y_{1},  x_{2},  y_{2})$ 表矩形左上和右下角点坐标。9 个矩形共有 3 种形状，长宽比为大约为 $width:height \epsilon \{1:1, 1:2, 2:1\}$ 三种，如下图。**实际上通过 anchors 就引入了检测中常用到的多尺度方法**。
 
 ![anchor示例](../../data/images/faster-rcnn/anchor示例.png)
 
@@ -71,30 +70,26 @@ RPN 完成 `positive/negative 分类` + `bounding box regression 坐标回归`�
 + 对于每一个 ground truth bounding box (`gt_bbox`)，选择和它重叠度（IoU）最高的一个 `anchor` 作为正样本;
 + 对于剩下的 anchor，从中选择和任意一个 gt_bbox 重叠度超过 `0.7` 的 anchor ，同样作为正样本;
 + 随机选择和 `gt_bbox` 重叠度小于 `0.3` 的 anchor 作为负样本。
-
-同时，保证正样本为 `128` 个，负样本为 `128` 个，负样本和正样本的总数为`256` ，正负样本比例 `1:1`。
+本和正样本的总数为`256` ，正负样本比例 `1:1`。
 
 ### positive/negative 二分类
 
-由`1*1`卷积实现，卷积通道数为 `9×2`（每个点有 9 个 anchor，每个 anchor 二分类，使用交叉熵损失），后面接 softmax 分类获得 positive anchors，也就相当于初步提取了检测目标候选区域 box（一般认为目标在 positive anchors 中）。
-所以可知，**RPN的一个任务就是在原图尺度上，设置了密密麻麻的候选 anchor。然后用 CNN(1\*1卷积，卷积通道数9\*2)去判断挑选出来的 256 个 anchor 哪些是里面有目标的 positive anchor，哪些是没目标的 negative anchor**。
+由$1\times 1$ 卷积实现，卷积通道数为 $9\times 2$（每个点有 9 个 anchor，每个 anchor 二分类，使用交叉熵损失），后面接 softmax 分类获得 positive anchors，也就相当于初步提取了检测目标候选区域 box（一般认为目标在 positive anchors 中）。所以可知，RPN 的一个任务就是在原图尺度上，设置了大量的候选 `anchor`，并通过 `AnchorTargetCreator` 类去挑选正负样本比为 `1:1` 的 `256` 个 `anchor`，然后再用 `CNN` ($1\times 1$ 卷积，卷积通道数 $9\times 2$) 去判断挑选出来的 `256` 个 `anchor` 哪些有目标的 `positive anchor`，哪些是没目标的 `negative anchor`。
 
-## bounding box regression 回归
-
-在挑选 `1:1` 正负样本比例的 `anchor` 用作 `RPN` 训练集后，还需要计算  。对于每个 `anchor`, 对应的标签是 `gt_label` 和 `gt_loc`。`gt_label` 要么为 `1`（前景），要么为 `0`（背景），而 `gt_loc` 则是由 `4` 个位置参数 $(t_x,t_y,t_w,t_h)$ 组成，它们是 `anchor box` 与 `ground truth bbox` 之间的偏移量，因为回归偏移量比直接回归座标更好。在 `Faster RCNN`原文，`positive anchor` 与 `ground truth` 之间的偏移量 $(t_{x}, t_{y})$ 与尺度因子 $(t_{w}, t_{h})$ 计算公式如下:
+在挑选 `1:1` 正负样本比例的 `anchor` 用作 `RPN` 训练集后，还需要计算训练集数据对应的标签。对于每个 `anchor`, 对应的标签是 `gt_label` 和 `gt_loc`。`gt_label` 要么为 `1`（前景），要么为 `0`（背景），而 `gt_loc` 则是由 `4` 个位置参数 $(t_x,t_y,t_w,t_h)$ 组成，它们是 `anchor box` 与 `ground truth bbox` 之间的偏移量，因为回归偏移量比直接回归座标更好。在 `Faster RCNN`原文，`positive anchor` 与 `ground truth` 之间的偏移量 $(t_{x}, t_{y})$ 与尺度因子 $(t_{w}, t_{h})$ 计算公式如下:
 
 $$t_{x} = (x-x_{a})/w_{a}, t_{y}=(y-y_{a})/h_{a} \\\\
 t_{w} = log(w/w_{a}), t_{h}=log(h/h_{a}) \\\\
-t^{\ast }_{x} = (x^{\ast }-x_{a})/w_{a}, t^{\ast }_{y}=(y^{\ast }-y_{a})/h_{a} \\\\
-t^{\ast }_{w} = log(w^{*}/w_{a}), t^{\ast }_{h}=log(h^{\ast }/h_{a})$$
+t^{*}_{x} = (x^{*}-x_{a})/w_{a}, t^{*}_{y}=(y^{*}-y_{a})/h_{a} \\\\
+t^{*}_{w} = log(w^{*}/w_{a}), t^{*}_{h}=log(h^{*}/h_{a})$$
 
-参数解释：where $x, y, w,$ and $h$ denote the box’s center coordinates and its width and height. Variables $x, x_{a}$, and $x^{*}$ are for the predicted box, anchor box, and groundtruth box respectively (likewise for $y, w, h$).
+参数解释：where $x, y, w,$ and $h$ denote the box’s center coordinates and its width and height. Variables $x, x_{a}$，and $x^{*}$ are for the predicted box, anchor box, and groundtruth box respectively (likewise for $y, w, h$).
 
 计算分类损失用的是交叉熵损失，而计算回归损失用的是 Smooth_l1_loss. 在计算回归损失的时候，只计算正样本（前景）的损失，不计算负样本的位置损失。loss 计算公式如下：
 
 ![rpn的loss计算公式](../../data/images/faster-rcnn/rpn的loss计算公式.jpg)
 
-**公式解释**：Here, $i$ is the index of an anchor in a mini-batch and $p_{i}$ is the predicted probability of anchor i being an object. The ground-truth label $p_i^{\ast }$ is 1 if the anchor is positive, and is 0 if the anchor is negative. $t_{i}$ is a vector representing the 4 parameterized coordinates of the predicted bounding box, and $t_i^{\ast }$ is that of theground-truth box associated with a positive anchor.
+**公式解释**：Here, $i$ is the index of an anchor in a mini-batch and $p_{i}$ is the predicted probability of anchor i being an object. The ground-truth label $p_i^{*}$ is 1 if the anchor is positive, and is 0 if the anchor is negative. $t_{i}$ is a vector representing the 4 parameterized coordinates of the predicted bounding box, and $t_i^{*}$ is that of theground-truth box associated with a positive anchor.
 
 ### RPN 生成 RoIs(Proposal Layer)
 
@@ -135,8 +130,8 @@ t^{\ast }_{w} = log(w^{*}/w_{a}), t^{\ast }_{h}=log(h^{\ast }/h_{a})$$
 
 **RoI Pooling 的两次量化过程**：
 
-(1) 因为 `proposal`是对应 $M\times N$ 的原图尺寸，所以**在原图上生成的 region proposal** 需要映射到 `feature map` 上，需要除以 $16/32$（下采样倍数），这时候边界会出现小数，自然就需要量化。
-(2) 将 `proposal` 对应的 `feature map` 区域水平划分成 $k\times k$ ($7\times 7$) 的 `bins`，并对每个 `bin` 中均匀选取多少个采样点，然后进行 `max pooling`，也会出现小数，自然就产生了第二次量化。
+(1) 因为 `proposals`是对应 $M\times N$ 的原图尺寸，所以**在原图上生成的 region proposal** 需要映射到 `feature map` 上，需要除以 $16/32$（下采样倍数），这时候边界会出现小数，自然就需要量化。
+(2) 将 `proposals` 对应的 `feature map` 区域水平划分成 $k\times k$ ($7\times 7$) 的 `bins`，并对每个 `bin` 中均匀选取多少个采样点，然后进行 `max pooling`，也会出现小数，自然就产生了第二次量化。
 
 **RoI Align 如何改进**:
 

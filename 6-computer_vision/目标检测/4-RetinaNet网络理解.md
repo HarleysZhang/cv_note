@@ -205,8 +205,8 @@ $$FL(p_t) = -\alpha (1-p_t)^\gamma log(p_t)$$
 
 作者在实验中采用这种形式，发现它比非 $\alpha$ 平衡形式（non-$\alpha$-balanced）的精确度稍有提高。实验表明 $\gamma$ 取 2，$\alpha$ 取 0.25 的时候效果最佳。
 
-网上有各种版本的 `Focal Loss` 实现代码，大多都是基于某个深度学习框架实现的，如 `Pytorch`和 `TensorFlow`，我选取了一个较为清晰的代码作为参考，代码来自 [这里](https://github.com/yatengLG/Retinanet-Pytorch/blob/master/Model/struct/Focal_Loss.py)。
-> 后续有必要自己实现以下，有时间还要去看看 `Caffe` 的实现。
+网上有各种版本的 `Focal Loss` 实现代码，大多都是基于某个深度学习框架实现的，如 `Pytorch`和 `TensorFlow`，我选取了一个较为清晰的通用版本代码作为参考，代码来自 [这里](https://github.com/yatengLG/Retinanet-Pytorch/blob/master/Model/struct/Focal_Loss.py)。
+> 后续有必要自己实现以下，有时间还要去看看 `Caffe` 的实现。这里的 Focal Loss 代码与后文不同，这里只是纯粹的用于分类的 Focal_loss 代码，不包含 BBox 的编码过程。
 
 ```Python
 # -*- coding: utf-8 -*-
@@ -303,7 +303,7 @@ def py_sigmoid_focal_loss(pred,
 ```
 
 ## 4，代码解读
-> 代码来源[这里](https://github.com/yhenon/pytorch-retinanet)
+> 代码来源[这里](https://github.com/yhenon/pytorch-retinanet)。
 
 ### 4.1，Backbone
 

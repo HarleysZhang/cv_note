@@ -78,10 +78,10 @@ RPN 完成 `positive/negative 分类` + `bounding box regression 坐标回归`�
 
 在挑选 `1:1` 正负样本比例的 `anchor` 用作 `RPN` 训练集后，还需要计算训练集数据对应的标签。对于每个 `anchor`, 对应的标签是 `gt_label` 和 `gt_loc`。`gt_label` 要么为 `1`（前景），要么为 `0`（背景），而 `gt_loc` 则是由 `4` 个位置参数 $(t_x,t_y,t_w,t_h)$ 组成，它们是 `anchor box` 与 `ground truth bbox` 之间的偏移量，因为回归偏移量比直接回归座标更好。在 `Faster RCNN`原文，`positive anchor` 与 `ground truth` 之间的偏移量 $(t_{x}, t_{y})$ 与尺度因子 $(t_{w}, t_{h})$ 计算公式如下:
 
-$$t_{x} = (x-x_{a})/w_{a}, t_{y}=(y-y_{a})/h_{a}$$
-$$t_{w} = log(w/w_{a}), t_{h}=log(h/h_{a})$$
-$$t_{x}^{\ast } = (x^{\ast }-x_{a})/w_{a}, t_{y}^{\ast}=(y^{\ast}-y_{a})/h_{a}$$
-$$t_{w}^{\ast } = log(w^{\ast }/w_{a}), t_{h}^{\ast }=log(h^{\ast }/h_{a}) $$
+$$t_{x} = (x-x_{a})/w_{a}, t_{y}=(y-y_{a})/h_{a} \\\\
+t_{w} = log(w/w_{a}), t_{h}=log(h/h_{a}) \\\\
+t_{x}^{\ast } = (x^{\ast }-x_{a})/w_{a}, t_{y}^{\ast}=(y^{\ast}-y_{a})/h_{a} \\\\
+t_{w}^{\ast } = log(w^{\ast }/w_{a}), t_{h}^{\ast }=log(h^{\ast }/h_{a}) $$
 
 参数解释：where $x, y, w,$ and $h$ denote the box’s center coordinates and its width and height. Variables $x, x_{a}$，and $x^{*}$ are for the predicted box, anchor box, and groundtruth box respectively (likewise for $y, w, h$).
 

@@ -44,7 +44,7 @@ RPN 完成 `positive/negative 分类` + `bounding box regression 坐标回归`�
 
 ### Anchors
 
-在`RPN`中，作者提出了`anchors`，所谓 anchors，实际上就是一组 `rpn/generate_acchors.py` 生成的一组矩形框，运行官方代码的 `generate_anchors.py` 可以得到以下示例输出：
+在`RPN`中，作者提出了`anchors`，在代码中，anchors 是一组由 generate_anchors.py 生成的矩形框列表。运行官方代码的 `generate_anchors.py` 可以得到以下示例输出.这里生成的坐标是在原图尺寸上的坐标，在特征图上的一个像素点，可以对应到原图上一个 $16\times 16$大小的区域。
 > [[ -84. -40. 99. 55.]
  [-176. -88. 191. 103.]
  [-360. -184. 375. 199.]
@@ -59,9 +59,11 @@ RPN 完成 `positive/negative 分类` + `bounding box regression 坐标回归`�
 
 ![anchor示例](../../data/images/faster-rcnn/anchor示例.png)
 
-然后利用这 9 种`anchor`在特征图左右上下移动（遍历），每一个特征图上的任意一个点都有 9 个 `anchor`，假设原图大小为 M*N，经过 Conv layers 下采样 16 倍，则每个 feature map 生成 `(M/16)*(N/16)*9`个 `anchor`。例如，对于一个尺寸为 62×37 的 feature map，有 62×37×9 ≈ 20000 个 anchor。 也就是对一个 feature map，会产生约 20000 个左右的 anchor。这种做法很像是暴力穷举，20000 多个 anchor，哪怕是蒙也能够把绝大多数的 ground truth bounding boxes 蒙中。
+> 注意，`generate_anchors.py` 生成的只是 base anchors，其中一个 框的左上角坐标为 (0,0) 坐标（特征图左上角）的 9 个 anchor，后续还需网格化（meshgrid）生成其他 anchor。同一个 scale，但是不同的 anchor ratios 生成的 anchors 面积理论上是要一样的。
 
-因此，`anchor` 的数量和 `feature map` 相关，不同的 feature map 对应的 anchor 数量也不一样。
+然后利用这 `9` 种 `anchor` 在特征图左右上下移动（遍历），每一个特征图上的任意一个点都有 `9` 个 `anchor`，假设原图大小为 MxN，经过 Conv layers 下采样 16 倍，则每个 feature map 生成 `(M/16)*(N/16)*9`个 `anchor`。例如，对于一个尺寸为 62×37 的 feature map，有 62×37×9 ≈ 20000 个 anchor，**并输出特征图上面每个点对应的原图 anchor 坐标**。这种做法很像是暴力穷举，20000 多个 anchor，哪怕是蒙也能够把绝大多数的 ground truth bounding boxes 蒙中。
+
+因此可知，`anchor` 的数量和 `feature map` 大小相关，不同的 feature map 对应的 anchor 数量也不一样。
 
 ### 生成 RPN 网络训练集  
 
@@ -74,7 +76,7 @@ RPN 完成 `positive/negative 分类` + `bounding box regression 坐标回归`�
 
 ### positive/negative 二分类
 
-由$1\times 1$ 卷积实现，卷积通道数为 $9\times 2$（每个点有 9 个 anchor，每个 anchor 二分类，使用交叉熵损失），后面接 softmax 分类获得 positive anchors，也就相当于初步提取了检测目标候选区域 box（一般认为目标在 positive anchors 中）。所以可知，RPN 的一个任务就是在原图尺度上，设置了大量的候选 `anchor`，并通过 `AnchorTargetCreator` 类去挑选正负样本比为 `1:1` 的 `256` 个 `anchor`，然后再用 `CNN` ($1\times 1$ 卷积，卷积通道数 $9\times 2$) 去判断挑选出来的 `256` 个 `anchor` 哪些有目标的 `positive anchor`，哪些是没目标的 `negative anchor`。
+由 $1\times 1$ 卷积实现，卷积通道数为 $9\times 2$（每个点有 9 个 anchor，每个 anchor 二分类，使用交叉熵损失），后面接 softmax 分类获得 positive anchors，也就相当于初步提取了检测目标候选区域 box（一般认为目标在 positive anchors 中）。所以可知，RPN 的一个任务就是在原图尺度上，设置了大量的候选 `anchor`，并通过 `AnchorTargetCreator` 类去挑选正负样本比为 `1:1` 的 `256` 个 `anchor`，然后再用 `CNN` ($1\times 1$ 卷积，卷积通道数 $9\times 2$) 去判断挑选出来的 `256` 个 `anchor` 哪些有目标的 `positive anchor`，哪些是没目标的 `negative anchor`。
 
 在挑选 `1:1` 正负样本比例的 `anchor` 用作 `RPN` 训练集后，还需要计算训练集数据对应的标签。对于每个 `anchor`, 对应的标签是 `gt_label` 和 `gt_loc`。`gt_label` 要么为 `1`（前景），要么为 `0`（背景），而 `gt_loc` 则是由 `4` 个位置参数 $(t_x,t_y,t_w,t_h)$ 组成，它们是 `anchor box` 与 `ground truth bbox` 之间的偏移量，因为回归偏移量比直接回归座标更好。在 `Faster RCNN`原文，`positive anchor` 与 `ground truth` 之间的偏移量 $(t_{x}, t_{y})$ 与尺度因子 $(t_{w}, t_{h})$ 计算公式如下:
 
@@ -95,13 +97,13 @@ t_{w}^{\ast } = log(w^{\ast }/w_{a}), t_{h}^{\ast }=log(h^{\ast }/h_{a}) $$
 
 `RPN` 网络在自身训练的同时，还会由 `Proposal Layer` 层产生 `RoIs`（region of interests）给 Fast RCNN（RoIHead）作为训练样本。RPN 生成 RoIs 的过程( `ProposalCreator` )如下：
 
-1. 对于每张图片，利用它的 `feature map`， 计算`(H/16)× (W/16)×9（大概20000）个`anchor属于前景的概率`，以及`对应的位置参数`。选取概率较大的12000个anchor；
-2. 利用回归的位置参数，修正这 12000 个 anchor 的位置，得到`RoIs`；
-3. 利用非极大值（(Non-maximum suppression, NMS）抑制，选出概率最大的 2000 个 RoIs。
+1. 对于每张图片，利用它的 `feature map`， 计算 `(H/16)× (W/16)×9`（大概 20000）个 `anchor` 属于前景的概率，以及对应的位置参数，并选取概率较大的 `12000` 个 anchor；
+2. 利用回归的位置参数，修正这 `12000` 个 `anchor` 的位置，得到`RoIs`；
+3. 利用非极大值（(Non-maximum suppression, NMS）抑制，选出概率最大的 `2000` 个 `RoIs`。
 
-> 在 RPN 中，从上万个 anchor 中，选一定数目(2000 或 300)，调整大小和位置生成 `RoIs`，用于 ROI Head/Fast RCNN 训练（ProposalTargetCreator 会从中选择 128 个 RoIs 用以训练）。
+> 在 RPN 中，从上万个 anchor 中，选一定数目(2000 或 300)，调整大小和位置生成 `RoIs`，用于 ROI Head/Fast RCNN 训练或测试，然后 `ProposalTargetCreator` 再从 `RoIs` 中会中选择 `128` 个 `RoIs` 用以 ROIHead 的训练）。
 
-注意：在 `inference` 的时候，为了提高处理速度，12000 和 2000 分别变为 6000 和 300。**`Proposal Layer` 层，这部分的操作不需要进行反向传播，因此可以利用 numpy/tensor 实现**。
+注意：RoIs 对应的尺寸是原图大小，同时在 `inference` 的时候，为了提高处理速度，12000 和 2000 分别变为 6000 和 300。**`Proposal Layer` 层，这部分的操作不需要进行反向传播，因此可以利用 numpy/tensor 实现**。
 
 ### RPN 网络总结
 
@@ -130,16 +132,18 @@ t_{w}^{\ast } = log(w^{\ast }/w_{a}), t_{h}^{\ast }=log(h^{\ast }/h_{a}) $$
 
 **RoI Pooling 的两次量化过程**：
 
-(1) 因为 `proposals`是对应 $M\times N$ 的原图尺寸，所以**在原图上生成的 region proposal** 需要映射到 `feature map` 上，需要除以 $16/32$（下采样倍数），这时候边界会出现小数，自然就需要量化。
+(1) 因为 `proposals`是对应 $M\times N$ 的原图尺寸，所以**在原图上生成的 region proposal** 需要映射到 `feature map` 上（坐标值缩小 16 倍），需要除以 $16/32$（下采样倍数），这时候边界会出现小数，自然就需要量化。
 (2) 将 `proposals` 对应的 `feature map` 区域水平划分成 $k\times k$ ($7\times 7$) 的 `bins`，并对每个 `bin` 中均匀选取多少个采样点，然后进行 `max pooling`，也会出现小数，自然就产生了第二次量化。
 
-**RoI Align 如何改进**:
+**Mask RCNN 算法中的 RoI Align 如何改进**:
 
 `ROI Align` 并不需要对两步量化中产生的浮点数坐标的像素值都进行计算，而是设计了一套优雅的流程。如下图，其中虚线代表的是一个 `feature map`，实线代表的是一个 `roi` (在这个例子中，一个 `roi` 是分成了 $2\times 2$ 个 `bins`)，实心点代表的是采样点，每个 `bin` 中有 `4` 个采样点。我们通过双线性插值的方法根据采样点周围的四个点计算每一个采样点的值，然后对着四个采样点执行最大池化操作得到当前 `bin` 的像素值。
 
 ![ROI-Align](../../data/images/faster-rcnn/ROI-Align.png)
 
 `RoI Align` 具体做法：假定采样点数为 `4`，即表示，对于每个 $2.97\times 2.97$ 的 `bin`，**平分四份小矩形，每一份取其中心点位置，而中心点位置的像素，采用双线性插值法进行计算**，这样就会得到四个小数坐标点的像素值。
+
+更多细节内容可以参考 [RoIPooling、RoIAlign笔记](https://www.cnblogs.com/wangyong/p/8523814.html)。
 
 ### ROI Head 训练
 

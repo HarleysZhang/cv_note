@@ -89,7 +89,7 @@ t^{*}_{w} = log(w^{*}/w_{a}), t^{*}_{h}=log(h^{*}/h_{a}) $$
 
 ![rpn的loss计算公式](../../data/images/faster-rcnn/rpn的loss计算公式.jpg)
 
-**公式解释**：Here, $i$ is the index of an anchor in a mini-batch and $p_{i}$ is the predicted probability of anchor i being an object. The ground-truth label $p_i^*$ is 1 if the anchor is positive, and is 0 if the anchor is negative. $t_{i}$ is a vector representing the 4 parameterized coordinates of the predicted bounding box, and $t_i^*$ is that of theground-truth box associated with a positive anchor.
+**公式解释**：Here, $i$ is the index of an anchor in a mini-batch and $p_{i}$ is the predicted probability of anchor i being an object. The ground-truth label $p_i^{\ast}$ is 1 if the anchor is positive, and is 0 if the anchor is negative. $t_{i}$ is a vector representing the 4 parameterized coordinates of the predicted bounding box, and $t_i^*$ is that of theground-truth box associated with a positive anchor.
 
 ### RPN 生成 RoIs(Proposal Layer)
 

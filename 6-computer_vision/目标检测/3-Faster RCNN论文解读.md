@@ -80,8 +80,8 @@ RPN 完成 `positive/negative 分类` + `bounding box regression 坐标回归`�
 
 $$t_{x} = (x-x_{a})/w_{a}, t_{y}=(y-y_{a})/h_{a}$$
 $$t_{w} = log(w/w_{a}), t_{h}=log(h/h_{a})$$
-$$t_{x}^{*} = (x^{\ast}-x_{a})/w_{a}, t_{y}^{\ast}=(y^{\ast}-y_{a})/h_{a}$$
-$$t_{w}^{*} = log(w^{*}/w_{a}), t_{h}^{*}=log(h^{*}/h_{a}) $$
+$$t_{x}^{\ast } = (x^{\ast }-x_{a})/w_{a}, t_{y}^{\ast}=(y^{\ast}-y_{a})/h_{a}$$
+$$t_{w}^{\ast } = log(w^{\ast }/w_{a}), t_{h}^{\ast }=log(h^{\ast }/h_{a}) $$
 
 参数解释：where $x, y, w,$ and $h$ denote the box’s center coordinates and its width and height. Variables $x, x_{a}$，and $x^{*}$ are for the predicted box, anchor box, and groundtruth box respectively (likewise for $y, w, h$).
 

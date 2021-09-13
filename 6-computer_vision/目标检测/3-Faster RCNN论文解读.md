@@ -1,18 +1,18 @@
 - [Faster RCNN 网络概述](#faster-rcnn-网络概述)
 - [Conv layers](#conv-layers)
 - [RPN 网络](#rpn-网络)
-  - [Anchors](#anchors)
-  - [生成 RPN 网络训练集](#生成-rpn-网络训练集)
-  - [positive/negative 二分类](#positivenegative-二分类)
-  - [RPN 生成 RoIs(Proposal Layer)](#rpn-生成-roisproposal-layer)
-  - [RPN 网络总结](#rpn-网络总结)
+	- [Anchors](#anchors)
+	- [生成 RPN 网络训练集](#生成-rpn-网络训练集)
+	- [positive/negative 二分类](#positivenegative-二分类)
+	- [RPN 生成 RoIs(Proposal Layer)](#rpn-生成-roisproposal-layer)
+	- [RPN 网络总结](#rpn-网络总结)
 - [ROIHead/Fast R-CNN](#roiheadfast-r-cnn)
-  - [Roi pooling](#roi-pooling)
-  - [ROI Head 训练](#roi-head-训练)
-  - [ROI Head 测试](#roi-head-测试)
+	- [Roi pooling](#roi-pooling)
+	- [ROI Head 训练](#roi-head-训练)
+	- [ROI Head 测试](#roi-head-测试)
 - [概念理解](#概念理解)
-  - [四类损失](#四类损失)
-  - [三个 creator](#三个-creator)
+	- [四类损失](#四类损失)
+	- [三个 creator](#三个-creator)
 - [参考资料](#参考资料)
 
 > 本文为学习笔记，部分内容参考网上资料和论文而写的，内容涉及 `Faster RCNN` 网络结构理解和代码实现原理。
@@ -80,7 +80,7 @@ RPN 完成 `positive/negative 分类` + `bounding box regression 坐标回归`�
 
 $$t_{x} = (x-x_{a})/w_{a}, t_{y}=(y-y_{a})/h_{a} \\
 t_{w} = log(w/w_{a}), t_{h}=log(h/h_{a}) \\
-t^{*}_{x} = (x^{*}-x_{a})/w_{a}, t^{*}_{y}=(y^{*}-y_{a})/h_{a} \\
+t^{\ast}_{x} = (x^{\ast}-x_{a})/w_{a}, t^{*}_{y}=(y^{*}-y_{a})/h_{a} \\
 t^{*}_{w} = log(w^{*}/w_{a}), t^{*}_{h}=log(h^{*}/h_{a}) $$
 
 参数解释：where $x, y, w,$ and $h$ denote the box’s center coordinates and its width and height. Variables $x, x_{a}$，and $x^{*}$ are for the predicted box, anchor box, and groundtruth box respectively (likewise for $y, w, h$).

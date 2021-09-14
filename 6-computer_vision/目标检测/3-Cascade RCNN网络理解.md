@@ -2,7 +2,11 @@
 - [1，介绍](#1介绍)
   - [1.1，Faster RCNN 回顾](#11faster-rcnn-回顾)
   - [1.2，mismatch 问题](#12mismatch-问题)
-- [2，网络结构](#2网络结构)
+- [2，实验分析](#2实验分析)
+  - [2.1，改变IoU阈值对Detector性能的影响](#21改变iou阈值对detector性能的影响)
+  - [2.2，提高IoU阈值的影响](#22提高iou阈值的影响)
+  - [2.3，和Iterative BBox比较](#23和iterative-bbox比较)
+- [3，网络结构](#3网络结构)
 - [参考资料](#参考资料)
 
 ## 摘要
@@ -13,7 +17,7 @@
 
 > `Cascade RCNN` 是作者 `Zhaowei Cai` 于 `2018` 年发表的论文 `Cascade R-CNN: Delving into High Quality Object Detection`.
 
-![提升IOU阈值对检测器性能的影响](../../data/images/cascade%20rcnn/提升IOU阈值对检测器性能的影响.png)
+
 
 ### 1.1，Faster RCNN 回顾
 
@@ -29,7 +33,47 @@
 
 `training` 阶段和 `inference` 阶段，`bbox` 回归器的输入 `proposals` 分布是不一样的，`training` 阶段的输入`proposals` 质量更高(被采样过，IoU > threshold)，`inference` 阶段的输入 `proposals` 质量相对较差（没有被采样过，可能包括很多 IoU < threshold 的），这就是论文中提到 `mismatch` 问题，这个问题是固有存在的，但通常 `threshold` 取 `0.5` 时，`mismatch` 问题还不会很严重。
 
-## 2，网络结构
+## 2，实验分析
+
+### 2.1，改变IoU阈值对Detector性能的影响
+
+![提升IOU阈值对检测器性能的影响](../../data/images/cascade%20rcnn/提升IOU阈值对检测器性能的影响.png)
+
+从上图可以看出：
+
+- 同一个 detector 通常只会在一个小范围的 IoU 阈值 内性能最好，比如 IoU 阈值为 0.5 的 detector，在输入 `proposal` 和 `gt` 的阈值为 `0.55-0.6` 范围内，其性能最好。阈值为 0.6 的 detector 则在 0.6~0.75 阈值范围内性能最佳。
+- 几乎所有的检测器输出框的 IoU 都好于输入 proposal 的 IoU（红绿蓝三条曲线都在灰色对角线上方）。
+
+### 2.2，提高IoU阈值的影响
+
+主要是分析对提高 IoU 阈值对 RPN 输出 Proposal 数量的影响，实验结果如下图所示。
+
+![提高IoU阈值的影响](../../data/images/cascade%20rcnn/提高IoU阈值的影响.png)
+
+上图纵坐标表示 `RPN` 输出 proposal 在各个 IoU 范围内的数量。
+
+- 第一张图表示级联结构的第一级，可以等同为没有级联结构的 `RCNN` 网络。从图中可以看出，随着 IoU 的增加，IoU 在 0.6,0.7 及以上范围内的 proposal 数量越来越少。虽然这样产生更高精度的 proposal，但是也带来了两个问题：
+  - **过拟合**。
+  - **更严重的 `mismatch` 问题**。`RCNN` 结构本身就存在这个问题，IoU 阈值的提高又加剧了这个问题。
+
+- 第二、三图表示有级联结构的 `RCNN`，从图中可以看出，随着 `stage` 的加深，相应区域的依然拥有大量的 `proposal`，因此不会出现严重的过拟合的现象。
+
+
+### 2.3，和Iterative BBox比较
+
+`Iterative BBox` 的 `H` 位置都是共享的，而且 `3` 个分支的 `IoU` 阈值都取 `0.5`。`Iterative BBox` 存在两个问题：
+
+- 单一阈值 `0.5` 是无法对所有 `proposal` 取得良好效果。
+- 此外，`detector` 会改变样本的分布，使用同一个共享的 `H` 对检测是有影响的。作者做了下面的实验证明样本分布在各个`stage` 的变化。
+
+![Figure2](../../data/images/cascade%20rcnn/Figure2.png)
+
+红色表示离群点。
+
+- 从上图可以看出，没经过一次回归，样本都会更靠近 `gt`，即输出的样本分布会逐渐变化，使用同一个阈值 `0.5` 的条件下，后面两个 `stage` 就会有较多的离群点，使用共享的 `Head` 网络权重是无法满足输入的变化的。
+- 从上图还可以看出，每个阶段设置不同的 IoU 阈值，可以更好的去除离群点，从而适应不同的输入 `proposal` 分布。
+
+## 3，网络结构
 
 网络结构如下图(d)
 

@@ -47,7 +47,7 @@ $[\mathrm{\mathrm{x_0},\mathrm{x_1},...,\mathrm{x_{l-1}}]}$ 表示网络层 $0,.
 和 `ResNet` 一样，`DenseNet` 也有 `bottleneck` 单元，来适应更深的 `DenseNet`。`Bottleneck` 单元是 BN-ReLU-Conv(1x1)-BN-ReLU-Conv(3x3)这样连接的结构，作者将具有 `bottleneck` 的密集单元组成的网络称为 `DenseNet-B`。
 > `Bottleneck` 译为瓶颈，一端大一端小，对应着 1x1 卷积通道数多，3x3 卷积通道数少。
 
-对于 `ImageNet` 数据集，图片输入大小为 $224\times 224$ ，网络结构采用包含 `4` 个 `DenseBlock` 的`DenseNet-BC`，网络第一层是 `stride=2` 的 $7times 7$卷积层，然后是一个 `stride=2` 的 $3\times 3$ MaxPooling 层，而后是 `DenseBlock`。`ImageNet` 数据集所采用的网络配置参数表如表 1 所示：
+对于 `ImageNet` 数据集，图片输入大小为 $224\times 224$ ，网络结构采用包含 `4` 个 `DenseBlock` 的`DenseNet-BC`，网络第一层是 `stride=2` 的 $7\times 7$卷积层，然后是一个 `stride=2` 的 $3\times 3$ MaxPooling 层，而后是 `DenseBlock`。`ImageNet` 数据集所采用的网络配置参数表如表 1 所示：
 
 ![densenet系列网络参数表](../../data/images/densenet/densenet系列网络参数表.png)
 
@@ -62,7 +62,7 @@ $[\mathrm{\mathrm{x_0},\mathrm{x_1},...,\mathrm{x_{l-1}}]}$ 表示网络层 $0,.
 > 注意，后续的 VoVNet 证明了，虽然 DenseNet 网络参数量少，但是其推理效率却不高。
 
 在 `ImageNet` 分类数据集上达到同样的准确率，`DenseNet` 所需的参数量和计算量都不到 `ResNet` 的一半。对于工业界而言，小模型（参数量少）可以显著地**节省带宽，降低存储开销**。
-> 参数量少的模型，一半计算量也少。
+> 参数量少的模型，计算量肯定也少。
 
 作者通过实验发现，DenseNet 不容易过拟合，这在数据集不是很大的情况下表现尤为突出。在一些图像分割和物体检测的任务上，基于 DenseNet 的模型往往可以省略在 ImageNet 上的预训练，直接从随机初始化的模型开始训练，最终达到相同甚至更好的效果。
 

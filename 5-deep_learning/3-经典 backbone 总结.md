@@ -28,7 +28,7 @@
 
 ![resnet](../data/images/backbone/resnet.png)
 
-`Resnet` 网络参数表如下图所示。
+不同层数的 `Resnet` 网络参数表如下图所示。
 
 ![resnet网络参数表](../data/images/backbone/resnet网络参数表.png)
 

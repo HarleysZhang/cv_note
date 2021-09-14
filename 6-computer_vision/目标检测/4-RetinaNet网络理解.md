@@ -20,7 +20,7 @@
 
 ## 摘要
 
-> `FPN` 是作者 `T.-Y. Lin` 于 `2017` 发表的论文 `Feature pyramid networks for object detection.`
+> Retinanet 是作者 Tsung-Yi Lin 和 Kaiming He（四作） 于 2018 年发表的论文 Focal Loss for Dense Object Detection.
 
 作者深入分析了极度不平衡的正负（前景背景）样本比例导致 one-stage 检测器精度低于 two-stage 检测器，基于上述分析，提出了一种简单但是非常实用的 Focal Loss 焦点损失函数，并且 Loss 设计思想可以推广到其他领域，同时针对目标检测领域特定问题，设计了 RetinaNet 网络，结合 Focal Loss 使得 one-stage 检测器在精度上能够达到乃至超过 two-stage 检测器。
 
@@ -99,7 +99,7 @@ $$CE = \left\{\begin{matrix}
 为了方便，用 $p_t$ 代表 $p$，$p_t$ 定义如下：
 
 $$p_t = \left\{\begin{matrix}
-p, & if \quad y=1\\ 
+p, & if \quad y=1 \\ 
 1-p, &  if\quad y=0
 \end{matrix}\right.$$
 
@@ -212,7 +212,7 @@ $$L = \frac{1}{N}(\sum_{y_i = 1}^{m}-\alpha log(p)-\sum_{y_i = 0}^{n}(1 - \alpha
 `Focal Loss` 作者建议在交叉熵损失函数上加上一个调整因子（`modulating factor`）$(1-p_t)^\gamma$，把高置信度 $p$（易分样本）样本的损失降低一些。`Focal Loss` 定义如下：
 
 $$FL(p_t) = -(1-p_t)^\gamma log(p_t) = \left\{\begin{matrix}
--(1-p)^\gamma log(p), & if \quad y=1\\ 
+-(1-p)^\gamma log(p), & if \quad y=1 \\ 
 -p^\gamma log(1-p), &  if\quad y=0
 \end{matrix}\right.$$
 

@@ -1,34 +1,60 @@
-- [1，介绍](#1介绍)
-- [2，网络架构](#2网络架构)
-- [2.1，Backbone](#21backbone)
-  - [2.2，Neck](#22neck)
-  - [2.3，Head](#23head)
-- [3，Focal Loss](#3focal-loss)
-  - [3.1，Cross Entropy](#31cross-entropy)
-  - [3.2，Balanced Cross Entropy](#32balanced-cross-entropy)
-  - [3.3，Focal Loss Definition](#33focal-loss-definition)
-- [4，代码解读](#4代码解读)
-  - [4.1，Backbone](#41backbone)
-  - [4.2，Neck](#42neck)
-  - [4.3，Head](#43head)
-  - [4.4，先验框Anchor赋值](#44先验框anchor赋值)
-  - [4.5，BBox Encoder Decoder](#45bbox-encoder-decoder)
-  - [4.6，Focal Loss](#46focal-loss)
+- [摘要](#摘要)
+- [1，引言](#1引言)
+- [2，相关工作](#2相关工作)
+- [3，网络架构](#3网络架构)
+- [3.1，Backbone](#31backbone)
+  - [3.2，Neck](#32neck)
+  - [3.3，Head](#33head)
+- [4，Focal Loss](#4focal-loss)
+  - [4.1，Cross Entropy](#41cross-entropy)
+  - [4.2，Balanced Cross Entropy](#42balanced-cross-entropy)
+  - [4.3，Focal Loss Definition](#43focal-loss-definition)
+- [5，代码解读](#5代码解读)
+  - [5.1，Backbone](#51backbone)
+  - [5.2，Neck](#52neck)
+  - [5.3，Head](#53head)
+  - [5.4，先验框Anchor赋值](#54先验框anchor赋值)
+  - [5.5，BBox Encoder Decoder](#55bbox-encoder-decoder)
+  - [5.6，Focal Loss](#56focal-loss)
 - [参考资料](#参考资料)
 
-## 1，介绍
+## 摘要
 
 > `FPN` 是作者 `T.-Y. Lin` 于 `2017` 发表的论文 `Feature pyramid networks for object detection.`
 
-深入分析了极度不平衡的正负（前景背景）样本比例导致 one-stage 检测器精度低于 two-stage 检测器，基于上述分析，提出了一种简单但是非常实用的 Focal Loss 焦点损失函数，并且 Loss 设计思想可以推广到其他领域，同时针对目标检测领域特定问题，设计了 RetinaNet 网络，结合 Focal Loss 使得 one-stage 检测器在精度上能够达到乃至超过 two-stage 检测器。
+作者深入分析了极度不平衡的正负（前景背景）样本比例导致 one-stage 检测器精度低于 two-stage 检测器，基于上述分析，提出了一种简单但是非常实用的 Focal Loss 焦点损失函数，并且 Loss 设计思想可以推广到其他领域，同时针对目标检测领域特定问题，设计了 RetinaNet 网络，结合 Focal Loss 使得 one-stage 检测器在精度上能够达到乃至超过 two-stage 检测器。
 
-## 2，网络架构
+## 1，引言
+
+作者认为一阶段检测器的精度不能和两阶段检测相比的原因主要在于，训练过程中的类别不平衡，由此提出了一种新的损失函数-`Focal Loss`。
+
+`R-CNN(Fast RCNN)` 类似的检测器之所以能解决类别不平衡问题，是因为**两阶段级联结构和启发式采样**。提取 `proposal` 阶段（例如，选择性搜索、EdgeBoxes、DeepMask、`RPN`）很快的将候选对象位置的数量缩小到一个小数目（例如，1-2k），过滤掉大多数背景样本（其实就是筛选 `anchor` 数量）。在第二个分类阶段，执行启发式采样（`sampling heuristics`），例如固定的前景背景比（`1:3`），或在线难样本挖掘（`OHEM`），以保持前景和背景之间的平衡。
+
+相比之下，单级检测器必须处理在图像中定期采样的一组更大的候选对象位置。实际上，这通常相当于枚举 `∼100k` 个位置，这些位置密集地覆盖空间位置、尺度和纵横。虽然也可以应用类似的启发式采样方法，但效率低下，因为训练过程仍然由易于分类的背景样本主导。
+
+## 2，相关工作
+
+**Two-stage Detectors**: 与之前使用两阶段的分类器生成 `proposal` 不同，`Faster RCNN` 模型的 `RPN` 使用单个卷积就可以生成 `proposal`。
+
+**One-stage Detectors**：最近的一些研究表明，只需要降低输入图像分辨率和 `proposal` 数量，两阶段检测器速度就可以变得更快。但是，对于一阶段检测器，即使提高模型计算量，其最后的精度也落后于两阶段方法[17]。同时，作者强调，`Reinanet` 达到很好的结果的原因不在于网络结构的创新，而在于损失函数的创新。
+> 论文 [17] Speed/accuracy trade-offs for modern convolutional object detectors（注重实验）. 但是，从这几年看，一阶段检测器也可以达到很高的精度，甚至超过两阶段检测器，这几年的一阶段检测和两阶段检测器有相互融合的趋势了。
+
+**`Class Imbalance:`** 早期的目标检测器 `SSD` 等在训练过程中会面临严重的类别不平衡（`class imbalance`）的问题，即正样本太少，负样本太多，这会导致两个问题：
+
+- 训练效率低下：大多数候选区域都是容易分类的负样本，并没有提供多少有用的学习信号。
+- 模型退化：易分类的负样本太多会压倒训练，导致模型退化。
+
+通常的解决方案是执行某种形式的**难负样本挖掘**，如在训练时进行难负样本采样或更复杂的采样/重新称重方案。相比之下，`Focla Loss` 自然地处理了单级检测器所面临的类别不平衡，并且**允许在所有示例上有效地训练**，而不需要采样，也不需要容易的负样本来压倒损失和计算的梯度。
+
+**Robust Estimation**: 人们对设计稳健的损失函数（例如 `Huber loss`）很感兴趣，该函数通过降低具有大错误的示例（硬示例）的损失来减少对总损失的贡献。相反， `Focal Loss` 对容易样本(`inliers`)减少权重来解决（`address`）类别不平衡问题（`class imbalance`），这意味着即使容易样本数量大，但是其对总的损失函数贡献也很小。换句话说，`Focal Loss` 与鲁棒损失相反，它**侧重于训练稀疏的难样本**。
+
+## 3，网络架构
 
 `retinanet` 的网络架构图如下所示。
 
 ![网络架构图](../../data/images/retinanet/网络架构图.png)
 
-## 2.1，Backbone
+## 3.1，Backbone
 
 `Retinanet` 的 `Backbone` 为 `ResNet` 网络，`ResNet` 一般从 `18` 层到 `152` 层（甚至更多）不等，主要区别在于采用的残差单元/模块不同或者堆叠残差单元/模块的数量和比例不同，论文主要使用 `ResNet50`。
 
@@ -36,11 +62,11 @@
 
 ![两种残差块结构](../../data/images/retinanet/两种残差块结构.png)
 
-### 2.2，Neck
+### 3.2，Neck
 
 `Neck` 模块即为 `FPN` 网络结构。FPN 模块接收 c3, c4, c5 三个特征图，输出 P2-P7 五个特征图，通道数都是 256, stride 为 (8,16,32,64,128)，**其中大 stride (特征图小)用于检测大物体，小 stride (特征图大)用于检测小物体**。P6 和 P7 目的是提供一个**大感受野强语义**的特征图，有利于大物体和超大物体检测。注意：在 RetinaNet 的 FPN 模块中只包括卷积，不包括 BN 和 ReLU。
 
-### 2.3，Head
+### 3.3，Head
 
 `Head` 即预测头网络。
 
@@ -48,11 +74,11 @@
 
 `Retinanet` 的 `neck` 输出 `5` 个分支，即输出 `5` 个特征图。`head` 模块包括分类和位置检测两个分支，每个分支都包括 `4` 个卷积层，但是 `head` 模块的这两个分支之间参数不共享，分类 `Head` 输出通道是 A\*K，A 是类别数；检测 `head` 输出通道是 4*K, K 是 anchor 个数, 虽然每个 Head 的分类和回归分支权重不共享，但是 `5` 个输出特征图的 Head 模块权重是共享的。
 
-## 3，Focal Loss
+## 4，Focal Loss
 
 `Focal Loss` 是在二分类问题的交叉熵（`CE`）损失函数的基础上引入的，所以需要先学习下交叉熵损失的定义。
 
-### 3.1，Cross Entropy
+### 4.1，Cross Entropy
 
 在深度学习中我们常使用交叉熵来作为分类任务中训练数据分布和模型预测结果分布间的代价函数。对于同一个离散型随机变量 $\textrm{x}$ 有两个单独的概率分布 $P(x)$ 和 $Q(x)$，其交叉熵定义为：
 > P 表示真实分布， Q 表示预测分布。
@@ -164,7 +190,7 @@ class CrossEntropyLoss():
         return exp_input / exp_sum
 ```
 
-### 3.2，Balanced Cross Entropy
+### 4.2，Balanced Cross Entropy
 
 对于正负样本不平衡的问题，较为普遍的做法是引入 $\alpha \in(0,1)$ 参数来解决，上面公式重写如下：
 
@@ -179,7 +205,7 @@ $$L = \frac{1}{N}(\sum_{y_i = 1}^{m}-\alpha log(p)-\sum_{y_i = 0}^{n}(1 - \alpha
 
 其中 $\frac{\alpha}{1-\alpha} = \frac{n}{m}$，即 $\alpha$ 参数的值是根据正负样本分布比例来决定的，
 
-### 3.3，Focal Loss Definition
+### 4.3，Focal Loss Definition
 
 虽然 $\alpha$ 参数平衡了正负样本（`positive/negative examples`），但是它并不能区分难易样本（`easy/hard examples`），而实际上，目标检测中大量的候选目标都是易分样本。这些样本的损失很低，但是由于难易样本数量极不平衡，易分样本的数量相对来讲太多，最终主导了总的损失。而本文的作者认为，易分样本（即，置信度高的样本）对模型的提升效果非常小，模型应该主要关注与那些难分样本（这个假设是有问题的，是 `GHM` 的主要改进对象）
 
@@ -302,17 +328,18 @@ def py_sigmoid_focal_loss(pred,
     return loss
 ```
 
-## 4，代码解读
+## 5，代码解读
+
 > 代码来源[这里](https://github.com/yhenon/pytorch-retinanet)。
 
-### 4.1，Backbone
+### 5.1，Backbone
 
 RetinaNet 算法采用了 ResNet50 作为 Backbone, 并且考虑到整个目标检测网络比较大，前面部分网络没有进行训练，BN 也不会进行参数更新（来自 OpenMMLab 的经验）。
 
 ResNet 不仅提出了残差结构，而且还提出了骨架网络设计范式即 `stem + n stage+ cls head`，对于 ResNet 而言，其实际 forward 流程是 stem -> 4 个 stage -> 分类 head，stem 的输出 stride 是 4，而 4 个 stage 的输出 stride 是 4,8,16,32。
 > `stride` 表示模型的下采样率，假设图片输入是 `320x320`，`stride=10`，那么输出特征图大小是 `32x32` ，假设每个位置 `anchor` 是 `9` 个，那么这个输出特征图就一共有 `32x32x9` 个 `anchor`。
 
-### 4.2，Neck
+### 5.2，Neck
 
 ResNet 输出 4 个不同尺度的特征图（c2,c3,c4,c5），stride 分别是（4,8,16,32），通道数为（256,512,1024,2048）。
 
@@ -369,7 +396,7 @@ class PyramidFeatures(nn.Module):
         return [P3_x, P4_x, P5_x, P6_x, P7_x]
 ```
 
-### 4.3，Head
+### 5.3，Head
 
 `RetinaNet` 在特征提取网络 `ResNet-50` 和特征融合网络 `FPN` 后，对获得的五张特征图 `[P3_x, P4_x, P5_x, P6_x, P7_x]`，通过具有相同权重的框回归和分类子网络，获得所有框位置和类别信息。
 
@@ -463,7 +490,7 @@ class ClassificationModel(nn.Module):
         return out2.contiguous().view(x.shape[0], -1, self.num_classes)
 ```
 
-### 4.4，先验框Anchor赋值
+### 5.4，先验框Anchor赋值
 
 1，生成各个特征图对应原图大小的所有 `Anchors` 坐标的代码如下。
 
@@ -577,7 +604,7 @@ def shift(shape, stride, anchors):
 - 如果 gt bbox 和所有 anchor 的最大 iou 值大于等于 0(可以看出每个 gt bbox 都一定有至少一个 anchor 匹配)，那么该 gt bbox 所对应的 anchor 也是正样本；
 - 其余样本全部为忽略样本即 anchor 和所有 gt bbox 的最大 iou 值处于 [0.4,0.5) 区间的 anchor 为忽略样本，不计算 loss
 
-### 4.5，BBox Encoder Decoder
+### 5.5，BBox Encoder Decoder
 
 在 `anchor-based` 算法中，为了利用 `anchor` 信息进行更快更好的收敛，一般会对 `head` 输出的 `bbox` 分支 `4` 个值进行编解码操作，作用有两个：
 
@@ -638,9 +665,13 @@ x2 = gx + gw * 0.5
 y2 = gy + gh * 0.5
 ```
 
-### 4.6，Focal Loss
+### 5.6，Focal Loss
 
-Focal Loss 属于 CE Loss 的动态加权版本，其可以根据样本的难易程度(预测值和 label 的差距可以反映)对每个样本单独加权，易学习样本权重比较低，难样本权重比较高。特征图上输出的 `anchor` 坐标列表的大部分都是属于背景且易学习的样本，虽然单个 `loss` 比较小，但是由于数目众多最终会主导梯度，从而得到次优模型，而 Focal Loss 通过**指数效应**把大量易学习样本的权重大大降低，从而避免上述问题。为了便于理解，先给出 `Focal Loss` 的核心代码。
+Focal Loss 属于 CE Loss 的动态加权版本，其可以根据样本的难易程度(预测值和 label 的差距可以反映)对每个样本单独加权，易学习样本在总的 `loss` 中的权重比较低，难样本权重比较高。特征图上输出的 `anchor` 坐标列表的大部分都是属于背景且易学习的样本，虽然单个 `loss` 比较小，但是由于数目众多最终会主导梯度，从而得到次优模型，而 Focal Loss 通过**指数效应**把大量易学习样本的权重大大降低，从而避免上述问题。
+
+![focal-loss](../../data/images/retinanet/focal-loss.png)
+
+为了便于理解，先给出 `Focal Loss` 的核心代码。
 
 ```Python
 pred_sigmoid = pred.sigmoid()

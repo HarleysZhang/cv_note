@@ -298,7 +298,7 @@ def decoder(pred):
 
 `YOLOv1` 虽然速度很快，但是还有很多缺点：
 
-+ 虽然每个 `grid` 预测两个框，但是只能对应一个目标，对于同一个 `grid` 有着两个目标的情况下，`YOLOv` 是检测不全的，且模型最多检测 $7 \times 7 = 49$ 个目标，即表现为模型查全率低。
++ 虽然每个 `grid` 预测两个框，但是只能对应一个目标，对于同一个 `grid` 有着两个目标的情况下，`YOLOv1` 是检测不全的，且模型最多检测 $7 \times 7 = 49$ 个目标，即表现为模型查全率低。
 + 预测框不够准确，之前回归 $(x,y,w,h)$ 的方法不够精确，即表现为模型精确率低。
 + 回归参数网络使用全连接层参数量太大，即模型检测头还不够块。
 
@@ -466,6 +466,73 @@ $$d(box, centroid) = 1-IOU(box, centroid)$$
 
 $$P_r(object)*IOU(b; object) = \sigma (t_o)$$
 
+`Yolov2` 整个模型结构代码如下：
+> 代码来源 [这里](https://github.com/kuangliu/pytorch-yolov2/blob/master/encoder.py)。
+
+```python
+'''Darknet in PyTorch.'''
+import torch
+import torch.nn as nn
+import torch.nn.init as init
+import torch.nn.functional as F
+
+from torch.autograd import Variable
+
+
+class Darknet(nn.Module):
+    # (64,1) means conv kernel size is 1, by default is 3.
+    cfg1 = [32, 'M', 64, 'M', 128, (64,1), 128, 'M', 256, (128,1), 256, 'M', 512, (256,1), 512, (256,1), 512]  # conv1 - conv13
+    cfg2 = ['M', 1024, (512,1), 1024, (512,1), 1024]  # conv14 - conv18
+
+    def __init__(self):
+        super(Darknet, self).__init__()
+        self.layer1 = self._make_layers(self.cfg1, in_planes=3)
+        self.layer2 = self._make_layers(self.cfg2, in_planes=512)
+
+        #### Add new layers
+        self.conv19 = nn.Conv2d(1024, 1024, kernel_size=3, stride=1, padding=1)
+        self.bn19 = nn.BatchNorm2d(1024)
+        self.conv20 = nn.Conv2d(1024, 1024, kernel_size=3, stride=1, padding=1)
+        self.bn20 = nn.BatchNorm2d(1024)
+        # Currently I removed the passthrough layer for simplicity
+        self.conv21 = nn.Conv2d(1024, 1024, kernel_size=3, stride=1, padding=1)
+        self.bn21 = nn.BatchNorm2d(1024)
+        # Outputs: 5boxes * (4coordinates + 1confidence + 20classes)
+        self.conv22 = nn.Conv2d(1024, 5*(5+20), kernel_size=1, stride=1, padding=0)
+
+    def _make_layers(self, cfg, in_planes):
+        layers = []
+        for x in cfg:
+            if x == 'M':
+                layers += [nn.MaxPool2d(kernel_size=2, stride=2, ceil_mode=True)]
+            else:
+                out_planes = x[0] if isinstance(x, tuple) else x
+                ksize = x[1] if isinstance(x, tuple) else 3
+                layers += [nn.Conv2d(in_planes, out_planes, kernel_size=ksize, padding=(ksize-1)//2),
+                           nn.BatchNorm2d(out_planes),
+                           nn.LeakyReLU(0.1, True)]
+                in_planes = out_planes
+        return nn.Sequential(*layers)
+
+    def forward(self, x):
+        out = self.layer1(x)
+        out = self.layer2(out)
+        out = F.leaky_relu(self.bn19(self.conv19(out)), 0.1)
+        out = F.leaky_relu(self.bn20(self.conv20(out)), 0.1)
+        out = F.leaky_relu(self.bn21(self.conv21(out)), 0.1)
+        out = self.conv22(out)
+        return out
+
+
+def test():
+    net = Darknet()
+    y = net(Variable(torch.randn(1,3,416,416)))
+    print(y.size())  # 模型最后输出张量大小 [1,125,13,13]
+    
+if __name__ == "__main__":
+    test()
+```
+
 #### 4，多尺度训练
 
 `YOLOv1` 输入图像分辨率为 $449 \times 448$，因为使用了 `anchor boxes`，所以 `YOLOv2` 将输入分辨率改为 $416 \times 416$。又因为 `YOLOv2` 模型中只有卷积层和池化层，所以YOLOv2的输入可以不限于 $416 \times 416$ 大小的图片。为了增强模型的鲁棒性，`YOLOv2` 采用了**多尺度输入训练**策略，具体来说就是在训练过程中每间隔一定的 `iterations` 之后改变模型的输入图片大小。由于 `YOLOv2` 的下采样总步长为 `32`，所以输入图片大小选择一系列为 `32` 倍数的值： $\lbrace 320, 352,...,608 \rbrace$ ，因此输入图片分辨率最小为 $320\times 320$，此时对应的特征图大小为  $10\times 10$（不是奇数），而输入图片最大为 $608\times 608$ ，对应的特征图大小为 $19\times 19$ 。在训练过程，每隔 `10` 个 `iterations` **随机**选择一种输入图片大小，然后需要修最后的检测头以适应维度变化后，就可以重新训练。
@@ -480,7 +547,94 @@ $$P_r(object)*IOU(b; object) = \sigma (t_o)$$
 
 ![损失函数计算](../../data/images/yolov2/损失函数计算.jfif)
 
-第2,3行：$t$ 是迭代次数，即前 `12800` 步我们计算这个损失，后面不计算了。即前 `12800` 步我们会优化预测的 $(x,y,w,h)$ 与 `anchor` 的 $(x,y,w,h)$ 的距离 `+` 预测的 $(x,y,w,h)$ 与 `GT` 的 $(x,y,w,h)$ 的距离，`12800` 步之后就只优化预测的 $(x,y,w,h)$与 `GT` 的 $(x,y,w,h)$ 的距离，原因是这时的预测结果已经较为准确了，`anchor`已经满足检测系统的需要，而在一开始预测不准的时候，用上 `anchor` 可以加速训练。
+第 2,3 行：$t$ 是迭代次数，即前 `12800` 步我们计算这个损失，后面不计算了。即前 `12800` 步我们会优化预测的 $(x,y,w,h)$ 与 `anchor` 的 $(x,y,w,h)$ 的距离 `+` 预测的 $(x,y,w,h)$ 与 `GT` 的 $(x,y,w,h)$ 的距离，`12800` 步之后就只优化预测的 $(x,y,w,h)$与 `GT` 的 $(x,y,w,h)$ 的距离，原因是这时的预测结果已经较为准确了，`anchor`已经满足检测系统的需要，而在一开始预测不准的时候，用上 `anchor` 可以加速训练。
+
+`YOLOv2` 的损失函数实现代码如下，损失函数计算过程中的模型预测结果的解码函数和前面的解码函数略有不同，其包含关键部分目标 `bbox` 的解析。
+
+```python
+from __future__ import print_function
+
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+
+from torch.autograd import Variable
+from utils import box_iou, meshgrid
+
+class YOLOLoss(nn.Module):
+    def __init__(self):
+        super(YOLOLoss, self).__init__()
+
+    def decode_loc(self, loc_preds):
+        '''Recover predicted locations back to box coordinates.
+        Args:
+          loc_preds: (tensor) predicted locations, sized [N,5,4,fmsize,fmsize].
+        Returns:
+          box_preds: (tensor) recovered boxes, sized [N,5,4,fmsize,fmsize].
+        '''
+        anchors = [(1.3221,1.73145),(3.19275,4.00944),(5.05587,8.09892),(9.47112,4.84053),(11.2364,10.0071)]
+        N, _, _, fmsize, _ = loc_preds.size()
+        loc_xy = loc_preds[:,:,:2,:,:]   # [N,5,2,13,13]
+        grid_xy = meshgrid(fmsize, swap_dims=True).view(fmsize,fmsize,2).permute(2,0,1)  # [2,13,13]
+        grid_xy = Variable(grid_xy.cuda())
+        box_xy = loc_xy.sigmoid() + grid_xy.expand_as(loc_xy)  # [N,5,2,13,13]
+
+        loc_wh = loc_preds[:,:,2:4,:,:]  # [N,5,2,13,13]
+        anchor_wh = torch.Tensor(anchors).view(1,5,2,1,1).expand_as(loc_wh)  # [N,5,2,13,13]
+        anchor_wh = Variable(anchor_wh.cuda())
+        box_wh = anchor_wh * loc_wh.exp()  # [N,5,2,13,13]
+        box_preds = torch.cat([box_xy-box_wh/2, box_xy+box_wh/2], 2)  # [N,5,4,13,13]
+        return box_preds
+
+    def forward(self, preds, loc_targets, cls_targets, box_targets):
+        '''
+        Args:
+          preds: (tensor) model outputs, sized [batch_size,150,fmsize,fmsize].
+          loc_targets: (tensor) loc targets, sized [batch_size,5,4,fmsize,fmsize].
+          cls_targets: (tensor) conf targets, sized [batch_size,5,20,fmsize,fmsize].
+          box_targets: (list) box targets, each sized [#obj,4].
+        Returns:
+          (tensor) loss = SmoothL1Loss(loc) + SmoothL1Loss(iou) + SmoothL1Loss(cls)
+        '''
+        batch_size, _, fmsize, _ = preds.size()
+        preds = preds.view(batch_size, 5, 4+1+20, fmsize, fmsize)
+
+        ### loc_loss
+        xy = preds[:,:,:2,:,:].sigmoid()   # x->sigmoid(x), y->sigmoid(y)
+        wh = preds[:,:,2:4,:,:].exp()
+        loc_preds = torch.cat([xy,wh], 2)  # [N,5,4,13,13]
+
+        pos = cls_targets.max(2)[0].squeeze() > 0  # [N,5,13,13]
+        num_pos = pos.data.long().sum()
+        mask = pos.unsqueeze(2).expand_as(loc_preds)  # [N,5,13,13] -> [N,5,1,13,13] -> [N,5,4,13,13]
+        loc_loss = F.smooth_l1_loss(loc_preds[mask], loc_targets[mask], size_average=False)
+
+        ### iou_loss
+        iou_preds = preds[:,:,4,:,:].sigmoid()  # [N,5,13,13]
+        iou_targets = Variable(torch.zeros(iou_preds.size()).cuda()) # [N,5,13,13]
+        box_preds = self.decode_loc(preds[:,:,:4,:,:])  # [N,5,4,13,13]
+        box_preds = box_preds.permute(0,1,3,4,2).contiguous().view(batch_size,-1,4)  # [N,5*13*13,4]
+        for i in range(batch_size):
+            box_pred = box_preds[i]  # [5*13*13,4]
+            box_target = box_targets[i]  # [#obj, 4]
+            iou_target = box_iou(box_pred, box_target)  # [5*13*13, #obj]
+            iou_targets[i] = iou_target.max(1)[0].view(5,fmsize,fmsize)  # [5,13,13]
+
+        mask = Variable(torch.ones(iou_preds.size()).cuda()) * 0.1  # [N,5,13,13]
+        mask[pos] = 1
+        iou_loss = F.smooth_l1_loss(iou_preds*mask, iou_targets*mask, size_average=False)
+
+        ### cls_loss
+        cls_preds = preds[:,:,5:,:,:]  # [N,5,20,13,13]
+        cls_preds = cls_preds.permute(0,1,3,4,2).contiguous().view(-1,20)  # [N,5,20,13,13] -> [N,5,13,13,20] -> [N*5*13*13,20]
+        cls_preds = F.softmax(cls_preds)  # [N*5*13*13,20]
+        cls_preds = cls_preds.view(batch_size,5,fmsize,fmsize,20).permute(0,1,4,2,3)  # [N*5*13*13,20] -> [N,5,20,13,13]
+        pos = cls_targets > 0
+        cls_loss = F.smooth_l1_loss(cls_preds[pos], cls_targets[pos], size_average=False)
+
+        print('%f %f %f' % (loc_loss.data[0]/num_pos, iou_loss.data[0]/num_pos, cls_loss.data[0]/num_pos), end=' ')
+        return (loc_loss + iou_loss + cls_loss) / num_pos
+```
 
 `YOLOv2` 在 `VOC2007` 数据集上和其他 `state-of-the-art` 模型的测试结果的比较如下曲线所示。
 
@@ -684,7 +838,7 @@ def build_targets(p, targets, model):
 总的来说，`DarkNet-53` 不仅使用了全卷积网络，将 `YOLOv2` 中降采样作用 `pooling` 层都换成了 `convolution`(`3x3，stride=2`) 层；而且引入了残差（`residual`）结构，不再使用类似 `VGG` 那样的直连型网络结构，因此可以训练更深的网络，即卷积层数达到了 `53` 层。（更深的网络，特征提取效果会更好）
 
 `Darknet53` 网络的 `Pytorch` 代码如下所示。
-> 代码来源[这里](https://github.com/BobLiu20/YOLOv3_PyTorch.git)
+> 代码来源[这里](https://github.com/BobLiu20/YOLOv3_PyTorch.git)。
 
 ```python
 import torch

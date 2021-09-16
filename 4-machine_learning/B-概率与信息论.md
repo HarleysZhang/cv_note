@@ -161,6 +161,7 @@ $$
 信息论的基本想法是一个不太可能的事件居然发生了，要比一个非常可能的事件发生，能提供更多的信息。
 
 如果我们对于同一个随机变量 $\textrm{x}$ 有两个单独的概率分布 $P(x)$ 和 $Q(x)$，则可以用 **KL 散度**（ `Kullback-Leibler (KL) divergence`）来**衡量这两个概率分布的差异**：
+> KL散度也叫相对熵。
 
 $$D_{KL}(P\parallel Q) = \mathbb{E}_{\textrm{x}\sim p}\begin{bmatrix}
 log \frac{P(x)}{Q(x)} \end{bmatrix} = \mathbb{E}_{\textrm{x}\sim p}[log P(x) - log Q(x)]$$
@@ -178,7 +179,7 @@ KL(P\parallel Q) &= \int_{-\infty }^{+\infty}p(x)logp(x)dx - \int_{-\infty }^{+\
 &= -H(P) + H(P,Q)
 \end{aligned}$$
 
-$$交叉熵\ H(P,Q) = \mathbb{E}_{\textrm{x}\sim p} log Q(x)= - \int_{-\infty }^{+\infty}p(x) logq(x)dx$$
+$$\text{交叉熵}\ H(P,Q) = \mathbb{E}_{\textrm{x}\sim p} log Q(x)= - \int_{-\infty }^{+\infty}p(x) logq(x)dx$$
 其中，$H(P)$ 为熵（`entropy`），$H(P,Q)$ 为交叉熵（`cross entropy`）。**最小化 `KL` 散度其实就是在最小化分布之间的交叉熵**。
 
 在信息论中，熵 $H(P)$ 表示对来自 $P$ 的随机遍历进行编码所需的最小字节数，而交叉熵 $H(P,Q)$ 表示使用 $Q$ 的编码对来自 $P$ 的变量进行编码所需的字节数。因此 KL  散度可认为是使用基于 $Q$ 的编码对来自 $P$ 的变量进行编码所需的“额外字节数”；显然，额外字节数非负，当且仅当 $P=Q$ 时额外字节数为 `0`。

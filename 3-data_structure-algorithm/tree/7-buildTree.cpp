@@ -11,6 +11,7 @@
 #include <string.h>
 #include <vector>
 #include <map>
+#include <unordered_map>
 
 using namespace std;
 
@@ -30,7 +31,7 @@ public:
         for(int i=0; i<inorder.size(); ++i){
             index[inorder[i]] = i;
         }
-        auto root = recur(preorder, 0, inorder.size());
+        auto root = recur(preorder, 0, 0, inorder.size());
         return root;
     }
 
@@ -40,8 +41,8 @@ private:
         if (left > right) return nullptr;
         int i = index[preorder[left]]; // 获取中序遍历中根节点值的索引
         TreeNode* node = new TreeNode(preorder[left]);
-        node.left = recur(preorder, root+1, left, i-1);
-        node.right = recur(preorder, root+i-left+1, i+1, right);
+        node->left = recur(preorder, root+1, left, i-1);
+        node->right = recur(preorder, root+i-left+1, i+1, right);
 
         return node;
 

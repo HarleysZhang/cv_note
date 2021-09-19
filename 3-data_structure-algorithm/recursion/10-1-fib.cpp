@@ -1,14 +1,9 @@
-// 剑指offer 63. 股票的最大利润
-
-// 假设把某股票的价格按照时间先后顺序存储在数组中，请问买卖该股票一次可能获得的最大利润是多少？
+// 剑指offer 10.1 斐波那契数列 https://leetcode-cn.com/problems/fei-bo-na-qi-shu-lie-lcof/
 
 /*
 解题思路：
-
-1，贪心法：
-假设每天的股价都是最低价，每天都计算股票卖出去后的利润。一次 for 循环，时间复杂度：O(n)
-2，暴力法：
-两次 for 循环，时间复杂度 O(n^2)
+1，记忆化递归
+2，迭代法
 */
 
 # include <stdio.h>
@@ -27,7 +22,7 @@ private:
     vector<int> vec = vector<int>(101, -1);  // c++11 之后，类 private成员初始化方式
 public:
     // 1，直接递归会超出时间限制，需要使用记忆化递归
-    int fib(int n) {
+    constexpr int fib(int n) {
         if (n == 0) return 0;
         if (n == 1 || n == 2) return 1;
 

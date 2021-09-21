@@ -34,6 +34,7 @@
     - [leetcode 394-字符串解码](#leetcode-394-字符串解码)
     - [leetcode 821-字符的最短距离](#leetcode-821-字符的最短距离)
   - [5，哈希表](#5哈希表)
+    - [leetcode 146-LRU 缓存机制](#leetcode-146-lru-缓存机制)
   - [6，二叉树](#6二叉树)
     - [6.1，Offer 07-重建二叉树](#61offer-07-重建二叉树)
     - [6.2，leetcode 104-二叉树的最大深度](#62leetcode-104-二叉树的最大深度)
@@ -1685,6 +1686,89 @@ public: // 1，两次遍历法
 ```
 
 ### 5，哈希表
+
+#### leetcode 146-LRU 缓存机制
+
+[leetcode 146-LRU 缓存机制](https://leetcode-cn.com/problems/lru-cache/solution/lruhuan-cun-ji-zhi-by-leetcode-solution/)
+
+**解题方法：**
+
+`LRU` 缓存机制可以通过哈希表辅以双向链表实现，我们用一个哈希表和一个双向链表维护所有在缓存中的键值对。
+
+- 双向链表按照被使用的顺序存储了这些键值对，靠近头部的键值对是最近使用的，而靠近尾部的键值对是最久未使用的。
+- 哈希表即为普通的哈希映射（HashMap），通过缓存数据的键映射到其在双向链表中的位置（双向链表的节点地址）。
+
+**C++代码**：
+
+```cpp
+
+//定义双链表
+struct Node{
+    int key, val;
+    Node* left ,*right;
+    Node(int _key, int _value): key(_key),val(_value),left(NULL),right(NULL){}
+}*head,*tail; // 双链表的最左和最右节点，不存贮值。
+
+class LRUCache {
+private:
+    unordered_map<int, Node*> cache;
+    int n;
+public:
+    LRUCache(int capacity) {
+        n = capacity;
+        // head、tail 双链表的头尾节点
+        head = new Node(-1, -1), tail = new Node(-1, -1);
+        head -> right = tail;
+        tail -> left = head;
+    }
+    
+    int get(int key) {
+        if(!cache.count(key)) return -1;
+        Node* p = cache[key]; // 通过哈希表定位 key 对应的键值 p
+        removeNode(p);
+        addToHead(p);
+        return p->val;
+    }
+    
+    void put(int key, int value) {
+        if(cache.count(key)){
+            Node* p = cache[key];
+            p -> val = value; // 定位双向链表的节点 p，并更新 val
+            removeNode(p);
+            addToHead(p);
+        }
+        else{
+            if(cache.size() == n){
+                auto p = tail->left;
+                removeNode(p);
+                cache.erase(p->key);  // 更新哈希表
+                delete p;
+            }
+            auto p = new Node(key, value);
+            addToHead(p);
+            cache[key] = p;
+        }
+    }
+    void removeNode(Node* p){  // 移除指定节点 p
+        p->left->right = p->right;
+        p->right->left = p->left;
+    }
+
+    void addToHead(Node* p){ // 插入到头节点 L 之后
+        p->right = head->right;
+        p->left = head;
+        head->right->left = p;
+        head->right = p;
+    }
+};
+
+/**
+ * Your LRUCache object will be instantiated and called as such:
+ * LRUCache* obj = new LRUCache(capacity);
+ * int param_1 = obj->get(key);
+ * obj->put(key,value);
+ */
+```
 
 ### 6，二叉树
 

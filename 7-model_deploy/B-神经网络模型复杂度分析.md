@@ -5,6 +5,43 @@
 * [三，一些概念](#三，一些概念)
 * [四，参考资料](#四，参考资料)
 
+## 前言
+
+现阶段的轻量级模型 MobileNet/ShuffleNet 系列、CSPNet、RepVGG、VoVNet 等都必须依赖于于具体的计算平台（如 CPU/GPU/ASIC 等）才能更完美的发挥网络架构。
+
+1，计算平台主要有两个指标：算力 $\pi $和 带宽 $\beta $。
+
+- 算力指的是计算平台每秒完成的最大浮点运算次数，单位是 `FLOPS`
+- 带宽指的是计算平台一次每秒最多能搬运多少数据（每秒能完成的内存交换量），单位是 `Byte/s`。
+
+计算强度上限 $I_{max}$，上面两个指标相除得到计算平台的**计算强度上限**。它描述了单位内存交换最多用来进行多少次计算，单位是 `FLOPs/Byte`。
+
+$$I_{max} = \frac {\pi }{\beta}$$
+
+> 这里所说的“内存”是广义上的内存。对于 `CPU` 而言指的就是真正的内存（`RAM`）；而对于 `GPU` 则指的是显存。
+
+2，和计算平台的两个指标相呼应，模型也有两个主要的反馈速度的**间接指标**：计算量 `FLOPs` 和访存量 `MAC`。
+
+- **计算量（FLOPs）**：指的是输入单个样本（一张图像），模型完成一次前向传播所发生的浮点运算次数，即模型的时间复杂度，单位是 `FLOPs`。
+- **访存量（MAC）**：指的是输入单个样本（一张图像），模型完成一次前向传播所发生的内存交换总量，即模型的空间复杂度，单位是 `Byte`，因为数据类型通常为 `float32`，所以需要乘以 `4`。`CNN` 网络中每个网络层 `MAC` 的计算分为读输入 `feature map` 大小、权重大小（`DDR` 读）和写输出 `feature map` 大小（`DDR` 写）三部分。
+- 模型的计算强度 $I$ ：$I = \frac{FLOPs}{MAC}$，即计算量除以访存量后的值，**表示此模型在计算过程中，每 `Byte` 内存交换到底用于进行多少次浮点运算**。单位是 `FLOPs/Byte`。可以看到，模计算强度越大，其内存使用效率越高。
+- 模型的理论性能 $P$ ：我们最关心的指标，即模型在计算平台上所能达到的每秒浮点运算次数（理论值）。单位是 `FLOPS or FLOP/s`。`Roof-line Model` 给出的就是计算这个指标的方法。
+
+3，`Roofline` 模型讲的是程序在计算平台的算力和带宽这两个指标限制下，所能达到的理论性能上界，而不是实际达到的性能，因为实际计算过程中还有除算力和带宽之外的其他重要因素，它们也会影响模型的实际性能，这是 `Roofline Model` 未考虑到的。例如矩阵乘法，会因为 `cache` 大小的限制、`GEMM` 实现的优劣等其他限制，导致你几乎无法达到 `Roofline` 模型所定义的边界（屋顶）。
+
+所谓 “Roof-line”，指的就是由计算平台的算力和带宽上限这两个参数所决定的“屋顶”形态，如下图所示。
+
+- 算力决定“屋顶”的高度（绿色线段）
+- 带宽决定“房檐”的斜率（红色线段）
+
+![roof-line](../data/images/模型复杂度分析/roof-line.jpg)
+
+`Roof-line` 划分出的两个瓶颈区域定义如下：
+
+![Roof-line划分出的两个瓶颈区域](../data/images/模型复杂度分析/Roof-line划分出的两个瓶颈区域.png)
+
+**个人感觉如果在给定计算平台上做模型部署工作，因为芯片的算力已定，工程师能做的主要工作应该是提升带宽。**
+
 ## 一，模型计算量分析
 
 > 终端设备上运行深度学习算法需要考虑内存和算力的需求，因此需要进行模型复杂度分析，涉及到模型计算量（时间/计算复杂度）和模型参数量（空间复杂度）分析。
@@ -110,3 +147,4 @@ $$ mac\ utilization = \frac {used\ Ops/s}{raw\ OPs/s} = \frac {FLOPs/time(s)}{Ra
 + [MobileNetV1 & MobileNetV2 简介](https://blog.csdn.net/mzpmzk/article/details/82976871)
 + [双精度，单精度和半精度](https://blog.csdn.net/sinat_24143931/article/details/78557852?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase)
 + [AI硬件的Computational Capacity详解](https://zhuanlan.zhihu.com/p/27836831)
++ [Roofline Model与深度学习模型的性能分析](https://zhuanlan.zhihu.com/p/34204282)

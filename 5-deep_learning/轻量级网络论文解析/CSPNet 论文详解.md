@@ -2,12 +2,12 @@
 - [1，介绍](#1介绍)
 - [2，相关工作](#2相关工作)
 - [3，改进方法](#3改进方法)
-	- [3.1，Cross Stage Partial Network](#31cross-stage-partial-network)
-	- [3.2，Exact Fusion Model](#32exact-fusion-model)
+  - [3.1，Cross Stage Partial Network](#31cross-stage-partial-network)
+  - [3.2，Exact Fusion Model](#32exact-fusion-model)
 - [4，实验](#4实验)
-	- [4.1，实验细节](#41实验细节)
-	- [4.2，消融实验](#42消融实验)
-	- [4.3，实验总结](#43实验总结)
+  - [4.1，实验细节](#41实验细节)
+  - [4.2，消融实验](#42消融实验)
+  - [4.3，实验总结](#43实验总结)
 - [5，结论](#5结论)
 - [6，代码解读](#6代码解读)
 - [参考资料](#参考资料)
@@ -77,8 +77,8 @@ CSPNet 和不同 backbone 结合后的效果如下图所示。
 
 Transition layer 的含义和 DenseNet 类似，是一个 1x1 的卷积层（没有再使用 `average pool`）。上图中 `transition layer` 的位置决定了梯度的结构方式，并且各有优势：
 
-- (c) 图 Fusion First 方式，先将两个部分进行 concatenate，然后再进行输入到Transion layer 中，采用这种做法会是的大量特梯度信息被重用，有利于网络学习；
-- (d) 图 Fusion Last 的方式，先将部分特征输入 Transition layer，然后再进行concatenate，这样梯度信息将被截断，损失了部分的梯度重用，但是由于 Transition 的输入维度比（c）图少，大大减少了计算复杂度。
+- (c) 图 **Fusion First** 方式，先将两个部分进行 concatenate，然后再进行输入到Transion layer 中，采用这种做法会是的大量特梯度信息被重用，有利于网络学习；
+- (d) 图 **Fusion Last** 的方式，先将部分特征输入 Transition layer，然后再进行concatenate，这样**梯度信息将被截断**，损失了部分的梯度重用，但是由于 Transition 的输入维度比（c）图少，大大减少了计算复杂度。
 - (b) 图中的结构是论文 `CSPNet` 所采用的，其结合了 (c)、(d) 的特点，提升了学习能力的同时也提高了一些计算复杂度。 作者在论文中给出其使用不同 Partial Transition Layer 的实验结果，如下图所示。具体使用哪种结构，我们可以根据条件和使用场景进行调整。
 
 ![不同Transition-layer的对比实验](../../data/images/CSPNet/不同Transition-layer的对比实验.png)

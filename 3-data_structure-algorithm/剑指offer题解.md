@@ -463,6 +463,27 @@ public:
 
 请必须使用时间复杂度为 O(log n) 的算法。
 
+**解题方法**：
+
+二分查找法（非递归实现），查找结束如果没有相等值则返回 left，该值为插入位置
+
+```cpp
+class Solution {
+public:
+    // 二分法+非递归实现
+    int searchInsert(vector<int>& nums, int target) {
+        int low = 0, high = nums.size()-1;
+        while( low <= high){
+            int mid = low+(high-low)/2; //mid = low+((high-low)>>1)
+            // int mid = (low+high)/2;
+            if( nums[mid] == target ) return mid;
+            else if (target < nums[mid]) high = mid - 1;
+            else low = mid + 1;
+        }
+        return low;
+    }
+};
+```
 
 ### 2，链表
 

@@ -6,6 +6,8 @@
     - [29-顺时针打印矩阵](#29-顺时针打印矩阵)
     - [50-第一个只出现一次的字符位置](#50-第一个只出现一次的字符位置)
     - [leetcode 989-数组形式的整数加法](#leetcode-989-数组形式的整数加法)
+    - [leetcode26-删除有序数组中的重复项](#leetcode26-删除有序数组中的重复项)
+    - [leetcode35-搜索插入位置](#leetcode35-搜索插入位置)
   - [2，链表](#2链表)
     - [6-从尾到头打印单链表](#6-从尾到头打印单链表)
     - [18.1-删除链表的节点](#181-删除链表的节点)
@@ -16,6 +18,7 @@
     - [52-两个链表的第一个公共节点](#52-两个链表的第一个公共节点)
     - [leetcode 61-旋转链表](#leetcode-61-旋转链表)
     - [leetcode 24-两两交换链表中的节点](#leetcode-24-两两交换链表中的节点)
+    - [leetcode876-链表的中间节点](#leetcode876-链表的中间节点)
   - [3，栈队列堆](#3栈队列堆)
     - [9-用两个栈实现队列](#9-用两个栈实现队列)
     - [30-包含 min 函数的栈](#30-包含-min-函数的栈)
@@ -35,9 +38,11 @@
     - [leetcode 821-字符的最短距离](#leetcode-821-字符的最短距离)
   - [5，哈希表](#5哈希表)
     - [leetcode 146-LRU 缓存机制](#leetcode-146-lru-缓存机制)
+    - [leetcode 30-串联所有单词的子串](#leetcode-30-串联所有单词的子串)
+    - [leetcode](#leetcode)
   - [6，二叉树](#6二叉树)
-    - [6.1，Offer 07-重建二叉树](#61offer-07-重建二叉树)
-    - [6.2，leetcode 104-二叉树的最大深度](#62leetcode-104-二叉树的最大深度)
+    - [07-重建二叉树](#07-重建二叉树)
+    - [leetcode 104-二叉树的最大深度](#leetcode-104-二叉树的最大深度)
     - [55.2-平衡二叉树](#552-平衡二叉树)
     - [leetcode 109-有序链表转换二叉搜索树](#leetcode-109-有序链表转换二叉搜索树)
   - [7，图](#7图)
@@ -400,6 +405,64 @@ public: // 逐位相加法，使用加法模板
     }
 };
 ```
+
+#### leetcode26-删除有序数组中的重复项
+
+[leetcode26-删除有序数组中的重复项](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/)
+
+给你一个有序数组 nums ，请你 原地 删除重复出现的元素，使每个元素 只出现一次 ，返回删除后数组的新长度。
+
+不要使用额外的数组空间，你必须在 原地 修改输入数组 并在使用 O(1) 额外空间的条件下完成。
+
+**解题思路**：
+
+双指针：
+
+1. 一个读指针、一个写指针遍历数组；
+2. 遇到重复的元素，读指针继续前进，写指针不做操作；
+3. 遇到不同的元素，写指针前进一步，并写入那个元素。
+
+```cpp
+class Solution {
+public:
+    // 双指针法
+    int removeDuplicates(vector<int>& nums) {
+        if (nums.empty()) return 0;
+        int r=0, w = 0;
+        // int n = nums.size(); // 数组长度
+        while(r < nums.size()){
+            if(nums[r] != nums[w]){
+                w++;
+                nums[w] = nums[r];
+            }
+            r += 1;
+        }
+        return w+1;
+    }
+    int removeDuplicates2(vector<int>& nums) {
+        if (nums.empty()) return 0;
+        int duplicatedNum = nums[0];
+        int j=0;
+        for(int i=1;i<nums.size(); i++){
+            if(duplicatedNum != nums[i]) {
+                j += 1;
+                nums[j] = nums[i];
+                duplicatedNum = nums[i];
+            }
+        }
+        return j+1;
+    }
+};
+```
+
+#### leetcode35-搜索插入位置
+
+[leetcode35-搜索插入位置](https://leetcode-cn.com/problems/search-insert-position)
+
+给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。
+
+请必须使用时间复杂度为 O(log n) 的算法。
+
 
 ### 2，链表
 
@@ -842,6 +905,32 @@ public:
 };
 ```
 
+#### leetcode876-链表的中间节点
+
+[leetcode 876. 链表的中间结点](https://leetcode-cn.com/problems/middle-of-the-linked-list/)
+
+给定一个头结点为 head 的非空单链表，返回链表的中间结点。如果有两个中间结点，则返回第二个中间结点。
+
+**解题方法:**
+
+1. 数组法。
+2. **快慢指针法**：用两个指针 slow 与 fast 一起遍历链表。slow 一次走一步，fast 一次走两步。那么当 fast 到达链表的末尾时，slow 必然位于中间。值得注意的是，**快指针可以前进的前提是当前快指针和当前快指针的下一个节点非空**。
+
+```cpp
+class Solution {
+public:
+    ListNode* middleNode(ListNode* head) {
+        ListNode* slow = head;
+        ListNode* fast = head;
+        while(fast && fast->next){
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+        return slow;
+    }
+};
+```
+
 ### 3，栈队列堆
 
 #### 9-用两个栈实现队列
@@ -1202,10 +1291,10 @@ public:
 **C++代码**：
 
 ```cpp
-class Solution {  
+class Solution {
 public:
-    // 简单方法：遍历滑动窗口找最大值，合理选择区间
-    vector<int> maxSlidingWindow(vector<int>& nums, int k) {
+    // 简单方法：遍历滑动窗口找最大值，合理选择区间,时间超出限制
+    vector<int> maxSlidingWindow2(vector<int>& nums, int k) {
         vector<int> ret;
         if (nums.size() == 0 && k == 0) return ret;
         for (int i = 0; i <= nums.size() - k; i++) {
@@ -1219,9 +1308,9 @@ public:
         return ret;
     }
     // 维护一个单调队列，队头是最大值
-    vector<int> maxSlidingWindow2(vector<int>& nums, int k) {
+    vector<int> maxSlidingWindow(vector<int>& nums, int k) {
         vector<int> ret;
-        deque<int> window;  // 创建双端队列
+        deque<int> window;  // 创建双端队列,单调递减的队列
         // 先将第一个窗口的值按照规则入队
         for (int i = 0; i < k; i++) {
             while (!window.empty() && window.back() < nums[i]) {
@@ -1230,10 +1319,10 @@ public:
             window.push_back(nums[i]);
         }
         ret.push_back(window.front());
-        
+        // 模拟滑动窗口的移动
         for (int j = k; j < nums.size(); j++) {
-            if (nums[j - k] == window.front()) window.pop_front();  // 模拟滑动窗口的移动
-            while (!window.empty() && window.back() <= nums[j]) {
+            if (nums[j - k] == window.front()) window.pop_front();  // 移动后窗口的前一个元素等于队头元素
+            while (!window.empty() && window.back() < nums[j]) {
                 window.pop_back();
             }
             window.push_back(nums[j]);
@@ -1770,9 +1859,102 @@ public:
  */
 ```
 
+#### leetcode 30-串联所有单词的子串
+
+[leetcode 30. 串联所有单词的子串](https://leetcode-cn.com/problems/substring-with-concatenation-of-all-words/)
+
+给定一个字符串 s 和一些 长度相同 的单词 words 。找出 s 中恰好可以由 words 中所有单词串联形成的子串的起始位置。
+
+注意子串要与 words 中的单词完全匹配，中间不能有其他字符 ，但不需要考虑 words 中单词串联的顺序。
+
+示例 1：
+```shell
+输入：s = "barfoothefoobarman", words = ["foo","bar"]
+输出：[0,9]
+解释：
+从索引 0 和 9 开始的子串分别是 "barfoo" 和 "foobar" 。
+输出的顺序不重要, [9,0] 也是有效答案。
+```
+
+**解题思路**：**滑动窗口 + 哈希表**。滑动窗口的大小为 $k*len$。
+
+1. 从 words 出发，考虑 words 所有单词排列生成的字符串 X，通过字符串匹配查看 X 在 s 中的出现位置，但是 X 的可能情况有 $k!$ 种，$k$ 为 words 中单词的个数，明显超时！
+2. 从 s 串出发，遍历 s 串中所有长度为 (words[0].length * words.length) 的子串 Y，并判断 Y 是否可以由 words 数组构造生成。
+
+**代码步骤**：首先构建 words 单词出现次数的哈表表，然后滑动窗口移动的时候，每次获取 len 长度的子串，**并判断这个子串是否在 words 中**，并构建子串出现次数的哈希表，同时要求子串出现的次数不能大于原来 words 中单词出现的次数。
+
+时间复杂度：$O((n-k* len)* k)$，n 是字符串 s 的长度，k 是 words 中单词的个数，len是每个单词的长度。
+
+>这道 hard 题目居然被我做出来了！代码第二次修改参考了西法的剪枝代码，之前自己用嵌套 if 判断实在太傻了。
+
+```cpp
+class Solution {
+public:
+    vector<int> findSubstring(string s, vector<string>& words) {
+        unordered_map<string, int> freq;
+        // 计算字符串数组中每个单词出现的频率
+        for(auto s1: words){
+            freq[s1]++;
+        }
+
+        vector<int> ret;
+        int len = words[0].size();
+
+        for(int i=0; i< s.size()-len*words.size()+1; i++){
+            int pos = i;
+            int num = 1;
+            unordered_map<string, int> freq2;
+            while(num <= words.size()){
+                auto target = s.substr(pos, len);
+                
+                if(freq.count(target) == 0) break;  // 剪枝
+                freq2[target]++;  // 滑动窗口中子串出现次数+1
+                if(freq2[target] > freq[target]) break;  // 剪枝
+ 
+                pos += len;
+                num++;
+            }
+            if(num-1 == words.size()) ret.push_back(i);
+        }
+        return ret;
+    }
+};
+```
+
+#### leetcode
+
+**解题方法**：
+
+根据同余定理，只要求前缀和 p[i] 和 p[j] 模数 k 同余出现的次数。
+
+1. **前缀和**：使用公式 $pre[i]=pre[i−1]+nums[i]$ 得到每一位前缀和的值，从而通过前缀和进行相应的计算和解题。
+2. **同余定理**：给定一个正整数m，如果两个整数 a 和 b 满足 a-b 能够被 m 整除，即 $(a-b)/m$ 得到一个整数，那么就称整数 a 与 b 对模 m 同余，记作 a≡b(mod m)。对模 m 同余是整数的一个等价关系。
+
+```cpp
+class Solution {
+public:
+    int subarraysDivByK(vector<int>& nums, int k) {
+        // 哈希表初始化，record[0] = 1
+        unordered_map<int, int> record = {{0, 1}};
+        int sum = 0, ans = 0;
+        for (int elem: nums) {
+            sum += elem;
+            // 注意 C++ 取模的特殊性，当被除数为负数时取模结果为负数，需要纠正
+            int modulus = (sum % k + k) % k;
+            // 边遍历边计算答案
+            if (record.count(modulus)) {
+                ans += record[modulus];
+            }
+            ++record[modulus];
+        }
+        return ans;
+    }
+};
+```
+
 ### 6，二叉树
 
-#### 6.1，Offer 07-重建二叉树
+#### 07-重建二叉树
 
 [剑指 Offer 07-重建二叉树](https://leetcode-cn.com/problems/zhong-jian-er-cha-shu-lcof/)
 
@@ -1819,7 +2001,7 @@ private:
 };
 ```
 
-#### 6.2，leetcode 104-二叉树的最大深度
+#### leetcode 104-二叉树的最大深度
 
 [104-二叉树的最大深度](https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/)
 
@@ -2178,7 +2360,8 @@ public:
 
 **解题思路**：
 
-参考[这里](https://leetcode-cn.com/problems/zui-chang-bu-han-zhong-fu-zi-fu-de-zi-zi-fu-chuan-lcof/solution/mian-shi-ti-48-zui-chang-bu-han-zhong-fu-zi-fu-d-9/)
+1. 动态规划。参考[这里](https://leetcode-cn.com/problems/zui-chang-bu-han-zhong-fu-zi-fu-de-zi-zi-fu-chuan-lcof/solution/mian-shi-ti-48-zui-chang-bu-han-zhong-fu-zi-fu-d-9/)。
+2. 滑动窗口法 + 哈希表结构。
 
 **C++代码**：
 
@@ -2196,6 +2379,22 @@ public:
             res = max(res, tmp);
         }
         return res;
+    }
+    // 滑动窗口法 +  哈希表保存字符出现的位置
+    int lengthOfLongestSubstring2(string s) {
+        unordered_map<char, int> seen;
+        int maxLength = 0, l = 0;
+        for(int r=0; r<s.size(); r++){
+            // 更新滑动窗口左侧位置
+            if(seen.count(s[r]) > 0) {
+                int last_pos = seen[s[r]];
+                // 位置判断不可少，重复字符的位置必须是在滑动窗口内！
+                if(last_pos >= l) l = last_pos + 1;  // last_pos <= r
+            }
+            maxLength = max(maxLength, r-l+1);
+            seen[s[r]] = r;
+        }
+        return maxLength;
     }
 };
 ```

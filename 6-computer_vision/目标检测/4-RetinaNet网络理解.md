@@ -618,7 +618,7 @@ def shift(shape, stride, anchors):
         target_stds=[1.0, 1.0, 1.0, 1.0]),
     ```
 
-target_means 和 target_stds 相当于对 bbox 回归的 4 个 txtytwth 进行变换。在不考虑 target_means 和 target_stds 情况下，其编码公式如下：
+target_means 和 target_stds 相当于对 bbox 回归的 4 个 tx ty tw th 进行变换。在不考虑 target_means 和 target_stds 情况下，其编码公式如下：
 
 $$t_{x}^{\ast } = (x^{\ast }-x_{a})/w_{a}, t_{y}^{\ast}=(y^{\ast}-y_{a})/h_{a} \\\\
 t_{w}^{\ast } = log(w^{\ast }/w_{a}), t_{h}^{\ast }=log(h^{\ast }/h_{a}) $$

@@ -70,7 +70,7 @@ RPN 完成 `positive/negative 分类` + `bounding box regression 坐标回归`�
 在这个任务中，RPN 做的事情就是利用（`AnchorTargetCreator`）将 20000 多个候选的 anchor **选出 256 个 anchor 进行分类和回归位置**。选择过程如下：
 
 + 对于每一个 ground truth bounding box (`gt_bbox`)，选择和它重叠度（IoU）最高的一个 `anchor` 作为正样本;
-+ 对于剩下的 anchor，从中选择和任意一个 gt_bbox 重叠度超过 `0.7` 的 anchor ，同样作为正样本;
++ 对于剩下的 anchor，从中选择和任意一个 gt_bbox 重叠度超过 `0.7` 的 anchor ，同样作为正样本;特殊情况下，如果正样本不足 `128`(256 的 1/2)，则用负样本凑。
 + 随机选择和 `gt_bbox` 重叠度小于 `0.3` 的 anchor 作为负样本。
 本和正样本的总数为`256` ，正负样本比例 `1:1`。
 

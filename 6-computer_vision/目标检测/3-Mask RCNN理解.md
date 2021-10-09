@@ -1,3 +1,4 @@
+- [ROI Pooling 和 ROI Align 的区别](#roi-pooling-和-roi-align-的区别)
 - [Mask R-CNN 网络结构](#mask-r-cnn-网络结构)
 - [骨干网络 FPN](#骨干网络-fpn)
 - [anchor 锚框生成规则](#anchor-锚框生成规则)
@@ -5,6 +6,10 @@
 - [参考资料](#参考资料)
 
 > `Mask RCNN` 是作者 `Kaiming He` 于 `2018` 年发表的论文
+
+## ROI Pooling 和 ROI Align 的区别
+
+[Understanding Region of Interest — (RoI Align and RoI Warp)](https://towardsdatascience.com/understanding-region-of-interest-part-2-roi-align-and-roi-warp-f795196fc193)
 
 ## Mask R-CNN 网络结构
 

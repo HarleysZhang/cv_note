@@ -83,6 +83,10 @@
 
 上图中 (d) 和 (c) 很像，`iterative bbox at inference` 是在推断时候对回归框进行后处理，即模型输出预测结果后再多次处理，而 `Cascade R-CNN` 在训练的时候就进行重新采样，不同的 `stage` 的输入数据分布已经是不同的了。
 
+简单来说 cascade R-CNN 是由一系列的检测模型组成，每个检测模型都基于不同 IOU 阈值的正负样本训练得到，前一个检测模型的输出作为后一个检测模型的输入，因此是 stage by stage 的训练方式，而且越往后的检测模型，其界定正负样本的 IOU 阈值是不断上升的。
+
+Cascade R-CNN 的几个检测网络（`Head` 网络）是基于不同的 IOU 阈值确定的正负样本上训练得到的。
+
 作者在 COCO 数据集上做了对比实验，达到了 `state-of-the-art` 精度。其中 `backbone` 为`RsNet-101` 的 `Cascade RCNN` 的 `AP` 达到了 `42.8`。
 
 ![对比实验结果](../../data/images/cascade%20rcnn/对比实验结果.png)

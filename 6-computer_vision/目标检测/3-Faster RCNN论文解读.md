@@ -87,7 +87,9 @@ t_{w}^{\ast } = log(w^{\ast }/w_{a}), t_{h}^{\ast }=log(h^{\ast }/h_{a}) $$
 
 参数解释：where $x, y, w,$ and $h$ denote the box’s center coordinates and its width and height. Variables $x, x_{a}$，and $x^{*}$ are for the predicted box, anchor box, and groundtruth box respectively (likewise for $y, w, h$).
 
-计算分类损失用的是交叉熵损失，而计算回归损失用的是 Smooth_l1_loss. 在计算回归损失的时候，只计算正样本（前景）的损失，不计算负样本的位置损失。loss 计算公式如下：
+计算分类损失用的是交叉熵损失，**计算回归损失用的是 `Smooth_L1_loss`**。在计算回归损失的时候，只计算正样本（前景）的损失，不计算负样本的位置损失。`RPN` 网络的 Loss 计算公式如下：
+
+> [损失函数：L1 loss, L2 loss, smooth L1 loss](https://zhuanlan.zhihu.com/p/48426076)
 
 ![rpn的loss计算公式](../../data/images/faster-rcnn/rpn的loss计算公式.jpg)
 

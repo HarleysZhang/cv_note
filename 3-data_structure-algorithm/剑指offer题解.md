@@ -29,6 +29,7 @@
     - [59-滑动窗口的最大值](#59-滑动窗口的最大值)
     - [59.2-队列的最大值](#592-队列的最大值)
     - [leetcode 768-最多能完成排序的块 II](#leetcode-768-最多能完成排序的块-ii)
+    - [leetcode 215. 数组中的第K个最大元素](#leetcode-215-数组中的第k个最大元素)
   - [4，字符串](#4字符串)
     - [leetcode 58-最后一个单词的长度](#leetcode-58-最后一个单词的长度)
     - [leetcode 557-反转字符串中的单词 III](#leetcode-557-反转字符串中的单词-iii)
@@ -1475,6 +1476,51 @@ public:
         }
         int m = ret.size();
         return m;
+    }
+};
+```
+
+#### leetcode 215. 数组中的第K个最大元素
+
+[leetcode 215. 数组中的第K个最大元素](https://leetcode-cn.com/problems/kth-largest-element-in-an-array/)
+
+给定整数数组 nums 和整数 k，请返回数组中第 k 个最大的元素。
+
+请注意，你需要找的是数组排序后的第 k 个最大的元素，而不是第 k 个不同的元素。
+
+**解题思路**：小顶堆维护大顶堆的方法
+
+维护一个有 k 个元素的最小堆：
+
+- 如果当前堆不满，直接添加；
+- 堆满的时候，如果新读到的数大于堆顶元素，则将堆顶元素弹出，同时将新读到的数放入最小堆中（堆会自己调整内部结构）。
+
+**复杂度分析**：
+- 时间复杂度：$O(nlogk)$
+- 空间复杂度：$O(k)$
+
+```cpp
+class Solution {
+public:
+    // 小顶堆维护大顶堆的方法，时间复杂度 O(n logk)
+    int findKthLargest(vector<int>& nums, int k) {
+        vector<int> vec(k,0);
+        // priority_queue<int> heap;  // 大顶堆，堆顶为最大值
+        priority_queue<int, vector<int>, greater<int> > heap; // 小顶堆，堆顶为最小值
+
+        for(int i=0; i < nums.size();i++){
+            if(i < k){  // 创建一个大小为 k 的最小堆
+                heap.push(nums[i]);
+            }
+            else{
+                if(heap.top() < nums[i]){  
+                    heap.pop();
+                    heap.push(nums[i]);
+                }
+            }
+        }
+        int ret = heap.top();
+        return ret;
     }
 };
 ```

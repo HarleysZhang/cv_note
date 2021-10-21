@@ -4,7 +4,6 @@
     - [4-二维数组中的查找](#4-二维数组中的查找)
     - [5-替换空格](#5-替换空格)
     - [29-顺时针打印矩阵](#29-顺时针打印矩阵)
-    - [50-第一个只出现一次的字符位置](#50-第一个只出现一次的字符位置)
     - [leetcode 989-数组形式的整数加法](#leetcode-989-数组形式的整数加法)
     - [leetcode26-删除有序数组中的重复项](#leetcode26-删除有序数组中的重复项)
     - [leetcode35-搜索插入位置](#leetcode35-搜索插入位置)
@@ -38,6 +37,7 @@
     - [leetcode 394-字符串解码](#leetcode-394-字符串解码)
     - [leetcode 821-字符的最短距离](#leetcode-821-字符的最短距离)
   - [5，哈希表](#5哈希表)
+    - [50-第一个只出现一次的字符位置](#50-第一个只出现一次的字符位置)
     - [leetcode 146-LRU 缓存机制](#leetcode-146-lru-缓存机制)
     - [leetcode 30-串联所有单词的子串](#leetcode-30-串联所有单词的子串)
     - [leetcode](#leetcode)
@@ -268,61 +268,6 @@ public:
             l++;            
         } 
         return res;
-    }
-};
-```
-
-#### 50-第一个只出现一次的字符位置
-
-[剑指offer 题50. 第一个只出现一次的字符位置](https://leetcode-cn.com/problems/di-yi-ge-zhi-chu-xian-yi-ci-de-zi-fu-lcof)
-
-在字符串 s 中找出第一个只出现一次的字符。如果没有，返回一个单空格。 s 只包含小写字母。
-
-示例 1:
-```shell
-输入：s = "abaccdeff"
-输出：'b'
-```
-
-示例 2:
-```shell
-输入：s = "" 
-输出：' '
-```
-
-限制：`0 <= s 的长度 <= 50000`
-
-**解题方法**：
-
-哈希表法。map：基于红黑树，元素有序存储; unordered_map：基于散列表，元素无序存储
-
-**C++代码**：
-
-```cpp
-class Solution {
-public:
-    char firstUniqChar(string s) {
-        unordered_map<char, bool> dic;
-        for(char c:s){
-            dic[c] = dic.find(c) == dic.end();
-        }
-        for(char c:s){
-            if(dic[c] == true)
-                return c;
-        }
-        return ' ';
-    }
-    
-    char FirstNotRepeatingChar(string s) {
-        unordered_map<char, bool> dic;
-        for(char c:s){
-            dic[c] = dic.find(c) == dic.end();
-        }
-        for(int i=0; i<s.size();i++){
-            if(dic[s[i]] == true)
-                return i;
-        }
-        return -1;
     }
 };
 ```
@@ -1243,11 +1188,31 @@ public:
 
 [41.2-字符流中第一个不重复的字符](https://leetcode-cn.com/problems/di-yi-ge-zhi-chu-xian-yi-ci-de-zi-fu-lcof/)
 
-请实现一个函数用来找出字符流中第一个只出现一次的字符。例如，当从字符流中只读出前两个字符"go"时，第一个只出现一次的字符是"g"。当从该字符流中读出前六个字符“google"时，第一个只出现一次的字符是"l"。
+请实现一个函数用来找出字符流中第一个只出现一次的字符。例如，当从字符流中只读出前两个字符"go"时，第一个只出现一次的字符是"g"。当从该字符流中读出前六个字符“google"时，第一个只出现一次的字符是"l"。后台会用以下方式调用 Insert 和 FirstAppearingOnce 函数
+> string caseout = "";
+1.读入测试用例字符串 casein
+2.如果对应语言有 Init()函数的话，执行 Init() 函数
+3.循环遍历字符串里的每一个字符ch {
+Insert(ch);
+caseout += FirstAppearingOnce()
+}
+> 4. 输出 caseout，进行比较
+
+返回值描述：
+
+如果当前字符流没有存在出现一次的字符，返回 `#` 字符。
 
 **解题思路：**
 
-对于“重复问题”，惯性思维应该想到哈希或者set。对于“字符串问题”，大多会用到哈希。因此一结合，应该可以想到，判断一个字符是否重复，可以选择用哈希，在 `c++` 中，可以选择用 `unordered_map<char, int>`。
+1. 对于“重复问题”，惯性思维应该想到哈希或者set。对于“字符串问题”，大多会用到哈希。因此一结合，应该可以想到，判断一个字符是否重复，可以选择用哈希，在 `c++` 中，可以选择用 `unordered_map<char, int>`。
+2. 对于字符流，源源不断的往池子中添加字符，然后还要返回第一个满足什么条件的字符，显然设计到了“顺序”，也就是先来的先服务，这种先进先出的数据结构不就是队列嘛。因此，这里可以用队列 `queue`。
+
+**算法过程**如下：
+
+1. 初始化一个哈希表 `unordered_map<char, int> mp` 和队列 `queue<char> q`。
+2. 对于 `void Insert(char ch)` 字符插入函数的实现，当且仅当 `ch` 是第一次出现，则将 `ch` 添加到队列中；同时，不管 `ch` 是不是第一次出现，都需要在 `mp` 中更新一下字符的出现次数，方便后续判断字符是否是第一次出现。
+3. 对于 `char FirstAppearingOnce()` 函数，通过哈希表 `mp` 判断队列 `q` 的头部元素的出现次数，如果是 `1` 则返回对应字符 `ch`；如果不是 `1`，则队列 `pop()` 弹出头部元素继续判断下一个字符。
+
 
 ```cpp
 class Solution
@@ -1844,6 +1809,61 @@ public: // 1，两次遍历法
 ```
 
 ### 5，哈希表
+
+#### 50-第一个只出现一次的字符位置
+
+[剑指offer 题50. 第一个只出现一次的字符位置](https://leetcode-cn.com/problems/di-yi-ge-zhi-chu-xian-yi-ci-de-zi-fu-lcof)
+
+在字符串 s 中找出第一个只出现一次的字符。如果没有，返回一个单空格。 s 只包含小写字母。
+
+示例 1:
+```shell
+输入：s = "abaccdeff"
+输出：'b'
+```
+
+示例 2:
+```shell
+输入：s = "" 
+输出：' '
+```
+
+限制：`0 <= s 的长度 <= 50000`
+
+**解题方法**：
+
+哈希表法。map：基于红黑树，元素有序存储; unordered_map：基于散列表，元素无序存储
+
+**C++代码**：
+
+```cpp
+class Solution {
+public:
+    char firstUniqChar(string s) {
+        unordered_map<char, bool> dic;
+        for(char c:s){
+            dic[c] = dic.find(c) == dic.end();
+        }
+        for(char c:s){
+            if(dic[c] == true)
+                return c;
+        }
+        return ' ';
+    }
+    
+    char FirstNotRepeatingChar(string s) {
+        unordered_map<char, bool> dic;
+        for(char c:s){
+            dic[c] = dic.find(c) == dic.end();
+        }
+        for(int i=0; i<s.size();i++){
+            if(dic[s[i]] == true)
+                return i;
+        }
+        return -1;
+    }
+};
+```
 
 #### leetcode 146-LRU 缓存机制
 

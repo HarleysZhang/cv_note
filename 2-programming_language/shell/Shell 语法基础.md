@@ -469,8 +469,10 @@ if test -d "$dirname";then
     echo "It's a directory."
 fi
 ```
+
 运行脚本，输出如下：
-![test命令输出](../data/images/test命令测试.png)
+
+![test命令输出](../../data/images/test命令测试.png)
 
 `test` 命令是shell编程中非常重要的命令，一定要掌握！下面是其他一些常用的文件检查运算符：
 

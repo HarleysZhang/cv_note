@@ -16,7 +16,6 @@
 - [map 与 reduce 函数用法解释](#map-与-reduce-函数用法解释)
 - [Python 深拷贝、浅拷贝区别](#python-深拷贝浅拷贝区别)
 - [Python 继承多态理解](#python-继承多态理解)
-  - [总结](#总结)
 - [Python 面向对象的原则](#python-面向对象的原则)
 - [参考资料](#参考资料)
 
@@ -279,17 +278,13 @@ print('d = ', d)  # [1, 2, 3, ['a', 'b', 'c']]
 
 ## Python 继承多态理解
 
-多态是指对不同类型的变量进行相同的操作，它会根据对象（或类）类型的不同而表现出不同的行为。
-
-### 总结
-
-+ 继承可以拿到父类的所有数据和方法，子类可以重写父类的方法，也可以新增自己特有的方法。
-+ 有了继承，才有了多态，不同类的对象对同一消息会作出不同的相应。
+- 多态是指对不同类型的变量进行相同的操作，它会根据对象（或类）类型的不同而表现出不同的行为。
+- 继承可以拿到父类的所有数据和方法，子类可以重写父类的方法，也可以新增自己特有的方法。
+- 先有继承，后有多态，不同类的对象对同一消息会作出不同的相应。
 
 ## Python 面向对象的原则
 
 + [Python 工匠：写好面向对象代码的原则（上）](https://www.zlovezl.cn/articles/write-solid-python-codes-part-1/)
-
 + [Python 工匠：写好面向对象代码的原则（中）](https://www.zlovezl.cn/articles/write-solid-python-codes-part-2/)
 + [Python 工匠：写好面向对象代码的原则（下）](https://www.zlovezl.cn/articles/write-solid-python-codes-part-3/)
 

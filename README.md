@@ -18,7 +18,8 @@
 + [机器学习](4-machine_learning)
 + [深度学习](5-deep_learning)
 + [计算机视觉](6-computer_vision)
-+ [图像算法岗面经](7-interview_summary)
++ [模型优化及部署](7-model_deploy)
++ [图像算法岗面经](8-interview_summary)
 
 > `GitHub` 无法直接阅读公式，建议在谷歌浏览器安装 [MathJax Plugin for Github](https://chrome.google.com/webstore/detail/mathjax-plugin-for-github/ioemnmodlmafdkllaclgeombjnmnbima?hl=zh-CN) 插件访问(需要翻墙下载安装)，或者下载仓库到本地，使用 `Typora` 软件阅读，也可以使用安装了 `Markdown+Math` 插件的 `vscode` 软件阅读。
 

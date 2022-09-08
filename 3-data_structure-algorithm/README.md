@@ -15,6 +15,7 @@
 
 - [数组](array/数组.md)
 - [链表](linked_list/链表.md)
+- [字符串](string/字符串解题模板.md)
 - [栈](stack_queue_heap/栈-先进后出.md)
 - [队列](stack_queue_heap/队列-先进先出.md)
 - [跳表](skip_list/跳表.md)

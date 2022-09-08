@@ -58,7 +58,7 @@ MAC &= hw(c_{1} + c{2}) + c_{1}c_{2} \\\\
 分组卷积是现在轻量级网络结构（`ShuffleNet/MobileNet/Xception/ResNeXt`）设计的核心，它通过通道之间的**稀疏连接**（也就是只和同一个组内的特征连接）来降低计算复杂度。一方面，它允许我们使用更多的通道数来增加网络容量进而提升准确率，但另一方面随着通道数的增多也对带来更多的 `MAC`。
 
 针对 $1 \times 1$ 的分组卷积，我们有：
-> 分组卷积 `FLOPs` 的计算公式，我写的 [MobileNet v1 论文详解](https://63427ff0.wiz06.com/wapp/pages/view/share/s/1zgD_M0Qfx7F2AnL_C3tohc93-WpoF0GskOx2_h4E626G3MN) 有给出推导。
+> 分组卷积 `FLOPs` 的计算公式，我写的 [MobileNet v1 论文详解](https://zhuanlan.zhihu.com/p/359497513) 有给出推导。
 
 $$
 \begin{split}

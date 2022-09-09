@@ -127,7 +127,7 @@ $$AP = \sum_{k=1}^{N}P(k)\Delta r(k)$$
 
 **近似计算** `AP` 和绘制 `PR` 曲线代码如下：
 
-```Python
+```python
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -195,7 +195,7 @@ def draw_PR_curve(predict_scores, eval_labels, name, cls_idx=1):
 
 1, 在给定 `recal` 和 `precision` 的条件下计算 `AP`：
 
-```Python
+```python
 def voc_ap(rec, prec, use_07_metric=False):
     """ 
     ap = voc_ap(rec, prec, [use_07_metric])
@@ -233,7 +233,7 @@ def voc_ap(rec, prec, use_07_metric=False):
 
 2，给定目标检测结果文件和测试集标签文件 `xml` 等计算 `AP`：
 
-```Python
+```python
 def parse_rec(filename):
     """ Parse a PASCAL VOC xml file 
     Return : list, element is dict.

@@ -4,7 +4,7 @@
 
 **函数原型：**
 
-```cpp
+```c++
 Mat imread(const sting& filename, int flags=None)
 ```
 
@@ -42,7 +42,7 @@ img = cv2.imread('messi5.jpg',0)
 
 **函数原型：**
 
-```cpp
+```c++
 void imshow(const string &winname, InputArray mat)
 ```
 
@@ -57,7 +57,7 @@ void imshow(const string &winname, InputArray mat)
 
 函数 `cv :: minMaxLoc` 查找最小和最大元素值及其位置，返回的位置坐标是**先列号，后行号**（列号，行号） 。在整个数组中搜索极值，或者如果mask不是空数组，则在指定的数组区域中搜索极值。（**只适合单通道矩阵**）。函数原型：
 
-```CPP
+```c++
 CV_EXPORTS_W void minMaxLoc(InputArray src, CV_OUT double* minVal,
                             CV_OUT double* maxVal = 0, CV_OUT Point* minLoc = 0,
                             CV_OUT Point* maxLoc = 0, InputArray mask = noArray());

@@ -81,7 +81,7 @@
 
 这里给出一个基于 `Pytorch` 的 `FPN` 网络的代码，来自[这里](https://github.com/kuangliu/pytorch-fpn/blob/master/fpn.py)。
 
-```Python
+```python
 ## ResNet的block
 class Bottleneck(nn.Module):
     expansion = 4

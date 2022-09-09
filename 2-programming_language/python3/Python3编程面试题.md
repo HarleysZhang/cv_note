@@ -92,7 +92,7 @@ print(res)  # ['中国', '美国', '法国', '填充值', '填充值', '英国']
 
 实例代码如下：
 
-```Python
+```python
 class Foo(object):
     """类三种方法语法形式
     """
@@ -146,7 +146,7 @@ Foo.class_method()
 
 `Python` 自带的函数一般都会有对函数参数类型做检查，自定义的函数参数类型检查可以用函数 `isinstance()` 实现，例如：
 
-```Python
+```python
 def my_abs(x):
     """
     自定义的绝对值函数
@@ -167,7 +167,7 @@ def my_abs(x):
 
 在 `Python` 中，等号 `=` 是赋值语句，可以把`任意数据类型`赋值给变量，同样一个变量可以反复赋值，而且可以是不同类型的变量，例如：
 
-```Python
+```python
 a = 100 # a是int型变量
 print(a)
 a = 'ABC'  # a 是str型变量
@@ -184,7 +184,7 @@ Pyhon 这种变量本身类型不固定，可以反复赋值不同类型的变�
 
 1、`map()` 函数接收两个参数，一个是函数，一个是 Iterable，map 将传入的函数依次作用到序列的**每个元素**，并将结果作为新的 Iterator 返回，简单示例代码如下：
 
-```Python
+```python
 # 示例１
 def square(x):
     return x ** 2
@@ -204,7 +204,7 @@ list(map(str, [1, 2, 3, 4, 5, 6, 7, 8, 9]))　＃　['1', '2', '3', '4', '5', '6
 
 示例代码如下：
 
-```Python
+```python
 from functools import reduce
 CHAR_TO_INT = {
     '0': 0,

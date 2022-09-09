@@ -377,7 +377,7 @@ class VoVNet(nn.Module):
 
 所有版本的 vovnet 的 OSA 模块中的卷积层数都是 `5`。
 
-```Python
+```python
 def _vovnet(arch,
             config_stage_ch,
             config_concat_ch,

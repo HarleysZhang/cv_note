@@ -236,7 +236,7 @@ $$FL(p_t) = -\alpha (1-p_t)^\gamma log(p_t)$$
 网上有各种版本的 `Focal Loss` 实现代码，大多都是基于某个深度学习框架实现的，如 `Pytorch`和 `TensorFlow`，我选取了一个较为清晰的通用版本代码作为参考，代码来自 [这里](https://github.com/yatengLG/Retinanet-Pytorch/blob/master/Model/struct/Focal_Loss.py)。
 > 后续有必要自己实现以下，有时间还要去看看 `Caffe` 的实现。这里的 Focal Loss 代码与后文不同，这里只是纯粹的用于分类的 Focal_loss 代码，不包含 BBox 的编码过程。
 
-```Python
+```python
 # -*- coding: utf-8 -*-
 # @Author  : LG
 from torch import nn
@@ -348,7 +348,7 @@ ResNet 输出 4 个不同尺度的特征图（c2,c3,c4,c5），stride 分别是�
 Neck 使用的是 `FPN` 网络，且输入是 3 个来自 ResNet 输出的特征图（c3,c4,c5），并输出 `5` 个特征图（p3,p4,p5,p6,p7），额外输出的 2 个特征图的来源是骨架网络输出，而不是 FPN 层本身输出又作为后面层的输入，并且 `FPN` 网络输出的 `5` 个特征图通道数都是 `256`。值得注意的是，**`Neck` 模块输出特征图的大小是由 `Backbone` 决定的，即输出的 `stride` 列表由 `Backbone` 确定**。
 `FPN` 结构的代码如下。
 
-```Python
+```python
 class PyramidFeatures(nn.Module):
     def __init__(self, C3_size, C4_size, C5_size, feature_size=256):
         super(PyramidFeatures, self).__init__()
@@ -675,7 +675,7 @@ Focal Loss 属于 CE Loss 的动态加权版本，其可以根据样本的难易
 
 为了便于理解，先给出 `Focal Loss` 的核心代码。
 
-```Python
+```python
 pred_sigmoid = pred.sigmoid()
 # one-hot 格式
 target = target.type_as(pred)

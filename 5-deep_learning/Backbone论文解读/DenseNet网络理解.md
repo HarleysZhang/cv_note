@@ -74,7 +74,7 @@ DenseNet 的泛化性能优于其他网络是可以从理论上证明的：去�
 
 原则作者开源的 `DenseNet` 提高内存效率版本的代码如下。
 
-```Python
+```python
 # This implementation is based on the DenseNet-BC implementation in torchvision
 # https://github.com/pytorch/vision/blob/master/torchvision/models/densenet.py
 

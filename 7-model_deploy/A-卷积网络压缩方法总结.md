@@ -211,7 +211,7 @@ def get_symbol(data, class_labels, resnet_layer_num,Temperature,mimic_weight,num
 ```
 `tensorflow`代码示例如下：
 
-```Python
+```python
 # 将类别标签进行one-hot编码
 one_hot = tf.one_hot(y, n_classes,1.0,0.0) # n_classes为类别总数, n为类别标签
 # one_hot = tf.cast(one_hot_int, tf.float32)

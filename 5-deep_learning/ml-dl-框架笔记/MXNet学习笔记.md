@@ -9,13 +9,13 @@
 # MXNet-深度学习基础
 ## 数据操作-NDArray
 NDArray功能类似numpy库的多维数组操作，NDArray提供了GPU计算和自动求梯度等更多应用于深度学习的功能，用法如下：
-```Python
+```python
 from mcnet import nd # 导入NDArray(ndarray, nd)模块
 x = arange(10) # arange函数创建一个行向量
 ```
 ### 创建NDArray
 这里的操作和numpy类似，创建零元素张量、1元素张量、改变张量形状等
-```Python
+```python
 x = nd.arrange(12)
 x.size # 12
 x.reshape((3,4))
@@ -25,7 +25,7 @@ x.ones((3, 4, 5))
 ### NDArray实例运算
 和numpy类似，矩阵乘法`np.dot(X, Y.T)`，***矩阵连结操作（concatenate）***。
 下面分别在行上（***维度0，即形状中的最左边元素***）和列上（维度1，即形状中左起第二个元素）连结两个矩阵。可以看到，输出的第一个NDArray在维度0的长度（ 6 ）为两个输入矩阵在维度0的长度之和（ 3+3 ），而输出的第二个NDArray在维度1的长度（ 8 ）为两个输入矩阵在维度1的长度之和（ 4+4 ）
-```Python
+```python
 X = nd.arrange(12).reshape(3,4)
 Y = nd.arange(12).reshape(3,4)
 Z1 = nd.concat(X, Y, dim=0)   # Z1.shape (6,4)
@@ -33,7 +33,7 @@ Z2 = nd.concat(X, Y, dim=1)   # Z1.shape (3,8)
 ```
 ### NDArray其他操作
 常用的还有广播机制、索引、运算的内存开销和NDArray和Numpy相互互换。NDArray实例和NumPy实例互换如下：
-```Python
+```python
 import numpy as np
 from mxnet import nd
 # 将NumPy实例变换成NDArray实例

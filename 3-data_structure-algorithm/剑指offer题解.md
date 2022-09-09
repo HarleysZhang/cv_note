@@ -79,7 +79,7 @@
 
 **C++代码**：
 
-```cpp
+```c++
 class Solution {
 private:
     void swap(int &a, int &b)
@@ -145,7 +145,7 @@ public:
 
 `c++` 代码如下：
 
-```cpp
+```c++
 class Solution {
 public:
     bool findNumberIn2DArray(vector<vector<int>>& matrix, int target) {
@@ -186,7 +186,7 @@ public:
 
 **C++代码**：
 
-```cpp
+```c++
 
 class Solution {
 public:
@@ -242,7 +242,7 @@ public:
 
 **C++代码**：
 
-```cpp
+```c++
 class Solution {
 public:
     vector<int> printMatrix(vector<vector<int> > matrix) {
@@ -325,7 +325,7 @@ while ( A 没完 || B 没完)
 
 **C++代码**：
 
-```cpp
+```c++
 
 class Solution {
 public: // 逐位相加法，使用加法模板
@@ -368,7 +368,7 @@ public: // 逐位相加法，使用加法模板
 2. 遇到重复的元素，读指针继续前进，写指针不做操作；
 3. 遇到不同的元素，写指针前进一步，并写入那个元素。
 
-```cpp
+```c++
 class Solution {
 public:
     // 双指针法
@@ -413,7 +413,7 @@ public:
 
 二分查找法（非递归实现），查找结束如果没有相等值则返回 left，该值为插入位置
 
-```cpp
+```c++
 class Solution {
 public:
     // 二分法+非递归实现
@@ -453,7 +453,7 @@ public:
 
 **C++代码**：
 
-```cpp
+```c++
 class Solution{
 public:
     vector<int> reversePrint(ListNode* head) {
@@ -502,7 +502,7 @@ public:
 
 **C++代码**：
 
-```cpp
+```c++
 class Solution {
 public:
     ListNode* deleteNode(ListNode* head, int val) {
@@ -530,7 +530,7 @@ public:
 
 **C++代码**：
 
-```cpp
+```c++
 class Solution {
 public:
     ListNode* deleteDuplication(ListNode* head) {
@@ -577,7 +577,7 @@ public:
 
 **C++代码**：
 
-```cpp
+```c++
 
 // Definition for singly-linked list.
 struct ListNode {
@@ -626,7 +626,7 @@ public:
 
 **C++代码**：
 
-```cpp
+```c++
 class Solution {
 public:
     ListNode* EntryNodeOfLoop(ListNode* pHead) {
@@ -667,7 +667,7 @@ public:
 
 **C++代码**：
 
-```cpp
+```c++
 class Solution {
 public: // 双指针迭代法
     ListNode* reverseList(ListNode* head) {
@@ -716,7 +716,7 @@ public: // 双指针迭代法
 
 **C++代码**：
 
-```cpp
+```c++
 class Solution {
 public:
     // 双指针法
@@ -806,7 +806,7 @@ public:
 
 **C++代码**：
 
-```cpp
+```c++
 class Solution {
 public:
     ListNode* rotateRight(ListNode* head, int k) {
@@ -848,7 +848,7 @@ public:
 
 **C++代码**：
 
-```cpp
+```c++
 class Solution {
 public:
     ListNode* swapPairs(ListNode* head) {
@@ -883,7 +883,7 @@ public:
 1. 数组法。
 2. **快慢指针法**：用两个指针 slow 与 fast 一起遍历链表。slow 一次走一步，fast 一次走两步。那么当 fast 到达链表的末尾时，slow 必然位于中间。值得注意的是，**快指针可以前进的前提是当前快指针和当前快指针的下一个节点非空**。
 
-```cpp
+```c++
 class Solution {
 public:
     ListNode* middleNode(ListNode* head) {
@@ -913,7 +913,7 @@ public:
 
 **C++代码**：
 
-```cpp
+```c++
 class Solution
 {
 public:
@@ -953,7 +953,7 @@ private:
 
 **C++代码**：
 
-```cpp
+```c++
 class MinStack {  // 利用辅助栈
 private:
     stack<int> stack1;
@@ -1023,7 +1023,7 @@ push(5), pop() -> 5, pop() -> 3, pop() -> 2, pop() -> 1
 
 **C++代码实现**：
 
-```cpp
+```c++
 // 剑指offer31: 栈的压入、弹出序列
 class Solution { // 辅助栈解法，时间超过 77.62%，空间超过 74.84%
 public:
@@ -1079,7 +1079,7 @@ public:
 
 **C++代码**：
 
-```cpp
+```c++
 // priority_queue<Type, Container, Functional>  // 默认定义最大堆
 // priority_queue<int, vector<int>, greater<int> >p;  // 定义最小堆
 
@@ -1151,7 +1151,7 @@ public:
 数据流左半边的数用大顶堆，右半边的数用小顶堆，中位数由两个堆的堆顶元素求得。
 
 **C++代码**：
-```cpp
+```c++
 class MedianFinder {  // 大根堆+小根堆 解法，时间超过 99..38%，空间超过 18.07%
 private:
     // 从左到右，数据依次从大到小
@@ -1213,7 +1213,7 @@ caseout += FirstAppearingOnce()
 2. 对于 `void Insert(char ch)` 字符插入函数的实现，当且仅当 `ch` 是第一次出现，则将 `ch` 添加到队列中；同时，不管 `ch` 是不是第一次出现，都需要在 `mp` 中更新一下字符的出现次数，方便后续判断字符是否是第一次出现。
 3. 对于 `char FirstAppearingOnce()` 函数，通过哈希表 `mp` 判断队列 `q` 的头部元素的出现次数，如果是 `1` 则返回对应字符 `ch`；如果不是 `1`，则队列 `pop()` 弹出头部元素继续判断下一个字符。
 
-```cpp
+```c++
 class Solution
 {
 public:
@@ -1278,7 +1278,7 @@ public:
 
 **C++代码**：
 
-```cpp
+```c++
 class Solution {
 public:
     // 简单方法：遍历滑动窗口找最大值，合理选择区间,时间超出限制
@@ -1344,7 +1344,7 @@ public:
 
 **C++代码实现**：
 
-```cpp
+```c++
 class MaxQueue {
 private:
     queue<int> que1;
@@ -1419,7 +1419,7 @@ public:
 
 **C++代码**：
 
-```cpp
+```c++
 class Solution {
 public:
     int maxChunksToSorted(vector<int>& arr) {
@@ -1465,7 +1465,7 @@ public:
 - 时间复杂度：$O(nlogk)$
 - 空间复杂度：$O(k)$
 
-```cpp
+```c++
 class Solution {
 public:
     // 小顶堆维护大顶堆的方法，时间复杂度 O(n logk)
@@ -1501,7 +1501,7 @@ public:
 
 **C++代码**：
 
-```cpp
+```c++
 class Solution {
 public:
     int lengthOfLastWord(string s) {
@@ -1541,7 +1541,7 @@ public:
 
 **C++代码**：
 
-```cpp
+```c++
 class Solution {
 public:
     string reverseWords(string s) {
@@ -1589,7 +1589,7 @@ public:
 
 **C++代码**：
 
-```cpp
+```c++
 
 class Solution {
 public:
@@ -1635,7 +1635,7 @@ s 中的单词为 ["Hello", "how" "are", "you", "Contestant"]
 
 **C++代码**：
 
-```cpp
+```c++
 
 class Solution {
 public:
@@ -1687,7 +1687,7 @@ public:
 
 **C++代码**：
 
-```cpp
+```c++
 class Solution {
 public:
     string decodeString(string s) {
@@ -1759,7 +1759,7 @@ public:
 
 **C++代码**：
 
-```cpp
+```c++
 class Solution {
 public: // 1，两次遍历法
     vector<int> shortestToChar(string s, char c) {
@@ -1835,7 +1835,7 @@ public: // 1，两次遍历法
 
 **C++代码**：
 
-```cpp
+```c++
 class Solution {
 public:
     char firstUniqChar(string s) {
@@ -1877,7 +1877,7 @@ public:
 
 **C++代码**：
 
-```cpp
+```c++
 
 //定义双链表
 struct Node{
@@ -1975,7 +1975,7 @@ public:
 
 >这道 hard 题目居然被我做出来了！代码第二次修改参考了西法的剪枝代码，之前自己用嵌套 if 判断实在太傻了。
 
-```cpp
+```c++
 class Solution {
 public:
     vector<int> findSubstring(string s, vector<string>& words) {
@@ -2018,7 +2018,7 @@ public:
 1. **前缀和**：使用公式 $pre[i]=pre[i−1]+nums[i]$ 得到每一位前缀和的值，从而通过前缀和进行相应的计算和解题。
 2. **同余定理**：给定一个正整数m，如果两个整数 a 和 b 满足 a-b 能够被 m 整除，即 $(a-b)/m$ 得到一个整数，那么就称整数 a 与 b 对模 m 同余，记作 a≡b(mod m)。对模 m 同余是整数的一个等价关系。
 
-```cpp
+```c++
 class Solution {
 public:
     int subarraysDivByK(vector<int>& nums, int k) {
@@ -2062,7 +2062,7 @@ Output: [3,9,20,null,null,15,7]
 + 前序遍历结果可以获取树的根节点 node 的值。
 
 **C++代码**：
-```cpp
+```c++
 class Solution {
 public:
     TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
@@ -2149,7 +2149,7 @@ private:
 
 **C++代码**：
 
-```cpp
+```c++
 class Solution {
 public:
     // 分治递归
@@ -2197,7 +2197,7 @@ F(N) = F(N - 1) + F(N - 2), 其中 N > 1.
 2，迭代法
 
 **C++代码**：
-```cpp
+```c++
 // 剑指 offer 10-1. 斐波那契数列
 class Solution {
 private:
@@ -2256,7 +2256,7 @@ public:
 
 **C++代码**：
 
-```cpp
+```c++
 # include <iostream>
 # include <vector>
 # include <algorithm>
@@ -2311,7 +2311,7 @@ int main(){
 
 **C++代码**：
 
-```cpp
+```c++
 class Solution {
 private:
     static const int mod = 1e9 + 7;
@@ -2354,7 +2354,7 @@ public:
 动态规划法。
 
 **C++代码**：
-```cpp
+```c++
 class Solution {
 public:
     //1, 动态规划算法
@@ -2405,7 +2405,7 @@ public:
 
 **C++代码**：
 
-```cpp
+```c++
 class Solution {  // 状态转移方程法
 private:
     int minDist(int i, int j, vector<vector<int> >& matrix, vector<vector<int> >& mem) { // 调用minDist(n-1, n-1);
@@ -2453,7 +2453,7 @@ public:
 
 **C++代码**：
 
-```cpp
+```c++
 class Solution {
 public:
     // 动态规划+线性遍历

@@ -113,7 +113,7 @@ echo ${string:7:5}  # 输出zhang
 
 实际脚本中，拼接字符串可能有以下场景：灵活应用即可。
 
-```Python
+```python
 your_name="qinjx"
 greeting="hello, "$your_name" !"
 greeting_1="hello, ${your_name} !"
@@ -455,7 +455,7 @@ fi
 ### test 检查文件属性
 
 检查文件属性也是 `test` 的常见用法，比如检查一个文件类型是不是普通文件，可以使用 `-f` 选项，检查路径是否是目录可以用 `-d` 选项：
-```Python
+```python
 touch test.sh
 filename="test.sh"
 # 检查文件
@@ -587,7 +587,7 @@ done
 
 shell 函数中的定义格式如下：
 
-```Python
+```python
 [ function ] funname [()]
 {
     action;
@@ -601,7 +601,7 @@ shell 函数中的定义格式如下：
 
 ### 局部变量与全局变量
 
-```Python
+```python
 # !/bin/bash
 a="this is a" # 定义全局变量
 b="this is b"
@@ -622,7 +622,7 @@ this is c
 
 bash 也是支持递归函数的（能够调用自身的函数），示例程序如下：
 
-```Python
+```python
 #!/bin/bash
 function name() {
     echo $1

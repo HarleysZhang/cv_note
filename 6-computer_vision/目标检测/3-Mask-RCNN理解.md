@@ -31,7 +31,7 @@
 
 `FPN` 的代码出现在 `./mrcnn/model.py`中，核心代码如下：
 
-```Python
+```python
 if callable(config.BACKBONE):
     _, C2, C3, C4, C5 = config.BACKBONE(input_image, stage5=True,
                                         train_bn=config.TRAIN_BN)
@@ -66,7 +66,7 @@ mrcnn_feature_maps = [P2, P3, P4, P5]
 
 其中 `resnet_graph` 函数定义如下：
 
-```Python
+```python
 def resnet_graph(input_image, architecture, stage5=False, train_bn=True):
     """Build a ResNet graph.
         architecture: Can be resnet50 or resnet101

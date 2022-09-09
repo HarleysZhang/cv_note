@@ -1,14 +1,14 @@
 - [摘要](#摘要)
 - [1，介绍](#1介绍)
 - [2，高效网络设计的影响因素](#2高效网络设计的影响因素)
-	- [2.1，内存访问代价](#21内存访问代价)
-	- [2.2，GPU计算效率](#22gpu计算效率)
+  - [2.1，内存访问代价](#21内存访问代价)
+  - [2.2，GPU计算效率](#22gpu计算效率)
 - [3，建议的方法](#3建议的方法)
-	- [3.1，重新思考密集连接](#31重新思考密集连接)
-	- [3.2，One-Shot Aggregation](#32one-shot-aggregation)
-	- [3.3，构建 VoVNet 网络](#33构建-vovnet-网络)
+  - [3.1，重新思考密集连接](#31重新思考密集连接)
+  - [3.2，One-Shot Aggregation](#32one-shot-aggregation)
+  - [3.3，构建 VoVNet 网络](#33构建-vovnet-网络)
 - [4，实验](#4实验)
-- [代码解读](#代码解读)
+- [5，代码解读](#5代码解读)
 - [参考资料](#参考资料)
 
 ## 摘要
@@ -157,6 +157,7 @@ GPU 的能耗计算公式如下：
 - Computation Efficiency：GPU 计算效率（GFlops/s）
 - mAP（目标检测性能评价指标）
 
+现象与总结：
 - **现象 1**：相比于 DenseNet-67，PeleeNet 减少了 Flops，但是推断速度没有提升，与之相反，VoVNet-27-slim 稍微增加了Flops，而推断速度提升了一倍。同时，VoVNet-27-sli m的精度比其他模型都高。
 - **现象 2**：VoVNet-27-slim 的内存占用、能耗、GPU 利用率都是最高的。
 - **结论 1**：相比其他模型，**VoVNet做到了准确率和效率的均衡，提升了目标检测的整体性能**。
@@ -193,7 +194,7 @@ GPU 的能耗计算公式如下：
 
 ![mask-rcnn上的实验结果](../../data/images/VoVNet/mask-rcnn上的实验结果.png)
 
-## 代码解读
+## 5，代码解读
 
 虽然 VoVNet 在 [CenterMask 论文](https://link.zhihu.com/?target=https%3A//arxiv.org/pdf/1911.06667.pdf) 中衍生出了升级版本 VoVNetv2，但是本文的代码解读还是针对原本的 VoVNet，代码来源[这里](https://github.com/stigma0617/VoVNet.pytorch/blob/master/models_vovnet/vovnet.py)。
 

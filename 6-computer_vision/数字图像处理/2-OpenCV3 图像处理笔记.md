@@ -36,7 +36,7 @@ img = cv2.imread('messi5.jpg',0)
 
 `opencv-python` 库的读取图像函数 `cv2.imread()` 官方定义如下图。
 
-![opencv-python库的读取图像函数官方定义](../data/images/cv2.imread函数.png)
+![opencv-python库的读取图像函数官方定义](../../data/images/cv2.imread函数.png)
 
 ### 图像的显示：imshow()函数
 

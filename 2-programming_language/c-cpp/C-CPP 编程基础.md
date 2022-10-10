@@ -55,7 +55,7 @@
 
 派生类必须使用类派生列表（`class derivation list`）明确指出它是从哪个（哪些）基类继承而来。派生的形式是：首先一个冒号，后面紧跟以逗号分隔的基类列表，其中每个基类前面可以有访问说明符。
 
-```c++
+```cpp
 class Student: public People{
     string names;
     virtual  double get_gpa (vector<float> scores);
@@ -85,7 +85,7 @@ class Student: public People{
 
 实例代码如下：
 
-```c++
+```cpp
 
 #include <iostream>
  

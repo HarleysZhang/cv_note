@@ -29,7 +29,7 @@
 
 `C++` 使用如下代码在堆上分配内存：
 
-```c++
+```cpp
 auto ptr = new std::vector<int>(n,t )  // 构造包含 n 个初始值为 t 的元素的容器
 ```
 
@@ -45,7 +45,7 @@ auto ptr = new std::vector<int>(n,t )  // 构造包含 n 个初始值为 t 的�
 
 首先通过下面示例代码来说明 `C++` 里函数调用、本地变量是如何使用栈的。
 
-```c++
+```cpp
 void foo(int n)
 {
   …

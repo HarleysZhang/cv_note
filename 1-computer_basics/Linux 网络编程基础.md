@@ -112,7 +112,7 @@ TCP协议注重数据的传输，HTTP协议注重数据的解释。
 
 TCP/IP协议规定，`网络数据流应采用大端字节序`。为了使网络程序具有可移植性，使同样的 c 代码在大端和小端计算机上编译后都能正常运行，可以调用以下库函数做**网络字节序和主机字节序的转换**。
 
-```c++
+```cpp
 #include<arpa/inet.h>
 
 uint32_t htonl(uint32_t hostlong);
@@ -133,7 +133,7 @@ const char *inet_ntop(int af,const void *src,char *dst, socklen_t size) //网络
 
 #### 6.3 socketaddr数据结构
 
-```c++
+```cpp
 // sockaddr_in 结构体定义
 struct sockaddr_in {
     sa_family_t    sin_family; /* address family: AF_INET */
@@ -151,7 +151,7 @@ struct in_addr {
 
 1，创建套接字`socket`函数.
 
-```c++
+```cpp
 int socket(int domain, int type, int protocol);
 返回值：
     成功：返回指向创建的socket的文件描述符，失败：返回-1，设置errno。
@@ -159,7 +159,7 @@ int socket(int domain, int type, int protocol);
 
 2，绑定 `ip` 和端口号函数 `bind`.
 
-```c++
+```cpp
 #include<sys/types.h>
 #include<sys/socket.h>
 int bind(int cockfd, const struct sockaddr *addr, socklen_t addrlen);

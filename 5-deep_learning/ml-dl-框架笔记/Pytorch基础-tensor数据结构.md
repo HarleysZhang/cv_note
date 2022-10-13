@@ -5,10 +5,10 @@
 ## torch.Tensor
 
 `torch.Tensor` 是一种包含**单一数据类型**元素的多维矩阵，类似于 numpy 的 `array`。
-Tensor 可以使用 torch.tensor() 转换 Python 的 list 或**序列数据**生成，生成的是`dtype`  默认是 `torch.FloatTensor`。
-> 注意 `torch.tensor()` 总是拷贝 data。如果你有一个 Tensor data 并且仅仅想改变它的 `requires_grad` 属性，可用 `requires_grad_()` 或者 `detach()` 来避免拷贝。如果你有一个 `numpy` 数组并且想避免拷贝，请使用 `torch.as_tensor()`。
+可以使用使用 torch.tensor() 方法将 python 的 list 或**序列数据**转换成 Tensor 数据，生成的是`dtype`  默认是 `torch.FloatTensor`。
+> 注意 `torch.tensor()` 总是拷贝 data。如果你有一个 tensor data 并且仅仅想改变它的 `requires_grad` 属性，可用 `requires_grad_()` 或者 `detach()` 来避免拷贝。如果你有一个 `numpy` 数组并且想避免拷贝，请使用 `torch.as_tensor()`。
 
-1，指定数据类型的 Tensor 可以通过传递参数 `torch.dtype` 和/或者 `torch.device` 到构造函数生成：
+1，指定数据类型的 tensor 可以通过传递参数 `torch.dtype` 和/或者 `torch.device` 到构造函数生成：
 > 注意为了改变已有的 tensor 的 torch.device 和/或者 torch.dtype, 考虑使用 `to()` 方法.
 
 ```python
@@ -20,7 +20,7 @@ tensor([[1., 1., 1.],
         [1., 1., 1.]])
 ```
 
-2，Tensor 的内容可以通过 Python索引或者切片访问以及修改：
+2，Tensor 的内容可以通过 Python 索引或者切片访问以及修改：
 
 ```python
 >>> matrix = torch.tensor([[2,3,4],[5,6,7]])
@@ -59,7 +59,7 @@ tensor([[ 2.0000, -2.0000],
 
 ## Tensor 数据类型
 
-Torch 定义了七种 CPU tensor 类型和八种 GPU tensor 类型：
+Torch 定义了七种 CPU Tensor 类型和八种 GPU Tensor 类型：
 
 ![tensor数据类型](../../data/images/tensor数据类型.png)
 
@@ -69,9 +69,11 @@ Torch 定义了七种 CPU tensor 类型和八种 GPU tensor 类型：
 
 Tensor 有很多属性，包括数据类型、Tensor 的维度、Tensor 的尺寸。
 
-+ **数据类型**：可通过改变 torch.tensor() 方法的 dtype 参数值，来设定不同的 tensor 数据类型。
++ **数据类型**：可通过改变 torch.tensor() 方法的 `dtype` 参数值，来设定不同的 `Tensor` 数据类型。
 + **维度**：不同类型的数据可以用不同维度(dimension)的张量来表示。标量为 `0` 维张量，向量为 `1` 维张量，矩阵为 `2` 维张量。彩色图像有 `rgb` 三个通道，可以表示为 `3` 维张量。视频还有时间维，可以表示为 `4` 维张量，有几个中括号 `[` 维度就是几。**可使用 `dim() 方法` 获取 `tensor` 的维度**。
-+ **尺寸**：可以使用 `shape属性`或者 `size()方法`查看张量在每一维的长度，可以使用 `view()方法`或者`reshape() 方法`改变张量的尺寸。
++ **尺寸**：可以使用 `shape属性`或者 `size()方法`查看张量在每一维的长度，可以使用 `view()方法`或者`reshape() 方法`改变张量的尺寸。Pytorch 框架中四维张量形状的定义是 `(N, C, H, W)`。
+
+> 关于如何理解 Pytorch 的 Tensor Shape 可以参考 stackoverflow 上的这个 [回答](https://stackoverflow.com/questions/52370008/understanding-pytorch-tensor-shape)。
 
 样例代码如下：
 

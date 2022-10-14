@@ -193,6 +193,11 @@ Table 7: Performance on COCO object detection. The input image size is 800 1200.
 
 我们建议对于轻量级网络设计应该考虑直接 `metric`（例如速度 speed），而不是间接 metric（例如 `FLOPs`）。本文提出了实用的原则和一个新的网络架构-ShuffleNet v2。综合实验证了我们模型的有效性。我们希望本文的工作可以启发未来的网络架构设计可以更重视平台特性和实用性。
 
+## 6，个人思考
+
+分析模型的推理性能得结合具体的推理平台（常见如：英伟达GPU、移动端ARM CPU、端侧NPU芯片等），目前已知影响推理性能的因素包括: 算子计算量 FLOPs（参数量 Params）、算子内存访问代价（访存带宽）。
+
+举例：对于 GPU 平台，Depthwise 卷积算子实际上是使用了大量的低 FLOPs、高数据读写量的操作。这些具有高数据读写量的操作，加上 GPU 的访存带宽限制，使得模型把大量的时间浪费在了从显存中读写数据上，导致GPU 的算力没有得到“充分利用”。结论来源这里。
 ## 参考资料
 
 1. [Group Convolution分组卷积，以及Depthwise Convolution和Global Depthwise Convolution](https://www.cnblogs.com/shine-lee/p/10243114.html)

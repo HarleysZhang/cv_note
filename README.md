@@ -14,9 +14,12 @@
 
 > `GitHub` 已经支持直接显示 `latex` 公式，部分公式如果显示不全，也可在谷歌浏览器安装 [MathJax Plugin for Github](https://chrome.google.com/webstore/detail/mathjax-plugin-for-github/ioemnmodlmafdkllaclgeombjnmnbima?hl=zh-CN) 插件访问(需要翻墙下载安装)，或者下载仓库到本地，使用 `Typora` 软件阅读，也可以使用安装了 `Markdown+Math` 插件的 `VSCode` 软件阅读。
 
+更多知识和最新博客，欢迎扫码关注我的公众号-**嵌入式视觉**，记录 `CV` 算法工程师成长之路，分享技术总结、读书笔记和个人感悟。
+
+![公众号二维码](./data/images/../article_cover/qrcode_258.jpg)
 ## 目录
 
-作为一个计算机视觉算法工程师，需要掌握的不仅是计算机编程知识，还需要掌握机器学习、深度学习、图像识别、目标检测、语义分割等知识点，我整理了一个 [技术栈思维导图](./data/images/CV算法工程师应掌握知识点.png)。
+作为一个计算机视觉算法工程师，需要掌握的不仅是计算机编程知识，还需要掌握机器学习、深度学习、图像识别、目标检测、语义分割、模型压缩、模型部署等知识点，我整理了一个 [技术栈思维导图](./data/images/CV算法工程师应掌握知识点.png)。
 
 强调一下如何从“零”起步，首先确保基础打好。建议完整修完一门国外经典课程（从课程视频、作业到项目），然后完整阅读一本机器学习或者深度学习教科书，同时熟练掌握一门基本的编程语言以及深度学习框架。（参考 [中国人民大学赵鑫：AI 科研入坑指南](https://mp.weixin.qq.com/s/UH7UIq7ajwpdR6fZ9CfG6Q)）
 

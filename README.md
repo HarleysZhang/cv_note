@@ -4,7 +4,7 @@
   <a href="#License"><img src="data/icons/License-Apache-2.0-green.svg" alt="LICENSE"></a>
   <a href="#公众号"><img src="./data/images/../article_cover/qrcode_258.jpg" alt="公众号嵌入式视觉"></a>
   <a href="http://www.armcvai.com/"><img src="data/icons/Website-armcvai-brightgreen.svg", alt="嵌入式视觉"></a>
-  <a href="https://www.zhihu.com/people/aobingJava/activities"><img src="https://img.shields.io/badge/zhihu-知乎-informational" alt="进击的程序猿"></a>
+  <a href="https://www.zhihu.com/people/tang-fen-44-49"><img src="https://img.shields.io/badge/zhihu-知乎-informational" alt="进击的程序猿"></a>
   <a href="https://blog.csdn.net/qq_20986663"><img src="https://img.shields.io/badge/csdn-CSDN-red.svg" alt="嵌入式视觉"></a>
   <a href="https://www.cnblogs.com/armcvai/"><img src="https://img.shields.io/badge/cnblogs-博客园-important.svg" alt="嵌入式视觉"></a>
   <a href="https://github.com/HarleysZhang/2021_algorithm_intern_information/stargazers"><img src="https://badgen.net/github/stars/HarleysZhang/2021_algorithm_intern_information?color=cyan" alt="stars"></a>

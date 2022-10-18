@@ -1,5 +1,9 @@
 # CV 算法工程师成长之路
 
+<h1 align="center">
+CV 算法工程师成长之路
+</h1>
+
 <p align="center">
   <a href="#License"><img src="data/icons/License-Apache-2.0-green.svg" alt="LICENSE"></a>
   <a href="http://www.armcvai.com/"><img src="data/icons/Website-armcvai-brightgreen.svg", alt="嵌入式视觉"></a>

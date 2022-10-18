@@ -1,3 +1,5 @@
+[toc]
+
 # MobileNet v1 论文详解
 
 > `MobileNet` 论文的主要贡献在于提出了一种**深度可分离卷积架构（DW+PW 卷积）**，先通过理论证明这种架构比常规的卷积计算成本（`Mult-Adds`）更小，然后通过分类、检测等多种实验证明模型的有效性。
@@ -53,11 +55,12 @@ Figure 4 中的“极限” Inception 模块与本文的主角-深度可分离�
 
 ## 2、MobileNets 结构
 
-### depthwise separable convolutions
+### 2.1，深度可分离卷积
 
-`MobileNets` 是谷歌 2017 年提出的一种高效的移动端轻量化网络，其核心是深度可分离卷积。`depthwise separable convolutions`（深度可分离卷积） 的核心思想是将一个完整的卷积运算分解为两步进行，分别为 Depthwise Convolution（`DW` 卷积） 与 Pointwise Convolution（`PW` 卷积）。深度可分离卷积的计算步骤和滤波器尺寸如下所示。
+`MobileNets` 是谷歌 2017 年提出的一种高效的移动端轻量化网络，其核心是深度可分离卷积（`depthwise separable convolutions`），深度可分离卷积的核心思想是将一个完整的卷积运算分解为两步进行，分别为 Depthwise Convolution（`DW` 卷积） 与 Pointwise Convolution（`PW` 卷积）。深度可分离卷积的计算步骤和滤波器尺寸如下所示。
 
 ![深度可分离卷积的计算步骤](../../data/images/mobilenetv1/深度可分离卷积的计算步骤.png)
+
 ![滤波器尺寸](../../data/images/mobilenetv1/滤波器尺寸.png)
 
 #### Depthwise 卷积

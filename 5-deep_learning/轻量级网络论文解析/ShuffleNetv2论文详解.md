@@ -1,6 +1,6 @@
 # ShuffleNet v2 论文详解
 
-> 近期在研究轻量级 backbone 网络，我们所熟悉和工业界能部署的网络有 `MobileNet V2`、`ShuffleNet V2`、`RepVGG` 等，本篇博客是对 `ShuffleNet v2` 论文的个人理解分析。本文的参考资料是自己对网络上资料进行查找和筛选出来的，质量相对较高、且对本文有参考意义的文章。**`ShuffleNet v2` 论文最大的贡献在于看到了 GPU 访存带宽（内存访问代价 MAC）对于模型推理时间的影响，而不仅仅是模型复杂度，也就是 `FLOPs` 和参数量 `Params` 对于推理时间的影响，并由此提出了 `4` 个轻量级网络设计的原则和一个新颖的 卷积 block 架构-ShuffleNet v2**。
+> 近期在研究轻量级 backbone 网络，我们所熟悉和工业界能部署的网络有 `MobileNet V2`、`ShuffleNet V2`、`RepVGG` 等，本篇博客是对 `ShuffleNet v2` 论文的个人理解分析。本文的参考资料是自己对网络上资料进行查找和筛选出来的，质量相对较高、且对本文有参考意义的文章。`ShuffleNet v2` 论文最大的贡献在于看到了 GPU 访存带宽（内存访问代价 MAC）对于模型推理时间的影响，而不仅仅是模型复杂度，也就是 `FLOPs` 和参数量 `Params` 对于推理时间的影响，并由此提出了 `4` 个轻量级网络设计的原则和一个新颖的 卷积 block 架构-ShuffleNet v2。
 
 ## 摘要
 
@@ -105,6 +105,7 @@ $$
 论文使用 `ResNet` 的 "bottleneck" 单元进行实验，其是由 $1 \times 1$ 卷积、然后是$3 \times 3$ 卷积，最后又是 $1 \times 1$ 卷积组成，并带有 `ReLU` 和 `shortcut` 连接，其结构图如下图所示。在论文的实验中，删除 `ReLU` 和 `shortcut` 操作，表 4 报告了不同变体 "bottleneck" 的运行时间。我们观察到，在删除  ReLU 和 shortcut 后，在 GPU 和 CPU 平台都取得了 `20%` 的加速。
 
 ![bottleneck](../../data/images/shufflenetv2/bottleneck.png)
+
 ![表4](../../data/images/shufflenetv2/表4.png)
 
 **结论和讨论**。根据上诉 4 个指导原则和经验研究，我们得出高效的网络结构应该满足：

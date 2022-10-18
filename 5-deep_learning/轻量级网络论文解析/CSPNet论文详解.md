@@ -11,7 +11,6 @@
 - [5，结论](#5结论)
 - [6，代码解读](#6代码解读)
 - [参考资料](#参考资料)
-
 ## 摘要
 > `CSPNet` 是作者 `Chien-Yao Wang` 于 `2019` 发表的论文 `CSPNET: A NEW BACKBONE THAT CAN ENHANCE LEARNING CAPABILITY OF CNN`。也是对 `DenseNet` 网络推理效率低的改进版本。
 

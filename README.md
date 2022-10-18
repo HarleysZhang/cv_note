@@ -1,6 +1,6 @@
 # CV 算法工程师成长之路
 
-[![License](data/icons/License-Apache-2.0-green.svg)](LICENSE)[![website](data/icons/Website-armcvai-brightgreen.svg)](http://www.armcvai.com/)[![csdn](data/icons/Website-armcvai-brightgreen.svg)]([![website](data/icons/Website-armcvai-brightgreen.svg)](http://www.armcvai.com/))[![zhihu](data/icons/Home-on-Zhihu.svg)](https://www.zhihu.com/people/tang-fen-44-49)<a href="https://github.com/HarleysZhang/2021_algorithm_intern_information/stargazers"><img src="https://badgen.net/github/stars/HarleysZhang/2021_algorithm_intern_information?color=cyan" alt="stars"></a><a href="https://github.com/HarleysZhang/2021_algorithm_intern_information/network/members"><img src="https://badgen.net/github/forks/HarleysZhang/2021_algorithm_intern_information?color=cyan" alt="forks"></a>
+[![License](data/icons/License-Apache-2.0-green.svg)](LICENSE)[![website](data/icons/Website-armcvai-brightgreen.svg)](http://www.armcvai.com/)[![csdn](data/icons/Website-armcvai-brightgreen.svg)](https://blog.csdn.net/qq_20986663)[![zhihu](data/icons/Home-on-Zhihu.svg)](https://www.zhihu.com/people/tang-fen-44-49)<a href="https://github.com/HarleysZhang/2021_algorithm_intern_information/stargazers"><img src="https://badgen.net/github/stars/HarleysZhang/2021_algorithm_intern_information?color=cyan" alt="stars"></a><a href="https://github.com/HarleysZhang/2021_algorithm_intern_information/network/members"><img src="https://badgen.net/github/forks/HarleysZhang/2021_algorithm_intern_information?color=cyan" alt="forks"></a>
 
 ## 前言
 

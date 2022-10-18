@@ -1,6 +1,6 @@
 # CV 算法工程师成长之路
 
-[![License](data/icons/License-Apache-2.0-green.svg)](LICENSE)[![website](data/icons/Website-armcvai-brightgreen.svg)](http://www.armcvai.com/)[![zhihu](data/icons/Home-on-Zhihu.svg)](https://www.zhihu.com/people/tang-fen-44-49)<a href="https://github.com/HarleysZhang/2021_algorithm_intern_information/stargazers"><img src="https://badgen.net/github/stars/HarleysZhang/2021_algorithm_intern_information?color=cyan" alt="stars"></a><a href="https://github.com/HarleysZhang/2021_algorithm_intern_information/network/members"><img src="https://badgen.net/github/forks/HarleysZhang/2021_algorithm_intern_information?color=cyan" alt="forks"></a>
+[![License](data/icons/License-Apache-2.0-green.svg)](LICENSE)[![website](data/icons/Website-armcvai-brightgreen.svg)](http://www.armcvai.com/)[![csdn](data/icons/Website-armcvai-brightgreen.svg)]([![website](data/icons/Website-armcvai-brightgreen.svg)](http://www.armcvai.com/))[![zhihu](data/icons/Home-on-Zhihu.svg)](https://www.zhihu.com/people/tang-fen-44-49)<a href="https://github.com/HarleysZhang/2021_algorithm_intern_information/stargazers"><img src="https://badgen.net/github/stars/HarleysZhang/2021_algorithm_intern_information?color=cyan" alt="stars"></a><a href="https://github.com/HarleysZhang/2021_algorithm_intern_information/network/members"><img src="https://badgen.net/github/forks/HarleysZhang/2021_algorithm_intern_information?color=cyan" alt="forks"></a>
 
 ## 前言
 
@@ -53,13 +53,13 @@
 |字节跳动|京东|小马智行|cvte|
 |微软|网易|蔚来汽车|海康威视|
 |谷歌|快手|小鹏汽车|虹软科技|
-|商汤|爱奇艺|科大讯飞|华为|
+|商汤|爱奇艺|科大讯飞|传音手机|
 |英伟达|小米|寒武纪/依图|大华|
 |博世|陌陌|旷视|荣耀手机|
 |大疆无人机|美图MTlab|文行知远|联想|
 |蚂蚁金服|360安全|云天励飞|汇顶科技|
 |Intel/亚马逊|搜狗|摩尔线程|美的中央研究院|
-|无|猿辅导|思必驰|锐明技术|
+|华为|猿辅导|思必驰|锐明技术|
 |无|新浪/搜狐/金山|奥比中光|联发科|
 |无|YY/虎牙/BIGO/斗鱼|优必选|联影医疗|
 |无|oppo/vivo/一加|度小满金融|戴尔|

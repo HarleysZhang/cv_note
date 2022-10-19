@@ -1,3 +1,7 @@
+## 目录
+---
+[toc]
+
 ## 前言
 
 > 本文的主要贡献在于通过理论分析和大量实验证明使用恒等映射（`identity mapping`）作为快捷连接（`skip connection`）对于残差块的重要性。同时，将 `BN/ReLu` 这些 `activation` 操作挪到了 `Conv`（真正的weights filter操作）之前，提出“预激活“操作，并通过与”后激活“操作做对比实验，表明对于多层网络，使用了预激活残差单元（`Pre-activation residual unit`） 的 `resnet v2` 都取得了比 `resnet v1`（或 resnet v1.5）更好的结果。
@@ -77,7 +81,7 @@
 
 ![不同形式的relu激活](../../data/images/resnetv2/不同形式的relu激活.png)
 
-## 4.1、Experiments on Activation
+### 4.1、Experiments on Activation
 
 本章，我们使用 `ResNet-110` 和 `164` 层瓶颈结构(称为 `ResNet-164`)来进行实验。瓶颈残差单元包含一个 $1\times 1$ 的层来降维，一个 $3\times 3$ 的层，还有一个 $1\times 1$ 的层来恢复维度。如 `ResNet` 论文中描述的那样，它的计算复杂度和包含两个 $3\times 3$ 卷积层的残差单元相似。
 
@@ -97,7 +101,7 @@
 ![表2](../../data/images/resnetv2/表2.png)
 ![表3](../../data/images/resnetv2/表3.png)
 
-## 4.2、Analysis
+### 4.2、Analysis
 
 使用预激活有两个方面的优点：1) $f$ 变为恒等映射，使得网络更易于优化；2)使用 `BN` 作为预激活可以加强对模型的正则化。
 
@@ -111,11 +115,12 @@
 **Reducing overfitting**
 观察图 `6-right`，使用了预激活的网络的训练误差稍高，但却得到更低的测试误差，本文推测这是 `BN` 层的正则化效果所致。在原始残差单元中，尽管`BN` 对信号进行了标准化，但是它很快就被合并到捷径连接(`shortcut`)上，组合的信号并不是被标准化的。**这个非标准化的信号又被用作下一个权重层的输入**。与之相反，本文的预激活（`pre-activation`）版本的模型中，权重层的输入总是标准化的。
 
-## Results
+## 5、Results
 
 表 `4`、表 `5` 分别展示了不同深层网络在不同数据集上的表现。使用的预激活单元的且**更深层**的残差网络（`ResNet v2`）都取得了最好的精度。
 
 ![表4](../../data/images/resnetv2/表4.png)
+
 ![表5](../../data/images/resnetv2/表5.png)
 
 ## 6、结论

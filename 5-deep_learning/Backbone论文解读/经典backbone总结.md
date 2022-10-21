@@ -44,11 +44,11 @@
 
 ## ResNeXt
 
-ResNeXt 的卷积 block 和 Resnet 对比图如下所示。
+`ResNeXt` 的卷积block 和 `Resnet` 对比图如下所示。
 
 ![resnext的卷积block和resnet的对比图](../../data/images/backbone/resnext的卷积block和resnet的对比图.png)
 
-ResNeXt和Resnet的模型结构参数对比图如下图所示。
+ResNeXt 和 Resnet 的模型结构参数对比图如下图所示。
 
 ![resnext的结构参数和resnet的对比图](../../data/images/backbone/resnext的结构参数和resnet的对比图.png)
 

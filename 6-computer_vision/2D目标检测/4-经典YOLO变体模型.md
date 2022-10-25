@@ -107,7 +107,7 @@ r1 &=  (b \times 1^2\times \frac{b}{4} + \frac{b}{4} \times 3^2\times \frac{b}{4
 
 4，**最小化卷积输入/输出(CIO)**
 
-`CIO` 是一个可以测量 `DRAM IO` 状态的指标。表 `5` 列出了 `OSA`、`CSP` 和我们设计的 `CSPOSANet` 的 `CIO`。当 $kg > b/2$ 时，`CSPOSANet` 可以获得最佳的 `CIO`。
+`CIO` 是一个可以测量 `DRAM IO` 状态的指标。表 `5` 列出了 `OSA`、`CSP` 和我们设计的 `CSPOSANet` 的 `CIO`。当 $kg > \frac{b}{2}$ 时，`CSPOSANet` 可以获得最佳的 `CIO`。
 
 ![Table5](../../data/images/scaled-yolov4/Table5.png)
 
@@ -117,7 +117,7 @@ r1 &=  (b \times 1^2\times \frac{b}{4} + \frac{b}{4} \times 3^2\times \frac{b}{4
 
 ![Table7](../../data/images/scaled-yolov4/Table7.png)
 
-从表 `7` 可以看出，宽度缩放可以独立操作。当输入图像尺寸增大时，要想对大对象有更好的预测效果，就必须增大网络的 `depth` 或 `stage` （一般每个 `stage` 都会降低特征图分辨率的一半）的数量。在表 `7` 中列出的参数中，$\{size^{input}， \#stage\}$ 的组合效果最好。因此，当执行缩放时，我们首先在 $\{size^{input}，\#stage\}$ 上执行复合缩放，然后根据实时的环境，我们再分别进一步缩放深度 `depth` 和宽度 `width`。
+从表 `7` 可以看出，宽度缩放可以独立操作。当输入图像尺寸增大时，要想对大对象有更好的预测效果，就必须增大网络的 `depth` 或 `stage` （一般每个 `stage` 都会降低特征图分辨率的一半）的数量。在表 `7` 中列出的参数中，$\left \{ size^{input}, \#stage \right \}$ 的组合效果最好。因此，当执行缩放时，我们首先在 $\left \{ size^{input} \right \}$，`#stage` 上执行复合缩放，然后根据实时的环境，我们再分别进一步缩放深度 `depth` 和宽度 `width`。
 
 ### 4，Scaled-YOLOv4
 
@@ -150,7 +150,7 @@ r1 &=  (b \times 1^2\times \frac{b}{4} + \frac{b}{4} \times 3^2\times \frac{b}{4
 
 ![sacled-yolov4-large版本模型结构图](../../data/images/scaled-yolov4/sacled-yolov4-large版本模型结构图.png)
 
-我们通过设计 $size^{input}$, #stage 来对 `backbone` 执行复合缩放。我们把每个 `stage` 的深度设置为 $2^{d_{s_{i}}}$。$d_s$ 范围为 $[1, 3, 15, 15, 7, 7, 7]$。与之前的 `ResNet` 的卷积划分为 `4` 个 `stage` 不同，这里最多划分为 `7` 个 `stage`（`YOLOv4-P7`）。
+我们通过设计 $size^{input}$, `#stage` 来对 `backbone` 执行复合缩放。我们把每个 `stage` 的深度设置为 $2^{d_{s_{i}}}$。$d_s$ 范围为 $[1, 3, 15, 15, 7, 7, 7]$。与之前的 `ResNet` 的卷积划分为 `4` 个 `stage` 不同，这里最多划分为 `7` 个 `stage`（`YOLOv4-P7`）。
 
 ### 5，实验
 

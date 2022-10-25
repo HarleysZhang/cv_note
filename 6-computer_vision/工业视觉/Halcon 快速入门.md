@@ -7,7 +7,7 @@
 * **定位**：获取目标的二维/三维位置信息，常用语元件定位，用以辅助机器臂进行后续的抓取等动作。
 * **检测**：一般特指缺陷检测，判断产品是否存在缺陷，如零部件缺陷检测等。
 
-<img src="images/vjTTNDFp8mu84iqX4nFsNR2lz73yBCzhIrd1Q_rpwoU.png" alt="image" style="zoom: 33%;" />
+<img src="images/vjTTNDFp8mu84iqX4nFsNR2lz73yBCzhIrd1Q_rpwoU.png" alt="image" style="zoom: 45%;" />
 
 ## 一，HALCON 概述
 `HALCON` 是德国 MVtec 公司开发的一款综合性的机器视觉标准软件，拥有全球通用的集成开发环境（HDevelop）。它节约了产品成本，缩短了软件开发周期——HALCON 灵活的架构便于机器视觉，医学图像和图像分析应用的快速开发。在欧洲以及日本的工业界已经是公认具有最佳效能的机器视觉（Machine Vision）软件。
@@ -20,7 +20,7 @@ HALCON 主要提供的技术有：条形码和二维码读取、BLOB 分析、�
 
 更多技术的描述请参阅官网[资料](https://www.mvtec.com/cn/technologies)。
 
-<img src="/Users/zhanghonggao/Library/Application Support/typora-user-images/image-20221024215502936.png" alt="image-20221024215502936" style="zoom:50%;" />
+<img src="images/halcon_all_technology.png" alt="image-20221024215502936" style="zoom:50%;" />
 
 ## 1.1，HALCON 安装
 > 注意：**HALCON 目前不支持 arm 处理器版的 M1 Pro 机器**，而且目前主流是在 Windows 开发居多。
@@ -146,7 +146,7 @@ HALCON 图像采集接口的更新会比 HALCON 库本身更新更为频繁。
 分步说明的描述可以参考 《quick\_guide》 文档的3.2 节内容。
 
 ## 四，更多参考资料
-HALCON 相关文档描述及下载链接汇总如下表所示。
+`HALCON` 相关文档描述及下载链接汇总如下表所示。
 
 |REFERENCE MANUAL 参考手册|下载链接|文件大小|
 | ----- | ----- | ----- |

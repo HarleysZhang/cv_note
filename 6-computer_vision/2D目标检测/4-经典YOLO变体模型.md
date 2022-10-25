@@ -107,7 +107,7 @@ r1 &=  (b \times 1^2\times \frac{b}{4} + \frac{b}{4} \times 3^2\times \frac{b}{4
 
 4，**最小化卷积输入/输出(CIO)**
 
-`CIO` 是一个可以测量 `DRAM IO` 状态的指标。表 `5` 列出了 `OSA`、`CSP` 和我们设计的 `CSPOSANet` 的 `CIO`。当 $kg > \frac{b}{2}$ 时，`CSPOSANet` 可以获得最佳的 `CIO`。
+`CIO` 是一个可以测量 `DRAM IO` 状态的指标。表 `5` 列出了 `OSA`、`CSP` 和我们设计的 `CSPOSANet` 的 `CIO`。当 $kg > \frac {b}{2}$ 时，`CSPOSANet` 可以获得最佳的 `CIO`。
 
 ![Table5](../../data/images/scaled-yolov4/Table5.png)
 

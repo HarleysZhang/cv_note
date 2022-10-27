@@ -5,18 +5,25 @@ import numpy as np
 
 # Load the cascade
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
-hat_img_bgra = cv2.imread("./images/1024.png", -1) # 图像需为PNG格式（方便alpha通道的使用）
+hat_img_bgra = cv2.imread("./images/hat.png", -1) # 图像需为PNG格式（方便alpha通道的使用）
 r, g, b, a = cv2.split(hat_img_bgra)
 hat_rgb = cv2.merge((r, g, b)) # 把 rgb 三通道合成一张rgb的彩色图, shape is (height, width, channel)
 
-def code_holiday_celebration(image, x, y, w, h, center):
+def add_hat(img1, x, y, w, h, hat_rgb):
+    center = int(x + w/2)
+    # I want to put logo on the head, So I create a ROI
+    scaled_factor = w / hat_rgb.shape[1]
+    resized_hat_h = int(round(hat_rgb.shape[0] * scaled_factor))
+    bg_roi = img1[y - resized_hat_h : y, x : x + w]
+    
+    
     # 根据人脸大小调整节日 logo 大小(公式随意，比例一致即可)
     # ***********************************************************
     factor = 1.0 # 可调
     # ***********************************************************
     scaled_factor = w/hat_rgb.shape[1] # 缩放比例计算
     # 根据人脸大小缩放后的节日 logo 尺寸
-    resized_hat_h = int(round(hat_rgb.shape[0] * scaled_factor * factor))
+    resized_hat_h = int(round(hat_rgb.shape[0] * scaled_factor))
     resized_hat_w = int(round(hat_rgb.shape[1] * scaled_factor * factor))
     if resized_hat_h > y:
         resized_hat_h = y-1		#可调
@@ -29,10 +36,10 @@ def code_holiday_celebration(image, x, y, w, h, center):
     # LOGO 相对于人脸框上线的偏移量
     # ***********************************************************
     dh = 0			# 可调
-    dw = -40		# 可调
+    dw = -10		# < 0，左移，> 0右移
     # ***********************************************************
     # 原图 ROI(这个公式原则上也可调)
-    bg_roi = image[y + dh - resized_hat_h : y + dh, 
+    bg_roi = img1[y + dh - resized_hat_h : y + dh, 
                   (center + dw - resized_hat_w//3):(center + dw + resized_hat_w//3*2)]
     # 原图 ROI 中提取放 LOGO 的区域
     bg_roi = bg_roi.astype(float)
@@ -51,8 +58,8 @@ def code_holiday_celebration(image, x, y, w, h, center):
     # 两个ROI区域相加
     add_hat = cv2.add(bg, hat)
     # 把添加好帽子的区域放回原图
-    image[y + dh - resized_hat_h: y + dh, (center + dw - resized_hat_w//3):(center + dw + resized_hat_w//3*2)] = add_hat
-    return image
+    img1[y + dh - resized_hat_h: y + dh, (center + dw - resized_hat_w//3):(center + dw + resized_hat_w//3*2)] = add_hat
+    return img1
 
 if __name__ == "__main__":
     img = cv2.imread("./images/programmer.png") # 必须为 png 图片
@@ -61,8 +68,7 @@ if __name__ == "__main__":
     
     for (x, y, w, h) in faces:
         roi_gray = gray[y: y+h, x: x+w]
-        center = int(x + w/2)
         cv2.rectangle(img, (x, y), (x+w, y+h), (0, 0, 255), 2) # visual face detect bbox
-        output_image = code_holiday_celebration(img, x, y, w, h, center)
+        output_image = add_hat(img, x, y, w, h, hat_rgb)
     
-    cv2.imwrite('./images/hat_on_head.png', output_image)
+    cv2.imwrite('./images/add_hat.png', output_image)

@@ -90,7 +90,7 @@ r1 &=  (b \times 1^2\times \frac{b}{4} + \frac{b}{4} \times 3^2\times \frac{b}{4
 1，**使计算复杂度少于 $O(whkb^2)$**。
 
 作者分析了高效利用参数的网络：`DenseNet` 和 `OSANet` 的计算量，分别为 $O(whgbk)$、$O(max(whbg, whkg^2))$。两者的计算复杂度阶数均小于 `ResNet` 系列的 $O(whkb^2)$。因此，我们基于 `OSANet` 设计 `tiny` 模型，因为它具有更小的计算复杂度。
-> 这里的 `OSANet` 其实是 [VoVNet](http://xxx.itp.ac.cn/pdf/1904.09730.pdf "VoVNet") 网络，专门为 `GPU` 平台设计的更高效的 `backbone` 网络架构。
+> 这里的 `OSANet` 其实是 [VoVNet](http://xxx.itp.ac.cn/pdf/1904.09730.pdf "VoVNet") 网络，专门为 `GPU` 平台设计的更高效的 `backbone` 网络架，其论文解读可参考我之前写的[文章](https://github.com/HarleysZhang/2021_algorithm_intern_information/blob/master/5-deep_learning/%E8%BD%BB%E9%87%8F%E7%BA%A7%E7%BD%91%E7%BB%9C%E8%AE%BA%E6%96%87%E8%A7%A3%E6%9E%90/VoVNet%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB.md)。
 
 ![OSA和Dense layer的计算复杂度](../../data/images/scaled-yolov4/OSA和Dense-layer的计算复杂度.png)
 

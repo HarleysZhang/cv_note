@@ -13,16 +13,16 @@
 > 基于深度学习算法的计算机视觉领域知识。
 #### 2.1，目标检测基础
 
-- [0-目标检测模型的基础](./目标检测/0-目标检测模型的基础.md)
-- [1-目标检测模型的评价标准-AP与mAP](./目标检测/1-目标检测模型的评价标准-AP与mAP.md)
+- [0-目标检测模型的基础](./2D目标检测/0-目标检测模型的基础.md)
+- [1-目标检测模型的评价标准-AP与mAP](./2D目标检测/1-目标检测模型的评价标准-AP与mAP.md)
 #### 2.2，二阶段目标检测算法
 
-- [Faster RCNN论文解读](./目标检测/3-Faster-RCNN论文解读.md)
-- [3-FPN网络理解](./目标检测/3-FPN网络理解.md)
-- [Mask RCNN理解](./目标检测/3-Mask-RCNN理解.md)
-- [Cascade RCNN网络理解](./目标检测/3-Cascade-RCNN网络理解.md)
+- [Faster RCNN网络详解](./2D目标检测/2-Faster%20RCNN网络详解.md)
+- [FPN网络详解](./2D目标检测/3-FPN网络详解.md)
+- [Mask RCNN详解](./2D目标检测/4-Mask%20RCNN详解.md)
+- [Cascade RCNN论文解读](./2D目标检测/5-Cascade%20RCNN论文解读.md)
 #### 2.3，一阶段目标检测算法
 
-- [YOLOv1-v5论文解读](./目标检测/4-YOLOv1-v5论文解读.md)
-- [经典YOLO变体模型](./目标检测/4-经典YOLO变体模型.md)
-- [RetinaNet网络理解](./目标检测/4-RetinaNet网络理解.md)
+- [RetinaNet网络详解](./2D目标检测/6-RetinaNet网络详解.md)
+- [YOLOv1-v5论文解读](./2D目标检测/7-YOLOv1-v5论文解读.md)
+- [Scaled-YOLOv4论文解读](./2D目标检测/8-Scaled-YOLOv4论文解读.md)

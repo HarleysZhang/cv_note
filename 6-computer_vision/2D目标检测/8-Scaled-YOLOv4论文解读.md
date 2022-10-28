@@ -13,7 +13,9 @@
   - [4.3，YOLOv4-large](#43yolov4-large)
 - [5，实验](#5实验)
 - [总结](#总结)
+- [Reference](#reference)
 - [参考资料](#参考资料)
+
 ## 一，Scaled YOLOv4
 
 > `Scaled YOLOv4` 的二作就是 `YOLOv4` 的作者 `Alexey Bochkovskiy`。
@@ -40,7 +42,8 @@
 
 ### 2.1，模型缩放
 
-传统的模型缩放是指改变模型的深度，如 `VGG` 变体，以及后边可以训练更深层的 `ResNet` 网络等；后面 `agoruyko` 等人开始考虑模型的宽度，通过改变卷积层卷积核的数量来实现模型缩放，并设计了 `Wide ResNet`，同样的精度下，它的参数量尽管比原始 `ResNet` 多，但是推理速度却更快。随后的 `DenseNet` 和 `ResNeXt` 也设计了一个复合缩放版本，将深度和宽度都考虑在内。
+传统的模型缩放是指改变模型的**深度**，如 `VGG` 变体，以及后边可以训练**更**深层的 `ResNet` 网络等；后面 `agoruyko` 等人开始考虑模型的宽度，通过改变卷积层卷积核的数量来实现模型缩放，并设计了 `Wide ResNet`[43]，同样的精度下，它的参数量尽管比原始 `ResNet` 多，但是推理速度却更快。随后的 `DenseNet` 和 `ResNeXt` 也设计了一个复合缩放版本，将深度和宽度都考虑在内。
+> 何凯明等人提出的 `ResNet` 网络解决了随着深度增加带来的网络退化问题。
 
 ## 3，模型缩放原则
 
@@ -159,10 +162,13 @@ r1 &=  (b \times 1^2\times \frac{b}{4} + \frac{b}{4} \times 3^2\times \frac{b}{4
 
 ## 总结
 
-通篇论文看下来，感觉最主要的贡献在于通过理论系统分析和实验证了模型缩放的原则，进一步拓展了 `CSPNet` 方法，并基于此设计了一个全新的 `Scaled-YOLOv4`，`Scaled-YOLOv4` 网络的卷积模块都有使用 `CSP`。总的感觉就是针对不同的 `GPU` 平台，根据作者分析出来的模型缩放理论，且符合一些原则的情况下，选择不同的模型宽度和深度参数，并让模型更深更宽。
+通篇论文看下来，感觉这篇论文最主要的贡献在于通过简单的理论分析和对比实验，验证了模型缩放的原则，进一步拓展了 `CSPNet` 方法，并基于此设计了一个全新的 `Scaled-YOLOv4`。个人感觉就是针对不同的 `GPU` 平台，可以根据作者分析出来的模型缩放理论且符合其他一些原则的情况下，通过选择不同的模型宽度和深度参数，让模型更深更宽。
 
 > `anchor-free` 的方法，如 `centernet` 是不需要复杂的后处理，如 `NMS`。`Backbone` 模型的宽度、深度、模块的瓶颈比（`bottleneck`）、输入图像分辨率等参数的关系。
 
+## Reference
+
+[43] Sergey Zagoruyko and Nikos Komodakis. Wide residualnet works. arXiv preprint arXiv:1605.07146, 2016.
 ## 参考资料
 
 - [Scaled-YOLOv4: Scaling Cross Stage Partial Network](https://arxiv.org/abs/2011.08036 "Scaled-YOLOv4: Scaling Cross Stage Partial Network")

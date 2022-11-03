@@ -1,19 +1,3 @@
-- [一，Docker 简介](#一docker-简介)
-  - [1.1，什么是 Docker](#11什么是-docker)
-  - [1.2，Docker 与虚拟机的区别](#12docker-与虚拟机的区别)
-  - [1.3，Docker 架构](#13docker-架构)
-  - [1.4，为什么用 Docker](#14为什么用-docker)
-- [二，Docker 基本概念](#二docker-基本概念)
-  - [2.1，镜像](#21镜像)
-  - [2.2，容器](#22容器)
-  - [2.3，仓库](#23仓库)
-- [三，Docker 使用](#三docker-使用)
-  - [3.1，Docker 服务](#31docker-服务)
-  - [3.2，下载与使用Docker公共镜像(Images)](#32下载与使用docker公共镜像images)
-- [四，Docker 镜像命令](#四docker-镜像命令)
-- [五，Docker 容器命令](#五docker-容器命令)
-  - [5.1，docker run 命令](#51docker-run-命令)
-- [六，参考资料](#六参考资料)
 ## 一，Docker 简介
 ### 1.1，什么是 Docker
 `Docker` 使用 Google 公司推出的 Go 语言 进行开发实现，基于 Linux 内核的 cgroup，namespace，以及 OverlayFS 类的 Union FS 等技术，对进程进行封装隔离，属于**操作系统层面的虚拟化技术**。由于隔离的进程独立于宿主和其它的隔离的进程，因此也称其为容器。**Docker容器**与虚拟机类似，但二者在原理上不同。容器是将[操作系统层虚拟化](https://zh.m.wikipedia.org/wiki/%E4%BD%9C%E6%A5%AD%E7%B3%BB%E7%B5%B1%E5%B1%A4%E8%99%9B%E6%93%AC%E5%8C%96%20%22%E4%BD%9C%E6%A5%AD%E7%B3%BB%E7%B5%B1%E5%B1%A4%E8%99%9B%E6%93%AC%E5%8C%96%22 "操作系统层虚拟化")，虚拟机则是虚拟化硬件，因此容器更具有便携性、能更高效地利用服务器。
@@ -37,7 +21,7 @@
 |系统支持量|单机支持上千个容器|一般几十个|
 
 ### 1.3，Docker 架构
-![image](images/L-xDvVjAV1tWJ6Gk6kr-hDXF-AwaxhIXYZEF2FDqzW0.png)
+![image](../data/images/docker/L-xDvVjAV1tWJ6Gk6kr-hDXF-AwaxhIXYZEF2FDqzW0.png)
 
 > runc 是一个 Linux 命令行工具，用于根据 OCI容器运行时规范 创建和运行容器。
 containerd 是一个守护程序，它管理容器生命周期，提供了在一个节点上执行容器和管理镜像的最小功能集。
@@ -98,7 +82,7 @@ ubuntu              bionic              329ed837d508        3 days ago          
 
 1，**查看 Docker 服务状态**：使用 `systemctl status docker` 命令查看 Docker 服务的状态。其中 Active: active (running) 即表示 Docker 服务为正在运行状态。
 
-![image](images/ExVYsbQl5Uatb6Rk4h_PevAXETxUgb60O9fP1kYrsY0.png)
+![image](../data/images/docker/ExVYsbQl5Uatb6Rk4h_PevAXETxUgb60O9fP1kYrsY0.png)
 
 2，**停止 Docker 服务**：使用 `systemctl stop docker` 命令。
 
@@ -142,21 +126,21 @@ For more examples and ideas, visit:
 
 1，使用 **docker search** 命令从 Docker Repo 搜索 Dokcer 可用的镜像。示例命令：`docker search ubuntu18.04`。
 
-![image](images/VDaqCzSPqTxG2F5pY6Z3l7nWOUm1mcsufhAug8gNadA.png)
+![image](../data/images/docker/VDaqCzSPqTxG2F5pY6Z3l7nWOUm1mcsufhAug8gNadA.png)
 
 2，使用 **docker image pull** 命令从 Docker Repo 获取指定的 Dokcer镜像(Images)。示例命令: `docker image pull docker.io/hello-world`。拉取名为 docker.io/hello-world 的镜像。
 
-![image](images/OtA6evJeq4h1M5R-t_8pCiV41eII-K9lIsoBCa4qbBo.png)
+![image](../data/images/docker/OtA6evJeq4h1M5R-t_8pCiV41eII-K9lIsoBCa4qbBo.png)
 
 3，使用 **docker image ls** 命令查看**本地**的 Dokcer 镜像(Images)。
 
 4，使用 **docker run** 命令运行 Dokcer 镜像(Images)。示例命令：`docker run hello-world`。
 
-![image](images/Q2A9wZz1qY_yUxPzB7z6nVmcgAEz1T56qZt785MCIP0.png)
+![image](../data/images/docker/Q2A9wZz1qY_yUxPzB7z6nVmcgAEz1T56qZt785MCIP0.png)
 
 5，使用 **docker info** 命令，查看当前 docker容器 的所有的信息。
 
-![image](images/-rnbIRGlVItC7zPytjVm_D-ReUsB5Jf9cP9S-e2atNA.png)
+![image](../data/images/docker/-rnbIRGlVItC7zPytjVm_D-ReUsB5Jf9cP9S-e2atNA.png)
 
 6，使用 **docker version** 查看容器的版本信息。
 
@@ -164,7 +148,7 @@ For more examples and ideas, visit:
 $ docker --version # 这个命令查看 docker 版本更简单
 Docker version 19.03.13, build 4484c46d9d
 ```
-![image](images/GDJbbeZyUtoedXnjm5MNMOIKgdgoa6cqcnSo-FT7fP8.png)
+![image](../data/images/docker/GDJbbeZyUtoedXnjm5MNMOIKgdgoa6cqcnSo-FT7fP8.png)
 
 ## 四，Docker 镜像命令
 Docker 镜像(Images) 也可以理解为是一个用于创建 Docker容器(Container) 的静态模板。一个 Docker 镜像(Images) 可以创建很多 Docker容器(Container)。
@@ -246,11 +230,11 @@ $ docker restart [容器ID]
 
 2，`Docker` 交互式运行的语法为：`docker run -i -t IMAGE [COMMAND] [ARG]` 。`Docker` 交互式运行，即 `Docker` 启动直接进入 `Docker` 镜像内部。
 
-![image](images/DN6phxbTI-qJqDunkIdOgz6Gte1a--lUTVsIW5s8HZo.png)
+![image](../data/images/docker/DN6phxbTI-qJqDunkIdOgz6Gte1a--lUTVsIW5s8HZo.png)
 
 3，使用 `docker ps` 命令，**查看正在运行的 docker**。
 
-![image](images/EJgGulpCOPeBpHrsbzfdNrTuBYAKCaQGoLitWluROl8.png)
+![image](../data/images/docker/EJgGulpCOPeBpHrsbzfdNrTuBYAKCaQGoLitWluROl8.png)
 
 ## 六，参考资料
 * [Docker-从入门到实践](https://yeasy.gitbook.io/docker_practice/ "Docker-从入门到实践")

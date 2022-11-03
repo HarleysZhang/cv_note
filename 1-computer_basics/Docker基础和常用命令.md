@@ -1,7 +1,22 @@
-# Docker基础和常用命令
+- [一，Docker 简介](#一docker-简介)
+  - [1.1，什么是 Docker](#11什么是-docker)
+  - [1.2，Docker 与虚拟机的区别](#12docker-与虚拟机的区别)
+  - [1.3，Docker 架构](#13docker-架构)
+  - [1.4，为什么用 Docker](#14为什么用-docker)
+- [二，Docker 基本概念](#二docker-基本概念)
+  - [2.1，镜像](#21镜像)
+  - [2.2，容器](#22容器)
+  - [2.3，仓库](#23仓库)
+- [三，Docker 使用](#三docker-使用)
+  - [3.1，Docker 服务](#31docker-服务)
+  - [3.2，下载与使用Docker公共镜像(Images)](#32下载与使用docker公共镜像images)
+- [四，Docker 镜像命令](#四docker-镜像命令)
+- [五，Docker 容器命令](#五docker-容器命令)
+  - [5.1，docker run 命令](#51docker-run-命令)
+- [六，参考资料](#六参考资料)
 ## 一，Docker 简介
 ### 1.1，什么是 Docker
-`Docker` 使用 Google 公司推出的 Go 语言 进行开发实现，基于 Linux 内核的 cgroup，namespace，以及 OverlayFS 类的 Union FS 等技术，对进程进行封装隔离，属于**操作系统层面的虚拟化技术**。由于隔离的进程独立于宿主和其它的隔离的进程，因此也称其为容器。**Docker容器**与虚拟机类似，但二者在原理上不同。容器是将[操作系统层虚拟化](https://zh.m.wikipedia.org/wiki/%E4%BD%9C%E6%A5%AD%E7%B3%BB%E7%B5%B1%E5%B1%A4%E8%99%9B%E6%93%AC%E5%8C%96%20%22%E4%BD%9C%E6%A5%AD%E7%B3%BB%E7%B5%B1%E5%B1%A4%E8%99%9B%E6%93%AC%E5%8C%96%22)，虚拟机则是虚拟化硬件，因此容器更具有便携性、能更高效地利用服务器。
+`Docker` 使用 Google 公司推出的 Go 语言 进行开发实现，基于 Linux 内核的 cgroup，namespace，以及 OverlayFS 类的 Union FS 等技术，对进程进行封装隔离，属于**操作系统层面的虚拟化技术**。由于隔离的进程独立于宿主和其它的隔离的进程，因此也称其为容器。**Docker容器**与虚拟机类似，但二者在原理上不同。容器是将[操作系统层虚拟化](https://zh.m.wikipedia.org/wiki/%E4%BD%9C%E6%A5%AD%E7%B3%BB%E7%B5%B1%E5%B1%A4%E8%99%9B%E6%93%AC%E5%8C%96%20%22%E4%BD%9C%E6%A5%AD%E7%B3%BB%E7%B5%B1%E5%B1%A4%E8%99%9B%E6%93%AC%E5%8C%96%22 "操作系统层虚拟化")，虚拟机则是虚拟化硬件，因此容器更具有便携性、能更高效地利用服务器。
 
 专业名词 `Docker` 有两个意思：
 
@@ -37,7 +52,8 @@ Docker 作为一种**新的虚拟化技术**，跟传统的虚拟化技术相比
 5. **更轻松的迁移**：Docker 可以在很多平台上运行，无论是物理机、虚拟机、公有云、私有云，甚至是笔记本，其运行结果是一致的。
 6. **更轻松的维护和扩展。**
 
-## **二，Docker 基本概念**
+## 二，Docker 基本概念
+
 **Docker 三个基本概念：**
 
 * 镜像（Image）
@@ -61,9 +77,9 @@ Docker 作为一种**新的虚拟化技术**，跟传统的虚拟化技术相比
 ### 2.3，仓库
 镜像构建完成后，可以很容器的在**当前宿主主机**上运行，但是如果需要在其他服务器上使用这个镜像，我们就需要一个集中的存储、分发镜像的服务，即**仓库**（Repository）-集中存放镜像的地方。
 
-`Docker` 仓库(`Registry`) 分为公开仓库（`Public`）和私有仓库（`Private`）两种形式。目前 `Docker` 官方维护了一个公共仓库 [Docker Hub](https://hub.docker.com/)，其中已经包括了数量超过 2,650,000 的镜像。大部分需求都可以通过在 `Docker Hub` 中直接下载镜像来实现。
+`Docker` 仓库(`Registry`) 分为公开仓库（`Public`）和私有仓库（`Private`）两种形式。目前 `Docker` 官方维护了一个公共仓库 [Docker Hub](https://hub.docker.com/ "Docker Hub")，其中已经包括了数量超过 2,650,000 的镜像。大部分需求都可以通过在 `Docker Hub` 中直接下载镜像来实现。
 
-有时候使用 `Docker Hub` 这样的公共仓库可能不方便，用户可以创建一个**本地仓库**供私人使用。[Docker Registry](https://yeasy.gitbook.io/docker_practice/repository/registry) 是官方提供的工具，可以用于构建私有的镜像仓库。
+有时候使用 `Docker Hub` 这样的公共仓库可能不方便，用户可以创建一个**本地仓库**供私人使用。[Docker Registry](https://yeasy.gitbook.io/docker_practice/repository/registry "Docker Registry") 是官方提供的工具，可以用于构建私有的镜像仓库。
 
 一个 `Docker Registry` 中可以包含多个**仓库**（`Repository`）；每个仓库可以包含多个**标签**（`Tag`）；**每个标签对应一个镜像**。
 
@@ -122,6 +138,8 @@ For more examples and ideas, visit:
  https://docs.docker.com/get-started/
 ```
 ### 3.2，下载与使用Docker公共镜像(Images)
+> `macos` 系统环境下操作示例，`ubuntu` 系统可能略有不同。
+
 1，使用 **docker search** 命令从 Docker Repo 搜索 Dokcer 可用的镜像。示例命令：`docker search ubuntu18.04`。
 
 ![image](images/VDaqCzSPqTxG2F5pY6Z3l7nWOUm1mcsufhAug8gNadA.png)
@@ -143,7 +161,7 @@ For more examples and ideas, visit:
 6，使用 **docker version** 查看容器的版本信息。
 
 ```bash
-$ dockerd --versio # 这个命令查看 docker 版本更简单
+$ docker --version # 这个命令查看 docker 版本更简单
 Docker version 19.03.13, build 4484c46d9d
 ```
 ![image](images/GDJbbeZyUtoedXnjm5MNMOIKgdgoa6cqcnSo-FT7fP8.png)
@@ -235,6 +253,6 @@ $ docker restart [容器ID]
 ![image](images/EJgGulpCOPeBpHrsbzfdNrTuBYAKCaQGoLitWluROl8.png)
 
 ## 六，参考资料
-* [Docker-从入门到实践](https://yeasy.gitbook.io/docker_practice/)
-* [Docker教程](https://haicoder.net/docker/docker-course.html)
+* [Docker-从入门到实践](https://yeasy.gitbook.io/docker_practice/ "Docker-从入门到实践")
+* [Docker教程](https://haicoder.net/docker/docker-course.html "Docker教程")
 

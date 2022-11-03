@@ -1,18 +1,5 @@
-- [前言](#前言)
-- [一，精确率、召回率与F1](#一精确率召回率与f1)
-  - [1.1，准确率](#11准确率)
-  - [1.2，精确率、召回率](#12精确率召回率)
-  - [1.3，F1 分数](#13f1-分数)
-  - [1.4，PR 曲线](#14pr-曲线)
-    - [1.4.1，如何理解 P-R 曲线](#141如何理解-p-r-曲线)
-  - [1.5，ROC 曲线与 AUC 面积](#15roc-曲线与-auc-面积)
-- [二，AP 与 mAP](#二ap-与-map)
-  - [2.1，AP 与 mAP 指标理解](#21ap-与-map-指标理解)
-  - [2.2，近似计算AP](#22近似计算ap)
-  - [2.3，插值计算 AP](#23插值计算-ap)
-  - [2.4，mAP 计算方法](#24map-计算方法)
-- [三，目标检测度量标准汇总](#三目标检测度量标准汇总)
-- [四，参考资料](#四参考资料)
+## 目录
+[toc]
 
 ## 前言
 
@@ -26,7 +13,7 @@
 
 **准确率（精度） – Accuracy**，预测正确的结果占总样本的百分比，定义如下：
 
-$$准确率 = (TP+TN)/(TP+TN+FP+FN)$$
+$$ 准确率 = (TP+TN)/(TP+TN+FP+FN)$$
 
 错误率和精度虽然常用，但是并不能满足所有任务需求。以西瓜问题为例，假设瓜农拉来一车西瓜，我们用训练好的模型对西瓜进行判别，现如精度只能衡量有多少比例的西瓜被我们判断类别正确（两类：好瓜、坏瓜）。但是若我们更加关心的是“挑出的西瓜中有多少比例是好瓜”，或者”所有好瓜中有多少比例被挑出来“，那么精度和错误率这个指标显然是不够用的。
 
@@ -68,12 +55,12 @@ $$F_{\beta} = \frac{1+\beta^{2}\times P\times R}{(\beta^{2}\times P)+R}$$
 
 很多时候我们会有多个混淆矩阵，例如进行多次训练/测试，每次都能得到一个混淆矩阵；或者是在多个数据集上进行训练/测试，希望估计算法的”全局“性能；又或者是执行多分类任务，**每两两类别**的组合都对应一个混淆矩阵；....总而来说，我们希望能在 $n$ 个二分类混淆矩阵上综合考虑查准率和查全率。
 
-一种直接的做法是先在各混淆矩阵上分别计算出查准率和查全率，记为$(P_1,R_1),(P_2,R_2),...,(P_n,R_n)$ 然后取平均，这样得到的是”宏查准率（`Macro-P`）“、”宏查准率（`Macro-R`）“及对应的”宏$F1$（`Macro-F1`）“：
+一种直接的做法是先在各混淆矩阵上分别计算出查准率和查全率，记为 $(P_1,R_1),(P_2,R_2),...,(P_n,R_n)$ 然后取平均，这样得到的是”宏查准率（`Macro-P`）“、”宏查准率（`Macro-R`）“及对应的”宏 $F1$（`Macro-F1`）“：
 $$Macro\ P = \frac{1}{n}\sum_{i=1}^{n}P_i$$
 $$Macro\ R = \frac{1}{n}\sum_{i=1}^{n}R_i$$
 $$Macro\ F1 = \frac{2 \times Macro\ P\times Macro\ R}{Macro\ P + Macro\ R}$$
 
-另一种做法是将各混淆矩阵对应元素进行平均，得到 $TP、FP、TN、FN$ 的平均值，再基于这些平均值计算出”微查准率“（`Micro-P`）、”微查全率“（`Micro-R`）和”微$F1$“（`Mairo-F1`）
+另一种做法是将各混淆矩阵对应元素进行平均，得到 $TP、FP、TN、FN$ 的平均值，再基于这些平均值计算出”微查准率“（`Micro-P`）、”微查全率“（`Micro-R`）和”微 $F1$“（`Mairo-F1`）
 
 $$Micro\ P = \frac{\overline{TP}}{\overline{TP}+\overline{FP}}$$
 $$Micro\ R = \frac{\overline{TP}}{\overline{TP}+\overline{FN}}$$
@@ -179,7 +166,7 @@ def draw_PR_curve(predict_scores, eval_labels, name, cls_idx=1):
 
 ### 2.3，插值计算 AP
 
-插值计算(`Interpolated average precision`) $AP$ 的公式的演变过程这里不做讨论，详情可以参考这篇[文章](https://arleyzhang.github.io/articles/c521a01c/)，我这里的公式和图也是参考此文章的。`11` 点插值计算方式计算 $AP$ 公式如下：
+插值计算(`Interpolated average precision`) $AP$ 的公式的演变过程这里不做讨论，详情可以参考这篇[文章](https://arleyzhang.github.io/articles/c521a01c/ "文章")，我这里的公式和图也是参考此文章的。`11` 点插值计算方式计算 $AP$ 公式如下：
 
 ![11点插值计算方式计算AP公式](../../data/images/插值计算AP公式.png)
 
@@ -401,7 +388,7 @@ def voc_eval(detpath,
 
 因为 $mAP$ 值的计算是对数据集中所有类别的 $AP$ 值求平均，所以我们要计算 $mAP$，首先得知道某一类别的 $AP$ 值怎么求。不同数据集的某类别的 $AP$ 计算方法大同小异，主要分为三种：
 
-（1）在 `VOC2007`，只需要选取当 $Recall >= 0, 0.1, 0.2, ..., 1$ 共 `11` 个点时的 `Precision` 最大值，然后 $AP$ 就是这 `11` 个 `Precision` 的平均值，$mAP$ 就是所有类别 $AP$ 值的平均。`VOC` 数据集中计算 $AP$ 的代码（用的是插值计算方法，代码出自[py-faster-rcnn仓库](https://github.com/rbgirshick/py-faster-rcnn/blob/master/lib/datasets/voc_eval.py)）
+（1）在 `VOC2007`，只需要选取当 $Recall >= 0, 0.1, 0.2, ..., 1$ 共 `11` 个点时的 `Precision` 最大值，然后 $AP$ 就是这 `11` 个 `Precision` 的平均值，$mAP$ 就是所有类别 $AP$ 值的平均。`VOC` 数据集中计算 $AP$ 的代码（用的是插值计算方法，代码出自[py-faster-rcnn仓库](https://github.com/rbgirshick/py-faster-rcnn/blob/master/lib/datasets/voc_eval.py "py-faster-rcnn仓库")）
 
 （2）在 `VOC2010` 及以后，需要针对每一个不同的 `Recall` 值（包括 0 和 1），选取其大于等于这些 `Recall` 值时的 `Precision` 最大值，然后计算 `PR` 曲线下面积作为 $AP$ 值，$mAP$ 就是所有类别 $AP$ 值的平均。
 
@@ -425,10 +412,10 @@ def voc_eval(detpath,
 
 ## 四，参考资料
 
-+ [目标检测评价标准-AP mAP](https://Harleyzhang.github.io/articles/c521a01c/)
-+ [目标检测的性能评价指标](https://zhuanlan.zhihu.com/p/70306015?utm_source=wechat_session&utm_medium=social&utm_oi=571954943427219456)
-+ [Soft-NMS](https://hellozhaozheng.github.io/z_post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89-SoftNMS-ICCV2017/)
-+ [Recent Advances in Deep Learning for Object Detection](https://arxiv.org/abs/1908.03673v1)
-+ [A Simple and Fast Implementation of Faster R-CNN](https://github.com/chenyuntc/simple-faster-rcnn-pytorch)
-+ [分类模型评估指标——准确率、精准率、召回率、F1、ROC曲线、AUC曲线](https://easyai.tech/ai-definition/accuracy-precision-recall-f1-roc-auc/)
-+ [一文让你彻底理解准确率，精准率，召回率，真正率，假正率，ROC/AUC](https://www.6aiq.com/article/1549986548173)
++ [目标检测评价标准-AP mAP](https://Harleyzhang.github.io/articles/c521a01c/ "目标检测评价标准-AP mAP")
++ [目标检测的性能评价指标](https://zhuanlan.zhihu.com/p/70306015?utm_source=wechat_session&utm_medium=social&utm_oi=571954943427219456 "目标检测的性能评价指标")
++ [Soft-NMS](https://hellozhaozheng.github.io/z_post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89-SoftNMS-ICCV2017/ "Soft-NMS")
++ [Recent Advances in Deep Learning for Object Detection](https://arxiv.org/abs/1908.03673v1 "Recent Advances in Deep Learning for Object Detection")
++ [A Simple and Fast Implementation of Faster R-CNN](https://github.com/chenyuntc/simple-faster-rcnn-pytorch "A Simple and Fast Implementation of Faster R-CNN")
++ [分类模型评估指标——准确率、精准率、召回率、F1、ROC曲线、AUC曲线](https://easyai.tech/ai-definition/accuracy-precision-recall-f1-roc-auc/ "分类模型评估指标——准确率、精准率、召回率、F1、ROC曲线、AUC曲线")
++ [一文让你彻底理解准确率，精准率，召回率，真正率，假正率，ROC/AUC](https://www.6aiq.com/article/1549986548173 "一文让你彻底理解准确率，精准率，召回率，真正率，假正率，ROC/AUC")

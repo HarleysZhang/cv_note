@@ -124,7 +124,9 @@ sign(x) = \left\{\begin{matrix}
 1 & x > 0
 \end{matrix}\right.
 $$
+
 ![sign(x)公式](../data/images/sign(x)公式.png)
+
 + 进行随机的二值化，即对每一个权重，以一定概率取 $\pm 1$
 
 **2，如何计算二值权重的梯度？**
@@ -146,6 +148,7 @@ $$min \left \| W -\alpha B \right \|^{2}$$
 得到 $\alpha = \frac{1}{n}\left |W \right |\ell{1}$。二值连接改进的算法训练过程与之前的算法大致相同，不同的地方在于梯度的计算过程还考虑了 $\alpha$ 的影响。由于 $\alpha$ 这个单精度的缩放因子的存在，有效降低了重构误差，并首次在 ImageNet 数据集上取得了与 Alex-Net 相当的精度。如下图所示：
 
 ![二值化网络精度对比](../data/images/二值化算法精度.png)
+
 可以看到的是`权重二值化神经网络（BWN）`和全精度神经网络的精确度几乎一样，但是与异或神经网络（XNOR-Net）相比而言，Top-1 和 Top-5 都有 10+% 的损失。
 > 相比于权重二值化神经网络，异或神经网络将网络的输入也转化为二进制值，所以，异或神经网络中的乘法加法 (Multiplication and ACcumulation) 运算用按位异或 (bitwise xnor) 和数 1 的个数 (popcount) 来代替。
 

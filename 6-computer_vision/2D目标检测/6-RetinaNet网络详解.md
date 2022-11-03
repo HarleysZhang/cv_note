@@ -1,22 +1,5 @@
-- [摘要](#摘要)
-- [1，引言](#1引言)
-- [2，相关工作](#2相关工作)
-- [3，网络架构](#3网络架构)
-- [3.1，Backbone](#31backbone)
-  - [3.2，Neck](#32neck)
-  - [3.3，Head](#33head)
-- [4，Focal Loss](#4focal-loss)
-  - [4.1，Cross Entropy](#41cross-entropy)
-  - [4.2，Balanced Cross Entropy](#42balanced-cross-entropy)
-  - [4.3，Focal Loss Definition](#43focal-loss-definition)
-- [5，代码解读](#5代码解读)
-  - [5.1，Backbone](#51backbone)
-  - [5.2，Neck](#52neck)
-  - [5.3，Head](#53head)
-  - [5.4，先验框Anchor赋值](#54先验框anchor赋值)
-  - [5.5，BBox Encoder Decoder](#55bbox-encoder-decoder)
-  - [5.6，Focal Loss](#56focal-loss)
-- [参考资料](#参考资料)
+## 目录
+[toc]
 
 ## 摘要
 
@@ -625,7 +608,7 @@ target_means 和 target_stds 相当于对 bbox 回归的 4 个 tx ty tw th 进�
 $$t_{x}^{\ast } = (x^{\ast }-x_{a})/w_{a}, t_{y}^{\ast}=(y^{\ast}-y_{a})/h_{a} \\\\
 t_{w}^{\ast } = log(w^{\ast }/w_{a}), t_{h}^{\ast }=log(h^{\ast }/h_{a}) $$
 
-${x}^{\ast },y^{\ast}$ 是 gt bbox 的中心 xy 坐标， $w^{\ast },h^{\ast }$ 是 gt bbox 的 wh 值， $x_{a},y_{a}$ 是 anchor 的中心 xy 坐标， $w_{a},h_{a}$ 是 anchor 的 wh 值， $t^{\ast }$ 是预测头的 `bbox` 分支输出的 `4` 个值对应的 `targets`。可以看出 $t_x,t_y$ 预测值表示 gt bbox 中心相对于 anchor 中心点的偏移，并且通过除以 anchor 的 $wh$ 进行归一化；而 $t_w,t_h$ 预测值表示 gt bbox 的 $wh$ 除以 anchor 的 $wh$，然后取 log 非线性变换即可。
+${x}^{\ast },y^{\ast}$ 是 `gt bbox` 的中心 xy 坐标， $w^{\ast },h^{\ast }$ 是 gt bbox 的 wh 值， $x_{a},y_{a}$ 是 anchor 的中心 xy 坐标， $w_{a},h_{a}$ 是 anchor 的 wh 值， $t^{\ast }$ 是预测头的 `bbox` 分支输出的 `4` 个值对应的 `targets`。可以看出 $t_x,t_y$ 预测值表示 gt bbox 中心相对于 anchor 中心点的偏移，并且通过除以 anchor 的 $wh$ 进行归一化；而 $t_w,t_h$ 预测值表示 gt bbox 的 $wh$ 除以 anchor 的 $wh$，然后取 log 非线性变换即可。
 > Variables $x$, $x_a$, and $x^{\ast }$ are for the predicted box, anchor box, and groundtruth box respectively (likewise for y; w; h).
 
 1，考虑**编码**过程存在 `target_means` 和 `target_stds` 情况下，则 `anchor` 的 `bbox` 对应的 `target` 编码的核心代码如下：
@@ -688,7 +671,7 @@ loss = weight_reduce_loss(loss, weight, reduction, avg_factor)
 return loss
 ```
 
-结合 `BBox Assigner`（BBox 正负样本确定） 和 `BBox Encoder` （BBox target 计算）的代码，可得完整的 Focla Loss 代码如下所示。
+结合 `BBox Assigner`（`BBox` 正负样本确定） 和 `BBox Encoder` （`BBox target` 计算）的代码，可得完整的 `Focla Loss` 代码如下所示。
 
 ```python
 class FocalLoss(nn.Module):

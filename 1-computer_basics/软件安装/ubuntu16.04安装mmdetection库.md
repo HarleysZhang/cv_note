@@ -3,7 +3,7 @@
 ### 1.1，更新 pip 和 conda下载源
 在下载安装好 `python3+pip` 或 `anconda3` 的基础上，建议更新为清华/阿里镜像源（默认的 `pip` 和 `conda`下载源速度很慢）。
 
-1，`pip`** 更新下载源为清华源的命令**如下:
+1，`pip` **更新下载源为清华源的命令**如下:
 
 ```bash
 pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
@@ -65,7 +65,7 @@ pip 20.2.4 from /opt/miniconda3/lib/python3.8/site-packages/pip (python 3.8)
 官网下载 [Anconda3 linux 安装脚本](https://repo.anaconda.com/archive/Anaconda3-2022.10-Linux-x86_64.sh)，并安装 `Anconda3`（很好装一路 `yes` 即可），并使用 `conda` 新建虚拟环境，并激活虚拟环境进入。
 
 ```bash
-conda create -n mmlab python=3.9 -y # 创建 mmlab 的虚拟环境，其中python解释器版本为3.9
+conda create -n mmlab python=3.8 -y # 创建 mmlab 的虚拟环境，其中python解释器版本为3.8(python3.9版本不行, 没有pytorch_cuda11.0版本)
 conda activate mmlab # 激活虚拟环境进入
 ```
 虚拟环境安装成功后的部分过程截图如下所示：
@@ -132,13 +132,11 @@ python -c 'import torch;print(torch.__version__);print(torch.version.cuda)'
    * `pip` **可通过**[此链接](https://download.pytorch.org/whl/torch_stable.html) 浏览器下载各种 `pytorch` 版本的二进制安装包，**到本地安装**（`pip install *.whl`）。
    * `conda` 通过[清华源链接](https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/linux-64/)，浏览器下载对应版本压缩包，然后 `conda install --offline pytorch压缩包的全称（后缀都不能忘记）`
 
-> 不通过浏览器下载 whl 包，而是 `pip install ``https://download.pytorch.org/whl/cu110/torch-1.7.1%2Bcu110-cp39-cp39-linux_x86_64.whl` 方式可能会有很多问题，比如网络问题可能会导致安装失败。
-
-> WARNING: Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip.\_vendor.urllib3.connection.HTTPSConnection object at 0x7f74f60d6760>: Failed to establish a new connection: \[Errno 101\] Network is unreachable')': /whl/cu110/torch-1.7.1%2Bcu110-cp39-cp39-linux\_x86\_64.whl
+> 不通过浏览器下载 `whl` 包，而是 `pip install https://download.pytorch.org/whl/cu110/torch-1.7.1%2Bcu110-cp39-cp39-linux_x86_64.whl` 方式可能会有很多问题，比如网络问题可能会导致安装失败。
+> WARNING: Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.HTTPSConnection object at 0x7f74f60d6760>: Failed to establish a new connection: Errno 101 Network is unreachable')': /whl/cu110/torch-1.7.1%2Bcu110-cp39-cp39-linux_x86_64.whl
 
 > 或者下载到一半的网络连接时常超过限制。
-
-> pip.\_vendor.urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='download.pytorch.org', port=443): Read timed out.
+pip._vendor.urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='download.pytorch.org', port=443): Read timed out.
 
 #### 4，安装 `mmdetection`
 > **不建议安装 cpu 版本**，因为很多算子不可用，其次截止到2022-11-3日，macos 系统 cpu 环境的 `mmdet.apis` 是不可用的。
@@ -146,7 +144,7 @@ python -c 'import torch;print(torch.__version__);print(torch.version.cuda)'
 建议使用 [MIM](https://github.com/open-mmlab/mim) 来自动安装 `MMDetection` 及其相关依赖包-`mmcv-full` 。
 
 ```bash
-pip install mim
+pip install openmim # 或者 pip install -U openmim
 mim install mmdet
 ```
 ![image](images/g7BbKHcsuGPKLEZlVUd0GxL7zhyJzGdZ9L-nmTcJneY.png)

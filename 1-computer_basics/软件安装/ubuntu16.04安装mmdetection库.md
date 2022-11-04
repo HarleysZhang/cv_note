@@ -1,4 +1,4 @@
-# ubuntu16.04安装mmdetection库.md
+
 ## 一，前言
 ### 1.1，更新 pip 和 conda下载源
 在下载安装好 `python3+pip` 或 `anconda3` 的基础上，建议更新为清华/阿里镜像源（默认的 `pip` 和 `conda`下载源速度很慢）。

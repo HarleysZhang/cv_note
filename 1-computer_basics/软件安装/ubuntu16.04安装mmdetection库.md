@@ -9,6 +9,7 @@
     - [2，安装 Anconda3](#2安装-anconda3)
     - [3，安装 pytorch-gpu](#3安装-pytorch-gpu)
     - [4，安装 `mmdetection`](#4安装-mmdetection)
+    - [5，安装 `MMOCR`](#5安装-mmocr)
 - [参考资料](#参考资料)
 ## 一，前言
 ### 1.1，更新 pip 和 conda下载源
@@ -19,7 +20,7 @@
 ```bash
 pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 ```
-2，`conda`** 更新源的方法：**
+2，`conda` **更新源的方法**：
 
 各系统都可以通过修改用户目录下的 `.condarc` 文件。`Windows` 用户无法直接创建名为 `.condarc` 的文件，可先执行 `conda config --set show_channel_urls yes` 生成该文件之后再修改`.condarc` 文件内容如下: 
 
@@ -160,6 +161,25 @@ mim install mmdet
 ```
 ![image](images/g7BbKHcsuGPKLEZlVUd0GxL7zhyJzGdZ9L-nmTcJneY.png)
 
+#### 5，安装 `MMOCR`
+
+`MMOCR` 依赖 `PyTorch`, `MMCV` 和 `MMDetection`。这些依赖环境，我们在前面的步骤中已经安装好了，所以可通过下面命令直接安装 `MMOCR`。
+
+情况 1: 若你需要直接运行 `MMOCR` 或在其基础上进行开发，则通过源码安装：
+```shell
+git clone https://github.com/open-mmlab/mmocr.git
+cd mmocr
+pip3 install -v -e .
+# "-v" 会让安装过程产生更详细的输出
+# "-e" 会以可编辑的方式安装该代码库，你对该代码库所作的任何更改都会立即生效
+```
+
+情况 2：如果你将 `MMOCR` 作为一个外置依赖库使用，通过 `pip` 安装即可：
+```shell
+pip install mmocr
+```
+
+![mmocr_install_success](./images/mmocr_install_success.png)
 ## 参考资料
 * `mmdetection` 和 `pytorch` 官网
 * https://download.pytorch.org/whl/torch\_stable.html

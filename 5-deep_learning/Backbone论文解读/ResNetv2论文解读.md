@@ -99,6 +99,7 @@
 根据激活函数与相加操作的位置关系，我们称之前的组合方式为“后激活（`post-activation`）”，现在新的组合方式称之为“预激活（`pre-activation`）”。原来的设计与预激活残差单元之间的性能对比见表 `3`。预激活方式又可以分为两种：只将 `ReLU` 放在前面，或者将 `ReLU` 和 `BN`都放到前面，根据表 `2` 中的结果可以看出 `full pre-activation` 的效果要更好。
 
 ![表2](../../data/images/resnetv2/表2.png)
+
 ![表3](../../data/images/resnetv2/表3.png)
 
 ### 4.2、Analysis

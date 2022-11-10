@@ -111,7 +111,7 @@ source ~/anaconda3/etc/profile.d/conda.sh # anaconda3 的安装路径有可能�
 conda activate mmlab
 ```
 #### 3，安装 pytorch-gpu
-首选安装 `pytorch-gpu` 版本，如果是**在线安装**命令如下**。**
+首选安装 `pytorch-gpu` 版本，使用**在线安装**命令:
 
 ```bash
 conda install pytorch=1.7.1 cudatoolkit=11.0 torchvision=0.8.2 -c pytorch

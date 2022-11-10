@@ -290,7 +290,7 @@ if __name__ == "__main__":
 
 1. `FLOPs` 低不等于 `latency` 低，尤其是在有加速功能的硬体 (`GPU`、`DSP`与 `TPU` )上不成立。
 2. MobileNet block (depthwise separable convolution)在有加速功能的硬件（专用硬件设计-`NPU` 芯片）上比较没有效率。
-3. 低 `channel` 数的情况下 (如网路的前几层)，在有加速功能的硬件使用一般 `convolution` 通常会比`separable convolution` 有效率。
+3. 低 `channel` 数的情况下 (如网路的前几层)，在有加速功能的硬件使用**普通** `convolution` 通常会比`separable convolution` 有效率。
 4. 在大多数的硬件上，`channel` 数为 `8` 的倍数比较有利计算。
 5. `DSP` 与 `TPU` 上，一般我们需要运算为 `uint8` 形式-，`quantization`（**低精度量化**）是常见的技巧。
 6. `DSP` 与 `TPU` 上，`h-Swish` 与 `squeeze-and-excitation`效果不明显 (因为硬体设计与 `uint8` 压缩的关系)。

@@ -1,4 +1,5 @@
 ## 目录
+- [目录](#目录)
 - [1、相关工作](#1相关工作)
   - [标准卷积](#标准卷积)
   - [分组卷积](#分组卷积)
@@ -14,6 +15,8 @@
 - [3、实验](#3实验)
 - [4、结论](#4结论)
 - [5、基准模型代码](#5基准模型代码)
+- [个人思考](#个人思考)
+- [后续改进-MobileDets](#后续改进-mobiledets)
 - [参考资料](#参考资料)
 
 > `MobileNet` 论文的主要贡献在于提出了一种**深度可分离卷积架构（DW+PW 卷积）**，先通过理论证明这种架构比常规的卷积计算成本（`Mult-Adds`）更小，然后通过分类、检测等多种实验证明模型的有效性。
@@ -270,6 +273,20 @@ if __name__ == "__main__":
 程序运行结果如下：
 > Model output size is torch.Size([1, 1000])
 
+## 个人思考
+
+在降低 `FLOPs` 计算量上，`MobileNet` 的网络架构设计确实很好，但是 `MobileNet` 模型在 `GPU`、`DSP` 和 `TPU` 硬件上却不一定性能好，原因是不同硬件进行运算时的行为不同，从而导致了 **`FLOPs`少不等于 `latency` 低**的问题。
+
+如果要实际解释 `TPU` 与 `DSP` 的运作原理，可能有点麻烦，可以参考下图，从结果直观地理解他们行为上的差异。考虑一个简单的 `convolution`，在 `CPU` 上 `latency` 随着 `input` 与 `output` 的`channel` 上升正相关的增加。然而在 `DSP` 上却是阶梯型，甚至在更高的 `channel` 数下存在特别低`latency` 的甜蜜点。
+
+![Convolution在CPU与DSP的行为差异](../../data/images/mobilenetv1/Convolution在CPU与DSP的行为差异.png)
+
+在一定的程度上，网络越深越宽，性能越好。宽度，即通道(`channel`)的数量，网络深度，即 `layer` 的层数，如 `resnet18` 有 `18` 个卷积层。注意我们这里说的和宽度学习一类的模型没有关系，而是特指深度卷积神经网络的(**通道**)宽度。
+
+- **网络深度的意义**：CNN 的网络层能够对输入图像数据进行逐层抽象，比如第一层学习到了图像边缘特征，第二层学习到了简单形状特征，第三层学习到了目标形状的特征，网络深度增加也提高了模型的抽象能力。
+- **网络宽度的意义**：网络的宽度（通道数）代表了滤波器（3 维）的数量，滤波器越多，对目标特征的提取能力越强，即让每一层网络学习到更加丰富的特征，比如不同方向、不同频率的纹理特征等。
+## 后续改进-MobileDets
+
 ## 参考资料
 
 1. [Group Convolution分组卷积，以及Depthwise Convolution和Global Depthwise Convolution](https://www.cnblogs.com/shine-lee/p/10243114.html)
@@ -278,3 +295,4 @@ if __name__ == "__main__":
 4. [MobileNetV1代码实现](https://www.cnblogs.com/linzzz98/articles/13453810.html)
 5. [Depthwise卷积与Pointwise卷积](https://zhuanlan.zhihu.com/p/80041030)
 6. [【CNN结构设计】深入理解深度可分离卷积](https://mp.weixin.qq.com/s/IZ-nbrCL8-9w32RSYeP_bg)
+7. [MobileDets: FLOPs不等于Latency，考量不同硬体的高效架构](https://medium.com/ai-blog-tw/mobiledets-flops%E4%B8%8D%E7%AD%89%E6%96%BClatency-%E8%80%83%E9%87%8F%E4%B8%8D%E5%90%8C%E7%A1%AC%E9%AB%94%E7%9A%84%E9%AB%98%E6%95%88%E6%9E%B6%E6%A7%8B-5bfc27d4c2c8)

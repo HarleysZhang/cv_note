@@ -18,9 +18,9 @@
 
 ## 1，介绍
 
-虽然已经出现了 `MobileNetv1/v2/v3` 和 `ShuffleNetv1/v2` 这种为移动端（CPU）设计的轻量级网络，但是它们所采用的基础技术-深度可分离卷积技术并不适用于 `NPU` 芯片（基于专用集成电路 (ASIC) 的边缘计算系统）。
+虽然已经出现了 `MobileNetv1/v2/v3` 和 `ShuffleNetv1/v2` 这种为移动端（`CPU`）设计的轻量级网络，但是它们所采用的基础技术-深度可分离卷积技术并不适用于 `NPU` 芯片（基于专用集成电路 (`ASIC`) 的边缘计算系统）。
 
-CSPNet 和不同 backbone 结合后的效果如下图所示。
+`CSPNet` 和不同 `backbone` 结合后的效果如下图所示。
 
 ![和分类backbone结合后的效果](../../data/images/CSPNet/和分类backbone结合后的效果.png)
 

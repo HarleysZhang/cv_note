@@ -192,13 +192,17 @@ Table 7: Performance on COCO object detection. The input image size is 800 1200.
 
 ## 5、结论
 
-我们建议对于轻量级网络设计应该考虑直接 `metric`（例如速度 speed），而不是间接 metric（例如 `FLOPs`）。本文提出了实用的原则和一个新的网络架构-ShuffleNet v2。综合实验证了我们模型的有效性。我们希望本文的工作可以启发未来的网络架构设计可以更重视平台特性和实用性。
-
+我们建议对于轻量级网络设计应该考虑**直接** `metric`（例如速度 `speed`），而不是间接 `metric`（例如 `FLOPs`）。本文提出了实用的原则和一个新的网络架构-ShuffleNet v2。综合实验证了我们模型的有效性。我们希望本文的工作可以启发未来的网络架构设计可以更重视平台特性和实用性。
+> 这里的直接 `metric`，可以是inference time or latency，也可以是模型推理速度 `speed`，其意义都是一样的。
+> 
 ## 6，个人思考
 
-分析模型的推理性能得结合具体的推理平台（常见如：英伟达GPU、移动端ARM CPU、端侧NPU芯片等），目前已知影响推理性能的因素包括: 算子计算量 FLOPs（参数量 Params）、算子内存访问代价（访存带宽）。
+分析模型的推理性能得结合具体的推理平台（常见如：英伟达 `GPU`、移动端 `ARM CPU`、端侧 `NPU` 芯片等），目前已知影响**推理性能**的因素包括: 算子计算量 `FLOPs`（参数量 `Params`）、算子内存访问代价（访存带宽）。但相同硬件平台、相同网络架构条件下， `FLOPs` 加速比与推理时间加速比成正比。
 
-举例：对于 GPU 平台，Depthwise 卷积算子实际上是使用了大量的低 FLOPs、高数据读写量的操作。这些具有高数据读写量的操作，加上 GPU 的访存带宽限制，使得模型把大量的时间浪费在了从显存中读写数据上，导致GPU 的算力没有得到“充分利用”。结论来源这里。
+举例：对于 `GPU` 平台，`Depthwise` 卷积算子实际上是使用了大量的低 `FLOPs`、高数据读写量的操作。这些具有高数据读写量的操作，加上 `GPU` 的访存带宽限制，使得模型把大量的时间浪费在了从显存中读写数据上，导致 `GPU` 的算力没有得到“充分利用”。结论来源知乎文章-[FLOPs与模型推理速度](https://zhuanlan.zhihu.com/p/122943688)。
+
+最后，目前 `AI` 训练系统已经有了一个公认的评价标准和平台-`MLPerf`，但是 `AI` 推理系统的评估，目前还没有一个公认的评价指标。`Training` 系统的性能可以使用“达到特定精度的时间”这个简单的标准来衡量。但 `Inference` 系统却很难找到一个简单的指标，`Latency`，`Throughput`，`Power`，`Cost` 等等，哪个指标合适呢？目前没有统一的标准。
+
 ## 参考资料
 
 1. [Group Convolution分组卷积，以及Depthwise Convolution和Global Depthwise Convolution](https://www.cnblogs.com/shine-lee/p/10243114.html)

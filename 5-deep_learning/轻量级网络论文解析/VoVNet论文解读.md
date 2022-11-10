@@ -56,7 +56,7 @@
 
 - `MAC` 对能耗的影响超过了计算量 `FLOPs` [28]。
 - 卷积层输入输出通道数相等时，`MAC` 取得最小值。
-- 即使模型参数量一致，只要 MAC 不同，那么模型的运行时间也是不一致的(ShuffleNetv2 有实验证明)。
+- 即使模型参数量一致，只要 `MAC` 不同，那么模型的运行时间也是不一致的(ShuffleNetv2 有实验证明)。
 
 > 论文 [28] Designing energy-efficient convolutional neural networks using energyaware pruning.
 

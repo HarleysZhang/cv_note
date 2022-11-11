@@ -1,6 +1,7 @@
-- [一，前言](#一前言)
-  - [1.1，更新 pip 和 conda下载源](#11更新-pip-和-conda下载源)
-  - [1.2，查看 conda 和 pip 版本](#12查看-conda-和-pip-版本)
+- [一，更新 pip 和 conda 下载源](#一更新-pip-和-conda-下载源)
+  - [1.1，查看 conda 和 pip 版本](#11查看-conda-和-pip-版本)
+  - [1.2，更新 pip 下载源](#12更新-pip-下载源)
+  - [1.3，更新 conda 下载源](#13更新-conda-下载源)
 - [二，MMDetection 简介](#二mmdetection-简介)
 - [三，MMDetection 安装](#三mmdetection-安装)
   - [3.1，依赖环境](#31依赖环境)
@@ -8,21 +9,67 @@
     - [1，安装操作系统+cuda](#1安装操作系统cuda)
     - [2，安装 Anconda3](#2安装-anconda3)
     - [3，安装 pytorch-gpu](#3安装-pytorch-gpu)
-    - [4，安装 `mmdetection`](#4安装-mmdetection)
-    - [5，安装 `MMOCR`](#5安装-mmocr)
+    - [4，安装 mmdetection](#4安装-mmdetection)
+    - [5，安装 MMOCR](#5安装-mmocr)
 - [参考资料](#参考资料)
-## 一，前言
-### 1.1，更新 pip 和 conda下载源
+## 一，更新 pip 和 conda 下载源
+
+默认情况下 `pip` 使用的是国外的镜像，在下载的时候速度非常慢，下面我将介绍如何更新下载源为国内的清华镜像源，其地址为：`https://pypi.tuna.tsinghua.edu.cn/simple`，阿里云镜像的更新方法一样。
+
+### 1.1，查看 conda 和 pip 版本
+```bash
+root# conda --version
+conda 22.9.0
+root# pip --version
+pip 20.2.4 from /opt/miniconda3/lib/python3.8/site-packages/pip (python 3.8)
+```
+
+如果 `pip` 版本 `<10.0.0`，建议升级 pip 到最新的版本 (>=10.0.0) 以方便后面的更新下载源配置：
+
+```shell
+# 更新 pip 版本命令
+python -m pip install --upgrade pip
+```
+### 1.2，更新 pip 下载源
+
 在下载安装好 `python3+pip` 或 `anconda3` 的基础上，建议更新为清华/阿里镜像源（默认的 `pip` 和 `conda`下载源速度很慢）。
 
-1，`pip` **更新下载源为清华源的命令**如下:
+1，`Linux/Mac` 系统，`pip` **全局更新下载源为清华源和和查看下载源地址的命令**如下:
 
 ```bash
+# 更新 pip 下载源为清华镜像
 pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+# 查看下载源地址
+pip3 config list
 ```
-2，`conda` **更新源的方法**：
 
-各系统都可以通过修改用户目录下的 `.condarc` 文件。`Windows` 用户无法直接创建名为 `.condarc` 的文件，可先执行 `conda config --set show_channel_urls yes` 生成该文件之后再修改`.condarc` 文件内容如下: 
+![update_pip_download_source](./images/update_pip_download_source.png)
+
+2，`Windows` 系统，需要当前在当前用户目录下手动创建配置文件然后修改。
+
+- 资源管理器的地址栏输入 `%appdata%` 后回车，切换到用户路径下的 `appdata` 目录；
+- 进入到 `pip` 文件夹中（没有则手动创建），并创建文件 `pip.ini`，此文件的完整路径为 `%APPDATA%/pip/pip.ini`；
+- 在 `pip.ini` 文件中添加以下内容后，再次使用 `pip`，即会使用新下载源。
+
+```shell
+[global]
+timeout = 8000
+index-url = https://pypi.tuna.tsinghua.edu.cn/simple
+trusted-host = pypi.tuna.tsinghua.edu.cn/simple
+```
+
+`Linux/Mac` 也可通过直接修改配置文件（可能需要 `root` 权限）的方式直接更新下载源，`vim ~/.pip/pip.conf`，修改如下:
+```shell
+global.index-url='https://pypi.tuna.tsinghua.edu.cn/simple'
+```
+
+### 1.3，更新 conda 下载源
+
+1，`conda` **更新源的方法**：
+
+各系统都可以通过修改用户目录下的 `.condarc` 文件。`Windows` 用户无法直接创建名为 `.condarc` 的文件，可先执行 `conda config --set show_channel_urls yes` 生成该文件。`Linux/Mac` 系统一般自带 `.condarc` 文件，文件地址为 `~/.condarc`。
+
+2，之后再修改`.condarc` 文件内容如下: 
 
 ```bash
 channels:
@@ -41,13 +88,7 @@ custom_channels:
   pytorch-lts: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
   simpleitk: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
 ```
-### 1.2，查看 conda 和 pip 版本
-```bash
-root# conda --version
-conda 22.9.0
-root# pip --version
-pip 20.2.4 from /opt/miniconda3/lib/python3.8/site-packages/pip (python 3.8)
-```
+
 ## 二，MMDetection 简介
 `MMDetection` 是一个基于 `PyTorch` 的目标检测开源工具箱。它是 [OpenMMLab](https://openmmlab.com/) 项目的一部分。主分支代码目前支持 `PyTorch 1.5` 以上的版本。主要特性为：
 
@@ -150,7 +191,7 @@ python -c 'import torch;print(torch.__version__);print(torch.version.cuda)'
 > 或者下载到一半的网络连接时常超过限制。
 pip._vendor.urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='download.pytorch.org', port=443): Read timed out.
 
-#### 4，安装 `mmdetection`
+#### 4，安装 mmdetection
 > **不建议安装 cpu 版本**，因为很多算子不可用，其次截止到2022-11-3日，macos 系统 cpu 环境的 `mmdet.apis` 是不可用的。
 
 建议使用 [MIM](https://github.com/open-mmlab/mim) 来自动安装 `MMDetection` 及其相关依赖包-`mmcv-full` 。
@@ -161,7 +202,7 @@ mim install mmdet
 ```
 ![image](images/g7BbKHcsuGPKLEZlVUd0GxL7zhyJzGdZ9L-nmTcJneY.png)
 
-#### 5，安装 `MMOCR`
+#### 5，安装 MMOCR
 
 `MMOCR` 依赖 `PyTorch`, `MMCV` 和 `MMDetection`。这些依赖环境，我们在前面的步骤中已经安装好了，所以可通过下面命令直接安装 `MMOCR`。
 

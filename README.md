@@ -26,7 +26,10 @@ CV 算法工程师成长之路
 
 更多知识和最新博客，欢迎扫码关注我的公众号-**嵌入式视觉**，记录 `CV` 算法工程师成长之路，分享技术总结、读书笔记和个人感悟。
 
-![公众号二维码](./data/images/../article_cover/qrcode_258.jpg)
+<p align="center">
+  <a href="#嵌入式视觉"><img src="https://github.com/HarleysZhang/2021_algorithm_intern_information/blob/master/data/qcode.png" alt="公众号-嵌入式视觉"></a>
+</p>
+
 ## 目录
 
 作为一个计算机视觉算法工程师，需要掌握的不仅是计算机编程知识，还需要掌握**编程开发、机器学习/深度学习、图像识别/目标检测/语义分割、模型压缩、模型部署**等知识点，我整理了一个 [技术栈思维导图](./data/images/CV算法工程师应掌握知识点.png)。

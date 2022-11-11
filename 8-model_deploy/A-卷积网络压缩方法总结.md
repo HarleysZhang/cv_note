@@ -125,8 +125,6 @@ sign(x) = \left\{\begin{matrix}
 \end{matrix}\right.
 $$
 
-![sign(x)公式](../data/images/sign(x)公式.png)
-
 + 进行随机的二值化，即对每一个权重，以一定概率取 $\pm 1$
 
 **2，如何计算二值权重的梯度？**

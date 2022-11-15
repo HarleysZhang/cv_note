@@ -51,7 +51,7 @@ CV 算法工程师成长之路
 
 > 深度学习基础的一些面试题和 `Python` 编程相关的面试题，部分题目来源网上资料。
 
-+ [深度学习面试题](5-deep_learning/0-深度学习面试题.md)
++ [深度学习面试题](5-deep_learning/A-深度学习面试题.md)
 + [Python3 编程面试题](2-programming_language/python3/Python3编程面试题.md)
 
 

@@ -53,9 +53,9 @@
 再引用一下学习金字塔的图：
 
 ![way_of_learning](./data/images/cv_learn/way_of_learning.png)
-> 来源 `github` 仓库[DeepLearning Tutorial](https://github.com/Mikoto10032/DeepLearning)
+> 图片来源 `github` 仓库[DeepLearning Tutorial](https://github.com/Mikoto10032/DeepLearning)
 
-关于科研和研发的思考，可参考文章-[中国人民大学赵鑫：AI 科研入坑指南](https://mp.weixin.qq.com/s/UH7UIq7ajwpdR6fZ9CfG6Q)。
+关于科研和研发的思考，可参考文章-[中国人民大学赵鑫：AI 科研入坑指南](https://mp.weixin.qq.com/s/h00VmCi1E7IhIDCj7X1ZjQ)。
 
 ## 一，计算机系统
 

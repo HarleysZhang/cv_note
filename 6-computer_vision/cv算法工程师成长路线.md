@@ -38,7 +38,10 @@
 - [博客阅读后的知识点总结](#博客阅读后的知识点总结)
 - [参考资料](#参考资料)
 
-> 本文章部分知识点的学习资料存在离线 `PDF` 电子版，其可在 [github仓库-cv_books](https://github.com/HarleysZhang/cv-books) 中下载。
+> 文章同步发于 [github 仓库](https://github.com/HarleysZhang/cv_note/blob/master/6-computer_vision/cv%E7%AE%97%E6%B3%95%E5%B7%A5%E7%A8%8B%E5%B8%88%E5%AD%A6%E4%B9%A0%E6%95%99%E7%A8%8B.md)和 [csdn 博客](http://t.csdn.cn/jDT39)，**最新版以 `github` 为主**。如果看完文章有所收获，一定要先点赞后收藏。毕竟，赠人玫瑰，手有余香.
+> 更多干货文章和面经，点击查看我的公众号-嵌入式视觉，扫码关注我的公众号!
+
+本文内容为 `cv` 算法工程师成长子路上的经典学习教材汇总，对于一些新兴领域则给出了较好的博客文章链接。本文列出的知识点目录是**成系统且由浅至深**的，可作为 `cv` 算法工程师的**常备学习路线资料**。部分学习资料存在离线 `PDF` 电子版，其可在 [github仓库-cv_books](https://github.com/HarleysZhang/cv-books) 中下载。
 
 ## 前言
 

@@ -14,8 +14,8 @@
   - [5.1，深度学习课程](#51深度学习课程)
   - [5.2，深度学习基础文章](#52深度学习基础文章)
   - [5.3，经典CNN分析文章](#53经典cnn分析文章)
-  - [5.5，PyTorch 框架学习文章](#55pytorch-框架学习文章)
-  - [5.6，PyTorch/Caffe 框架分析文章](#56pytorchcaffe-框架分析文章)
+  - [5.4，PyTorch 框架学习文章](#54pytorch-框架学习文章)
+  - [5.5，PyTorch/Caffe 框架分析文章](#55pytorchcaffe-框架分析文章)
 - [六，计算机视觉](#六计算机视觉)
   - [6.1，数字图像处理教程](#61数字图像处理教程)
   - [6.2，计算机视觉基础课程](#62计算机视觉基础课程)
@@ -23,7 +23,7 @@
   - [6.4，目标检测网络文章](#64目标检测网络文章)
   - [6.5，语义分割文章](#65语义分割文章)
   - [6.6，3D 视觉技术文章](#663d-视觉技术文章)
-  - [6.6，深度学习的评价指标文章](#66深度学习的评价指标文章)
+  - [6.7，深度学习的评价指标文章](#67深度学习的评价指标文章)
 - [七，模型压缩与量化](#七模型压缩与量化)
   - [7.1，轻量级网络设计](#71轻量级网络设计)
   - [7.2，模型压缩文章](#72模型压缩文章)
@@ -125,12 +125,12 @@
 
 > 2，ResNet v2 创新点在于通过理论分析和实验证明恒等映射对于残差块的重要性，根据激活函数与相加操作的位置关系，我们称之前的组合方式（ResNet）为“后激活（post-activation）”，现在新的组合方式（ResNet v2）称之为“预激活（pre-activation）”。使用预激活有两个方面的优点：1)`f` 变为恒等映射，使得网络更易于优化；2)使用 `BN` 作为预激活可以加强对模型的正则化。
 
-### 5.5，PyTorch 框架学习文章
+### 5.4，PyTorch 框架学习文章
 
 1. [PyTorch中文文档](https://pytorch-cn.readthedocs.io/zh/latest/)；[PyTorch官方教程中文版](https://pytorch123.com/)；[PyTorch 官方教程](https://pytorch.org/tutorials/)。
 2. [PyTorch_tutorial_0.0.5_余霆嵩](https://github.com/TingsongYu/PyTorch_Tutorial/blob/master/Data/PyTorch_tutorial_0.0.5_%E4%BD%99%E9%9C%86%E5%B5%A9.pdf): 存在开源 `PDF` 电子版，且提供较为清晰的代码，**适合快速入门，教程目录结构清晰明了**。
 
-### 5.6，PyTorch/Caffe 框架分析文章
+### 5.5，PyTorch/Caffe 框架分析文章
 1. [pytorch自定义层如何实现？超简单！](https://zhuanlan.zhihu.com/p/144904949 "pytorch自定义层如何实现？超简单！")
 2. [【PyTorch】torch.nn.Module 源码分析](https://zhuanlan.zhihu.com/p/88712978 "【PyTorch】torch.nn.Module 源码分析")
 3. [详解Pytorch中的网络构造，模型save和load，.pth权重文件解析](https://www.cnblogs.com/hansjorn/p/11467081.html "详解Pytorch中的网络构造，模型save和load，.pth权重文件解析")
@@ -189,7 +189,7 @@
 2. [关于双目立体视觉的三大基本算法及发展现状的总结](https://bbs.cvmart.net/topics/3058 "关于双目立体视觉的三大基本算法及发展现状的总结")
 3. [3D视觉CV界的终极体现形式，计算机如何「看」这个三维世界](https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&mid=2650803376&idx=3&sn=7d7cca1f447aaee307c1b8aa2e2f6e9f&chksm=84e5c8ceb39241d8b5a7f4e76f1fbc9a7d5284fcce4a6963f82fef6590baff39ab5c6bced5db&scene=132#wechat_redirect)
 
-### 6.6，深度学习的评价指标文章
+### 6.7，深度学习的评价指标文章
 
 1. [ROC和AUC介绍以及如何计算AUC](http://alexkong.net/2013/06/introduction-to-auc-and-roc/ "ROC和AUC介绍以及如何计算AUC")
 2. [COCO目标检测测评指标](https://www.jianshu.com/p/d7a06a720a2b "COCO目标检测测评指标")

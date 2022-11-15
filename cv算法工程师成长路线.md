@@ -52,7 +52,7 @@
 
 再引用一下学习金字塔的图：
 
-![way_of_learning](../data/images/cv_learn/way_of_learning.png)
+![way_of_learning](./data/images/cv_learn/way_of_learning.png)
 > 来源 `github` 仓库[DeepLearning Tutorial](https://github.com/Mikoto10032/DeepLearning)
 
 关于科研和研发的思考，可参考文章-[中国人民大学赵鑫：AI 科研入坑指南](https://mp.weixin.qq.com/s/UH7UIq7ajwpdR6fZ9CfG6Q)。
@@ -101,7 +101,7 @@
 4. [《南瓜书PumpkinBook》](https://github.com/datawhalechina/pumpkin-book): 南瓜书，是西瓜书的补充资料，**包含了西瓜书的公式的详细推导**，建议先看西瓜书，部分公式不会推导的情况下，可以查看南瓜书的对应内容。
 5. [机器学习数学基础](https://github.com/fengdu78/Data-Science-Notes/blob/master/0.math/1.CS229/2.CS229-Prob.pdf): 黄海广博士翻译的 `CS229` 机器学习课程的线性代数基础材料，英文好的建议看原版。
 
-![机器学习和深度学习的数学基础的思维导航](../data/images/cv_learn/math_basic_ml_dl.png)
+![机器学习和深度学习的数学基础的思维导航](./data/images/cv_learn/math_basic_ml_dl.png)
 
 ## 五，深度学习
 
@@ -165,7 +165,7 @@
 > 4. MediaPipe 是一个为直播和流媒体提供跨平台、可定制的机器学习解决方案的框架。MediaPipe 提供了包括人脸检测、人脸网格、虹膜识别、手部关键点检测、人体姿态估计、人体+人脸+手部组合整体、头发分割、目标检测、Box 跟踪、即时运动追踪、3D 目标检测等解决方案。
 > 5. `Deci` 旨在使用 `AI` 构建更好的 `AI`，使深度学习能够发挥其真正的潜力。借助该公司的**端到端深度学习加速平台**，人工智能开发人员可以为任何环境（包括**云、边缘或移动**）构建、优化和部署更快、更准确的模型。借助 `Deci` 的平台，开发人员可以在任何硬件上将深度学习模型推理性能提高 `3` 到 `15` 倍，同时仍然保持准确性。平台除了能够显示每个模型的准确性之外，还可以轻松选择目标推理硬件并查看模型的运行时性能结果，例如各种硬件的**吞吐量、延迟、模型大小和内存占用**。但是模型加速模块的 `demo` 是需要注册账户和购买的。
 
-![deci_modelzoo](../data/images/cv_learn/deci_modelzoo.png)
+![deci_modelzoo](./data/images/cv_learn/deci_modelzoo.png)
 
 ### 6.4，目标检测网络文章
 
@@ -283,7 +283,7 @@
 
 2，`SNPE` 开发流程：
 
-![SNPE开发流程.png](../data/images/cv_learn/SNPE开发流程.png)
+![SNPE开发流程.png](./data/images/cv_learn/SNPE开发流程.png)
 
 3，目标检测模型效果提升方法：
 
@@ -329,7 +329,7 @@
 
 11，下图展示了如何在英伟达 GPU 架构发展史以及单块 GPU 上纵向扩展以满足深度学习的需求（截止2020年）。
 
-![英伟达 GPU 架构发展史](../data/images/cv_learn/英伟达架构发展史截止到2020年.png)
+![英伟达 GPU 架构发展史](./data/images/cv_learn/英伟达架构发展史截止到2020年.png)
 
 12，Deep Compression 论文阅读总结
 - deep compression是解决存储问题，对于速度问题几乎没获得改善；

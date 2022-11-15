@@ -35,7 +35,7 @@ CV 算法工程师成长之路
 + [模型压缩与量化](7-model_compression_quantization)
 + [高性能计算](8-high-performance_computing)
 + [模型部署](9-model_deploy)
-+ [图像算法岗面经](10-interview_summary)
++ [图像算法岗面经](interview_summary)
 
 ## 学习路线
 

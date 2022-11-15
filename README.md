@@ -38,7 +38,7 @@ CV 算法工程师成长之路
 + [机器学习](4-machine_learning)
 + [深度学习](5-deep_learning)
 + [计算机视觉](6-computer_vision)
-+ [模型压缩与量化](7-model_compression_quantization)
++ [模型压缩与量化](7-model_compression)
 + [高性能计算](8-high-performance_computing)
 + [模型部署](9-model_deploy)
 + [图像算法岗面经](interview_summary)

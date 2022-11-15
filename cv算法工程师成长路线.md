@@ -13,9 +13,9 @@
 - [五，深度学习](#五深度学习)
   - [5.1，深度学习课程](#51深度学习课程)
   - [5.2，深度学习基础文章](#52深度学习基础文章)
-- [5.3，经典CNN分析文章](#53经典cnn分析文章)
-  - [5.5，PyTorch 框架学习](#55pytorch-框架学习)
-  - [5.6，PyTorch/Caffe 框架分析](#56pytorchcaffe-框架分析)
+  - [5.3，经典CNN分析文章](#53经典cnn分析文章)
+  - [5.5，PyTorch 框架学习文章](#55pytorch-框架学习文章)
+  - [5.6，PyTorch/Caffe 框架分析文章](#56pytorchcaffe-框架分析文章)
 - [六，计算机视觉](#六计算机视觉)
   - [6.1，数字图像处理教程](#61数字图像处理教程)
   - [6.2，计算机视觉基础课程](#62计算机视觉基础课程)
@@ -37,7 +37,6 @@
   - [9.1，模型部署文章](#91模型部署文章)
 - [博客阅读后的知识点总结](#博客阅读后的知识点总结)
 - [参考资料](#参考资料)
-
 > 文章同步发于 [github 仓库](https://github.com/HarleysZhang/cv_note/blob/master/6-computer_vision/cv%E7%AE%97%E6%B3%95%E5%B7%A5%E7%A8%8B%E5%B8%88%E5%AD%A6%E4%B9%A0%E6%95%99%E7%A8%8B.md)和 [csdn 博客](http://t.csdn.cn/jDT39)，**最新版以 `github` 为主**。如果看完文章有所收获，一定要先点赞后收藏。毕竟，赠人玫瑰，手有余香.
 > 更多干货文章和面经，点击查看我的公众号-嵌入式视觉，扫码关注我的公众号!
 
@@ -100,15 +99,15 @@
 2. [《李宏毅-机器学习课程》](http://speech.ee.ntu.edu.tw/~tlkagk/talk.html): **机器学习经典视频教程**啊，非常适合初学者观看。
 3. [李宏毅机器学习笔记(LeeML-Notes)](https://github.com/datawhalechina/leeml-notes): 可以在线阅读，很方便，内容完成度高。
 4. [《南瓜书PumpkinBook》](https://github.com/datawhalechina/pumpkin-book): 南瓜书，是西瓜书的补充资料，**包含了西瓜书的公式的详细推导**，建议先看西瓜书，部分公式不会推导的情况下，可以查看南瓜书的对应内容。
-5. [机器学习数学基础](https://github.com/fengdu78/Data-Science-Notes/blob/master/0.math/1.CS229/2.CS229-Prob.pdf)
+5. [机器学习数学基础](https://github.com/fengdu78/Data-Science-Notes/blob/master/0.math/1.CS229/2.CS229-Prob.pdf): 黄海广博士翻译的 `CS229` 机器学习课程的线性代数基础材料，英文好的建议看原版。
 
 ![机器学习和深度学习的数学基础的思维导航](../data/images/cv_learn/math_basic_ml_dl.png)
 
 ## 五，深度学习
 
 ### 5.1，深度学习课程
-1. 《深度学习》（花书），存在英文和中文 `PDF` 电子版。
-2. [《李宏毅-深度学习课程》](https://speech.ee.ntu.edu.tw/~hylee/ml/2021-spring.php)： 经典视频教程，提供了 `PPT`、代码资料。
+1. 《深度学习》（花书），存在英文和中文 `PDF` 电子版，内容成系统，覆盖了深度学习的方方面面，强烈建议至少看完跟自己方向相关的章节，有利于打好扎实的基础。
+2. [《李宏毅-深度学习课程》](https://speech.ee.ntu.edu.tw/~hylee/ml/2021-spring.php)： 经典视频教程，实例有趣（皮卡丘），内容讲解由浅至深，李宏毅老师个人官网也提供了视频链接、 `PPT` 课件、代码资料。
 
 ### 5.2，深度学习基础文章
 
@@ -116,7 +115,7 @@
 2. [深度学习推理时融合BN，轻松获得约5%的提速](https://mp.weixin.qq.com/s/P94ACKuoA0YapBKlrgZl3A)
 3. [动图形象理解深度学习卷积](https://mp.weixin.qq.com/s/aJ7AioWLoox7WBFPYa_nCQ)
 
-## 5.3，经典CNN分析文章
+### 5.3，经典CNN分析文章
 
 1. [深度可分离卷积（Xception 与 MobileNet 的点滴）](https://www.jianshu.com/p/38dc74d12fcf?utm_source=oschina-app "深度可分离卷积（Xception 与 MobileNet 的点滴）")
 2. [[DL-架构-ResNet系] 002 ResNet-v2](https://zhuanlan.zhihu.com/p/29678910 "[DL-架构-ResNet系] 002 ResNet-v2")
@@ -126,12 +125,12 @@
 
 > 2，ResNet v2 创新点在于通过理论分析和实验证明恒等映射对于残差块的重要性，根据激活函数与相加操作的位置关系，我们称之前的组合方式（ResNet）为“后激活（post-activation）”，现在新的组合方式（ResNet v2）称之为“预激活（pre-activation）”。使用预激活有两个方面的优点：1)`f` 变为恒等映射，使得网络更易于优化；2)使用 `BN` 作为预激活可以加强对模型的正则化。
 
-### 5.5，PyTorch 框架学习
+### 5.5，PyTorch 框架学习文章
 
 1. [PyTorch中文文档](https://pytorch-cn.readthedocs.io/zh/latest/)；[PyTorch官方教程中文版](https://pytorch123.com/)；[PyTorch 官方教程](https://pytorch.org/tutorials/)。
 2. [PyTorch_tutorial_0.0.5_余霆嵩](https://github.com/TingsongYu/PyTorch_Tutorial/blob/master/Data/PyTorch_tutorial_0.0.5_%E4%BD%99%E9%9C%86%E5%B5%A9.pdf): 存在开源 `PDF` 电子版，且提供较为清晰的代码，**适合快速入门，教程目录结构清晰明了**。
 
-### 5.6，PyTorch/Caffe 框架分析
+### 5.6，PyTorch/Caffe 框架分析文章
 1. [pytorch自定义层如何实现？超简单！](https://zhuanlan.zhihu.com/p/144904949 "pytorch自定义层如何实现？超简单！")
 2. [【PyTorch】torch.nn.Module 源码分析](https://zhuanlan.zhihu.com/p/88712978 "【PyTorch】torch.nn.Module 源码分析")
 3. [详解Pytorch中的网络构造，模型save和load，.pth权重文件解析](https://www.cnblogs.com/hansjorn/p/11467081.html "详解Pytorch中的网络构造，模型save和load，.pth权重文件解析")
@@ -151,7 +150,7 @@
 ### 6.2，计算机视觉基础课程
 1. 《CS231 课程》-李飞飞。[b 站视频教程](https://www.bilibili.com/video/BV1nJ411z7fe/)，[CS231n官方笔记授权翻译总集](https://zhuanlan.zhihu.com/p/21930884)。**课程非常经典，内容深入浅出**，每节课都有课后作业和对应学习笔记。
 2. 《动手学深度学习》-李沐，存在开源 `PDF` 电子书，官方代码为 `MXNet` 框架，也存在 `PyTorch` 代码实现书籍。
-
+3. 《解析卷积神经网络-深度学习实践手册》-魏秀参：对 `CNN` 对基础部件做了深入描述，本书内容全且成系统，适合想深入学习 `CNN` 的同学，唯一的缺点没有项目案例以供实践。本书提供开源 `PDF` 电子版。
 ### 6.3，深度学习模型和资源库
 
 1. [Papers With Code](https://paperswithcode.com/)
@@ -159,6 +158,7 @@
 3. [ModelZOO](https://modelzoo.co/)
 4. [MediaPipe 框架](https://google.github.io/mediapipe/)
 5. [Deci's Hardware Aware Model](https://deci.ai/)
+
 > 1. `Papers with code` 是由 `Meta AI Research` 团队主导的一个开放资源的社区，汇集了深度学习论文、数据集、算法代码、模型以及评估表。
 > 2. `Jetson Zoo`，是一个开源目录，其中包含在 `NVIDIA Jetson` 硬件平台上开发指南以及**参考案例**分享汇总。模型库资源里包括图像分类、目标检测、语义分割和姿势估计等方向的实践分享，提供**开源代码**和开发指南文章的链接。
 > 3. `Model Zoo` 包含了机器学习各领域的算法框架及预训练模型资源汇总，其中包括 `TensorFlow`、`PyTorch`、`Keras`、`Caffe`等框架，作者是 `Google` 的机器学习研究员的`Jing Yu Koh`构建。
@@ -226,9 +226,12 @@
 7. [NNIE 量化感知训练](https://zhuanlan.zhihu.com/p/183176369 "NNIE 量化感知训练")
 
 > 1，量化是指用于执行计算并以低于浮点精度的位宽存储张量的技术，或者说量化就是将神经网络的浮点算法转换为定点。 量化模型对张量使用整数而不是浮点值执行部分或全部运算。
-2，量化简单来说就是将浮点存储（运算）转换为整型存储（运算）的一种模型压缩技术。
-3，虽然精心设计的 `MobileNet` 能在保持较小的体积时仍然具有与 `GoogleNet` 相当的准确度，不同大小的 `MobileNet` 本身就表明——也许一个好的模型设计可以改进准确度，但同类模型中仍然是更大的网络，更好的效果!
-4，权重值域调整是另一个机器学习过程，学习的目标是一对能在量化后更准确地运行网络的超参数 `min/max`。
+
+> 2，量化简单来说就是将浮点存储（运算）转换为整型存储（运算）的一种模型压缩技术。
+
+> 3，虽然精心设计的 `MobileNet` 能在保持较小的体积时仍然具有与 `GoogleNet` 相当的准确度，不同大小的 `MobileNet` 本身就表明——也许一个好的模型设计可以改进准确度，但同类模型中仍然是更大的网络，更好的效果!
+
+> 4，权重值域调整是另一个机器学习过程，学习的目标是一对能在量化后更准确地运行网络的超参数 `min/max`。
 
 ### 7.4，推理框架剖析文章
 
@@ -268,11 +271,11 @@
 
 ### 9.1，模型部署文章
 
-1. [海思AI芯片(Hi3519A/3559A)方案学习（二十五）初识 mapper_quant 和mapper_param](https://blog.csdn.net/avideointerfaces/article/details/103070021 "海思AI芯片(Hi3519A/3559A)方案学习（二十五）初识 mapper_quant 和mapper_param")
-2. [部署PyTorch模型到终端](https://zhuanlan.zhihu.com/p/54665674 "部署PyTorch模型到终端")
-3. [多场景适配，TNN如何优化模型部署的存储与计算](https://www.infoq.cn/article/4rfxdkkvvyb6auxhjxi4 "多场景适配，TNN如何优化模型部署的存储与计算")
-4. [模型转换、模型压缩、模型加速工具汇总](https://blog.csdn.net/WZZ18191171661/article/details/99700992 "模型转换、模型压缩、模型加速工具汇总")
-5. [深度学习模型转换与部署那些事(含ONNX格式详细分析)](https://bindog.github.io/blog/2020/03/13/deep-learning-model-convert-and-depoly/ "深度学习模型转换与部署那些事(含ONNX格式详细分析)")
+1. [海思AI芯片(Hi3519A/3559A)方案学习（二十五）初识 mapper_quant 和mapper_param](https://blog.csdn.net/avideointerfaces/article/details/103070021)
+2. [部署PyTorch模型到终端](https://zhuanlan.zhihu.com/p/54665674)
+3. [多场景适配，TNN如何优化模型部署的存储与计算](https://www.infoq.cn/article/4rfxdkkvvyb6auxhjxi4)
+4. [模型转换、模型压缩、模型加速工具汇总](https://blog.csdn.net/WZZ18191171661/article/details/99700992)
+5. [深度学习模型转换与部署那些事(含ONNX格式详细分析)](https://bindog.github.io/blog/2020/03/13/deep-learning-model-convert-and-depoly/)
 6. [ONNX初探](https://mp.weixin.qq.com/s/H1tDcmrg0vTcSw9PgpgIIQ)
 ## 博客阅读后的知识点总结
 
@@ -297,7 +300,8 @@
 
 5，高效模型设计（模型压缩）方法：
 
-一般而言，高效模型的设计有 6 大基本思路：1）轻量级架构、2）模型裁剪、3）模型搜索、4）低精度量化、5）知识蒸馏、6）高效实现。
+一般而言，**高效模型**的设计有 6 大基本思路：1）轻量级架构、2）模型裁剪、3）`AutoML` 和 `NAS` 模型搜索、4）低精度量化、5）知识蒸馏、6）高效实现。
+> 来源旷世学术分享-[张祥雨：高效轻量级深度模型的研究和实践](https://aijishu.com/a/1060000000090519)。
 
 6，网络深度与宽度的理解及意义
 
@@ -312,7 +316,7 @@
 
 8，对于某种指令，延迟 `latency` 主要关注单条该指令的最小执行时间，吞吐量 `throughout` 主要关注单位时间内系统（一个CPU核）最多执行多少条该指令。因为 AI 计算的数据量比较大，所以更关注吞吐量。
 
-9，CPU 高性能通用优化方法包括：
+9，`CPU` 高性能通用优化方法包括：
 + 编译选项优化
 + 内存性能和耗电优化：内存复用原则，小块快跑是内存设计的重要原则。
 + 循环展开：循环的每次迭代都有一定的性能损失（分支指令）。但是现代 ARM 处理器具有分支预测的能力，它可以在执行条件之前预测是否将进入分支，从而降低性能损耗，这种情况下全部循环展开的的优势就减弱了。

@@ -16,19 +16,9 @@ CV 算法工程师成长之路
 
 > 本项目最初是当作 cv 算法工程师实习内推表、校招可投递公司汇总以及个人面经的汇总，后面逐步转变为个人 cv 算法工程师成长之路所记录的技术栈笔记、以及少部分面经等内容。
 
-项目部分内容参考自 `github` 项目/网络博客/书籍和 [个人博客](http://www.armcvai.com/) 等，由于时间和精力有限，有些知识点还没有没有完成，所以我也推荐阅读以下 `github` 仓库项目来进行补充阅读（有些已经停止更新, 当作参考）。
-
-+ [数据结构与算法之美](https://time.geekbang.org/column/intro/126)
-+ [Algorithm_Interview_Notes-Chinese](https://github.com/DarLiner/Algorithm_Interview_Notes-Chinese)
-+ [用动画的形式呈现解LeetCode题目的思路](https://github.com/MisterBooo/LeetCodeAnimation)
+项目部分内容参考自 `github` 项目/网络博客/书籍和 [个人博客](http://www.armcvai.com/) 等，由于时间和精力有限，有些知识点还没有没有完成，请见谅。
 
 > `GitHub` 已经支持直接显示 `latex` 公式，部分公式如果显示不全，也可在谷歌浏览器安装 [MathJax Plugin for Github](https://chrome.google.com/webstore/detail/mathjax-plugin-for-github/ioemnmodlmafdkllaclgeombjnmnbima?hl=zh-CN) 插件访问(需要翻墙下载安装)，或者下载仓库到本地，使用 `Typora` 软件阅读，也可以使用安装了 `Markdown+Math` 插件的 `VSCode` 软件阅读。
-
-更多知识和最新博客，欢迎扫码关注我的公众号-**嵌入式视觉**，记录 `CV` 算法工程师成长之路，分享技术总结、读书笔记和个人感悟。
-
-<p align="center">
-  <a href="#嵌入式视觉"><img src="https://github.com/HarleysZhang/2021_algorithm_intern_information/blob/master/data/qcode.png" alt="公众号-嵌入式视觉"></a>
-</p>
 
 ## 目录
 
@@ -42,15 +32,21 @@ CV 算法工程师成长之路
 + [机器学习](4-machine_learning)
 + [深度学习](5-deep_learning)
 + [计算机视觉](6-computer_vision)
-+ [模型优化及部署](7-model_deploy)
-+ [图像算法岗面经](8-interview_summary)
++ [模型压缩与量化](7-model_compression_quantization)
++ [高性能计算](8-high-performance_computing)
++ [模型部署](9-model_deploy)
++ [图像算法岗面经](10-interview_summary)
+
+## 学习路线
+
+[cv算法工程师学习成长路线](./cv算法工程师成长路线.md)
 
 ## 面试题
 
 > 深度学习基础的一些面试题和 `Python` 编程相关的面试题，部分题目来源网上资料。
 
 + [深度学习面试题](5-deep_learning/0-深度学习面试题.md)
-+ [Python3编程面试题](2-programming_language/python3/Python3编程面试题.md)
++ [Python3 编程面试题](2-programming_language/python3/Python3编程面试题.md)
 
 
 ## 可投递公司
@@ -95,3 +91,10 @@ CV 算法工程师成长之路
 |无|巨人网络/盛大游戏|格灵深瞳|华米/极米|无|
 |无|最右/快看漫画|码隆科技|无|
 |无|猫眼娱乐/多牛传媒|轻舟智航|无|无|
+
+## 我的公众号
+更多知识和最新博客，欢迎扫码关注我的公众号-**嵌入式视觉**，记录 `CV` 算法工程师成长之路，分享技术总结、读书笔记和个人感悟。
+
+<p align="center">
+  <a href="#嵌入式视觉"><img src="./data/qcode.png" alt="公众号-嵌入式视觉"></a>
+</p>

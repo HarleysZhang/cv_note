@@ -37,7 +37,7 @@
   - [9.1，模型部署文章](#91模型部署文章)
 - [博客阅读后的知识点总结](#博客阅读后的知识点总结)
 - [参考资料](#参考资料)
-> 文章同步发于 [github 仓库](https://github.com/HarleysZhang/cv_note)和 [csdn 博客](http://t.csdn.cn/jDT39)，**最新版以 `github` 为主**。如果看完文章有所收获，一定要先点赞后收藏。毕竟，赠人玫瑰，手有余香.
+> 文章同步发于 [github 仓库](https://github.com/HarleysZhang/cv_note) 和 [csdn 博客](http://t.csdn.cn/jDT39)，**最新版以 `github` 为主**。如果看完文章有所收获，一定要先点赞后收藏。毕竟，赠人玫瑰，手有余香.
 > 更多干货文章和面经，点击查看我的公众号-嵌入式视觉，扫码关注我的公众号!
 
 本文内容为 `cv` 算法工程师成长子路上的经典学习教材汇总，对于一些新兴领域则给出了较好的博客文章链接。本文列出的知识点目录是**成系统且由浅至深**的，可作为 `cv` 算法工程师的**常备学习路线资料**。部分学习资料存在离线 `PDF` 电子版，其可在 [github仓库-cv_books](https://github.com/HarleysZhang/cv-books) 中下载。
@@ -53,7 +53,7 @@
 再引用一下学习金字塔的图：
 
 ![way_of_learning](./data/images/cv_learn/way_of_learning.png)
-> 图片来源 `github` 仓库[DeepLearning Tutorial](https://github.com/Mikoto10032/DeepLearning)
+> 图片来源 `github` 仓库 [DeepLearning Tutorial](https://github.com/Mikoto10032/DeepLearning)
 
 关于科研和研发的思考，可参考文章-[中国人民大学赵鑫：AI 科研入坑指南](https://mp.weixin.qq.com/s/h00VmCi1E7IhIDCj7X1ZjQ)。
 
@@ -71,10 +71,10 @@
 
 ### 2.1，C++ 学习资料
 
-1. [cpp reference](https://en.cppreference.com/w/): c++ 库接口参考标准文档，官方文档，包含各个函数定义及使用 `example`。
+1. [cpp reference](https://en.cppreference.com/w/): `C++` 库接口参考标准文档，官方文档，包含各个函数定义及使用 `example`。
 2. [http://www.cplusplus.com/reference/stl/](http://www.cplusplus.com/reference/stl/ "http://www.cplusplus.com/reference/stl/")
 3. [Cpp Primer 学习](https://github.com/applenob/Cpp_Primer_Practice): 《C++ Primer 中文版（第 5 版）》学习仓库，包括笔记和课后练习答案。
-4. [C++ Tips of the Week](https://abseil.io/tips/): 谷歌出品的 `C++` 编程技巧。
+4. [C++ Tips of the Week](https://abseil.io/tips/): 谷歌出品的 `C++` **编程技巧**。
 
 ### 2.2，Python 学习资料
 
@@ -83,14 +83,14 @@
 ## 三，数据结构与算法
 
 ### 3.1，数据结构与算法课程
-1. 《图解算法》：存在 PDF 电子版，内容较为基础且通俗易懂，适合快速了解数据结构与算法的基础知识，但深度不够，示例代码为 `Python`。
+1. 《图解算法》：存在 `PDF` 电子版，内容较为基础且通俗易懂，适合快速了解数据结构与算法的基础知识，但深度不够，示例代码为 `Python`。
 1. [专栏-数据结构与算法之美](https://time.geekbang.org/column/intro/126): 学习数据结构与算法的知识点课程，**内容全且深度足够**。官方例子为 `java` 代码，同时 `github` 仓库提供 `C/C++/GO/Python` 等代码。
 
 ### 3.2，算法题解
 2. [《剑指Offer》面试题: Python实现](https://github.com/JushuangQiao/Python-Offer): 题目为《剑指Offer》书籍原题，代码实现为 `Python`，仓库简洁，阅读体验不错，无任何广告，适合刚学完数据结构与算法基础知识的同学。
 3. [力扣++-算法图解](https://leetcode-solution-leetcode-pp.gitbook.io/leetcode-solution/): `leetcode` 高频题图解，题解分析很多，部分题目有动画分析，提供 `Python/Java/C++` 实现，但也存在部分题解分析废话较多，不够精简的问题。
-4. [小浩算法](https://www.geekxh.com/): 一部图解算法题典，讲解 105 道高频面试算法题目，`go` 代码实现。
-5. [LeetCode题解](https://algorithm-essentials.soulmachine.me/): leetcode 高频题题解，全书代码默认使用 `C++11` 语法编写，题解为文字性描述，题解分析较短且不够通俗易懂。本书的目标读者是准备去硅谷找工作的码农，也适用于在国内找工作的码农，以及刚接触 ACM 算法竞赛的新手。
+4. [小浩算法](https://www.geekxh.com/): 一部图解算法题典，讲解 `105` 道高频面试算法题目，`go` 代码实现。
+5. [LeetCode题解](https://algorithm-essentials.soulmachine.me/): `leetcode` 高频题题解，全书代码默认使用 `C++11` 语法编写，题解为文字性描述，题解分析较短且不够通俗易懂。本书的目标读者是准备去硅谷找工作的码农，也适用于在国内找工作的码农，以及刚接触 `ACM` 算法竞赛的新手。
 
 ## 四，机器学习
 
@@ -107,7 +107,7 @@
 
 ### 5.1，深度学习课程
 1. 《深度学习》（花书），存在英文和中文 `PDF` 电子版，内容成系统，覆盖了深度学习的方方面面，强烈建议至少看完跟自己方向相关的章节，有利于打好扎实的基础。
-2. [《李宏毅-深度学习课程》](https://speech.ee.ntu.edu.tw/~hylee/ml/2021-spring.php)： 经典视频教程，实例有趣（皮卡丘），内容讲解由浅至深，李宏毅老师个人官网也提供了视频链接、 `PPT` 课件、代码资料。
+2. [《李宏毅-深度学习课程》](https://speech.ee.ntu.edu.tw/~hylee/ml/2021-spring.php)： 经典视频教程，**实例有趣**（皮卡丘），内容讲解由浅至深，李宏毅老师个人官网也提供了视频链接、 `PPT` 课件、代码资料。
 
 ### 5.2，深度学习基础文章
 
@@ -148,7 +148,7 @@
 2. [桔子code-OpenCV-Python教程](http://www.juzicode.com/opencvpythontutorial/)
 
 ### 6.2，计算机视觉基础课程
-1. 《CS231 课程》-李飞飞。[b 站视频教程](https://www.bilibili.com/video/BV1nJ411z7fe/)，[CS231n官方笔记授权翻译总集](https://zhuanlan.zhihu.com/p/21930884)。**课程非常经典，内容深入浅出**，每节课都有课后作业和对应学习笔记。
+1. 《CS231 课程》-李飞飞。[b 站视频教程](https://www.bilibili.com/video/BV1nJ411z7fe/)；[CS231n官方笔记授权翻译总集](https://zhuanlan.zhihu.com/p/21930884)。**课程非常经典，内容深入浅出**，每节课都有课后作业和对应学习笔记。
 2. 《动手学深度学习》-李沐，存在开源 `PDF` 电子书，官方代码为 `MXNet` 框架，也存在 `PyTorch` 代码实现书籍。
 3. 《解析卷积神经网络-深度学习实践手册》-魏秀参：对 `CNN` 对基础部件做了深入描述，本书内容全且成系统，适合想深入学习 `CNN` 的同学，唯一的缺点没有项目案例以供实践。本书提供开源 `PDF` 电子版。
 ### 6.3，深度学习模型和资源库
@@ -331,12 +331,12 @@
 
 ![英伟达 GPU 架构发展史](./data/images/cv_learn/英伟达架构发展史截止到2020年.png)
 
-12，Deep Compression 论文阅读总结
-- deep compression是解决存储问题，对于速度问题几乎没获得改善；
+12，[Deep compression](https://arxiv.org/pdf/1510.00149.pdf) 论文阅读总结
+- `deep compression` 是解决存储问题，对于速度问题几乎没获得改善；
 - 权值剪枝还得看另外一篇论文：learning both weights and connection for efficient neural network
 - CNN 模型的存储空间问题，主要还是在全连接层，若要改善 `inference` 速度，需要在卷积层下功夫。
 
-13，[Deep compression](https://arxiv.org/pdf/1510.00149.pdf) 论文介绍的神经网络压缩方法，可分为三步：
+13，`Deep Compression` 论文介绍的神经网络压缩方法，可分为三步：
 
 - **剪枝**：舍弃权重绝对值较小的权重，并将剩余权重以稀疏矩阵表示。
 - **量化**：将剪枝结果进行进一步量化，具体的是构建一组权值码本，使模型中的权值共享码本中的其中一个权重值，以减少每个权重保存所需的比特数。

@@ -176,11 +176,9 @@ $$KL(P\parallel Q) = \int_{-\infty }^{+\infty} p(x)log \frac{p(x)}{q(x)} dx$$
 > 这里假设两个分布均为连续型概率分布，对于离散型概率分布，只需要将积分替换为对所有离散值遍历求和。
 
 `KL` 散度满足非负性和不满足对称性。将上式展开可得：
-$$\begin{align}
-KL(P\parallel Q)
-&= \int_{-\infty }^{+\infty}p(x)logp(x)dx - \int_{-\infty }^{+\infty}p(x) logq(x)dx \nonumber\\
-&= -H(P) + H(P,Q) \nonumber
-\end{align}$$
+$$
+KL(P\parallel Q) = \int_{-\infty }^{+\infty}p(x)logp(x)dx - \int_{-\infty }^{+\infty}p(x) logq(x)dx = -H(P) + H(P,Q)
+$$
 
 $$\text{交叉熵}\ H(P,Q) = \mathbb{E}_{\textrm{x}\sim p} log Q(x)= - \int_{-\infty }^{+\infty}p(x) logq(x)dx$$
 

@@ -94,9 +94,12 @@ $$P(\textrm{y}=y|\textrm{x}=x)=\frac{P(\textrm{y}=y, \textrm{x}=x)}{P(\textrm{x}
 ### 5.1，条件概率的链式法则
 
 任何多维随机变量的联合概率分布，都可以分解成只有一个变量的条件概率相乘的形式，这个规则被称为概率的**链式法则**（`chain rule`）。
-$$ \begin{aligned} P(a,b,c) = P(a|b,c)P(b,c) \\
+
+$$
+P(a,b,c) = P(a|b,c)P(b,c) \\
 P(b,c) = P(b|c)P(c) \\
-P(a,b,c) = P(s|b,c)P(b|c)P(c) \end{aligned}$$
+P(a,b,c) = P(s|b,c)P(b|c)P(c)
+$$
 
 ### 5.2，独立性和条件独立性
 
@@ -180,7 +183,7 @@ KL(P\parallel Q) &= \int_{-\infty }^{+\infty}p(x)logp(x)dx - \int_{-\infty }^{+\
 \end{align}
 $$
 
-$$\text{交叉熵}  H(P,Q) = \mathbb{E}_{\textrm{x}\sim p} log Q(x)= - \int_{-\infty }^{+\infty}p(x) logq(x)dx$$
+$$\text{交叉熵}\;H(P,Q) = \mathbb{E}_{\textrm{x}\sim p} log Q(x)= - \int_{-\infty }^{+\infty}p(x) logq(x)dx$$
 
 其中，$H(P)$ 为熵（`entropy`），$H(P,Q)$ 为交叉熵（`cross entropy`）。**最小化 `KL` 散度其实就是在最小化分布之间的交叉熵**。
 

@@ -94,11 +94,9 @@ $$P(\textrm{y}=y|\textrm{x}=x)=\frac{P(\textrm{y}=y, \textrm{x}=x)}{P(\textrm{x}
 ### 5.1，条件概率的链式法则
 
 任何多维随机变量的联合概率分布，都可以分解成只有一个变量的条件概率相乘的形式，这个规则被称为概率的**链式法则**（`chain rule`）。
-$$\begin{aligned}
-P(a,b,c) &= P(a|b,c)P(b,c)
+$$ \begin{aligned} P(a,b,c) &= P(a|b,c)P(b,c)
 P(b,c) &= P(b|c)P(c)
-P(a,b,c) &= P(s|b,c)P(b|c)P(c)
-\end{aligned}$$
+P(a,b,c) &= P(s|b,c)P(b|c)P(c) \end{aligned}$$
 
 ### 5.2，独立性和条件独立性
 

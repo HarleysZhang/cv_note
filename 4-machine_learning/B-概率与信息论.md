@@ -179,7 +179,7 @@ $$KL(P\parallel Q) = \int_{-\infty }^{+\infty} p(x)log \frac{p(x)}{q(x)} dx$$
 $$\begin{align}
 KL(P\parallel Q)
 &= \int_{-\infty }^{+\infty}p(x)logp(x)dx - \int_{-\infty }^{+\infty}p(x) logq(x)dx \nonumber\\
-&= -H(P) + H(P,Q) \nonumber\\
+&= -H(P) + H(P,Q) \nonumber
 \end{align}$$
 
 $$\text{交叉熵}\ H(P,Q) = \mathbb{E}_{\textrm{x}\sim p} log Q(x)= - \int_{-\infty }^{+\infty}p(x) logq(x)dx$$

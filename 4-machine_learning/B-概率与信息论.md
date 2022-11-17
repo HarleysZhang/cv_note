@@ -173,12 +173,15 @@ $$KL(P\parallel Q) = \int_{-\infty }^{+\infty} p(x)log \frac{p(x)}{q(x)} dx$$
 > 这里假设两个分布均为连续型概率分布，对于离散型概率分布，只需要将积分替换为对所有离散值遍历求和。
 
 `KL` 散度满足非负性和不满足对称性。将上式展开可得：
-$$\begin{aligned}
-KL(P\parallel Q) &= \int_{-\infty }^{+\infty}p(x)logp(x)dx - \int_{-\infty }^{+\infty}p(x) logq(x)dx \\
-&= -H(P) + H(P,Q)
-\end{aligned}$$
+$$
+\begin{align}
+KL(P\parallel Q) &= \int_{-\infty }^{+\infty}p(x)logp(x)dx - \int_{-\infty }^{+\infty}p(x) logq(x)dx \nonumber \\
+&= -H(P) + H(P,Q) \nonumber
+\end{align}
+$$
 
-$$\text{交叉熵}\ H(P,Q) = \mathbb{E}_{\textrm{x}\sim p} log Q(x)= - \int_{-\infty }^{+\infty}p(x) logq(x)dx$$
+$$\text{交叉熵}  H(P,Q) = \mathbb{E}_{\textrm{x}\sim p} log Q(x)= - \int_{-\infty }^{+\infty}p(x) logq(x)dx$$
+
 其中，$H(P)$ 为熵（`entropy`），$H(P,Q)$ 为交叉熵（`cross entropy`）。**最小化 `KL` 散度其实就是在最小化分布之间的交叉熵**。
 
 在信息论中，熵 $H(P)$ 表示对来自 $P$ 的随机遍历进行编码所需的最小字节数，而交叉熵 $H(P,Q)$ 表示使用 $Q$ 的编码对来自 $P$ 的变量进行编码所需的字节数。因此 KL  散度可认为是使用基于 $Q$ 的编码对来自 $P$ 的变量进行编码所需的“额外字节数”；显然，额外字节数非负，当且仅当 $P=Q$ 时额外字节数为 `0`。

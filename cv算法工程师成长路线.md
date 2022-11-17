@@ -35,6 +35,8 @@
   - [8.3，矩阵乘优化文章](#83矩阵乘优化文章)
 - [九，模型部署(算法SDK开发)](#九模型部署算法sdk开发)
   - [9.1，模型部署文章](#91模型部署文章)
+- [效率工具](#效率工具)
+  - [markdown/latex 写作](#markdownlatex-写作)
 - [博客阅读后的知识点总结](#博客阅读后的知识点总结)
 - [参考资料](#参考资料)
 > 文章同步发于 [github 仓库](https://github.com/HarleysZhang/cv_note) 和 [csdn 博客](http://t.csdn.cn/jDT39)，**最新版以 `github` 为主**。如果看完文章有所收获，一定要先点赞后收藏。毕竟，赠人玫瑰，手有余香.
@@ -149,7 +151,7 @@
 
 ### 6.2，计算机视觉基础课程
 1. 《CS231 课程》-李飞飞。[b 站视频教程](https://www.bilibili.com/video/BV1nJ411z7fe/)；[CS231n官方笔记授权翻译总集](https://zhuanlan.zhihu.com/p/21930884)。**课程非常经典，内容深入浅出**，每节课都有课后作业和对应学习笔记。
-2. 《动手学深度学习》-李沐，存在开源 `PDF` 电子书，官方代码为 `MXNet` 框架，也存在 `PyTorch` 代码实现书籍。
+2. 《动手学深度学习》-李沐，存在开源 `PDF` 电子书，官方代码为 `MXNet` 框架实现，`github` 上有开源的[《动⼿手学深度学习 PYTORCH 版》](https://github.com/ShusenTang/Dive-into-DL-PyTorch)。
 3. 《解析卷积神经网络-深度学习实践手册》-魏秀参：对 `CNN` 对基础部件做了深入描述，本书内容全且成系统，适合想深入学习 `CNN` 的同学，唯一的缺点没有项目案例以供实践。本书提供开源 `PDF` 电子版。
 ### 6.3，深度学习模型和资源库
 
@@ -277,6 +279,15 @@
 4. [模型转换、模型压缩、模型加速工具汇总](https://blog.csdn.net/WZZ18191171661/article/details/99700992)
 5. [深度学习模型转换与部署那些事(含ONNX格式详细分析)](https://bindog.github.io/blog/2020/03/13/deep-learning-model-convert-and-depoly/)
 6. [ONNX初探](https://mp.weixin.qq.com/s/H1tDcmrg0vTcSw9PgpgIIQ)
+
+
+## 效率工具
+
+### markdown/latex 写作
+
+1. [markdown语法大全](https://www.cnblogs.com/miki-peng/articles/12502985.html): 这篇文章对 `markdown` 语法整理得很好，文章排版也做的好，读完很容易就掌握 `markdown` 语法。
+2. [通用 LaTeX 数学公式语法手册](http://www.uinio.com/Math/LaTex/): 排版很好，目录结构清晰明了，阅读起来很舒服，推荐学习。
+3. https://latex.codecogs.com/eqneditor/editor.php: 在线 `latex` 语法。
 ## 博客阅读后的知识点总结
 
 1，为了尽可能地提高 `MAC阵列` 的利用率以及卷积运算效率，阵列控制模块会根据第一卷积参数矩阵的行数和第一卷积数据阵列的行数来确定第一乘法累加窗口的列数。

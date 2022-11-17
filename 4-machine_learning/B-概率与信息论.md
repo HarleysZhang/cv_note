@@ -97,7 +97,7 @@ $$P(\textrm{y}=y|\textrm{x}=x)=\frac{P(\textrm{y}=y, \textrm{x}=x)}{P(\textrm{x}
 $$\begin{aligned}
 P(a,b,c) &= P(a|b,c)P(b,c) \\
 P(b,c) &= P(b|c)P(c) \\
-P(a,b,c) &= P(s|b,c)P(b|c)P(c)
+P(a,b,c) &= P(s|b,c)P(b|c)P(c) \\
 \end{aligned}$$
 
 ### 5.2，独立性和条件独立性

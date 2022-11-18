@@ -1,5 +1,5 @@
+[toc]
 ## 前言
-
 工业智慧视觉应用主要涉及四个场景：识别、测量、定位、检测。
 
 * **识别**：识别物体的物理特征，包括形状、颜色、字符和条码等，常见的应用场景是 OCR，读取零部件上的字母、数字、字符等用于溯源。
@@ -7,7 +7,7 @@
 * **定位**：获取目标的二维/三维位置信息，常用语元件定位，用以辅助机器臂进行后续的抓取等动作。
 * **检测**：一般特指缺陷检测，判断产品是否存在缺陷，如零部件缺陷检测等。
 
-<img src="images/vjTTNDFp8mu84iqX4nFsNR2lz73yBCzhIrd1Q_rpwoU.png" alt="image" style="zoom: 45%;" />
+![image](images/vjTTNDFp8mu84iqX4nFsNR2lz73yBCzhIrd1Q_rpwoU.png)
 
 ## 一，HALCON 概述
 `HALCON` 是德国 MVtec 公司开发的一款综合性的机器视觉标准软件，拥有全球通用的集成开发环境（HDevelop）。它节约了产品成本，缩短了软件开发周期——HALCON 灵活的架构便于机器视觉，医学图像和图像分析应用的快速开发。在欧洲以及日本的工业界已经是公认具有最佳效能的机器视觉（Machine Vision）软件。
@@ -20,7 +20,7 @@ HALCON 主要提供的技术有：条形码和二维码读取、BLOB 分析、�
 
 更多技术的描述请参阅官网[资料](https://www.mvtec.com/cn/technologies)。
 
-<img src="images/halcon_all_technology.png" alt="image-20221024215502936" style="zoom:50%;" />
+![image](images/Y4dbFB2uVmDG4RDZR43QV9rf_RvGU9F7OkZeTdNx2W8.png)
 
 ## 1.1，HALCON 安装
 > 注意：**HALCON 目前不支持 arm 处理器版的 M1 Pro 机器**，而且目前主流是在 Windows 开发居多。
@@ -32,16 +32,18 @@ HALCON 下载安装步骤如下所示：
 1. 进入 HALCON [官网](https://www.mvtec.com/cn/downloads/halcon)，选择产品版本、操作系统以及架构后就会下载对应版本软件直接点击下载好的安装包即可安装。
 2. 安装的详细步骤截图如下所示，试用版不用安装 `license` 文件，跳过即可。
 
-<img src="images/iNZX2hXuI-15Wpl8vgptbQt68uvNW4XKZib0ill5smc.png" alt="image" style="zoom:33%;" />
-<img src="images/60JeE1RsfI7dZkNAbWOsNPfBCFnfYjEyPVzBhdu9608.png" alt="image" style="zoom:33%;" />
+![image](images/iNZX2hXuI-15Wpl8vgptbQt68uvNW4XKZib0ill5smc.png)
 
-<img src="images/VNgcDM4MGpl71dUvQxivi2Y_ew3fTs8YfBEaW5HBhOc.png" alt="image" style="zoom:33%;" />
-<img src="images/y71JYj6lZWGd_w1M_qYUBCCmE_F5_qwDPbJCVMpi2w8.png" alt="image" style="zoom:33%;" />
+![image](images/60JeE1RsfI7dZkNAbWOsNPfBCFnfYjEyPVzBhdu9608.png)
+
+![image](images/VNgcDM4MGpl71dUvQxivi2Y_ew3fTs8YfBEaW5HBhOc.png)
+
+![image](images/y71JYj6lZWGd_w1M_qYUBCCmE_F5_qwDPbJCVMpi2w8.png)
 
 ## 二，HALCON 架构
 `HALCON` 架构如下图 2.1 所示。HALCON 机器视觉软件的主要部分就是**图像处理库**，其由超过 2000 多个**算子**组成，当然我们也可以通过拓展包的形式开发自定义算子，并在程序中使用。
 
-<img src="images/2Z2fsCtvc8KFMdb3QiEaP8xpffXncnZa6D80X-1LxBU.png" alt="image" style="zoom: 50%;" />
+![image](images/2Z2fsCtvc8KFMdb3QiEaP8xpffXncnZa6D80X-1LxBU.png)
 
 `HALCON` 提供了**通用**的图像采集接口来支持不同的图像采集设备（3D相机、相机等），包好特定设备的实现库会在程序运行时动态加载。
 
@@ -58,13 +60,13 @@ HALCON 下载安装步骤如下所示：
 #### 2.1.1，参数和数据结构
 >  Quick Guide to HALCON Parameters and Data Structures
 
-HALCON 算子的参数有两种基本类型：图标数据和控制数据（iconic data and control data）。图像、区域（`regions`）和 XLD（拓展线描述） 属于标志性数据。
+`HALCON` 算子的参数有两种基本类型：图标数据和控制数据（iconic data and control data）。图像、区域（`regions`）和 XLD（拓展线描述） 属于标志性数据。
 
-* Images，图像的定义即包含像素值的矩阵，由多个通道组成，其详细定义可以参考《数字图像处理》书籍。这里感兴趣区域 ROI 指的是输入图像的那一部分区域会被处理，ROI 可以灵活定义，从简单的矩形到一组未连接到像素点都支持。 
+* Images（图像）即包含像素值的矩阵，由多个通道组成，其详细定义可以参考《数字图像处理》书籍。这里感兴趣区域 ROI 指的是输入图像的哪一部分区域会被处理，ROI 可以灵活定义，从简单的矩形到一组未连接到像素点都支持。 
 * Regions 由一系列像素组成。区域之中的像素可以不互相连接，任意像素集合都可以作为单个区域处理。
 * XLDS 包括所有基于轮廓和多边形的数据。像 `edges_sub_pix` 这样的亚像素精度算子将轮廓作为 XLD 数据返回。 轮廓是一系列 2D 控制点，由线连接。 通常，控制点之间的距离约为 1 个像素。 除了控制点之外，XLD 对象还包含所谓的局部和全局属性。 这些的典型示例是，例如，控制点的边缘幅度或轮廓段的回归参数。 除了提取 XLD 对象外，HALCON 还支持进一步处理。 这方面的示例是基于给定特征范围的轮廓选择，用于将轮廓分割成线、弧、多边形或平行线。
 
-控制数据（control data）包括句柄和基本数据类型，如整数、实数、字符串。
+控制数据（`control data`）包括句柄和基本数据类型，如整数、实数、字符串。
 
 **句柄是对复杂数据结构的引用**，例如，与图像采集接口或基于形状匹配的模型的连接。 出于效率和数据安全的原因，在操作符之间传递的不是整个结构而是只有句柄。 句柄是不能更改的神奇值(magic values)，并且可能因执行和版本而异。 一旦所有引用被覆盖，它们就会自动清除。 使用句柄的示例有**图形窗口、文件、套接字、图像采集接口、OCR、OCV、测量和匹配**。
 
@@ -72,7 +74,7 @@ HALCON 算子的参数有两种基本类型：图标数据和控制数据（icon
 为了支持特殊硬件或实现新的算法，HALCON 支持以 **C 语言**实现的自定义算子。拓展包接口包含几个预定义的例程和宏，用于在 C 中轻松处理图像数据和内存对象。成功集成新算子后，它可以像任何其他 HALCON 算子一样使用。
 
 ### 2.3，接口
-HALCON 支持Python、C、C++ 和 .NET 语言接口，不同编程语言接口，其数据类型、类和算子的命名会有所不同。
+HALCON 支持Python、C、C++ 和 .NET 语言接口，对于·不同编程语言接口，其数据类型、类和算子的命名会有所不同。
 
 #### 2.3.1，HALCON-Python 接口
 读取图像并计算连接区域(`connected regions`)数量的示例代码如下。
@@ -138,7 +140,7 @@ HALCON 图像采集接口的更新会比 HALCON 库本身更新更为频繁。
 2. **程序窗口: **即输入和编辑代码的地方。
 3. **变量窗口**: 显示所有变量。即显示图标变量（`iconic variables`）和控制变量。图标变量包含图标数据，控制变量包含控制数据。
 
-<img src="images/is7S4w_iEzSLet8Nrrf5N1Xmqsmqg6-4zcjZq4XQwXY.png" alt="image" style="zoom: 50%;" />
+![image](images/is7S4w_iEzSLet8Nrrf5N1Xmqsmqg6-4zcjZq4XQwXY.png)
 
 ### 3.2，示例程序
 推荐观看视频教程: [ Integrate HDevelop code into a C++ application using the Library Project Export](https://www.mvtec.com/services-support/videos-tutorials/single-video/hdevelop-library-project-export)。
@@ -146,7 +148,7 @@ HALCON 图像采集接口的更新会比 HALCON 库本身更新更为频繁。
 分步说明的描述可以参考 《quick\_guide》 文档的3.2 节内容。
 
 ## 四，更多参考资料
-`HALCON` 相关文档描述及下载链接汇总如下表所示。
+HALCON 相关文档描述及下载链接汇总如下表所示。
 
 |REFERENCE MANUAL 参考手册|下载链接|文件大小|
 | ----- | ----- | ----- |
@@ -166,3 +168,4 @@ HALCON 图像采集接口的更新会比 HALCON 库本身更新更为频繁。
 |Solution Guide III - B - 2D Measuring（解决方案指南 III-B - 2D 测量）|[下载 PDF](https://www.mvtec.com/fileadmin/Redaktion/mvtec.com/products/halcon/documentation/solution_guide/solution_guide_iii_b_2d_measuring.pdf)|2.5 MB|
 |Solution Guide III - C - 3D Vision（解决方案指南 III-C - 3D 视觉）|[下载 PDF](https://www.mvtec.com/fileadmin/Redaktion/mvtec.com/products/halcon/documentation/solution_guide/solution_guide_iii_c_3d_vision.pdf)|14.2 MB|
 |Technical Updates（技术更新）|[下载 PDF](https://www.mvtec.com/fileadmin/Redaktion/mvtec.com/products/halcon/documentation/manuals/technical_updates.pdf)|0.2 MB|
+

@@ -11,6 +11,7 @@
 - [5，结论](#5结论)
 - [6，代码解读](#6代码解读)
 - [参考资料](#参考资料)
+
 ## 摘要
 > `CSPNet` 是作者 `Chien-Yao Wang` 于 `2019` 发表的论文 `CSPNET: A NEW BACKBONE THAT CAN ENHANCE LEARNING CAPABILITY OF CNN`。也是对 `DenseNet` 网络推理效率低的改进版本。
 
@@ -66,7 +67,7 @@
 
 1. **增加梯度路径**:通过**分块归并**策略，可以使梯度路径的数量增加一倍。由于采用了跨阶段策略，可以减轻使用显式特征图 copy 进行拼接所带来的弊端;
 2. **每一层的平衡计算**:通常，DenseNet 基层的通道数远大于生长速率。由于在局部稠密块中，参与密集层操作的基础层通道仅占原始数据的一半，可以有效解决近一半的计算瓶颈;
-3. **减少内存流量**: 假设 `DenseNet` 中一个密集块的基本特征图大小为 $w\times h\times c$，增长率为 $d$，共有 $m$ 个密集块。则该密集块的 CIO为 $(c\times m) + ((m^2+m)\times d)/2$，而局部密集块（`partial dense block`）的 `CIO`为 $((c\times m) + (m^2+m)\times d)/2$。虽然$m$ 和 $d$ 通常比 $c$ 小得多，但是一个局部密集的块最多可以节省网络一半的内存流量。
+3. **减少内存流量**: 假设 `DenseNet` 中一个密集块的基本特征图大小为 $w\times h\times c$，增长率为 $d$，共有 $m$ 个密集块。则该密集块的 CIO为 $(c\times m) + ((m^2+m)\times d)/2$，而局部密集块（`partial dense block`）的 `CIO`为 $((c\times m) + (m^2+m)\times d)/2$。虽然 $m$ 和 $d$ 通常比 $c$ 小得多，但是一个局部密集的块最多可以节省网络一半的内存流量。
 
 4，**Partial Transition Layer**.
 
@@ -124,7 +125,7 @@ EFM 在 COCO 数据集上的消融实验结果。
 
 ## 6，代码解读
 
-1，Partial Dense Block 的实现，代码可以直接在 Dense Block 代码的基础上稍加修改即可，代码参考 [这里]()。简单的 Dense Block 代码如下：
+1，Partial Dense Block 的实现，代码可以直接在 Dense Block 代码的基础上稍加修改即可，代码参考 [这里]( "这里")。简单的 Dense Block 代码如下：
 
 ```python
 class conv2d_bn_relu(nn.Module):
@@ -182,10 +183,10 @@ class DenseBlock(nn.Module):
         return layer_list
 
     def forward(self, x):
-        feature = self.layers[0](x)
+        feature = self.layers[0](x "0")
         out = torch.cat((x, feature), 1)
         for i in range(1, len(self.layers)):
-            feature = self.layers[i](out)
+            feature = self.layers[i](out "i")
             out = torch.cat((feature, out), 1)
         return out
 		
@@ -211,5 +212,5 @@ class CSP_DenseBlock(nn.Module):
 
 ## 参考资料
 
-- [增强CNN学习能力的Backbone:CSPNet](https://www.cnblogs.com/pprp/p/12566116.html)
-- [CSPNet——PyTorch实现CSPDenseNet和CSPResNeXt](https://zhuanlan.zhihu.com/p/263555330)
+- [增强CNN学习能力的Backbone:CSPNet](https://www.cnblogs.com/pprp/p/12566116.html "增强CNN学习能力的Backbone:CSPNet")
+- [CSPNet——PyTorch实现CSPDenseNet和CSPResNeXt](https://zhuanlan.zhihu.com/p/263555330 "CSPNet——PyTorch实现CSPDenseNet和CSPResNeXt")

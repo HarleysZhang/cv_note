@@ -288,6 +288,7 @@
 1. [markdown语法大全](https://www.cnblogs.com/miki-peng/articles/12502985.html): 这篇文章对 `markdown` 语法整理得很好，文章排版也做的好，读完很容易就掌握 `markdown` 语法。
 2. [通用 LaTeX 数学公式语法手册](http://www.uinio.com/Math/LaTex/): 排版很好，目录结构清晰明了，阅读起来很舒服，推荐学习。
 3. https://latex.codecogs.com/eqneditor/editor.php: 在线 `latex` 语法。
+
 ## 博客阅读后的知识点总结
 
 1，为了尽可能地提高 `MAC阵列` 的利用率以及卷积运算效率，阵列控制模块会根据第一卷积参数矩阵的行数和第一卷积数据阵列的行数来确定第一乘法累加窗口的列数。

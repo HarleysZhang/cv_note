@@ -39,10 +39,14 @@
   - [markdown/latex 写作](#markdownlatex-写作)
 - [博客阅读后的知识点总结](#博客阅读后的知识点总结)
 - [参考资料](#参考资料)
-> 文章同步发于 [github 仓库](https://github.com/HarleysZhang/cv_note) 和 [csdn 博客](http://t.csdn.cn/jDT39)，**最新版以 `github` 为主**。如果看完文章有所收获，一定要先点赞后收藏。毕竟，赠人玫瑰，手有余香.
-> 更多干货文章和面经，点击查看我的公众号-嵌入式视觉，扫码关注我的公众号!
 
-本文内容为 `cv` 算法工程师成长子路上的经典学习教材汇总，对于一些新兴领域则给出了较好的博客文章链接。本文列出的知识点目录是**成系统且由浅至深**的，可作为 `cv` 算法工程师的**常备学习路线资料**。部分学习资料存在离线 `PDF` 电子版，其可在 [github仓库-cv_books](https://github.com/HarleysZhang/cv-books) 中下载。
+> 文章同步发于 [github 仓库](https://github.com/HarleysZhang/cv_note) 和 [csdn 博客](http://t.csdn.cn/jDT39)，**最新版以 `github` 为主**。如果看完文章有所收获，一定要先点赞后收藏。毕竟，赠人玫瑰，手有余香.
+
+本文内容为 `cv` 算法工程师成长子路上的经典学习教材汇总，对于一些新兴领域则给出了较好的博客文章链接。本文列出的知识点目录是**成系统且由浅至深**的，可作为 `cv` 算法工程师的**常备学习路线资料**。
+
+文章所涉知识点和参考资料内容很多也很广，**建议先看目录**，心中有个大概知识点结构，后面由浅入深，慢慢学习各个知识点，由浅入深，**切忌浮躁**。
+
+> 部分学习资料存在离线 `PDF` 电子版，其可在 [github仓库-cv_books](https://github.com/HarleysZhang/cv-books) 中下载。如果仓库失效，可以关注我的[公众号-嵌入式视觉](https://github.com/HarleysZhang/cv_note/blob/master/data/article_cover/qrcode_258.jpg)，后台回复对应关键字下载高清 PDF 电子书。
 
 ## 前言
 
@@ -286,7 +290,7 @@
 ### markdown/latex 写作
 
 1. [markdown语法大全](https://www.cnblogs.com/miki-peng/articles/12502985.html): 这篇文章对 `markdown` 语法整理得很好，文章排版也做的好，读完很容易就掌握 `markdown` 语法。
-2. [通用 LaTeX 数学公式语法手册](http://www.uinio.com/Math/LaTex/): 排版很好，目录结构清晰明了，阅读起来很舒服，推荐学习。
+2. [通用 LaTeX 数学公式语法手册](http://www.uinio.com/Math/LaTex/): 文章排版很好，目录结构清晰明了，阅读起来很舒服，推荐用来学习 `latex` 语法内容。
 3. https://latex.codecogs.com/eqneditor/editor.php: 在线 `latex` 语法。
 
 ## 博客阅读后的知识点总结

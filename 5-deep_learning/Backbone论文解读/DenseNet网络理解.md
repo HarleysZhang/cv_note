@@ -74,7 +74,7 @@ $[\mathrm{\mathrm{x_0},\mathrm{x_1},...,\mathrm{x_{l-1}}]}$ 表示网络层 $0,.
 
 ## 代码
 
-原则作者开源的 `DenseNet` 提高内存效率版本的代码如下。
+作者开源的 `DenseNet` 提高内存效率版本的代码如下。
 
 ```python
 # This implementation is based on the DenseNet-BC implementation in torchvision

@@ -281,17 +281,17 @@ if __name__ == "__main__":
 
 在一定的程度上，网络越深越宽，性能越好。宽度，即通道(`channel`)的数量，网络深度，即 `layer` 的层数，如 `resnet18` 有 `18` 个卷积层。注意我们这里说的和宽度学习一类的模型没有关系，而是特指深度卷积神经网络的(**通道**)宽度。
 
-- **网络深度的意义**：CNN 的网络层能够对输入图像数据进行逐层抽象，比如第一层学习到了图像边缘特征，第二层学习到了简单形状特征，第三层学习到了目标形状的特征，网络深度增加也提高了模型的抽象能力。
-- **网络宽度的意义**：网络的宽度（通道数）代表了滤波器（3 维）的数量，滤波器越多，对目标特征的提取能力越强，即让每一层网络学习到更加丰富的特征，比如不同方向、不同频率的纹理特征等。
+- **网络深度的意义**：`CNN` 的网络层能够对输入图像数据进行逐层抽象，比如第一层学习到了图像边缘特征，第二层学习到了简单形状特征，第三层学习到了目标形状的特征，网络深度增加也提高了模型的抽象能力。
+- **网络宽度的意义**：网络的宽度（通道数）代表了滤波器（`3` 维）的数量，滤波器越多，对目标特征的提取能力越强，即让每一层网络学习到更加丰富的特征，比如不同方向、不同频率的纹理特征等。
 
 ## 后续改进-MobileDets
 
 1. `FLOPs` 低不等于 `latency` 低，尤其是在有加速功能的硬体 (`GPU`、`DSP`与 `TPU` )上不成立。
-2. MobileNet block (depthwise separable convolution)在有加速功能的硬件（专用硬件设计-`NPU` 芯片）上比较没有效率。
+2. `MobileNet conv block` (`depthwise separable convolution`)在有加速功能的硬件（专用硬件设计-`NPU` 芯片）上比较没有效率。
 3. 低 `channel` 数的情况下 (如网路的前几层)，在有加速功能的硬件使用**普通** `convolution` 通常会比`separable convolution` 有效率。
 4. 在大多数的硬件上，`channel` 数为 `8` 的倍数比较有利计算。
-5. `DSP` 与 `TPU` 上，一般我们需要运算为 `uint8` 形式-，`quantization`（**低精度量化**）是常见的技巧。
-6. `DSP` 与 `TPU` 上，`h-Swish` 与 `squeeze-and-excitation`效果不明显 (因为硬体设计与 `uint8` 压缩的关系)。
+5. `DSP` 与 `TPU` 上，一般我们需要运算为 `uint8` 形式，`quantization`（**低精度量化**）是常见的技巧。
+6. `DSP` 与 `TPU` 上，`h-Swish` 与 `squeeze-and-excitation` 效果不明显 (因为硬体设计与 `uint8` 压缩的关系)。
 7. `DSP` 与 `TPU` 上，`5x5` `convolution` 比较没效率。
 
 ## 参考资料
@@ -302,4 +302,5 @@ if __name__ == "__main__":
 4. [MobileNetV1代码实现](https://www.cnblogs.com/linzzz98/articles/13453810.html)
 5. [Depthwise卷积与Pointwise卷积](https://zhuanlan.zhihu.com/p/80041030)
 6. [【CNN结构设计】深入理解深度可分离卷积](https://mp.weixin.qq.com/s/IZ-nbrCL8-9w32RSYeP_bg)
-7. [MobileDets: FLOPs不等于Latency，考量不同硬体的高效架构](https://medium.com/ai-blog-tw/mobiledets-flops%E4%B8%8D%E7%AD%89%E6%96%BClatency-%E8%80%83%E9%87%8F%E4%B8%8D%E5%90%8C%E7%A1%AC%E9%AB%94%E7%9A%84%E9%AB%98%E6%95%88%E6%9E%B6%E6%A7%8B-5bfc27d4c2c8)
+7. [FLOPs与模型推理速度](https://zhuanlan.zhihu.com/p/122943688)
+8. [MobileDets: FLOPs不等于Latency，考量不同硬体的高效架构](https://medium.com/ai-blog-tw/mobiledets-flops%E4%B8%8D%E7%AD%89%E6%96%BClatency-%E8%80%83%E9%87%8F%E4%B8%8D%E5%90%8C%E7%A1%AC%E9%AB%94%E7%9A%84%E9%AB%98%E6%95%88%E6%9E%B6%E6%A7%8B-5bfc27d4c2c8)

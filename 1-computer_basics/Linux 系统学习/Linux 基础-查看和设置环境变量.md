@@ -54,13 +54,19 @@ $ env|grep TEST  # 此命令没有输出，证明环境变量 TEST 已经删除
 
 ## 三，设置环境变量
 
-在 `Linux` 中**添加环境变量**有三种方法：
+设置环境有多种用途，比如**配置交叉编译工具链的时候一般需要指定编译工具的路径**，此时就需要设置环境变量。
 
-+ 在 `/etc/profile` 文件中添加变量【对所有用户生效(永久的)】
-+ 在用户目录下的 `.bash_profile` 文件中增加变量【对单一用户生效(永久的)】
-+ 直接运行 `export` 命令定义变量【只对当前 shell(BASH) 有效(临时的)】
+在 `Linux` 中**设置环境变量**有三种方法：
 
-修改 `profile` 文件后需运行 `source /etc/profile` 命令才能生效，否则只能在下次重进此用户时生效。
+1. `vi /etc/profile`: 在 `/etc/profile` 文件中添加变量【对所有用户生效(永久的)】。
+2. `vi ~/.bash_profile`: 在用户目录下的 `~/.bash_profile` 文件中添加变量【对单一用户生效(永久的)】。
+3. 直接运行 `export` 命令定义变量，查看是否已经设好，可用命令 `export` 查看。【只对当前 shell(BASH) 有效(临时的)】
+
+前面两种方法一般需要重新注销系统才能生效，否则只能在下次重进此用户时生效。修改 `profile` 文件的方法也可以通过运行 `source /etc/profile` 命令生效，不用重新进入系统。
+
+最后可以通过 `echo $PATH` 命令测试一下，看终端打印结果是否有添加的路径。
 
 ## 四，参考资料
-[Linux环境变量总结](https://www.jianshu.com/p/ac2bc0ad3d74)
+
+1. [Linux环境变量总结](https://www.jianshu.com/p/ac2bc0ad3d74)
+2. [在Linux里设置环境变量的方法（export PATH）](https://www.cnblogs.com/amboyna/archive/2008/03/08/1096024.html)

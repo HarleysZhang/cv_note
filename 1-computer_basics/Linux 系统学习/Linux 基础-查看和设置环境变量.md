@@ -61,16 +61,16 @@ $ env|grep TEST  # 此命令没有输出，证明环境变量 TEST 已经删除
 **1，所有用户永久添加环境变量**: `vi /etc/profile`，在 `/etc/profile` 文件中添加变量。
 
 - `vi /etc/profile` # 通过这种方式，在关闭 xshell后，添加的环境变量不生效
-- 文件末尾添加：`export PATH="/usr/local/nginx/sbin/:$PATH"`
+- 文件末尾添加：`export PATH="/usr/local/cuda/lib64:$PATH"`
 - `source /etc/profile` # 激活后，环境变量才可永久生效
 
 **2，当前用户永久添加环境变量**: `vi ~/.bash_profile`，在用户目录下的 `~/.bash_profile` 文件中添加变量。
 
 - `vim ~/.bashrc` # 编辑 `.bashrc` 文件，在关闭 `xshell` 后，添加的环境变量仍然生效
-- 文件末尾添加: `export PATH="/usr/local/nginx/sbin/:$PATH"`
+- 文件末尾添加: `export PATH="/usr/local/cuda/lib64:$PATH"`
 - `source ~/.bashrc` 
 
-**3，临时添加环境变量 `PATH`**: 可通过 `export` 命令，如运行命令 `export PATH=/usr/local/nginx/sbin/:$PATH`，将 `/usr/local/nginx/sbin/` 目录临时添加到环境变量中。查看是否已经设置好，可用命令 `export` 查看。
+**3，临时添加环境变量 `PATH`**: 可通过 `export` 命令，如运行命令 `export PATH=/usr/local/cuda/lib64:$PATH`，将 `/usr/local/cuda/lib64` 目录临时添加到环境变量中。查看是否已经设置好，可用命令 `export` 查看。
 
 前面两种方法可以通过 `echo $PATH` 命令查看终端打印结果是否有添加的路径，来确认已经设置好环境变量。
 

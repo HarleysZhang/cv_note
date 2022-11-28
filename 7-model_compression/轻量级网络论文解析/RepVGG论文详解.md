@@ -10,6 +10,7 @@
 - [RepVGG Block 结构](#repvgg-block-结构)
 - [RepVGG Block 的结构重参数化](#repvgg-block-的结构重参数化)
 - [结论](#结论)
+- [RepVGG 的问题](#repvgg-的问题)
 - [参考资料](#参考资料)
 
 > `RepVGG` 是截止到 2021.2.9 日为止最新的一个轻量级网络架构。在我的测试中，其在安霸 `CV22` 上的加速效果不如 `ShuffleNet v2`。根据作者的描述，`RepVGG` 是为 `GPU` 和专用硬件设计的高效模型，追求高速度、省内存，较少关注参数量和理论计算量。在低算力设备上，可能不如 `MobileNet` 和 `ShuffleNet` 系列适用。
@@ -281,6 +282,15 @@ $$
 
 最后需要注明的是，`RepVGG` 是为 `GPU` 和专用硬件设计的高效模型，追求高速度、省内存，较少关注参数量和理论计算量。在低算力设备上，可能不如 MobileNet 和 ShuffleNet 系列适用。
 
+## RepVGG 的问题
+
+`RepVGG` 的推理模型**很难使用后量化方法** (`Post-Training Quantization`, `PTQ`)，比如，使用简单的 `INT8 PTQ`，ImageNet 上的 `RepVGG` 模型的准确性会降低到 `54.55%`。
+
+`RepOpt` 对重参数化结构量化困难的问题进行了研究，发现重参数结构的分支融合和吸 `BN` 操作，显著放大了权重参数分布的标准差。**而异常的权重分布**又会产生了过大的网络激活层数值分布，从而进一步导致该层量化损失过大，因此模型精度损失严重。
+> 参考美团结束团队文章-[通用目标检测开源框架YOLOv6在美团的量化部署实战](https://tech.meituan.com/2022/09/22/yolov6-quantization-in-meituan.html)。
+
+后续改进论文 [RepOptimizer](https://arxiv.org/pdf/2205.15242.pdf) 中，直接量化 `RepOpt-VGG` 模型，`ImageNet` 上准确率仅会下降`2.5%`。
+> `RepOptimizer`：重参数化你的优化器：VGG 型架构 + 特定的优化器 = 快速模型训练 + 强悍性能。
 ## 参考资料
 
 1. [Residual Networks Behave Like Ensembles of Relatively Shallow Networks](https://arxiv.org/pdf/1605.06431.pdf)
@@ -291,5 +301,5 @@ $$
 6. [深度学习推理时融合BN，轻松获得约5%的提速](https://mp.weixin.qq.com/s/P94ACKuoA0YapBKlrgZl3A)
 7. [【CNN结构设计】无痛的涨点技巧：ACNet](https://zhuanlan.zhihu.com/p/131282789)
 8. [Markdown下LaTeX公式、编号、对齐](https://www.zybuluo.com/fyywy520/note/82980)
-
+9. [重参数化你的优化器：VGG 型架构 + 特定的优化器 = 快速模型训练 + 强悍性能](https://mp.weixin.qq.com/s/zdQx8MxyilB_TlXyipnYpA)
 

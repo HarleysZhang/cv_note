@@ -2,6 +2,7 @@
   - [VGG 和 ResNet 回顾](#vgg-和-resnet-回顾)
   - [MAC 计算](#mac-计算)
   - [卷积运算与矩阵乘积](#卷积运算与矩阵乘积)
+    - [点积](#点积)
   - [ACNet 理解](#acnet-理解)
     - [ACBlock 的 Pytorch 代码实现](#acblock-的-pytorch-代码实现)
 - [摘要](#摘要)
@@ -43,6 +44,9 @@ MAC = ddr_read + ddr_write
 ```
 
 ### 卷积运算与矩阵乘积
+#### 点积
+- 在**数学**中，点积（英语：`Dot Product`）又称数量积或标量积（英语：Scalar Product），是一种接受两个等长的数字序列（通常是坐标向量）、返回单个数字的代数运算。
+- 在**欧几里得几何**中，两个笛卡尔坐标向量的点积常称为内积（英语：`Inner Product`），见内积空间。
 
 卷积运算，可以看作是一串内积运算，等效于矩阵相乘，因此卷积满足**交换、结合**等定律。
 
@@ -281,6 +285,7 @@ $$
 
 + [ACNet: Strengthening the Kernel Skeletons for Powerful CNN via Asymmetric Convolution Blocks](https://arxiv.org/pdf/1908.03930.pdf)
 + [RepVGG: Making VGG-style ConvNets Great Again](https://arxiv.org/pdf/2101.03697.pdf)
++ https://zh.wikipedia.org/wiki/%E7%9F%A9%E9%99%A3%E4%B9%98%E6%B3%95
 + [RepVGG：极简架构，SOTA性能，让VGG式模型再次伟大](https://zhuanlan.zhihu.com/p/344324470)
 + [深度学习推理时融合BN，轻松获得约5%的提速](https://mp.weixin.qq.com/s/P94ACKuoA0YapBKlrgZl3A)
 + [【CNN结构设计】无痛的涨点技巧：ACNet](https://zhuanlan.zhihu.com/p/131282789)

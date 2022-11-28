@@ -1,8 +1,9 @@
 - [背景知识](#背景知识)
   - [VGG 和 ResNet 回顾](#vgg-和-resnet-回顾)
   - [MAC 计算](#mac-计算)
+  - [卷积运算与矩阵乘积](#卷积运算与矩阵乘积)
   - [ACNet 理解](#acnet-理解)
-    - [ACNet 的 Pytorch 代码实现](#acnet-的-pytorch-代码实现)
+    - [ACBlock 的 Pytorch 代码实现](#acblock-的-pytorch-代码实现)
 - [摘要](#摘要)
 - [RepVGG 模型定义](#repvgg-模型定义)
 - [RepVGG Block 结构](#repvgg-block-结构)
@@ -41,9 +42,24 @@ ddr_write = output
 MAC = ddr_read + ddr_write
 ```
 
+### 卷积运算与矩阵乘积
+
+卷积运算，可以看作是一串内积运算，等效于矩阵相乘，因此卷积满足**交换、结合**等定律。
+
+矩阵乘积的常用性质：
+
+- **分配律**： $A(B+C) = AB+BC$
+- **结合律**： $A(BC) = (AB)C$
+- **交换律**：绝大多数情况不满足交换律，即大多数情况下 $AB \neq  BA$。
+
 ### ACNet 理解
 
-学习 [ACNet](https://arxiv.org/pdf/1908.03930.pdf) 之前，首先得理解一个关于卷积计算的恒等式，下面等式表达的意思就是对于输入特征图 $I$，先进行 $K^{(1)}$ 和 $I$ 卷积、$K^{(2)}$ 和 $I$ 卷积，再对结果进行相加，与先进行 $K^{(1)}$ 和 $K^{(2)}$ 的逐点相加后再和 $I$ 进行卷积得到的结果是一致的，这是 `ACNet` 在**推理阶段不增加任何计算量的理论基础**，训练阶段计算量增加，训练时间更长，需要的显存更大。
+学习 [ACNet](https://arxiv.org/pdf/1908.03930.pdf) 之前，首先得理解**卷积计算的恒等式，它是“结构重参数化思想”的理论基础**，卷积计算的恒等式的示意图如下图 `2` 所示。
+> 概念结构重参数化（structural re-parameterization）指的是首先构造一系列结构（一般用于训练），并将其参数等价转换为另一组参数（一般用于推理），从而将这一系列结构等价转换为另一系列结构。
+
+![卷积计算的恒等式的示意图](../../data/images/RepVGG/Figure2.png)
+
+下面等式表达的意思就是对于输入特征图 $I$，先进行 $K^{(1)}$ 和 $I$ 卷积、$K^{(2)}$ 和 $I$ 卷积，再对结果进行相加，与先进行 $K^{(1)}$ 和 $K^{(2)}$ 的逐点相加后再和 $I$ 进行卷积得到的结果是一致的（可通过矩阵乘积的分配律来理解）。这是 `ACNet` 在**推理阶段不增加任何计算量的理论基础**，但同时训练阶段计算量增加，训练时间更长，需要的显存更大。
 
 $$I \ast K^{(1)} + I \ast K^{(2)} = I \ast (K^{(1)} \oplus K^{(2)})$$
 
@@ -56,7 +72,33 @@ $$I \ast K^{(1)} + I \ast K^{(2)} = I \ast (K^{(1)} \oplus K^{(2)})$$
 
 ![推理阶段卷积层融合](../../data/images/RepVGG/推理阶段卷积层融合.png)
 
-#### ACNet 的 Pytorch 代码实现
+`ACBlock` 的训练阶段权重参数转化为推理阶段的权重参数的代码如下所示。
+
+```python
+def get_equivalent_kernel_bias(self):
+    hor_k, hor_b = self._fuse_bn_tensor(self.hor_conv, self.hor_bn)
+    ver_k, ver_b = self._fuse_bn_tensor(self.ver_conv, self.ver_bn)
+    square_k, square_b = self._fuse_bn_tensor(self.square_conv, self.square_bn)
+    self._add_to_square_kernel(square_k, hor_k)
+    self._add_to_square_kernel(square_k, ver_k)
+    return square_k, hor_b + ver_b + square_b
+
+def _fuse_bn_tensor(self, conv, bn):
+    std = (bn.running_var + bn.eps).sqrt()
+    t = (bn.weight / std).reshape(-1, 1, 1, 1)
+    return conv.weight * t, bn.bias - bn.running_mean * bn.weight / std
+
+def _add_to_square_kernel(self, square_kernel, asym_kernel):
+    asym_h = asym_kernel.size(2)
+    asym_w = asym_kernel.size(3)
+    square_h = square_kernel.size(2)
+    square_w = square_kernel.size(3)
+    # 水平卷积和竖直卷积分别在对应位置和 square con 的权重相加
+    square_kernel[:, :, square_h // 2 - asym_h // 2: square_h // 2 - asym_h // 2 + asym_h,
+            square_w // 2 - asym_w // 2: square_w // 2 - asym_w // 2 + asym_w] += asym_kernel
+```
+
+#### ACBlock 的 Pytorch 代码实现
 
 作者开源了[代码](https://github.com/DingXiaoH/ACNet/blob/master/custom_layers/crop_layer.py)，将原始 $3\times 3$ 卷积替换成 $3 \times 3 + 3 \times 1 + 1 \times3$ 卷积的训练阶段基础结构 `ACBlock` 代码如下：
 
@@ -135,6 +177,7 @@ class ACBlock(nn.Module):
             horizontal_outputs = self.hor_conv_crop_layer(input)
             horizontal_outputs = self.hor_conv(horizontal_outputs)  # 1x3 convolution
             horizontal_outputs = self.hor_bn(horizontal_outputs)
+            # 3x3 卷积、1x3 卷积、3x1 卷积输出结果直接相加(+)
             return square_outputs + vertical_outputs + horizontal_outputs
 ```
 
@@ -156,7 +199,7 @@ class ACBlock(nn.Module):
 
 `VGG` 式极简网络结构的五大优势：
 
-1. **3x3 卷积非常快**。在GPU上，3x3 卷积的计算密度（理论运算量除以所用时间）可达 1x1 和 5x5 卷积的四倍。
+1. **3x3 卷积非常快**。在 `GPU` 上，3x3 卷积的计算密度（理论运算量除以所用时间）可达 1x1 和 5x5 卷积的四倍。
 2. **单路架构非常快，因为并行度高**。同样的计算量，“大而整”的运算效率远超“小而碎”的运算。已有研究表明：并行度高的模型要比并行度低的模型推理速度更快。
 3. **单路架构省内存**。例如，ResNet 的 shortcut 虽然不占计算量，却增加了一倍的显存占用。
 4. **单路架构灵活性更好，容易改变各层的宽度（如剪枝）**。
@@ -219,7 +262,7 @@ bn(M \ast W,\mu,\sigma,\gamma,\beta)_{:,i,:,:} = (M \ast W^{'})_{:,i,:,:} + b_{i
 \end{split}\tag{4}
 $$
 
-公式（4）同样适用于`identity` 分支，因为 `identity` 可以视作 $1\times 1$ 卷积。至此，三个分支的卷积层和 `BN` 合并原理和公式已经叙述完毕，可以等效于 Figure 4 的第二步（吸收 BN 在前）。
+公式（4）同样适用于`identity` 分支，因为 `identity` 可以视作 `kernel` 为**单位矩阵** $1\times 1$ 卷积。至此，三个分支的卷积层和 `BN` 合并原理和公式已经叙述完毕，可以等效于下图 Figure 4 的第二步（吸收 BN 在前）。
 
 最后一步是三个分支的的合并，也就是三个分支卷积层的融合，每个 `RepVGG Block`转换前后的输出是完全相同的，其原理参见作者的上一篇 `ACNet` 论文。通过前面的变换，可以知道 `RepVGG Block` 模块有一个 $3 \times 3$ 卷积核，两个 $1 \times 1$ 卷积核以及三个 `bias` 向量参数。通过简单的 `add` 方式合并三个 bias 向量可以得到融合后新卷积层的 `bias`。将 $1 \times 1$ 卷积核用 `0` 填充 (`pad`) 成 $3 \times 3$ 卷积核，然后和 $3 \times 3$ 卷积核相加（`elemen twise-add`），得到融合后卷积层的 $3 \times 3$ 卷积核。
 
@@ -236,7 +279,11 @@ $$
 
 ## 参考资料
 
++ [ACNet: Strengthening the Kernel Skeletons for Powerful CNN via Asymmetric Convolution Blocks](https://arxiv.org/pdf/1908.03930.pdf)
++ [RepVGG: Making VGG-style ConvNets Great Again](https://arxiv.org/pdf/2101.03697.pdf)
 + [RepVGG：极简架构，SOTA性能，让VGG式模型再次伟大](https://zhuanlan.zhihu.com/p/344324470)
 + [深度学习推理时融合BN，轻松获得约5%的提速](https://mp.weixin.qq.com/s/P94ACKuoA0YapBKlrgZl3A)
 + [【CNN结构设计】无痛的涨点技巧：ACNet](https://zhuanlan.zhihu.com/p/131282789)
 + [Markdown下LaTeX公式、编号、对齐](https://www.zybuluo.com/fyywy520/note/82980)
+
+

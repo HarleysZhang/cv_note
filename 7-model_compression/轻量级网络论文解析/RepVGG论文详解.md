@@ -12,7 +12,7 @@
 - [结论](#结论)
 - [参考资料](#参考资料)
 
-> RepVGG 是截止到 2021.2.9 日为止最新的一个轻量级网络架构。在我的测试中，其在安霸 `CV22` 上的加速效果不如 `ShuffleNet v2`。根据作者的描述，`RepVGG` 是为 `GPU` 和专用硬件设计的高效模型，追求高速度、省内存，较少关注参数量和理论计算量。在低算力设备上，可能不如 `MobileNet` 和 `ShuffleNet` 系列适用。
+> `RepVGG` 是截止到 2021.2.9 日为止最新的一个轻量级网络架构。在我的测试中，其在安霸 `CV22` 上的加速效果不如 `ShuffleNet v2`。根据作者的描述，`RepVGG` 是为 `GPU` 和专用硬件设计的高效模型，追求高速度、省内存，较少关注参数量和理论计算量。在低算力设备上，可能不如 `MobileNet` 和 `ShuffleNet` 系列适用。
 
 ## 背景知识
 
@@ -283,12 +283,13 @@ $$
 
 ## 参考资料
 
-+ [ACNet: Strengthening the Kernel Skeletons for Powerful CNN via Asymmetric Convolution Blocks](https://arxiv.org/pdf/1908.03930.pdf)
-+ [RepVGG: Making VGG-style ConvNets Great Again](https://arxiv.org/pdf/2101.03697.pdf)
-+ https://zh.wikipedia.org/wiki/%E7%9F%A9%E9%99%A3%E4%B9%98%E6%B3%95
-+ [RepVGG：极简架构，SOTA性能，让VGG式模型再次伟大](https://zhuanlan.zhihu.com/p/344324470)
-+ [深度学习推理时融合BN，轻松获得约5%的提速](https://mp.weixin.qq.com/s/P94ACKuoA0YapBKlrgZl3A)
-+ [【CNN结构设计】无痛的涨点技巧：ACNet](https://zhuanlan.zhihu.com/p/131282789)
-+ [Markdown下LaTeX公式、编号、对齐](https://www.zybuluo.com/fyywy520/note/82980)
+1. [Residual Networks Behave Like Ensembles of Relatively Shallow Networks](https://arxiv.org/pdf/1605.06431.pdf)
+2. [ACNet: Strengthening the Kernel Skeletons for Powerful CNN via Asymmetric Convolution Blocks](https://arxiv.org/pdf/1908.03930.pdf)
+3. [RepVGG: Making VGG-style ConvNets Great Again](https://arxiv.org/pdf/2101.03697.pdf)
+4. https://zh.wikipedia.org/wiki/%E7%9F%A9%E9%99%A3%E4%B9%98%E6%B3%95
+5. [RepVGG：极简架构，SOTA性能，让VGG式模型再次伟大](https://zhuanlan.zhihu.com/p/344324470)
+6. [深度学习推理时融合BN，轻松获得约5%的提速](https://mp.weixin.qq.com/s/P94ACKuoA0YapBKlrgZl3A)
+7. [【CNN结构设计】无痛的涨点技巧：ACNet](https://zhuanlan.zhihu.com/p/131282789)
+8. [Markdown下LaTeX公式、编号、对齐](https://www.zybuluo.com/fyywy520/note/82980)
 
 

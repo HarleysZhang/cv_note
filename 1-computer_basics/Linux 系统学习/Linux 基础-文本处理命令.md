@@ -1,4 +1,8 @@
-# Linux 基础-文本处理命令
+- [概述](#概述)
+- [find 文件查找](#find-文件查找)
+- [grep 文本搜索](#grep-文本搜索)
+- [参考资料](#参考资料)
+
 ## 概述
 `Linux` 下使用 Shell 处理文本时最常用的工具有： `find、grep、xargs、sort、uniq、tr、cut、paste、wc、sed、awk`。
 ## find 文件查找

@@ -11,6 +11,8 @@
 - [5，代码解读](#5代码解读)
 - [参考资料](#参考资料)
 
+> 文章同步发于 [github](https://github.com/HarleysZhang/cv_note/blob/master/7-model_compression/)、[博客园](https://www.cnblogs.com/armcvai) 和 [知乎](https://www.zhihu.com/column/c_1359601708180529152)。最新版以 `github` 为主。如果看完文章有所收获，一定要先点赞后收藏。**毕竟，赠人玫瑰，手有余香**。
+
 ## 摘要
 
 > `Youngwan Lee*` 作者于 `2019` 年发表的论文 An Energy and GPU-Computation Efficient Backbone Network for Real-Time Object Detection. 是对 `DenseNet` 网络推理效率低的改进版本。

@@ -205,7 +205,7 @@ Table 7: Performance on COCO object detection. The input image size is 800 1200.
 
 我们建议对于轻量级网络设计应该考虑**直接** `metric`（例如速度 `speed`），而不是间接 `metric`（例如 `FLOPs`）。本文提出了实用的原则和一个新的网络架构-ShuffleNet v2。综合实验证了我们模型的有效性。我们希望本文的工作可以启发未来的网络架构设计可以更重视平台特性和实用性。
 > 这里的直接 `metric`，可以是inference time or latency，也可以是模型推理速度 `speed`，其意义都是一样的。
-> 
+
 ## 6，个人思考
 
 分析模型的推理性能得结合具体的推理平台（常见如：英伟达 `GPU`、移动端 `ARM CPU`、端侧 `NPU` 芯片等），目前已知影响**推理性能**的因素包括: 算子计算量 `FLOPs`（参数量 `Params`）、算子内存访问代价（访存带宽）。但相同硬件平台、相同网络架构条件下， `FLOPs` 加速比与推理时间加速比成正比。

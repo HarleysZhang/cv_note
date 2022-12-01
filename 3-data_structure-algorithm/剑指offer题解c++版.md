@@ -66,8 +66,7 @@
 
 ## 前言
 
-本文是作者对《剑指 offer》书籍试题的补充，并给出了较为详细算法题解和 `C++` 代码实践。离线 `pdf` 版本最近更新时间为 `2021-10-9`，最新版本请参考`Github` [在线文档](https://github.com/HarleysZhang/2021_algorithm_intern_information/blob/master/3-data_structure-algorithm/%E5%89%91%E6%8C%87offer%E9%A2%98%E8%A7%A3c%2B%2B%E7%89%88.md)。
-> https://github.com/HarleysZhang/2021_algorithm_intern_information/blob/master/3-data_structure-algorithm/%E5%89%91%E6%8C%87offer%E9%A2%98%E8%A7%A3c%2B%2B%E7%89%88.md
+本文是作者对《剑指 offer》书籍试题的补充，并给出了较为详细算法题解和 `C++` 代码实践。离线 `pdf` 版本最近更新时间为 `2021-10-9`，最新版本请参考`Github` [在线文档](https://github.com/HarleysZhang/cv_note/blob/master/3-data_structure-algorithm/%E5%89%91%E6%8C%87offer%E9%A2%98%E8%A7%A3c%2B%2B%E7%89%88.md?spm=a2c6h.12873639.article-detail.71.6dd34c58DnHzLp&file=%E5%89%91%E6%8C%87offer%E9%A2%98%E8%A7%A3c%2B%2B%E7%89%88.md)。
 
 ## 一，常见数据结构
 

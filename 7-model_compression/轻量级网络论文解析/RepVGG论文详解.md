@@ -13,6 +13,8 @@
 - [RepVGG 的问题](#repvgg-的问题)
 - [参考资料](#参考资料)
 
+> 文章同步发于 [github](https://github.com/HarleysZhang/cv_note/blob/master/7-model_compression/)、[博客园](https://www.cnblogs.com/armcvai) 和 [知乎](https://www.zhihu.com/column/c_1359601708180529152)。最新版以 `github` 为主。如果看完文章有所收获，一定要先点赞后收藏。**毕竟，赠人玫瑰，手有余香**。
+
 > `RepVGG` 是截止到 2021.2.9 日为止最新的一个轻量级网络架构。在我的测试中，其在安霸 `CV22` 上的加速效果不如 `ShuffleNet v2`。根据作者的描述，`RepVGG` 是为 `GPU` 和专用硬件设计的高效模型，追求高速度、省内存，较少关注参数量和理论计算量。在低算力设备上，可能不如 `MobileNet` 和 `ShuffleNet` 系列适用。
 
 ## 背景知识

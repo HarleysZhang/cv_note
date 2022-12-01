@@ -12,6 +12,8 @@
 - [6，代码解读](#6代码解读)
 - [参考资料](#参考资料)
 
+> 文章同步发于 [github](https://github.com/HarleysZhang/cv_note/blob/master/7-model_compression/)、[博客园](https://www.cnblogs.com/armcvai) 和 [知乎](https://www.zhihu.com/column/c_1359601708180529152)。最新版以 `github` 为主。如果看完文章有所收获，一定要先点赞后收藏。**毕竟，赠人玫瑰，手有余香**。
+
 ## 摘要
 > `CSPNet` 是作者 `Chien-Yao Wang` 于 `2019` 发表的论文 `CSPNET: A NEW BACKBONE THAT CAN ENHANCE LEARNING CAPABILITY OF CNN`。也是对 `DenseNet` 网络推理效率低的改进版本。
 

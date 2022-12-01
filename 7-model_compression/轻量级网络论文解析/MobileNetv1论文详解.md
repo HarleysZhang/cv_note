@@ -17,6 +17,8 @@
 - [后续改进-MobileDets](#后续改进-mobiledets)
 - [参考资料](#参考资料)
 
+> 文章同步发于 [github](https://github.com/HarleysZhang/cv_note/blob/master/7-model_compression/%E8%BD%BB%E9%87%8F%E7%BA%A7%E7%BD%91%E7%BB%9C%E8%AE%BA%E6%96%87%E8%A7%A3%E6%9E%90/MobileNetv1%E8%AE%BA%E6%96%87%E8%AF%A6%E8%A7%A3.md)、[博客园](https://www.cnblogs.com/armcvai/p/16793167.html) 和 [知乎](https://zhuanlan.zhihu.com/p/359524431)。最新版以 `github` 为主。如果看完文章有所收获，一定要先点赞后收藏。**毕竟，赠人玫瑰，手有余香**。
+
 > `MobileNet` 论文的主要贡献在于提出了一种**深度可分离卷积架构（DW+PW 卷积）**，先通过理论证明这种架构比常规的卷积计算成本（`Mult-Adds`）更小，然后通过分类、检测等多种实验证明模型的有效性。
 
 ## 1、相关工作

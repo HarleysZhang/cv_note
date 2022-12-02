@@ -1,0 +1,13 @@
+{
+	"name": "cv_note",
+	"version": "0.0.1",
+	"description": "cv note",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/HarleysZhang/cv_note"
+	},
+	"author": "harley <zhg5200211@outlook.com>",
+	"dependencies": {
+		"mathjax": "^2.7.7"
+	}
+}

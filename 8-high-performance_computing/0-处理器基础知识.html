@@ -1,0 +1,2351 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>0-处理器基础知识 · cv算法工程师成长之路</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="zhanghonggao">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-toggle-chapters/toggle.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-pageview-count/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-donate/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="1-卷积算法的优化.html" />
+    
+    
+    <link rel="prev" href="./" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../cv算法工程师成长路线.html">
+            
+                <a href="../cv算法工程师成长路线.html">
+            
+                    
+                    cv算法工程师成长路线
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../1-computer_basics/">
+            
+                <a href="../1-computer_basics/">
+            
+                    
+                    1. 计算机基础
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" >
+            
+                <span>
+            
+                    
+                    效率工具
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1" data-path="../1-computer_basics/效率工具/Docker基础和常用命令.html">
+            
+                <a href="../1-computer_basics/效率工具/Docker基础和常用命令.html">
+            
+                    
+                    Docker基础和常用命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2" data-path="../1-computer_basics/效率工具/git命令学习笔记.html">
+            
+                <a href="../1-computer_basics/效率工具/git命令学习笔记.html">
+            
+                    
+                    git命令学习笔记
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.3" data-path="../1-computer_basics/效率工具/ubuntu16.04安装mmdetection库.html">
+            
+                <a href="../1-computer_basics/效率工具/ubuntu16.04安装mmdetection库.html">
+            
+                    
+                    ubuntu16.04安装mmdetection库
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" >
+            
+                <span>
+            
+                    
+                    操作系统
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.2.1" data-path="../1-computer_basics/操作系统/计算机基础知识.html">
+            
+                <a href="../1-computer_basics/操作系统/计算机基础知识.html">
+            
+                    
+                    计算机基础知识
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.2" data-path="../1-computer_basics/操作系统/深入理解计算机系统-第1章计算机系统漫游笔记.html">
+            
+                <a href="../1-computer_basics/操作系统/深入理解计算机系统-第1章计算机系统漫游笔记.html">
+            
+                    
+                    深入理解计算机系统-第1章计算机系统漫游笔记
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.3" data-path="../1-computer_basics/操作系统/深入理解计算机系统-第2章信息的表示和处理.html">
+            
+                <a href="../1-computer_basics/操作系统/深入理解计算机系统-第2章信息的表示和处理.html">
+            
+                    
+                    深入理解计算机系统-第2章信息的表示和处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.4" data-path="../1-computer_basics/操作系统/深入理解计算机系统-第3章程序的机器级表示.html">
+            
+                <a href="../1-computer_basics/操作系统/深入理解计算机系统-第3章程序的机器级表示.html">
+            
+                    
+                    深入理解计算机系统-第3章程序的机器级表示
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" >
+            
+                <span>
+            
+                    
+                    Linux 系统
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.3.1" data-path="../1-computer_basics/Linux系统/Linux基础-学会使用命令帮助.html">
+            
+                <a href="../1-computer_basics/Linux系统/Linux基础-学会使用命令帮助.html">
+            
+                    
+                    Linux 基础-学会使用命令帮助
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3.2" data-path="../1-computer_basics/Linux系统/Linux基础-新手必备命令.html">
+            
+                <a href="../1-computer_basics/Linux系统/Linux基础-新手必备命令.html">
+            
+                    
+                    Linux 基础-新手必备命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3.3" data-path="../1-computer_basics/Linux系统/Linux基础-文件权限与属性.html">
+            
+                <a href="../1-computer_basics/Linux系统/Linux基础-文件权限与属性.html">
+            
+                    
+                    Linux 基础-文件权限与属性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3.4" data-path="../1-computer_basics/Linux系统/Linux基础-文件及目录管理.html">
+            
+                <a href="../1-computer_basics/Linux系统/Linux基础-文件及目录管理.html">
+            
+                    
+                    Linux 基础-文件及目录管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3.5" data-path="../1-computer_basics/Linux系统/Linux基础-文本处理命令.html">
+            
+                <a href="../1-computer_basics/Linux系统/Linux基础-文本处理命令.html">
+            
+                    
+                    Linux 基础-文本处理命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3.6" data-path="../1-computer_basics/Linux系统/Linux基础-查看cpu、内存和环境等信息.html">
+            
+                <a href="../1-computer_basics/Linux系统/Linux基础-查看cpu、内存和环境等信息.html">
+            
+                    
+                    Linux 基础-查看cpu、内存和环境等信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3.7" data-path="../1-computer_basics/Linux系统/Linux基础-查看进程命令ps和top.html">
+            
+                <a href="../1-computer_basics/Linux系统/Linux基础-查看进程命令ps和top.html">
+            
+                    
+                    Linux 基础-查看进程命令ps和top
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3.8" data-path="../1-computer_basics/Linux系统/Linux基础-查看和设置环境变量.html">
+            
+                <a href="../1-computer_basics/Linux系统/Linux基础-查看和设置环境变量.html">
+            
+                    
+                    Linux 基础-查看和设置环境变量
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../2-programming_language/">
+            
+                <a href="../2-programming_language/">
+            
+                    
+                    2. 编程开发
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" >
+            
+                <span>
+            
+                    
+                    python
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1.1" data-path="../2-programming_language/python3/Python3编程面试题.html">
+            
+                <a href="../2-programming_language/python3/Python3编程面试题.html">
+            
+                    
+                    Python3编程面试题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" >
+            
+                <span>
+            
+                    
+                    shell
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.2.1" data-path="../2-programming_language/shell/Shell语法基础.html">
+            
+                <a href="../2-programming_language/shell/Shell语法基础.html">
+            
+                    
+                    Shell语法基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" >
+            
+                <span>
+            
+                    
+                    cpp
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.3.1" data-path="../2-programming_language/cpp/C++%20Primer学习笔记.md">
+            
+                <span>
+            
+                    
+                    C++ Primer学习笔记
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3.2" data-path="../2-programming_language/cpp/C++基础-资源管理:堆栈与RAII.md">
+            
+                <span>
+            
+                    
+                    C++基础-资源管理:堆栈与RAII
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3.3" data-path="../2-programming_language/cpp/C++日期和时间编程总结.html">
+            
+                <a href="../2-programming_language/cpp/C++日期和时间编程总结.html">
+            
+                    
+                    C++日期和时间编程总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3.4" data-path="../2-programming_language/cpp/C++编程基础.html">
+            
+                <a href="../2-programming_language/cpp/C++编程基础.html">
+            
+                    
+                    C++编程基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../3-data_structure-algorithm/">
+            
+                <a href="../3-data_structure-algorithm/">
+            
+                    
+                    3. 数据结构和算法
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" >
+            
+                <span>
+            
+                    
+                    数据结构
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1.1" data-path="../3-data_structure-algorithm/array/数组.html">
+            
+                <a href="../3-data_structure-algorithm/array/数组.html">
+            
+                    
+                    数组
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.2" data-path="../3-data_structure-algorithm/linked_list/链表.html">
+            
+                <a href="../3-data_structure-algorithm/linked_list/链表.html">
+            
+                    
+                    链表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.3" data-path="../3-data_structure-algorithm/string/字符串解题模板.html">
+            
+                <a href="../3-data_structure-algorithm/string/字符串解题模板.html">
+            
+                    
+                    字符串
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.4" data-path="../3-data_structure-algorithm/stack_queue_heap/栈-先进后出.html">
+            
+                <a href="../3-data_structure-algorithm/stack_queue_heap/栈-先进后出.html">
+            
+                    
+                    栈
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.5" data-path="../3-data_structure-algorithm/stack_queue_heap/队列-先进先出.html">
+            
+                <a href="../3-data_structure-algorithm/stack_queue_heap/队列-先进先出.html">
+            
+                    
+                    队列
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.6" data-path="../3-data_structure-algorithm/skip_list/跳表.html">
+            
+                <a href="../3-data_structure-algorithm/skip_list/跳表.html">
+            
+                    
+                    跳表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.7" >
+            
+                <span>
+            
+                    
+                    散列表
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1.7.1" data-path="../3-data_structure-algorithm/hash_table/散列表(上">
+            
+                <span>
+            
+                    
+                    散列表上
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.7.2" data-path="../3-data_structure-algorithm/hash_table/散列表(中">
+            
+                <span>
+            
+                    
+                    散列表中
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.7.3" data-path="../3-data_structure-algorithm/hash_table/散列表(下">
+            
+                <span>
+            
+                    
+                    散列表下
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.7.4" data-path="../3-data_structure-algorithm/hash_table/哈希算法.html">
+            
+                <a href="../3-data_structure-algorithm/hash_table/哈希算法.html">
+            
+                    
+                    哈希算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.8" >
+            
+                <span>
+            
+                    
+                    二叉树
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1.8.1" data-path="../3-data_structure-algorithm/tree/二叉树(上">
+            
+                <span>
+            
+                    
+                    二叉树遍历
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.8.2" data-path="../3-data_structure-algorithm/tree/二叉树(下">
+            
+                <span>
+            
+                    
+                    二叉查找树
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.8.3" data-path="../3-data_structure-algorithm/tree/红黑树(上">
+            
+                <span>
+            
+                    
+                    红黑树
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.9" >
+            
+                <span>
+            
+                    
+                    图
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1.9.1" data-path="../3-data_structure-algorithm/map/图的表示.html">
+            
+                <a href="../3-data_structure-algorithm/map/图的表示.html">
+            
+                    
+                    图的表示
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.9.2" data-path="../3-data_structure-algorithm/map/广度和深度优先搜索.html">
+            
+                <a href="../3-data_structure-algorithm/map/广度和深度优先搜索.html">
+            
+                    
+                    广度和深度优先搜索
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" >
+            
+                <span>
+            
+                    
+                    算法
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.2.1" data-path="../3-data_structure-algorithm/two_pointers/">
+            
+                <a href="../3-data_structure-algorithm/two_pointers/">
+            
+                    
+                    双指针
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.2" data-path="../3-data_structure-algorithm/recursion/递归-需要满足三个条件.html">
+            
+                <a href="../3-data_structure-algorithm/recursion/递归-需要满足三个条件.html">
+            
+                    
+                    递归
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.3" data-path="../3-data_structure-algorithm/binary_search/二分查找.html">
+            
+                <a href="../3-data_structure-algorithm/binary_search/二分查找.html">
+            
+                    
+                    二分查找
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.4" data-path="../3-data_structure-algorithm/sort/排序.html">
+            
+                <a href="../3-data_structure-algorithm/sort/排序.html">
+            
+                    
+                    排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.5" data-path="../3-data_structure-algorithm/greedy/贪心算法.html">
+            
+                <a href="../3-data_structure-algorithm/greedy/贪心算法.html">
+            
+                    
+                    贪心算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.6" data-path="../3-data_structure-algorithm/divide_and_conquer/分治算法.html">
+            
+                <a href="../3-data_structure-algorithm/divide_and_conquer/分治算法.html">
+            
+                    
+                    分治算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.7" data-path="../3-data_structure-algorithm/backtracking/回溯算法.html">
+            
+                <a href="../3-data_structure-algorithm/backtracking/回溯算法.html">
+            
+                    
+                    回溯算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.8" >
+            
+                <span>
+            
+                    
+                    动态规划算法
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.2.8.1" data-path="../3-data_structure-algorithm/dp/初识动态规划.html">
+            
+                <a href="../3-data_structure-algorithm/dp/初识动态规划.html">
+            
+                    
+                    初始动态规划
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.8.2" data-path="../3-data_structure-algorithm/dp/动态规划理论.html">
+            
+                <a href="../3-data_structure-algorithm/dp/动态规划理论.html">
+            
+                    
+                    动态规划理论
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.8.3" data-path="../3-data_structure-algorithm/dp/动态规划实战.html">
+            
+                <a href="../3-data_structure-algorithm/dp/动态规划实战.html">
+            
+                    
+                    动态规划实战
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../3-data_structure-algorithm/剑指offer题解c++版.html">
+            
+                <a href="../3-data_structure-algorithm/剑指offer题解c++版.html">
+            
+                    
+                    剑指offer题解c++版
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../3-data_structure-algorithm/算法图解笔记.html">
+            
+                <a href="../3-data_structure-algorithm/算法图解笔记.html">
+            
+                    
+                    算法图解笔记
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../4-machine_learning/">
+            
+                <a href="../4-machine_learning/">
+            
+                    
+                    4. 机器学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../4-machine_learning/1-西瓜书笔记.md">
+            
+                <span>
+            
+                    
+                    1-西瓜书笔记
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../4-machine_learning/2-机器学习基础.md">
+            
+                <span>
+            
+                    
+                    2-机器学习基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../4-machine_learning/3-常见机器学习算法.html">
+            
+                <a href="../4-machine_learning/3-常见机器学习算法.html">
+            
+                    
+                    3-常见机器学习算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../4-machine_learning/4-机器学习面试题.html">
+            
+                <a href="../4-machine_learning/4-机器学习面试题.html">
+            
+                    
+                    4-机器学习面试题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../5-deep_learning/">
+            
+                <a href="../5-deep_learning/">
+            
+                    
+                    5. 深度学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" >
+            
+                <span>
+            
+                    
+                    backbone 论文解读
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1.1" data-path="../5-deep_learning/backbone论文解读/DenseNet网络理解.html">
+            
+                <a href="../5-deep_learning/backbone论文解读/DenseNet网络理解.html">
+            
+                    
+                    DenseNet网络理解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.2" data-path="../5-deep_learning/backbone论文解读/ResNetv2论文解读.html">
+            
+                <a href="../5-deep_learning/backbone论文解读/ResNetv2论文解读.html">
+            
+                    
+                    ResNetv2论文解读
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.3" data-path="../5-deep_learning/backbone论文解读/经典backbone总结.html">
+            
+                <a href="../5-deep_learning/backbone论文解读/经典backbone总结.html">
+            
+                    
+                    经典backbone总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" >
+            
+                <span>
+            
+                    
+                    深度学习框架笔记
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.2.1" data-path="../5-deep_learning/ml-dl-框架笔记/MXNet学习笔记.html">
+            
+                <a href="../5-deep_learning/ml-dl-框架笔记/MXNet学习笔记.html">
+            
+                    
+                    MXNet学习笔记
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.2" data-path="../5-deep_learning/ml-dl-框架笔记/Pytorch基础-tensor数据结构.html">
+            
+                <a href="../5-deep_learning/ml-dl-框架笔记/Pytorch基础-tensor数据结构.html">
+            
+                    
+                    Pytorch基础-tensor数据结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.3" data-path="../5-deep_learning/ml-dl-框架笔记/Pytorch基础-张量基本操作.html">
+            
+                <a href="../5-deep_learning/ml-dl-框架笔记/Pytorch基础-张量基本操作.html">
+            
+                    
+                    Pytorch基础-张量基本操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" >
+            
+                <span>
+            
+                    
+                    深度学习基础
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.3.1" data-path="../5-deep_learning/深度学习基础/1-深度学习算法基础.html">
+            
+                <a href="../5-deep_learning/深度学习基础/1-深度学习算法基础.html">
+            
+                    
+                    1-深度学习算法基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3.2" data-path="../5-deep_learning/深度学习基础/2-使用CNN进行图像分类.html">
+            
+                <a href="../5-deep_learning/深度学习基础/2-使用CNN进行图像分类.html">
+            
+                    
+                    2-使用CNN进行图像分类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3.3" data-path="../5-deep_learning/深度学习基础/CNN基本部件-常用激活函数.html">
+            
+                <a href="../5-deep_learning/深度学习基础/CNN基本部件-常用激活函数.html">
+            
+                    
+                    CNN基本部件-常用激活函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../5-deep_learning/深度学习面试题.html">
+            
+                <a href="../5-deep_learning/深度学习面试题.html">
+            
+                    
+                    深度学习面试题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../6-computer_vision/">
+            
+                <a href="../6-computer_vision/">
+            
+                    
+                    6. 计算机视觉
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" >
+            
+                <span>
+            
+                    
+                    数字图像处理
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1.1" data-path="../6-computer_vision/数字图像处理/0-数字图像处理笔记.html">
+            
+                <a href="../6-computer_vision/数字图像处理/0-数字图像处理笔记.html">
+            
+                    
+                    0-数字图像处理笔记
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.1.2" data-path="../6-computer_vision/数字图像处理/1-数字图像处理基础.html">
+            
+                <a href="../6-computer_vision/数字图像处理/1-数字图像处理基础.html">
+            
+                    
+                    1-数字图像处理基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.1.3" data-path="../6-computer_vision/数字图像处理/2-OpenCV3图像处理笔记.html">
+            
+                <a href="../6-computer_vision/数字图像处理/2-OpenCV3图像处理笔记.html">
+            
+                    
+                    2-OpenCV3图像处理笔记
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.1.4" data-path="../6-computer_vision/数字图像处理/3-视频编解码基础.html">
+            
+                <a href="../6-computer_vision/数字图像处理/3-视频编解码基础.html">
+            
+                    
+                    3-视频编解码基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" >
+            
+                <span>
+            
+                    
+                    2D 目标检测
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.2.1" data-path="../6-computer_vision/2D目标检测/0-目标检测模型的基础.html">
+            
+                <a href="../6-computer_vision/2D目标检测/0-目标检测模型的基础.html">
+            
+                    
+                    0-目标检测模型的基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.2" data-path="../6-computer_vision/2D目标检测/1-目标检测模型的评价标准-AP与mAP.html">
+            
+                <a href="../6-computer_vision/2D目标检测/1-目标检测模型的评价标准-AP与mAP.html">
+            
+                    
+                    1-目标检测模型的评价标准-AP与mAP
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.3" data-path="../6-computer_vision/2D目标检测/2-Faster-RCNN网络详解.html">
+            
+                <a href="../6-computer_vision/2D目标检测/2-Faster-RCNN网络详解.html">
+            
+                    
+                    2-Faster-RCNN网络详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.4" data-path="../6-computer_vision/2D目标检测/3-FPN网络详解.html">
+            
+                <a href="../6-computer_vision/2D目标检测/3-FPN网络详解.html">
+            
+                    
+                    3-FPN网络详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.5" data-path="../6-computer_vision/2D目标检测/4-Mask-RCNN详解.html">
+            
+                <a href="../6-computer_vision/2D目标检测/4-Mask-RCNN详解.html">
+            
+                    
+                    4-Mask-RCNN详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.6" data-path="../6-computer_vision/2D目标检测/5-Cascade-RCNN论文解读.html">
+            
+                <a href="../6-computer_vision/2D目标检测/5-Cascade-RCNN论文解读.html">
+            
+                    
+                    5-Cascade-RCNN论文解读
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.7" data-path="../6-computer_vision/2D目标检测/6-RetinaNet网络详解.html">
+            
+                <a href="../6-computer_vision/2D目标检测/6-RetinaNet网络详解.html">
+            
+                    
+                    6-RetinaNet网络详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.8" data-path="../6-computer_vision/2D目标检测/7-YOLOv1-v5论文解读.html">
+            
+                <a href="../6-computer_vision/2D目标检测/7-YOLOv1-v5论文解读.html">
+            
+                    
+                    7-YOLOv1-v5论文解读
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.9" data-path="../6-computer_vision/2D目标检测/8-Scaled-YOLOv4论文解读.html">
+            
+                <a href="../6-computer_vision/2D目标检测/8-Scaled-YOLOv4论文解读.html">
+            
+                    
+                    8-Scaled-YOLOv4论文解读
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" >
+            
+                <span>
+            
+                    
+                    3D 视觉算法
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.3.1" data-path="../6-computer_vision/3D视觉算法/3D视觉算法初学概述.html">
+            
+                <a href="../6-computer_vision/3D视觉算法/3D视觉算法初学概述.html">
+            
+                    
+                    3D视觉算法初学概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" >
+            
+                <span>
+            
+                    
+                    工业视觉
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.4.1" data-path="../6-computer_vision/工业视觉/Halcon快速入门.html">
+            
+                <a href="../6-computer_vision/工业视觉/Halcon快速入门.html">
+            
+                    
+                    Halcon快速入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" >
+            
+                <span>
+            
+                    
+                    项目实践
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.5.1" data-path="../6-computer_vision/项目实践/GitHub车牌检测识别项目调研.html">
+            
+                <a href="../6-computer_vision/项目实践/GitHub车牌检测识别项目调研.html">
+            
+                    
+                    GitHub车牌检测识别项目调研
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../7-model_compression/">
+            
+                <a href="../7-model_compression/">
+            
+                    
+                    7. 模型压缩
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" >
+            
+                <span>
+            
+                    
+                    轻量级网络论文解析
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1.1" data-path="../7-model_compression/轻量级网络论文解析/CSPNet论文详解.html">
+            
+                <a href="../7-model_compression/轻量级网络论文解析/CSPNet论文详解.html">
+            
+                    
+                    CSPNet论文详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.1.2" data-path="../7-model_compression/轻量级网络论文解析/MobileNetv1论文详解.html">
+            
+                <a href="../7-model_compression/轻量级网络论文解析/MobileNetv1论文详解.html">
+            
+                    
+                    MobileNetv1论文详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.1.3" data-path="../7-model_compression/轻量级网络论文解析/RepVGG论文详解.html">
+            
+                <a href="../7-model_compression/轻量级网络论文解析/RepVGG论文详解.html">
+            
+                    
+                    RepVGG论文详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.1.4" data-path="../7-model_compression/轻量级网络论文解析/ShuffleNetv2论文详解.html">
+            
+                <a href="../7-model_compression/轻量级网络论文解析/ShuffleNetv2论文详解.html">
+            
+                    
+                    ShuffleNetv2论文详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.1.5" data-path="../7-model_compression/轻量级网络论文解析/VoVNet论文解读.html">
+            
+                <a href="../7-model_compression/轻量级网络论文解析/VoVNet论文解读.html">
+            
+                    
+                    VoVNet论文解读
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.1.6" data-path="../7-model_compression/轻量级网络论文解析/轻量级模型设计与部署总结.html">
+            
+                <a href="../7-model_compression/轻量级网络论文解析/轻量级模型设计与部署总结.html">
+            
+                    
+                    轻量级模型设计与部署总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" >
+            
+                <span>
+            
+                    
+                    神经网络量化
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.2.1" data-path="../7-model_compression/神经网络量化/神经网络量化基础.html">
+            
+                <a href="../7-model_compression/神经网络量化/神经网络量化基础.html">
+            
+                    
+                    神经网络量化
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    8. 高性能计算
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.10.1" data-path="0-处理器基础知识.html">
+            
+                <a href="0-处理器基础知识.html">
+            
+                    
+                    0-处理器基础知识
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="1-卷积算法的优化.html">
+            
+                <a href="1-卷积算法的优化.html">
+            
+                    
+                    1-卷积算法的优化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="2-模型编译优化.html">
+            
+                <a href="2-模型编译优化.html">
+            
+                    
+                    2-模型编译优化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="通用矩阵乘算法从入门到实践.html">
+            
+                <a href="通用矩阵乘算法从入门到实践.html">
+            
+                    
+                    通用矩阵乘算法从入门到实践
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../9-model_deploy/">
+            
+                <a href="../9-model_deploy/">
+            
+                    
+                    9. 模型部署
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" >
+            
+                <span>
+            
+                    
+                    推理框架
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1.1" data-path="../9-model_deploy/推理框架/ONNX模型分析与使用.html">
+            
+                <a href="../9-model_deploy/推理框架/ONNX模型分析与使用.html">
+            
+                    
+                    ONNX模型分析与使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.1.2" data-path="../9-model_deploy/推理框架/TensorRT基础笔记.html">
+            
+                <a href="../9-model_deploy/推理框架/TensorRT基础笔记.html">
+            
+                    
+                    TensorRT基础笔记
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.2" data-path="../9-model_deploy/0-模型压缩部署概述.html">
+            
+                <a href="../9-model_deploy/0-模型压缩部署概述.html">
+            
+                    
+                    0-模型压缩部署概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.3" data-path="../9-model_deploy/1-神经网络模型复杂度分析.html">
+            
+                <a href="../9-model_deploy/1-神经网络模型复杂度分析.html">
+            
+                    
+                    1-神经网络模型复杂度分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.4" data-path="../9-model_deploy/2-模型转换总结.html">
+            
+                <a href="../9-model_deploy/2-模型转换总结.html">
+            
+                    
+                    2-模型转换
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.5" data-path="../9-model_deploy/3-模型板端推理.html">
+            
+                <a href="../9-model_deploy/3-模型板端推理.html">
+            
+                    
+                    3-模型板端推理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../interview_summary/">
+            
+                <a href="../interview_summary/">
+            
+                    
+                    Interview Summary
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="../interview_summary/1-计算机视觉岗2019届实习面经.html">
+            
+                <a href="../interview_summary/1-计算机视觉岗2019届实习面经.html">
+            
+                    
+                    计算机视觉岗 2019 届实习面经.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="../interview_summary/2-计算机视觉岗2019届暑期实习应聘总结.html">
+            
+                <a href="../interview_summary/2-计算机视觉岗2019届暑期实习应聘总结.html">
+            
+                    
+                    计算机视觉岗 2019 届暑期实习应聘总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="../interview_summary/3-2019届地平线机器人实习总结.html">
+            
+                <a href="../interview_summary/3-2019届地平线机器人实习总结.html">
+            
+                    
+                    2019 届地平线机器人实习总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.4" data-path="../interview_summary/4-计算机视觉岗2020届秋招面经.html">
+            
+                <a href="../interview_summary/4-计算机视觉岗2020届秋招面经.html">
+            
+                    
+                    计算机视觉岗 2020 届秋招面经
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.5" data-path="../interview_summary/5-视觉算法岗2021年社招面经.html">
+            
+                <a href="../interview_summary/5-视觉算法岗2021年社招面经.html">
+            
+                    
+                    视觉算法岗 2021 年社招面经
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >0-处理器基础知识</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <ul>
+<li><a href="#&#x4E00;&#x4EC0;&#x4E48;&#x662F;&#x5904;&#x7406;&#x5668;">&#x4E00;&#xFF0C;&#x4EC0;&#x4E48;&#x662F;&#x5904;&#x7406;&#x5668;</a></li>
+<li><a href="#&#x4E8C;&#x6307;&#x4EE4;&#x96C6;&#x57FA;&#x7840;">&#x4E8C;&#xFF0C;&#x6307;&#x4EE4;&#x96C6;&#x57FA;&#x7840;</a><ul>
+<li><a href="#&#x4EC0;&#x4E48;&#x662F;-isa">&#x4EC0;&#x4E48;&#x662F; ISA</a></li>
+<li><a href="#isa-&#x529F;&#x80FD;">ISA &#x529F;&#x80FD;</a></li>
+</ul>
+</li>
+<li><a href="#&#x4E09;cpu-&#x8BBE;&#x8BA1;&#x4E0E;&#x5B9E;&#x73B0;">&#x4E09;&#xFF0C;CPU &#x8BBE;&#x8BA1;&#x4E0E;&#x5B9E;&#x73B0;</a><ul>
+<li><a href="#&#x6574;&#x6570;&#x8303;&#x56F4;">&#x6574;&#x6570;&#x8303;&#x56F4;</a></li>
+<li><a href="#&#x65F6;&#x949F;&#x9891;&#x7387;">&#x65F6;&#x949F;&#x9891;&#x7387;</a></li>
+<li><a href="#&#x6307;&#x4EE4;&#x5468;&#x671F;instruction-cycle">&#x6307;&#x4EE4;&#x5468;&#x671F;&#xFF08;Instruction cycle&#xFF09;</a></li>
+<li><a href="#&#x6307;&#x4EE4;&#x6D41;&#x6C34;&#x7EBF;instruction-pipeline">&#x6307;&#x4EE4;&#x6D41;&#x6C34;&#x7EBF;&#xFF08;Instruction pipeline&#xFF09;</a></li>
+<li><a href="#&#x6307;&#x4EE4;&#x5E76;&#x884C;instruction-level-parallelism">&#x6307;&#x4EE4;&#x5E76;&#x884C;&#xFF08;Instruction-level parallelism&#xFF09;</a></li>
+<li><a href="#&#x6570;&#x636E;&#x5E76;&#x884C;data-parallelism">&#x6570;&#x636E;&#x5E76;&#x884C;&#xFF08;Data parallelism&#xFF09;&#xFF1A;</a></li>
+<li><a href="#&#x5E76;&#x53D1;&#x4E0E;&#x5E76;&#x884C;">&#x5E76;&#x53D1;&#x4E0E;&#x5E76;&#x884C;</a></li>
+<li><a href="#&#x7EBF;&#x7A0B;&#x7EA7;&#x5E76;&#x884C;thread-lever-parallelism">&#x7EBF;&#x7A0B;&#x7EA7;&#x5E76;&#x884C;(Thread-Lever Parallelism)</a></li>
+<li><a href="#&#x6027;&#x80FD;">&#x6027;&#x80FD;</a></li>
+</ul>
+</li>
+<li><a href="#&#x53C2;&#x8003;&#x8D44;&#x6599;">&#x53C2;&#x8003;&#x8D44;&#x6599;</a></li>
+</ul>
+<blockquote>
+<p>&#x672C;&#x6587;&#x7684;&#x77E5;&#x8BC6;&#x70B9;&#x6BD4;&#x8F83;&#x96F6;&#x6563;&#xFF0C;&#x4E3B;&#x8981;&#x662F;&#x5173;&#x4E8E;&#x5904;&#x7406;&#x5668;&#x7684;&#x4E00;&#x4E9B;&#x57FA;&#x672C;&#x77E5;&#x8BC6;&#xFF0C;&#x5927;&#x90E8;&#x5206;&#x5185;&#x5BB9;&#x6765;&#x6E90;&#x4E8E;&#x53C2;&#x8003;&#x8D44;&#x6599;&#x5E76;&#x7ED9;&#x51FA;&#x4E86;&#x81EA;&#x5DF1;&#x7684;&#x7406;&#x89E3;&#x548C;&#x6574;&#x7406;&#x3002;</p>
+</blockquote>
+<h2 id="&#x4E00;&#xFF0C;&#x4EC0;&#x4E48;&#x662F;&#x5904;&#x7406;&#x5668;">&#x4E00;&#xFF0C;&#x4EC0;&#x4E48;&#x662F;&#x5904;&#x7406;&#x5668;</h2>
+<p>&#x5148;&#x63CF;&#x8FF0;&#x4E0B;&#x4E00;&#x822C;&#x5904;&#x7406;&#x5668;&#x7684;&#x6982;&#x5FF5;&#xFF0C;<a href="https://en.wikipedia.org/wiki/Processor_(computing" target="_blank">&#x7EF4;&#x57FA;&#x767E;&#x79D1;</a>)&#x7684;&#x5B9A;&#x4E49;&#x662F; &#x201C;In computing, a processor is an electronic circuit which performs operations on some external data source, usually memory or some other data stream&#x201D;&#x3002;&#x6700;&#x4E3A;&#x5E38;&#x89C1;&#x7684;&#x5904;&#x7406;&#x5668;&#x6709; <code>CPU</code>&#xFF08;&#x53EF;&#x4EE5;&#x8FD0;&#x884C;&#x4EFB;&#x4F55;&#x7A0B;&#x5E8F;&#xFF09;&#x3001;<code>GPU</code>&#xFF08;&#x56FE;&#x5F62;&#x56FE;&#x50CF;&#x5904;&#x7406;&#xFF09;&#x548C; <code>DSP</code>(&#x5904;&#x7406;&#x6570;&#x5B57;&#x4FE1;&#x53F7;)&#xFF0C;&#x8FD8;&#x6709;&#x4E13;&#x95E8;&#x7528;&#x6765;&#x505A; <code>DNN</code> &#x5E94;&#x7528;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x5904;&#x7406;&#x5668;&#x3002;</p>
+<blockquote>
+<p>&#x5904;&#x7406;&#x5668;&#x6216;&#x5904;&#x7406;&#x5355;&#x5143;&#x662F;&#x5BF9;&#x5916;&#x90E8;&#x6570;&#x636E;&#x6E90;&#xFF08;&#x901A;&#x5E38;&#x662F;&#x5185;&#x5B58;&#x6216;&#x5176;&#x4ED6;&#x6570;&#x636E;&#x6D41;&#xFF09;&#x6267;&#x884C;&#x64CD;&#x4F5C;&#x7684;&#x7535;&#x5B50;&#x7EC4;&#x4EF6;&#xFF08;&#x6570;&#x5B57;&#x7535;&#x8DEF;&#xFF09;&#x3002;</p>
+</blockquote>
+<p><code>CPU</code> &#x7684;&#x4E3B;&#x8981;&#x8FD0;&#x4F5C;&#x539F;&#x7406;&#xFF0C;&#x4E0D;&#x8BBA;&#x5176;&#x5916;&#x89C2;&#xFF0C;&#x90FD;&#x662F;&#x6267;&#x884C;&#x50A8;&#x5B58;&#x4E8E;&#x88AB;&#x79F0;&#x4E3A;&#x7A0B;&#x5E8F;&#x91CC;&#x7684;&#x4E00;&#x7CFB;&#x5217;&#x6307;&#x4EE4;&#x3002;&#x5728;&#x6B64;&#x8BA8;&#x8BBA;&#x7684;&#x662F;&#x9075;&#x5FAA;&#x666E;&#x904D;&#x7684;&#x51AF;&#xB7;&#x8BFA;&#x4F0A;&#x66FC;&#x7ED3;&#x6784;&#xFF08;von Neumann architecture&#xFF09;&#x8BBE;&#x8BA1;&#x7684;&#x8BBE;&#x5907;&#x3002;&#x7A0B;&#x5E8F;&#x4EE5;&#x4E00;&#x7CFB;&#x5217;&#x6570;&#x5B57;&#x50A8;&#x5B58;&#x5728;&#x8BA1;&#x7B97;&#x673A;&#x5B58;&#x50A8;&#x5668;&#x4E2D;&#x3002;&#x5DEE;&#x4E0D;&#x591A;&#x6240;&#x6709;&#x7684;&#x51AF;&#xB7;&#x8BFA;&#x4F0A;&#x66FC; <code>CPU</code> &#x7684;&#x8FD0;&#x4F5C;&#x539F;&#x7406;&#x53EF;&#x5206;&#x4E3A;&#x56DB;&#x4E2A;&#x9636;&#x6BB5;&#xFF1A;<strong>&#x63D0;&#x53D6;&#x3001;&#x89E3;&#x7801;&#x3001;&#x6267;&#x884C;&#x548C;&#x5199;&#x56DE;</strong>&#x3002;</p>
+<p>&#x800C;&#x4E13;&#x7528;&#x5904;&#x7406;&#x5668;&#x5C31;&#x662F;&#x9488;&#x5BF9;<strong>&#x7279;&#x5B9A;&#x5E94;&#x7528;&#x6216;&#x8005;&#x9886;&#x57DF;</strong>&#x7684;&#x5904;&#x7406;&#x5668;&#xFF0C;&#x7C7B;&#x4F3C;&#x4E8E;&#x662F;&#x6211;&#x4EEC;&#x7ECF;&#x5E38;&#x8BF4;&#x7684; Domain Specific Architecture &#x7684;&#x6982;&#x5FF5;&#x3002;</p>
+<h2 id="&#x4E8C;&#xFF0C;&#x6307;&#x4EE4;&#x96C6;&#x57FA;&#x7840;">&#x4E8C;&#xFF0C;&#x6307;&#x4EE4;&#x96C6;&#x57FA;&#x7840;</h2>
+<h3 id="&#x4EC0;&#x4E48;&#x662F;-isa">&#x4EC0;&#x4E48;&#x662F; ISA</h3>
+<p>&#x6307;&#x4EE4;&#x96C6;(<code>Instruction Set Architecture</code>, <code>ISA</code>)&#x662F;&#x8BA1;&#x7B97;&#x673A;&#x62BD;&#x8C61;&#x6A21;&#x578B;&#x7684;&#x4E00;&#x90E8;&#x5206;&#xFF0C;&#x5B83;&#x5B9A;&#x4E49;&#x4E86;&#x8F6F;&#x4EF6;&#x5982;&#x4F55;&#x63A7;&#x5236; <code>CPU</code>&#x3002;<code>ISA</code> &#x5145;&#x5F53;&#x786C;&#x4EF6;&#x548C;&#x8F6F;&#x4EF6;&#x7684;&#x63A5;&#x53E3;&#xFF0C;&#x6307;&#x793A;&#x4E86;&#x5904;&#x7406;&#x5668;&#x80FD;&#x591F;&#x5B9E;&#x73B0;&#x4EC0;&#x4E48;&#x529F;&#x80FD;&#x4EE5;&#x53CA;&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x3002;&#x7B80;&#x5355;&#x6765;&#x8BF4;&#xFF0C;<code>ISA</code> &#x5C31;&#x662F;&#x4F20;&#x7EDF;&#x4E0A;&#x8F6F;&#x4EF6;&#x548C;&#x786C;&#x4EF6;&#x7684;&#x5206;&#x754C;&#x7EBF;&#xFF0C;&#x662F;&#x7528;&#x6237;&#x548C;&#x786C;&#x4EF6;&#x4EA4;&#x4E92;&#x7684;&#x552F;&#x4E00;&#x65B9;&#x5F0F;&#x3002;</p>
+<p><code>ISA</code> &#x5B9A;&#x4E49;&#x4E86;&#x786C;&#x4EF6;&#x652F;&#x6301;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x3001;&#x5BC4;&#x5B58;&#x5668;&#x3001;&#x786C;&#x4EF6;&#x5982;&#x4F55;&#x7BA1;&#x7406;&#x5185;&#x5B58;&#x3001;&#x5173;&#x952E;&#x7279;&#x6027;&#xFF08;&#x5982;&#x865A;&#x62DF;&#x5185;&#x5B58;&#xFF09;&#x3001;&#x5FAE;&#x5904;&#x7406;&#x5668;&#x53EF;&#x4EE5;&#x6267;&#x884C;&#x54EA;&#x4E9B;&#x6307;&#x4EE4;&#xFF0C;&#x4EE5;&#x53CA;&#x591A;&#x4E2A; ISA &#x5B9E;&#x73B0;&#x7684;&#x8F93;&#x5165;&#x8F93;&#x51FA;&#x6A21;&#x578B;&#x3002;ISA &#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x6DFB;&#x52A0;&#x6307;&#x4EE4;&#x6216;&#x5176;&#x4ED6;&#x529F;&#x80FD;&#x6216;&#x901A;&#x8FC7;&#x6DFB;&#x52A0;&#x5BF9;&#x66F4;&#x5927;&#x5730;&#x5740;&#x548C;&#x6570;&#x636E;&#x503C;&#x7684;&#x652F;&#x6301;&#x6765;&#x6269;&#x5C55;&#x3002;</p>
+<blockquote>
+<p>&#x6765;&#x6E90; <a href="https://www.arm.com/glossary/isa" target="_blank">What is Instruction Set Architecture (ISA)? - Arm</a></p>
+</blockquote>
+<h3 id="isa-&#x529F;&#x80FD;">ISA &#x529F;&#x80FD;</h3>
+<p>&#x5927;&#x591A;&#x6570; <code>ISA</code>&#xFF08;&#x5178;&#x578B;&#x5982; <code>x86</code>-Intel CPU &#x7684;&#x6307;&#x4EE4;&#x96C6;&#xFF09;&#xFF0C;&#x5C06;&#x7A0B;&#x5E8F;&#x7684;&#x884C;&#x4E3A;&#x63CF;&#x8FF0;&#x6210;&#x6BCF;&#x6761;&#x6307;&#x4EE4;&#x90FD;&#x662F;&#x987A;&#x5E8F;&#x6267;&#x884C;&#x7684;&#xFF0C;&#x4E00;&#x6761;&#x6307;&#x4EE4;&#x7ED3;&#x675F;&#x540E;&#xFF0C;&#x4E0B;&#x4E00;&#x6761;&#x5728;&#x5F00;&#x59CB;&#x3002;</p>
+<p><code>ISA</code> &#x63D0;&#x4F9B;&#x7684;&#x4E3B;&#x8981;&#x6307;&#x4EE4;&#x53EF;&#x4EE5;&#x5206;&#x4E3A;&#x56DB;&#x5927;&#x7C7B;&#x529F;&#x80FD;&#xFF1A;</p>
+<ol>
+<li>&#x6267;&#x884C;&#x8FD0;&#x7B97;&#x6216;&#x5904;&#x7406;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x6BD4;&#x5982;&#x7B97;&#x672F;&#x64CD;&#x4F5C;&#x6307;&#x4EE4;&#xFF1B;</li>
+<li>&#x63A7;&#x5236;&#x7A0B;&#x5E8F;&#x6D41;&#xFF0C;&#x6BD4;&#x5982;&#x5FAA;&#x73AF;&#x3001;&#x5224;&#x65AD;&#x5206;&#x652F;&#x548C;&#x8DF3;&#x8F6C;&#x6307;&#x4EE4;&#xFF1B;</li>
+<li>&#x5B9E;&#x73B0;&#x6570;&#x636E;&#x642C;&#x79FB;&#xFF0C;&#x5982;&#x5185;&#x5B58;&#x5230;&#x5BC4;&#x5B58;&#x5668;&#xFF0C;&#x5BC4;&#x5B58;&#x5668;&#x4E4B;&#x95F4;&#x6570;&#x636E;&#x642C;&#x79FB;&#x7B49;&#x6307;&#x4EE4;&#xFF1B;</li>
+<li>&#x6700;&#x540E;&#x5C31;&#x662F;&#x4E00;&#x4E9B;&#x8F85;&#x52A9;&#x6307;&#x4EE4;&#xFF0C;&#x5982; <code>debug</code>&#x3001;&#x4E2D;&#x65AD;&#x548C; <code>cache</code> &#x4E4B;&#x7C7B;&#x7684;&#x6307;&#x4EE4;&#x3002;</li>
+</ol>
+<h2 id="&#x4E09;&#xFF0C;cpu-&#x8BBE;&#x8BA1;&#x4E0E;&#x5B9E;&#x73B0;">&#x4E09;&#xFF0C;CPU &#x8BBE;&#x8BA1;&#x4E0E;&#x5B9E;&#x73B0;</h2>
+<h3 id="&#x6574;&#x6570;&#x8303;&#x56F4;">&#x6574;&#x6570;&#x8303;&#x56F4;</h3>
+<p><code>CPU</code> &#x6570;&#x5B57;&#x8868;&#x793A;&#x65B9;&#x6CD5;&#x662F;&#x4E00;&#x4E2A;&#x8BBE;&#x8BA1;&#x4E0A;&#x7684;&#x9009;&#x62E9;&#xFF0C;&#x8FD9;&#x4E2A;&#x9009;&#x62E9;&#x5F71;&#x54CD;&#x4E86;&#x8BBE;&#x5907;&#x7684;&#x5DE5;&#x4F5C;&#x65B9;&#x5F0F;&#x3002;&#x4E00;&#x4E9B;&#x65E9;&#x671F;&#x7684;&#x6570;&#x5B57;&#x8BA1;&#x7B97;&#x673A;&#x5185;&#x90E8;&#x4F7F;&#x7528;&#x7535;&#x6C14;&#x6A21;&#x578B;&#x6765;&#x8868;&#x793A;&#x901A;&#x7528;&#x7684;&#x5341;&#x8FDB;&#x5236;&#xFF08;&#x57FA;&#x4E8E; <code>10</code>&#x8FDB;&#x4F4D;&#xFF09;&#x8BB0;&#x6570;&#x7CFB;&#x7EDF;&#x6570;&#x5B57;&#x3002;&#x8FD8;&#x6709;&#x4E00;&#x4E9B;&#x7F55;&#x89C1;&#x7684;&#x8BA1;&#x7B97;&#x673A;&#x4F7F;&#x7528;&#x4E09;&#x8FDB;&#x5236;&#x8868;&#x793A;&#x6570;&#x5B57;&#x3002;&#x51E0;&#x4E4E;&#x6240;&#x6709;&#x7684;&#x73B0;&#x4EE3;&#x7684; <code>CPU</code> <strong>&#x4F7F;&#x7528;&#x4E8C;&#x8FDB;&#x5236;&#x7CFB;&#x7EDF;&#x6765;&#x8868;&#x793A;&#x6570;&#x5B57;</strong>&#xFF0C;&#x8FD9;&#x6837;&#x6570;&#x5B57;&#x53EF;&#x4EE5;&#x7528;&#x5177;&#x6709;&#x4E24;&#x4E2A;&#x503C;&#x7684;&#x7269;&#x7406;&#x91CF;&#x6765;&#x8868;&#x793A;&#xFF0C;&#x4F8B;&#x5982;&#x9AD8;&#x4F4E;&#x7535;&#x5E73;&#x7B49;&#x7B49;&#x3002;</p>
+<h3 id="&#x65F6;&#x949F;&#x9891;&#x7387;">&#x65F6;&#x949F;&#x9891;&#x7387;</h3>
+<p>&#x4E3B;&#x9891;&#xFF1D;&#x5916;&#x9891;&#xD7;&#x500D;&#x9891;&#x3002;&#x5927;&#x90E8;&#x5206;&#x7684; <code>CPU</code>&#xFF0C;&#x751A;&#x81F3;&#x5927;&#x90E8;&#x5206;&#x7684;&#x65F6;&#x5E8F;&#x903B;&#x8F91;&#x8BBE;&#x5907;&#xFF0C;&#x672C;&#x8D28;&#x4E0A;&#x90FD;&#x662F;&#x540C;&#x6B65;&#x7684;&#xFF0C;&#x5373;&#x5B83;&#x4EEC;&#x88AB;&#x8BBE;&#x8BA1;&#x548C;&#x4F7F;&#x7528;&#x7684;&#x524D;&#x9898;&#x662F;&#x5047;&#x8BBE;&#x90FD;&#x5728;&#x540C;&#x4E00;&#x4E2A;&#x540C;&#x6B65;&#x4FE1;&#x53F7;&#x4E2D;&#x5DE5;&#x4F5C;&#x3002;</p>
+<h3 id="&#x6307;&#x4EE4;&#x5468;&#x671F;&#xFF08;instruction-cycle&#xFF09;">&#x6307;&#x4EE4;&#x5468;&#x671F;&#xFF08;Instruction cycle&#xFF09;</h3>
+<p>&#x6307;&#x4EE4;&#x5468;&#x671F;&#x662F;&#x6307; <strong>CPU &#x8981;&#x6267;&#x884C;&#x4E00;&#x6761;&#x673A;&#x5668;&#x6307;&#x4EE4;&#x7ECF;&#x8FC7;&#x7684;&#x6B65;&#x9AA4;&#xFF0C;&#x7531;&#x82E5;&#x5E72;&#x673A;&#x5668;&#x5468;&#x671F;&#x7EC4;&#x6210;</strong>&#x3002;&#x4E00;&#x822C;&#x4F1A;&#x7ECF;&#x5386;&#x201C;&#x53D6;&#x6307;&#x201D;&#xFF0C;&#x201C;&#x8BD1;&#x7801;&#x201D;&#xFF0C;&#x201C;&#x53D1;&#x5C04;/&#x6267;&#x884C;&#x201D;&#x548C;&#x201C;&#x5199;&#x56DE;&#x201D;&#x8FD9;&#x4E9B;&#x64CD;&#x4F5C;&#x3002;&#x5904;&#x7406;&#x5668;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#x7684;&#x8FC7;&#x7A0B;&#x5C31;&#x662F;&#x4E0D;&#x65AD;&#x91CD;&#x590D;&#x8FD9;&#x51E0;&#x4E2A;&#x64CD;&#x4F5C;&#x3002;</p>
+<h3 id="&#x6307;&#x4EE4;&#x6D41;&#x6C34;&#x7EBF;&#xFF08;instruction-pipeline&#xFF09;">&#x6307;&#x4EE4;&#x6D41;&#x6C34;&#x7EBF;&#xFF08;Instruction pipeline&#xFF09;</h3>
+<blockquote>
+<p>&#x5728;1978&#x5E74;&#x7684; Intel 8086 &#x5904;&#x7406;&#x5668;&#x90FD;&#x53EA;&#x80FD;&#x4E00;&#x6B21;&#x6267;&#x884C;&#x5355;&#x6307;&#x4EE4;&#x3002; Intel&#x9996;&#x6B21;&#x5728;486&#x82AF;&#x7247;&#x4E2D;&#x5F00;&#x59CB;&#x4F7F;&#x7528;&#xFF0C;&#x539F;&#x7406;&#x662F;&#xFF1A;&#x5F53;&#x6307;&#x4EE4;&#x4E4B;&#x95F4;&#x4E0D;&#x5B58;&#x5728;&#x76F8;&#x5173;&#x65F6;&#xFF0C;&#x5B83;&#x4EEC;&#x5728;&#x6D41;&#x6C34;&#x7EBF;&#x4E2D;&#x662F;&#x53EF;&#x4EE5;&#x91CD;&#x53E0;&#x8D77;&#x6765;&#x5E76;&#x884C;&#x6267;&#x884C;&#x3002;</p>
+</blockquote>
+<p>&#x5F53;&#x4E00;&#x6761;&#x6307;&#x4EE4;&#xFF0C;&#x5B8C;&#x6210;&#x4E86;&#x201C;&#x53D6;&#x6307;&#x201D;&#x64CD;&#x4F5C;&#xFF0C;&#x5F00;&#x59CB;&#x8FDB;&#x884C;&#x201C;&#x8BD1;&#x7801;&#x201D;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x53D6;&#x6307;&#x6A21;&#x5757;&#x5C31;&#x53EF;&#x4EE5;&#x53D6;&#x7A0B;&#x5E8F;&#x7684;&#x4E0B;&#x4E00;&#x6761;&#x6307;&#x4EE4;&#x4E86;&#xFF0C;&#x8FD9;&#x6837;&#x53EF;&#x4EE5;&#x8BA9;&#x8FD9;&#x4E9B;&#x6A21;&#x5757;&#x4E0D;&#x81F3;&#x4E8E;&#x95F2;&#x7740;&#x6CA1;&#x7528;&#xFF0C;&#x5373;<strong>&#x6307;&#x4EE4;&#x6D41;&#x6C34;&#x7EBF;&#x53EF;&#x4EE5;&#x4E24;&#x4E2A;&#x4EE5;&#x4E0A;&#x7684;&#x6307;&#x4EE4;&#x540C;&#x65F6;&#x6267;&#x884C;</strong>(&#x7C7B;&#x4F3C;&#x8F66;&#x95F4;&#x6D41;&#x6C34;&#x7EBF;)&#x3002;&#x4E00;&#x822C;&#x7684;&#x56DB;&#x5C42;&#x6D41;&#x6C34;&#x7EBF;&#x67B6;&#x6784;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#xFF0C;<strong>&#x4E0D;&#x540C;&#x7684;&#x989C;&#x8272;&#x683C;&#x8868;&#x793A;&#x4E0D;&#x540C;&#x7684;&#x6307;&#x4EE4;</strong>&#x3002;</p>
+<p><img src="../data/images/CPU/&#x4E00;&#x822C;&#x7684;&#x56DB;&#x5C42;&#x6D41;&#x6C34;&#x7EBF;&#x67B6;&#x6784;.png" alt="&#x4E00;&#x822C;&#x7684;&#x56DB;&#x5C42;&#x6D41;&#x6C34;&#x7EBF;&#x67B6;&#x6784;"></p>
+<h3 id="&#x6307;&#x4EE4;&#x5E76;&#x884C;&#xFF08;instruction-level-parallelism&#xFF09;">&#x6307;&#x4EE4;&#x5E76;&#x884C;&#xFF08;Instruction-level parallelism&#xFF09;</h3>
+<p>&#x540C;&#x65F6;&#x6267;&#x884C;&#x591A;&#x6761;&#x6307;&#x4EE4;&#x3002;&#x6BD4;&#x5982;&#xFF0C;&#x4E00;&#x8FB9;&#x4ECE; <code>memory</code> &#x8BFB;&#x6570;&#x636E;&#xFF0C;&#x4E00;&#x8FB9;&#x8FDB;&#x884C; <code>fft</code> &#x5904;&#x7406;&#x3002;&#x6211;&#x4EEC;&#x7ECF;&#x5E38;&#x542C;&#x5230;&#x7684;&#x8D85;&#x6807;&#x91CF;&#xFF08;<code>Superscalar</code>&#xFF09;&#xFF0C;&#x8D85;&#x957F;&#x6307;&#x4EE4;&#x5B57;&#xFF08;<code>VLIW</code>&#xFF09;&#xFF0C;&#x4E71;&#x5E8F;&#x6267;&#x884C;&#xFF08; <code>Out-of-order execution</code>&#xFF09;&#x7B49;&#x7B49;&#x6280;&#x672F;&#x90FD;&#x662F;&#x53D1;&#x6398;&#x6307;&#x4EE4;&#x7EA7;&#x5E76;&#x884C;&#x7684;&#x6280;&#x672F;&#x3002;</p>
+<h3 id="&#x6570;&#x636E;&#x5E76;&#x884C;&#xFF08;data-parallelism&#xFF09;&#xFF1A;">&#x6570;&#x636E;&#x5E76;&#x884C;&#xFF08;Data parallelism&#xFF09;&#xFF1A;</h3>
+<p>&#x4E00;&#x4E2A;&#x4EBA;&#x6307;&#x4EE4;&#x540C;&#x65F6;&#x5904;&#x7406;&#x591A;&#x4E2A;&#x6570;&#x636E;&#x3002;&#x6211;&#x4EEC;&#x5E38;&#x542C;&#x5230;&#x7684;&#x5411;&#x91CF;&#x5904;&#x7406;&#x5668;&#xFF08;<code>vector procesor</code>&#xFF09;&#xFF0C;&#x5F20;&#x91CF;&#x5904;&#x7406;&#x5668;&#xFF08;<code>Tensor processor</code>&#xFF09;&#x591A;&#x6570;&#x90FD;&#x662F;&#x5229;&#x7528;&#x4E86; <code>SIMD</code>&#xFF08;<strong>&#x4E00;&#x6761;&#x6307;&#x4EE4;&#x53EF;&#x4EE5;&#x5904;&#x7406;&#x591A;&#x4E2A;&#x6570;&#x636E;</strong>&#xFF0C;&#x6BD4;&#x5982;&#x4E00;&#x4E2A;&#x5411;&#x91CF;&#x4E58;&#x6CD5;&#xFF09;&#x6280;&#x672F;&#x3002;</p>
+<h3 id="&#x5E76;&#x53D1;&#x4E0E;&#x5E76;&#x884C;">&#x5E76;&#x53D1;&#x4E0E;&#x5E76;&#x884C;</h3>
+<p>&#x5E76;&#x53D1;&#x4E0E;&#x5E76;&#x884C;&#x7684;&#x901A;&#x4FD7;&#x7406;&#x89E3;&#x53C2;&#x8003;<a href="https://www.zhihu.com/question/21823699/answer/111606716" target="_blank">&#x77E5;&#x4E4E;&#x95EE;&#x7B54;-&#x6307;&#x4EE4;&#x7EA7;&#x5E76;&#x884C;&#xFF0C;&#x7EBF;&#x7A0B;&#x7EA7;&#x5E76;&#x884C;&#xFF0C;&#x6570;&#x636E;&#x7EA7;&#x5E76;&#x884C;&#x533A;&#x522B;&#xFF1F;&#x7EBF;&#x7A0B;&#x7684;&#x6982;&#x5FF5;&#x662F;&#x4EC0;&#x4E48;&#xFF1F;</a>&#x5982;&#x4E0B;&#xFF1A;</p>
+<p><img src="../data/images/CPU/&#x5E76;&#x53D1;&#x4E0E;&#x5E76;&#x884C;&#x7684;&#x901A;&#x4FD7;&#x7406;&#x89E3;.png" alt="&#x5E76;&#x53D1;&#x4E0E;&#x5E76;&#x884C;&#x7684;&#x901A;&#x4FD7;&#x7406;&#x89E3;"></p>
+<h3 id="&#x7EBF;&#x7A0B;&#x7EA7;&#x5E76;&#x884C;thread-lever-parallelism">&#x7EBF;&#x7A0B;&#x7EA7;&#x5E76;&#x884C;(Thread-Lever Parallelism)</h3>
+<p>&#x7EBF;&#x7A0B;&#x7EA7;&#x5E76;&#x884C;&#x4E3B;&#x8981;&#x7531;&#x4E0B;&#x9762;&#x4E24;&#x79CD;&#x6280;&#x672F;&#x7684;&#x652F;&#x6491;&#xFF1A;</p>
+<ol>
+<li><strong>&#x8D85;&#x7EBF;&#x7A0B;&#x6280;&#x672F;</strong>&#xFF1A;2004&#x5E74;&#xFF0C;&#x5954;&#x817E;4&#x5B9E;&#x73B0;&#x4E86;Hyper-Threading.&#xFF08;&#x5355;&#x6838;&#x5FC3;&#x53CC;&#x7EBF;&#x7A0B;&#xFF09;</li>
+<li><strong>&#x591A;&#x6838;&#x6280;&#x672F;-&#x7269;&#x7406;&#x6838;&#x5FC3;</strong>:  2005&#x5E74;&#xFF0C;&#x82F1;&#x7279;&#x5C14;&#x5BA3;&#x5E03;&#x4ED6;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x53CC;&#x6838;&#x5FC3; EM64T &#x5904;&#x7406;&#x5668;&#xFF0C;&#x548C; Pentium D840<blockquote>
+<p>&#x8D85;&#x7EBF;&#x7A0B;&#x6280;&#x672F;&#x5B9E;&#x73B0;&#x4E86;&#x5355;&#x4E2A;&#x7269;&#x7406;&#x6838;&#x5FC3;&#x540C;&#x65F6;&#x4E24;&#x4E2A;&#x7EBF;&#x7A0B;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x522B;&#x4EBA;&#x5E38;&#x8BF4;&#x7684;&#x865A;&#x62DF;&#x5185;&#x6838;&#x6570;&#x3002;&#x6BD4;&#x5982;&#x5355;&#x7269;&#x7406;&#x6838;&#x5FC3;&#x5B9E;&#x73B0;&#x7684;&#x53CC;&#x7EBF;&#x7A0B;&#xFF0C;&#x5B83;&#x540C;&#x65F6;&#x53EF;&#x4EE5;&#x5904;&#x7406;&#x4E24;&#x4E2A;&#x7EBF;&#x7A0B;&#xFF0C;&#x5B83;&#x7684;&#x7269;&#x7406;&#x6838;&#x5FC3;&#x6570;&#x5176;&#x5B9E;&#x662F;&#x662F;1&#x4E2A;&#xFF0C;&#x901A;&#x8FC7;Hyperthreading&#x6280;&#x672F;&#x5B9E;&#x73B0;&#x7684;&#x7EBF;&#x7A0B;&#x7EA7;&#x5E76;&#x884C;(Thread Lever Parallelism)&#x3002;&#x81F3;&#x4E8E;&#x6280;&#x672F;&#x7EC6;&#x8282;&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x8FD9;&#x6D89;&#x53CA;&#x5230;&#x9AD8;&#x901F;&#x7F13;&#x5B58;&#x7684;&#x77E5;&#x8BC6;&#x3002;</p>
+</blockquote>
+</li>
+</ol>
+<p><strong>&#x7EBF;&#x7A0B;&#x7EA7;&#x5E76;&#x884C;&#x7684;&#x597D;&#x5904;</strong>:</p>
+<ul>
+<li>&#x5F53;&#x8FD0;&#x884C;&#x591A;&#x4EFB;&#x52A1;&#x65F6;&#xFF0C;&#x5B83;&#x51CF;&#x5C11;&#x4E86;&#x4E4B;&#x524D;&#x7684;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x6A21;&#x62DF;&#x51FA;&#x6765;&#x7684;&#x5E76;&#x53D1;&#xFF0C;&#x90A3;&#x4E48;&#x7528;&#x6237;&#x8FDB;&#x884C;&#x591A;&#x4EFB;&#x52A1;&#x5904;&#x7406;&#x65F6;&#x53EF;&#x4EE5;&#x8FD0;&#x884C;&#x66F4;&#x591A;&#x7684;&#x7A0B;&#x5E8F;&#x8FDB;&#x884C;&#x5E76;&#x53D1;&#x4E86;&#x3002;</li>
+<li>&#x5B83;&#x53EF;&#x4EE5;&#x4F7F;&#x5355;&#x4E2A;&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x66F4;&#x5FEB;&#x3002;&#xFF08;&#x4EC5;&#x5F53;&#x8BE5;&#x7A0B;&#x5E8F;&#x6709;&#x5927;&#x91CF;&#x7EBF;&#x7A0B;&#x53EF;&#x4EE5;&#x5E76;&#x884C;&#x5904;&#x7406;&#x65F6;&#xFF09;</li>
+</ul>
+<blockquote>
+<p>&#x867D;&#x7136;&#x5728; 1960 &#x5E74;&#x4EE3;&#x5DF2;&#x7ECF;&#x901A;&#x8FC7;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x5DF2;&#x7ECF;&#x5B9E;&#x73B0;&#x4E86;&#x7EBF;&#x7A0B;&#x7EA7;&#x5E76;&#x53D1;, &#x4F46;&#x8FD9;&#x79CD;&#x9891;&#x7E41;&#x7684;&#x4E0A;&#x4E0B;&#x6587;&#x5207;&#x6362;&#x610F;&#x5473;&#x635F;&#x5931;&#x4E86; <code>CPU</code> &#x7684;&#x5904;&#x7406;&#x6548;&#x7387;&#x3002;</p>
+</blockquote>
+<h3 id="&#x6027;&#x80FD;">&#x6027;&#x80FD;</h3>
+<p><code>CPU</code> &#x7684;&#x6027;&#x80FD;&#x548C;&#x901F;&#x5EA6;&#x53D6;&#x51B3;&#x4E8E;<strong>&#x65F6;&#x949F;&#x9891;&#x7387;</strong>&#xFF08;&#x4E00;&#x822C;&#x4EE5;&#x8D6B;&#x5179;&#x6216;&#x5341;&#x4EBF;&#x8D6B;&#x5179;&#x8BA1;&#x7B97;&#xFF0C;&#x5373; <code>hz</code> &#x4E0E; <code>Ghz</code>&#xFF09;&#x548C;<strong>&#x6BCF;&#x5468;&#x671F;&#x53EF;&#x5904;&#x7406;&#x7684;&#x6307;&#x4EE4;</strong>&#xFF08;<code>IPC</code>&#xFF09;&#xFF0C;&#x4E24;&#x8005;&#x5408;&#x5E76;&#x8D77;&#x6765;&#x5C31;&#x662F;&#x6BCF;&#x79D2;&#x53EF;&#x5904;&#x7406;&#x7684;&#x6307;&#x4EE4;&#xFF08;<code>IPS</code>&#xFF09;&#x3002;<code>IPS</code> &#x503C;&#x4EE3;&#x8868;&#x4E86; <code>CPU</code> &#x5728;&#x51E0;&#x79CD;&#x4EBA;&#x5DE5;&#x6307;&#x4EE4;&#x5E8F;&#x5217;&#x4E0B;&#x201C;&#x9AD8;&#x5CF0;&#x671F;&#x201D;&#x7684;&#x6267;&#x884C;&#x7387;&#xFF0C;&#x6307;&#x793A;&#x548C;&#x5E94;&#x7528;&#x3002;</p>
+<h2 id="&#x53C2;&#x8003;&#x8D44;&#x6599;">&#x53C2;&#x8003;&#x8D44;&#x6599;</h2>
+<ol>
+<li>&#x6DF1;&#x5165;&#x7406;&#x89E3;&#x8BA1;&#x7B97;&#x673A;&#x7CFB;&#x7EDF;-&#x7B2C;&#x4E09;&#x7248;</li>
+<li><a href="https://mp.weixin.qq.com/s?__biz=MzI3MDQ2MjA3OA==&amp;mid=2247484980&amp;idx=1&amp;sn=0d1b15f17b1b02bda1bf4d81fd6a01ad&amp;chksm=ead1fb25dda672334c3d72a6d958b2a2b3202c2c5dc9d221df6367ef4dec1023e5f079ae5742&amp;scene=178&amp;cur_album_id=1678711252069466118#rd" target="_blank">&#x4E13;&#x7528;&#x5904;&#x7406;&#x5668;&#x8BBE;&#x8BA1;</a></li>
+<li><a href="https://www.zhihu.com/question/21823699/answer/111606716" target="_blank">https://www.zhihu.com/question/21823699/answer/111606716</a> </li>
+</ol>
+<footer class="page-footer"><span class="copyright">Copyright &#xA9; zhg5200211@outlook.com 2022 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x8BE5;&#x6587;&#x7AE0;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
+2022-12-03 05:38:08
+</span></footer>
+<script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: 8. 高性能计算">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="1-卷积算法的优化.html" class="navigation navigation-next " aria-label="Next page: 1-卷积算法的优化">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"0-处理器基础知识","level":"1.10.1","depth":2,"next":{"title":"1-卷积算法的优化","level":"1.10.2","depth":2,"path":"8-high-performance_computing/1-卷积算法的优化.md","ref":"8-high-performance_computing/1-卷积算法的优化.md","articles":[]},"previous":{"title":"8. 高性能计算","level":"1.10","depth":1,"path":"8-high-performance_computing/README.md","ref":"8-high-performance_computing/README.md","articles":[{"title":"0-处理器基础知识","level":"1.10.1","depth":2,"path":"8-high-performance_computing/0-处理器基础知识.md","ref":"8-high-performance_computing/0-处理器基础知识.md","articles":[]},{"title":"1-卷积算法的优化","level":"1.10.2","depth":2,"path":"8-high-performance_computing/1-卷积算法的优化.md","ref":"8-high-performance_computing/1-卷积算法的优化.md","articles":[]},{"title":"2-模型编译优化","level":"1.10.3","depth":2,"path":"8-high-performance_computing/2-模型编译优化.md","ref":"8-high-performance_computing/2-模型编译优化.md","articles":[]},{"title":"通用矩阵乘算法从入门到实践","level":"1.10.4","depth":2,"path":"8-high-performance_computing/通用矩阵乘算法从入门到实践.md","ref":"8-high-performance_computing/通用矩阵乘算法从入门到实践.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["toggle-chapters","back-to-top-button","chapter-fold","code","splitter","-lunr","search-pro","pageview-count","tbfed-pagefooter","popup","sharing-plus","donate"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy zhg5200211@outlook.com 2022","modify_label":"该文章修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"splitter":{},"search-pro":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"donate":{"alipay":"./data/article_cover/alipay.png","alipayText":"支付宝","button":"捐赠","title":"赞赏","wechat":"./data/article_cover/wechat.png","wechatText":"微信"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"pageview-count":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["douban","facebook","google","twitter","weibo","qq"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"toggle-chapters":{}},"theme":"default","author":"zhanghonggao","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"cv算法工程师成长之路","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"8-high-performance_computing/0-处理器基础知识.md","mtime":"2022-12-02T21:38:08.275Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-12-02T22:49:44.465Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-toggle-chapters/toggle.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-pageview-count/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing-plus/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-donate/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

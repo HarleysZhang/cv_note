@@ -1,0 +1,2513 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>神经网络量化 · cv算法工程师成长之路</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="zhanghonggao">
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-toggle-chapters/toggle.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-pageview-count/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-donate/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../../8-high-performance_computing/" />
+    
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../cv算法工程师成长路线.html">
+            
+                <a href="../../cv算法工程师成长路线.html">
+            
+                    
+                    cv算法工程师成长路线
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../../1-computer_basics/">
+            
+                <a href="../../1-computer_basics/">
+            
+                    
+                    1. 计算机基础
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" >
+            
+                <span>
+            
+                    
+                    效率工具
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1" data-path="../../1-computer_basics/效率工具/Docker基础和常用命令.html">
+            
+                <a href="../../1-computer_basics/效率工具/Docker基础和常用命令.html">
+            
+                    
+                    Docker基础和常用命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2" data-path="../../1-computer_basics/效率工具/git命令学习笔记.html">
+            
+                <a href="../../1-computer_basics/效率工具/git命令学习笔记.html">
+            
+                    
+                    git命令学习笔记
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.3" data-path="../../1-computer_basics/效率工具/ubuntu16.04安装mmdetection库.html">
+            
+                <a href="../../1-computer_basics/效率工具/ubuntu16.04安装mmdetection库.html">
+            
+                    
+                    ubuntu16.04安装mmdetection库
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" >
+            
+                <span>
+            
+                    
+                    操作系统
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.2.1" data-path="../../1-computer_basics/操作系统/计算机基础知识.html">
+            
+                <a href="../../1-computer_basics/操作系统/计算机基础知识.html">
+            
+                    
+                    计算机基础知识
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.2" data-path="../../1-computer_basics/操作系统/深入理解计算机系统-第1章计算机系统漫游笔记.html">
+            
+                <a href="../../1-computer_basics/操作系统/深入理解计算机系统-第1章计算机系统漫游笔记.html">
+            
+                    
+                    深入理解计算机系统-第1章计算机系统漫游笔记
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.3" data-path="../../1-computer_basics/操作系统/深入理解计算机系统-第2章信息的表示和处理.html">
+            
+                <a href="../../1-computer_basics/操作系统/深入理解计算机系统-第2章信息的表示和处理.html">
+            
+                    
+                    深入理解计算机系统-第2章信息的表示和处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.4" data-path="../../1-computer_basics/操作系统/深入理解计算机系统-第3章程序的机器级表示.html">
+            
+                <a href="../../1-computer_basics/操作系统/深入理解计算机系统-第3章程序的机器级表示.html">
+            
+                    
+                    深入理解计算机系统-第3章程序的机器级表示
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" >
+            
+                <span>
+            
+                    
+                    Linux 系统
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.3.1" data-path="../../1-computer_basics/Linux系统/Linux基础-学会使用命令帮助.html">
+            
+                <a href="../../1-computer_basics/Linux系统/Linux基础-学会使用命令帮助.html">
+            
+                    
+                    Linux 基础-学会使用命令帮助
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3.2" data-path="../../1-computer_basics/Linux系统/Linux基础-新手必备命令.html">
+            
+                <a href="../../1-computer_basics/Linux系统/Linux基础-新手必备命令.html">
+            
+                    
+                    Linux 基础-新手必备命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3.3" data-path="../../1-computer_basics/Linux系统/Linux基础-文件权限与属性.html">
+            
+                <a href="../../1-computer_basics/Linux系统/Linux基础-文件权限与属性.html">
+            
+                    
+                    Linux 基础-文件权限与属性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3.4" data-path="../../1-computer_basics/Linux系统/Linux基础-文件及目录管理.html">
+            
+                <a href="../../1-computer_basics/Linux系统/Linux基础-文件及目录管理.html">
+            
+                    
+                    Linux 基础-文件及目录管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3.5" data-path="../../1-computer_basics/Linux系统/Linux基础-文本处理命令.html">
+            
+                <a href="../../1-computer_basics/Linux系统/Linux基础-文本处理命令.html">
+            
+                    
+                    Linux 基础-文本处理命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3.6" data-path="../../1-computer_basics/Linux系统/Linux基础-查看cpu、内存和环境等信息.html">
+            
+                <a href="../../1-computer_basics/Linux系统/Linux基础-查看cpu、内存和环境等信息.html">
+            
+                    
+                    Linux 基础-查看cpu、内存和环境等信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3.7" data-path="../../1-computer_basics/Linux系统/Linux基础-查看进程命令ps和top.html">
+            
+                <a href="../../1-computer_basics/Linux系统/Linux基础-查看进程命令ps和top.html">
+            
+                    
+                    Linux 基础-查看进程命令ps和top
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3.8" data-path="../../1-computer_basics/Linux系统/Linux基础-查看和设置环境变量.html">
+            
+                <a href="../../1-computer_basics/Linux系统/Linux基础-查看和设置环境变量.html">
+            
+                    
+                    Linux 基础-查看和设置环境变量
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../../2-programming_language/">
+            
+                <a href="../../2-programming_language/">
+            
+                    
+                    2. 编程开发
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" >
+            
+                <span>
+            
+                    
+                    python
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1.1" data-path="../../2-programming_language/python3/Python3编程面试题.html">
+            
+                <a href="../../2-programming_language/python3/Python3编程面试题.html">
+            
+                    
+                    Python3编程面试题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" >
+            
+                <span>
+            
+                    
+                    shell
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.2.1" data-path="../../2-programming_language/shell/Shell语法基础.html">
+            
+                <a href="../../2-programming_language/shell/Shell语法基础.html">
+            
+                    
+                    Shell语法基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" >
+            
+                <span>
+            
+                    
+                    cpp
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.3.1" data-path="../../2-programming_language/cpp/C++%20Primer学习笔记.md">
+            
+                <span>
+            
+                    
+                    C++ Primer学习笔记
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3.2" data-path="../../2-programming_language/cpp/C++基础-资源管理:堆栈与RAII.md">
+            
+                <span>
+            
+                    
+                    C++基础-资源管理:堆栈与RAII
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3.3" data-path="../../2-programming_language/cpp/C++日期和时间编程总结.html">
+            
+                <a href="../../2-programming_language/cpp/C++日期和时间编程总结.html">
+            
+                    
+                    C++日期和时间编程总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3.4" data-path="../../2-programming_language/cpp/C++编程基础.html">
+            
+                <a href="../../2-programming_language/cpp/C++编程基础.html">
+            
+                    
+                    C++编程基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../../3-data_structure-algorithm/">
+            
+                <a href="../../3-data_structure-algorithm/">
+            
+                    
+                    3. 数据结构和算法
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" >
+            
+                <span>
+            
+                    
+                    数据结构
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1.1" data-path="../../3-data_structure-algorithm/array/数组.html">
+            
+                <a href="../../3-data_structure-algorithm/array/数组.html">
+            
+                    
+                    数组
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.2" data-path="../../3-data_structure-algorithm/linked_list/链表.html">
+            
+                <a href="../../3-data_structure-algorithm/linked_list/链表.html">
+            
+                    
+                    链表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.3" data-path="../../3-data_structure-algorithm/string/字符串解题模板.html">
+            
+                <a href="../../3-data_structure-algorithm/string/字符串解题模板.html">
+            
+                    
+                    字符串
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.4" data-path="../../3-data_structure-algorithm/stack_queue_heap/栈-先进后出.html">
+            
+                <a href="../../3-data_structure-algorithm/stack_queue_heap/栈-先进后出.html">
+            
+                    
+                    栈
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.5" data-path="../../3-data_structure-algorithm/stack_queue_heap/队列-先进先出.html">
+            
+                <a href="../../3-data_structure-algorithm/stack_queue_heap/队列-先进先出.html">
+            
+                    
+                    队列
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.6" data-path="../../3-data_structure-algorithm/skip_list/跳表.html">
+            
+                <a href="../../3-data_structure-algorithm/skip_list/跳表.html">
+            
+                    
+                    跳表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.7" >
+            
+                <span>
+            
+                    
+                    散列表
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1.7.1" data-path="../../3-data_structure-algorithm/hash_table/散列表(上">
+            
+                <span>
+            
+                    
+                    散列表上
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.7.2" data-path="../../3-data_structure-algorithm/hash_table/散列表(中">
+            
+                <span>
+            
+                    
+                    散列表中
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.7.3" data-path="../../3-data_structure-algorithm/hash_table/散列表(下">
+            
+                <span>
+            
+                    
+                    散列表下
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.7.4" data-path="../../3-data_structure-algorithm/hash_table/哈希算法.html">
+            
+                <a href="../../3-data_structure-algorithm/hash_table/哈希算法.html">
+            
+                    
+                    哈希算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.8" >
+            
+                <span>
+            
+                    
+                    二叉树
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1.8.1" data-path="../../3-data_structure-algorithm/tree/二叉树(上">
+            
+                <span>
+            
+                    
+                    二叉树遍历
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.8.2" data-path="../../3-data_structure-algorithm/tree/二叉树(下">
+            
+                <span>
+            
+                    
+                    二叉查找树
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.8.3" data-path="../../3-data_structure-algorithm/tree/红黑树(上">
+            
+                <span>
+            
+                    
+                    红黑树
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.9" >
+            
+                <span>
+            
+                    
+                    图
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1.9.1" data-path="../../3-data_structure-algorithm/map/图的表示.html">
+            
+                <a href="../../3-data_structure-algorithm/map/图的表示.html">
+            
+                    
+                    图的表示
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.9.2" data-path="../../3-data_structure-algorithm/map/广度和深度优先搜索.html">
+            
+                <a href="../../3-data_structure-algorithm/map/广度和深度优先搜索.html">
+            
+                    
+                    广度和深度优先搜索
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" >
+            
+                <span>
+            
+                    
+                    算法
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.2.1" data-path="../../3-data_structure-algorithm/two_pointers/">
+            
+                <a href="../../3-data_structure-algorithm/two_pointers/">
+            
+                    
+                    双指针
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.2" data-path="../../3-data_structure-algorithm/recursion/递归-需要满足三个条件.html">
+            
+                <a href="../../3-data_structure-algorithm/recursion/递归-需要满足三个条件.html">
+            
+                    
+                    递归
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.3" data-path="../../3-data_structure-algorithm/binary_search/二分查找.html">
+            
+                <a href="../../3-data_structure-algorithm/binary_search/二分查找.html">
+            
+                    
+                    二分查找
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.4" data-path="../../3-data_structure-algorithm/sort/排序.html">
+            
+                <a href="../../3-data_structure-algorithm/sort/排序.html">
+            
+                    
+                    排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.5" data-path="../../3-data_structure-algorithm/greedy/贪心算法.html">
+            
+                <a href="../../3-data_structure-algorithm/greedy/贪心算法.html">
+            
+                    
+                    贪心算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.6" data-path="../../3-data_structure-algorithm/divide_and_conquer/分治算法.html">
+            
+                <a href="../../3-data_structure-algorithm/divide_and_conquer/分治算法.html">
+            
+                    
+                    分治算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.7" data-path="../../3-data_structure-algorithm/backtracking/回溯算法.html">
+            
+                <a href="../../3-data_structure-algorithm/backtracking/回溯算法.html">
+            
+                    
+                    回溯算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.8" >
+            
+                <span>
+            
+                    
+                    动态规划算法
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.2.8.1" data-path="../../3-data_structure-algorithm/dp/初识动态规划.html">
+            
+                <a href="../../3-data_structure-algorithm/dp/初识动态规划.html">
+            
+                    
+                    初始动态规划
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.8.2" data-path="../../3-data_structure-algorithm/dp/动态规划理论.html">
+            
+                <a href="../../3-data_structure-algorithm/dp/动态规划理论.html">
+            
+                    
+                    动态规划理论
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.8.3" data-path="../../3-data_structure-algorithm/dp/动态规划实战.html">
+            
+                <a href="../../3-data_structure-algorithm/dp/动态规划实战.html">
+            
+                    
+                    动态规划实战
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../../3-data_structure-algorithm/剑指offer题解c++版.html">
+            
+                <a href="../../3-data_structure-algorithm/剑指offer题解c++版.html">
+            
+                    
+                    剑指offer题解c++版
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../../3-data_structure-algorithm/算法图解笔记.html">
+            
+                <a href="../../3-data_structure-algorithm/算法图解笔记.html">
+            
+                    
+                    算法图解笔记
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../../4-machine_learning/">
+            
+                <a href="../../4-machine_learning/">
+            
+                    
+                    4. 机器学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../../4-machine_learning/1-西瓜书笔记.md">
+            
+                <span>
+            
+                    
+                    1-西瓜书笔记
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../../4-machine_learning/2-机器学习基础.md">
+            
+                <span>
+            
+                    
+                    2-机器学习基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../../4-machine_learning/3-常见机器学习算法.html">
+            
+                <a href="../../4-machine_learning/3-常见机器学习算法.html">
+            
+                    
+                    3-常见机器学习算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../../4-machine_learning/4-机器学习面试题.html">
+            
+                <a href="../../4-machine_learning/4-机器学习面试题.html">
+            
+                    
+                    4-机器学习面试题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../../5-deep_learning/">
+            
+                <a href="../../5-deep_learning/">
+            
+                    
+                    5. 深度学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" >
+            
+                <span>
+            
+                    
+                    backbone 论文解读
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1.1" data-path="../../5-deep_learning/backbone论文解读/DenseNet网络理解.html">
+            
+                <a href="../../5-deep_learning/backbone论文解读/DenseNet网络理解.html">
+            
+                    
+                    DenseNet网络理解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.2" data-path="../../5-deep_learning/backbone论文解读/ResNetv2论文解读.html">
+            
+                <a href="../../5-deep_learning/backbone论文解读/ResNetv2论文解读.html">
+            
+                    
+                    ResNetv2论文解读
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.3" data-path="../../5-deep_learning/backbone论文解读/经典backbone总结.html">
+            
+                <a href="../../5-deep_learning/backbone论文解读/经典backbone总结.html">
+            
+                    
+                    经典backbone总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" >
+            
+                <span>
+            
+                    
+                    深度学习框架笔记
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.2.1" data-path="../../5-deep_learning/ml-dl-框架笔记/MXNet学习笔记.html">
+            
+                <a href="../../5-deep_learning/ml-dl-框架笔记/MXNet学习笔记.html">
+            
+                    
+                    MXNet学习笔记
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.2" data-path="../../5-deep_learning/ml-dl-框架笔记/Pytorch基础-tensor数据结构.html">
+            
+                <a href="../../5-deep_learning/ml-dl-框架笔记/Pytorch基础-tensor数据结构.html">
+            
+                    
+                    Pytorch基础-tensor数据结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.3" data-path="../../5-deep_learning/ml-dl-框架笔记/Pytorch基础-张量基本操作.html">
+            
+                <a href="../../5-deep_learning/ml-dl-框架笔记/Pytorch基础-张量基本操作.html">
+            
+                    
+                    Pytorch基础-张量基本操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" >
+            
+                <span>
+            
+                    
+                    深度学习基础
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.3.1" data-path="../../5-deep_learning/深度学习基础/1-深度学习算法基础.html">
+            
+                <a href="../../5-deep_learning/深度学习基础/1-深度学习算法基础.html">
+            
+                    
+                    1-深度学习算法基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3.2" data-path="../../5-deep_learning/深度学习基础/2-使用CNN进行图像分类.html">
+            
+                <a href="../../5-deep_learning/深度学习基础/2-使用CNN进行图像分类.html">
+            
+                    
+                    2-使用CNN进行图像分类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3.3" data-path="../../5-deep_learning/深度学习基础/CNN基本部件-常用激活函数.html">
+            
+                <a href="../../5-deep_learning/深度学习基础/CNN基本部件-常用激活函数.html">
+            
+                    
+                    CNN基本部件-常用激活函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../../5-deep_learning/深度学习面试题.html">
+            
+                <a href="../../5-deep_learning/深度学习面试题.html">
+            
+                    
+                    深度学习面试题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../../6-computer_vision/">
+            
+                <a href="../../6-computer_vision/">
+            
+                    
+                    6. 计算机视觉
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" >
+            
+                <span>
+            
+                    
+                    数字图像处理
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1.1" data-path="../../6-computer_vision/数字图像处理/0-数字图像处理笔记.html">
+            
+                <a href="../../6-computer_vision/数字图像处理/0-数字图像处理笔记.html">
+            
+                    
+                    0-数字图像处理笔记
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.1.2" data-path="../../6-computer_vision/数字图像处理/1-数字图像处理基础.html">
+            
+                <a href="../../6-computer_vision/数字图像处理/1-数字图像处理基础.html">
+            
+                    
+                    1-数字图像处理基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.1.3" data-path="../../6-computer_vision/数字图像处理/2-OpenCV3图像处理笔记.html">
+            
+                <a href="../../6-computer_vision/数字图像处理/2-OpenCV3图像处理笔记.html">
+            
+                    
+                    2-OpenCV3图像处理笔记
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.1.4" data-path="../../6-computer_vision/数字图像处理/3-视频编解码基础.html">
+            
+                <a href="../../6-computer_vision/数字图像处理/3-视频编解码基础.html">
+            
+                    
+                    3-视频编解码基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" >
+            
+                <span>
+            
+                    
+                    2D 目标检测
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.2.1" data-path="../../6-computer_vision/2D目标检测/0-目标检测模型的基础.html">
+            
+                <a href="../../6-computer_vision/2D目标检测/0-目标检测模型的基础.html">
+            
+                    
+                    0-目标检测模型的基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.2" data-path="../../6-computer_vision/2D目标检测/1-目标检测模型的评价标准-AP与mAP.html">
+            
+                <a href="../../6-computer_vision/2D目标检测/1-目标检测模型的评价标准-AP与mAP.html">
+            
+                    
+                    1-目标检测模型的评价标准-AP与mAP
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.3" data-path="../../6-computer_vision/2D目标检测/2-Faster-RCNN网络详解.html">
+            
+                <a href="../../6-computer_vision/2D目标检测/2-Faster-RCNN网络详解.html">
+            
+                    
+                    2-Faster-RCNN网络详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.4" data-path="../../6-computer_vision/2D目标检测/3-FPN网络详解.html">
+            
+                <a href="../../6-computer_vision/2D目标检测/3-FPN网络详解.html">
+            
+                    
+                    3-FPN网络详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.5" data-path="../../6-computer_vision/2D目标检测/4-Mask-RCNN详解.html">
+            
+                <a href="../../6-computer_vision/2D目标检测/4-Mask-RCNN详解.html">
+            
+                    
+                    4-Mask-RCNN详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.6" data-path="../../6-computer_vision/2D目标检测/5-Cascade-RCNN论文解读.html">
+            
+                <a href="../../6-computer_vision/2D目标检测/5-Cascade-RCNN论文解读.html">
+            
+                    
+                    5-Cascade-RCNN论文解读
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.7" data-path="../../6-computer_vision/2D目标检测/6-RetinaNet网络详解.html">
+            
+                <a href="../../6-computer_vision/2D目标检测/6-RetinaNet网络详解.html">
+            
+                    
+                    6-RetinaNet网络详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.8" data-path="../../6-computer_vision/2D目标检测/7-YOLOv1-v5论文解读.html">
+            
+                <a href="../../6-computer_vision/2D目标检测/7-YOLOv1-v5论文解读.html">
+            
+                    
+                    7-YOLOv1-v5论文解读
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.9" data-path="../../6-computer_vision/2D目标检测/8-Scaled-YOLOv4论文解读.html">
+            
+                <a href="../../6-computer_vision/2D目标检测/8-Scaled-YOLOv4论文解读.html">
+            
+                    
+                    8-Scaled-YOLOv4论文解读
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" >
+            
+                <span>
+            
+                    
+                    3D 视觉算法
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.3.1" data-path="../../6-computer_vision/3D视觉算法/3D视觉算法初学概述.html">
+            
+                <a href="../../6-computer_vision/3D视觉算法/3D视觉算法初学概述.html">
+            
+                    
+                    3D视觉算法初学概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" >
+            
+                <span>
+            
+                    
+                    工业视觉
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.4.1" data-path="../../6-computer_vision/工业视觉/Halcon快速入门.html">
+            
+                <a href="../../6-computer_vision/工业视觉/Halcon快速入门.html">
+            
+                    
+                    Halcon快速入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" >
+            
+                <span>
+            
+                    
+                    项目实践
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.5.1" data-path="../../6-computer_vision/项目实践/GitHub车牌检测识别项目调研.html">
+            
+                <a href="../../6-computer_vision/项目实践/GitHub车牌检测识别项目调研.html">
+            
+                    
+                    GitHub车牌检测识别项目调研
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    7. 模型压缩
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" >
+            
+                <span>
+            
+                    
+                    轻量级网络论文解析
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1.1" data-path="../轻量级网络论文解析/CSPNet论文详解.html">
+            
+                <a href="../轻量级网络论文解析/CSPNet论文详解.html">
+            
+                    
+                    CSPNet论文详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.1.2" data-path="../轻量级网络论文解析/MobileNetv1论文详解.html">
+            
+                <a href="../轻量级网络论文解析/MobileNetv1论文详解.html">
+            
+                    
+                    MobileNetv1论文详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.1.3" data-path="../轻量级网络论文解析/RepVGG论文详解.html">
+            
+                <a href="../轻量级网络论文解析/RepVGG论文详解.html">
+            
+                    
+                    RepVGG论文详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.1.4" data-path="../轻量级网络论文解析/ShuffleNetv2论文详解.html">
+            
+                <a href="../轻量级网络论文解析/ShuffleNetv2论文详解.html">
+            
+                    
+                    ShuffleNetv2论文详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.1.5" data-path="../轻量级网络论文解析/VoVNet论文解读.html">
+            
+                <a href="../轻量级网络论文解析/VoVNet论文解读.html">
+            
+                    
+                    VoVNet论文解读
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.1.6" data-path="../轻量级网络论文解析/轻量级模型设计与部署总结.html">
+            
+                <a href="../轻量级网络论文解析/轻量级模型设计与部署总结.html">
+            
+                    
+                    轻量级模型设计与部署总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" >
+            
+                <span>
+            
+                    
+                    神经网络量化
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.9.2.1" data-path="神经网络量化基础.html">
+            
+                <a href="神经网络量化基础.html">
+            
+                    
+                    神经网络量化
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../../8-high-performance_computing/">
+            
+                <a href="../../8-high-performance_computing/">
+            
+                    
+                    8. 高性能计算
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../../8-high-performance_computing/0-处理器基础知识.html">
+            
+                <a href="../../8-high-performance_computing/0-处理器基础知识.html">
+            
+                    
+                    0-处理器基础知识
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="../../8-high-performance_computing/1-卷积算法的优化.html">
+            
+                <a href="../../8-high-performance_computing/1-卷积算法的优化.html">
+            
+                    
+                    1-卷积算法的优化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="../../8-high-performance_computing/2-模型编译优化.html">
+            
+                <a href="../../8-high-performance_computing/2-模型编译优化.html">
+            
+                    
+                    2-模型编译优化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="../../8-high-performance_computing/通用矩阵乘算法从入门到实践.html">
+            
+                <a href="../../8-high-performance_computing/通用矩阵乘算法从入门到实践.html">
+            
+                    
+                    通用矩阵乘算法从入门到实践
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../../9-model_deploy/">
+            
+                <a href="../../9-model_deploy/">
+            
+                    
+                    9. 模型部署
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" >
+            
+                <span>
+            
+                    
+                    推理框架
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1.1" data-path="../../9-model_deploy/推理框架/ONNX模型分析与使用.html">
+            
+                <a href="../../9-model_deploy/推理框架/ONNX模型分析与使用.html">
+            
+                    
+                    ONNX模型分析与使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.1.2" data-path="../../9-model_deploy/推理框架/TensorRT基础笔记.html">
+            
+                <a href="../../9-model_deploy/推理框架/TensorRT基础笔记.html">
+            
+                    
+                    TensorRT基础笔记
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.2" data-path="../../9-model_deploy/0-模型压缩部署概述.html">
+            
+                <a href="../../9-model_deploy/0-模型压缩部署概述.html">
+            
+                    
+                    0-模型压缩部署概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.3" data-path="../../9-model_deploy/1-神经网络模型复杂度分析.html">
+            
+                <a href="../../9-model_deploy/1-神经网络模型复杂度分析.html">
+            
+                    
+                    1-神经网络模型复杂度分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.4" data-path="../../9-model_deploy/2-模型转换总结.html">
+            
+                <a href="../../9-model_deploy/2-模型转换总结.html">
+            
+                    
+                    2-模型转换
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.5" data-path="../../9-model_deploy/3-模型板端推理.html">
+            
+                <a href="../../9-model_deploy/3-模型板端推理.html">
+            
+                    
+                    3-模型板端推理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../../interview_summary/">
+            
+                <a href="../../interview_summary/">
+            
+                    
+                    Interview Summary
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="../../interview_summary/1-计算机视觉岗2019届实习面经.html">
+            
+                <a href="../../interview_summary/1-计算机视觉岗2019届实习面经.html">
+            
+                    
+                    计算机视觉岗 2019 届实习面经.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="../../interview_summary/2-计算机视觉岗2019届暑期实习应聘总结.html">
+            
+                <a href="../../interview_summary/2-计算机视觉岗2019届暑期实习应聘总结.html">
+            
+                    
+                    计算机视觉岗 2019 届暑期实习应聘总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="../../interview_summary/3-2019届地平线机器人实习总结.html">
+            
+                <a href="../../interview_summary/3-2019届地平线机器人实习总结.html">
+            
+                    
+                    2019 届地平线机器人实习总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.4" data-path="../../interview_summary/4-计算机视觉岗2020届秋招面经.html">
+            
+                <a href="../../interview_summary/4-计算机视觉岗2020届秋招面经.html">
+            
+                    
+                    计算机视觉岗 2020 届秋招面经
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.5" data-path="../../interview_summary/5-视觉算法岗2021年社招面经.html">
+            
+                <a href="../../interview_summary/5-视觉算法岗2021年社招面经.html">
+            
+                    
+                    视觉算法岗 2021 年社招面经
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >神经网络量化</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <ul>
+<li><a href="#1&#x6A21;&#x578B;&#x91CF;&#x5316;&#x6982;&#x8FF0;">1&#xFF0C;&#x6A21;&#x578B;&#x91CF;&#x5316;&#x6982;&#x8FF0;</a><ul>
+<li><a href="#11&#x6A21;&#x578B;&#x91CF;&#x5316;&#x4F18;&#x70B9;">1.1&#xFF0C;&#x6A21;&#x578B;&#x91CF;&#x5316;&#x4F18;&#x70B9;</a></li>
+<li><a href="#12&#x6A21;&#x578B;&#x91CF;&#x5316;&#x7684;&#x65B9;&#x6848;">1.2&#xFF0C;&#x6A21;&#x578B;&#x91CF;&#x5316;&#x7684;&#x65B9;&#x6848;</a><ul>
+<li><a href="#121ptq-&#x7406;&#x89E3;">1.2.1&#xFF0C;PTQ &#x7406;&#x89E3;</a></li>
+</ul>
+</li>
+<li><a href="#13&#x91CF;&#x5316;&#x7684;&#x5206;&#x7C7B;">1.3&#xFF0C;&#x91CF;&#x5316;&#x7684;&#x5206;&#x7C7B;</a><ul>
+<li><a href="#131&#x7EBF;&#x6027;&#x91CF;&#x5316;&#x6982;&#x8FF0;">1.3.1&#xFF0C;&#x7EBF;&#x6027;&#x91CF;&#x5316;&#x6982;&#x8FF0;</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#2&#x91CF;&#x5316;&#x7B97;&#x672F;">2&#xFF0C;&#x91CF;&#x5316;&#x7B97;&#x672F;</a><ul>
+<li><a href="#21&#x5B9A;&#x70B9;&#x548C;&#x6D6E;&#x70B9;">2.1&#xFF0C;&#x5B9A;&#x70B9;&#x548C;&#x6D6E;&#x70B9;</a></li>
+<li><a href="#22&#x91CF;&#x5316;&#x6D6E;&#x70B9;">2.2&#xFF0C;&#x91CF;&#x5316;&#x6D6E;&#x70B9;</a></li>
+<li><a href="#22&#x91CF;&#x5316;&#x7B97;&#x672F;">2.2&#xFF0C;&#x91CF;&#x5316;&#x7B97;&#x672F;</a></li>
+</ul>
+</li>
+<li><a href="#3&#x91CF;&#x5316;&#x65B9;&#x6CD5;&#x7684;&#x6539;&#x8FDB;">3&#xFF0C;&#x91CF;&#x5316;&#x65B9;&#x6CD5;&#x7684;&#x6539;&#x8FDB;</a><ul>
+<li><a href="#31&#x6D6E;&#x70B9;&#x6570;&#x52A8;&#x6001;&#x8303;&#x56F4;&#x9009;&#x62E9;">3.1&#xFF0C;&#x6D6E;&#x70B9;&#x6570;&#x52A8;&#x6001;&#x8303;&#x56F4;&#x9009;&#x62E9;</a></li>
+<li><a href="#32&#x6700;&#x5927;&#x6700;&#x5C0F;&#x503C;minmax">3.2&#xFF0C;&#x6700;&#x5927;&#x6700;&#x5C0F;&#x503C;&#xFF08;MinMax&#xFF09;</a></li>
+<li><a href="#33&#x6ED1;&#x52A8;&#x5E73;&#x5747;&#x6700;&#x5927;&#x6700;&#x5C0F;&#x503C;movingaverageminmax">3.3&#xFF0C;&#x6ED1;&#x52A8;&#x5E73;&#x5747;&#x6700;&#x5927;&#x6700;&#x5C0F;&#x503C;(MovingAverageMinMax)</a></li>
+<li><a href="#34kl-&#x8DDD;&#x79BB;&#x91C7;&#x6837;&#x65B9;&#x6CD5;kullbackleibler-divergence">3.4&#xFF0C;KL &#x8DDD;&#x79BB;&#x91C7;&#x6837;&#x65B9;&#x6CD5;(Kullback&#x2013;Leibler divergence)</a></li>
+<li><a href="#35&#x603B;&#x7ED3;">3.5&#xFF0C;&#x603B;&#x7ED3;</a></li>
+</ul>
+</li>
+<li><a href="#4&#x91CF;&#x5316;&#x5B9E;&#x6218;&#x7ECF;&#x9A8C;">4&#xFF0C;&#x91CF;&#x5316;&#x5B9E;&#x6218;&#x7ECF;&#x9A8C;</a></li>
+<li><a href="#&#x53C2;&#x8003;&#x8D44;&#x6599;">&#x53C2;&#x8003;&#x8D44;&#x6599;</a></li>
+</ul>
+<blockquote>
+<p>&#x672C;&#x6587;&#x4E3A;&#x5BF9;&#x76EE;&#x524D;&#x7EBF;&#x6027;&#x91CF;&#x5316;&#x4F18;&#x70B9;&#x3001;&#x539F;&#x7406;&#x3001;&#x65B9;&#x6CD5;&#x548C;&#x5B9E;&#x6218;&#x5185;&#x5BB9;&#x7684;&#x603B;&#x7ED3;&#xFF0C;&#x4E3B;&#x8981;&#x53C2;&#x8003; <a href="https://jackwish.net/2019/neural-network-quantization-introduction-chn.html" target="_blank">&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x91CF;&#x5316;&#x7B80;&#x4ECB;</a> &#x5E76;&#x52A0;&#x4EE5;&#x81EA;&#x5DF1;&#x7684;&#x7406;&#x89E3;&#x548C;&#x603B;&#x7ED3;&#xFF0C;&#x9002;&#x5408;&#x521D;&#x5B66;&#x8005;&#x9605;&#x8BFB;&#x548C;&#x81EA;&#x8EAB;&#x590D;&#x4E60;&#x7528;&#x3002;</p>
+</blockquote>
+<h2 id="1&#xFF0C;&#x6A21;&#x578B;&#x91CF;&#x5316;&#x6982;&#x8FF0;">1&#xFF0C;&#x6A21;&#x578B;&#x91CF;&#x5316;&#x6982;&#x8FF0;</h2>
+<h3 id="11&#xFF0C;&#x6A21;&#x578B;&#x91CF;&#x5316;&#x4F18;&#x70B9;">1.1&#xFF0C;&#x6A21;&#x578B;&#x91CF;&#x5316;&#x4F18;&#x70B9;</h3>
+<p>&#x6A21;&#x578B;&#x91CF;&#x5316;&#x662F;&#x6307;&#x5C06;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x7684;&#x6D6E;&#x70B9;&#x7B97;&#x6CD5;&#x8F6C;&#x6362;&#x4E3A;&#x5B9A;&#x70B9;&#x3002;&#x91CF;&#x5316;&#x6709;&#x4E00;&#x4E9B;&#x76F8;&#x4F3C;&#x7684;&#x672F;&#x8BED;&#xFF0C;&#x4F4E;&#x7CBE;&#x5EA6;&#xFF08;Low precision&#xFF09;&#x53EF;&#x80FD;&#x662F;&#x5E38;&#x89C1;&#x7684;&#x3002;</p>
+<ul>
+<li>&#x4F4E;&#x7CBE;&#x5EA6;&#x6A21;&#x578B;&#x8868;&#x793A;&#x6A21;&#x578B;&#x6743;&#x91CD;&#x6570;&#x503C;&#x683C;&#x5F0F;&#x4E3A; <code>FP16</code>&#xFF08;&#x534A;&#x7CBE;&#x5EA6;&#x6D6E;&#x70B9;&#xFF09;&#x6216;&#x8005; <code>INT8</code>&#xFF08;8&#x4F4D;&#x7684;&#x5B9A;&#x70B9;&#x6574;&#x6570;&#xFF09;&#xFF0C;&#x4F46;&#x662F;&#x76EE;&#x524D;&#x4F4E;&#x7CBE;&#x5EA6;&#x5F80;&#x5F80;&#x5C31;&#x6307;&#x4EE3; <code>INT8</code>&#x3002;</li>
+<li>&#x5E38;&#x89C4;&#x7CBE;&#x5EA6;&#x6A21;&#x578B;&#x5219;&#x4E00;&#x822C;&#x8868;&#x793A;&#x6A21;&#x578B;&#x6743;&#x91CD;&#x6570;&#x503C;&#x683C;&#x5F0F;&#x4E3A; <code>FP32</code>&#xFF08;32&#x4F4D;&#x6D6E;&#x70B9;&#xFF0C;&#x5355;&#x7CBE;&#x5EA6;&#xFF09;&#x3002;</li>
+<li>&#x6DF7;&#x5408;&#x7CBE;&#x5EA6;&#xFF08;Mixed precision&#xFF09;&#x5219;&#x5728;&#x6A21;&#x578B;&#x4E2D;&#x540C;&#x65F6;&#x4F7F;&#x7528; <code>FP32</code> &#x548C; <code>FP16</code> &#x7684;&#x6743;&#x91CD;&#x6570;&#x503C;&#x683C;&#x5F0F;&#x3002; <code>FP16</code> &#x51CF;&#x5C11;&#x4E86;&#x4E00;&#x534A;&#x7684;&#x5185;&#x5B58;&#x5927;&#x5C0F;&#xFF0C;&#x4F46;&#x6709;&#x4E9B;&#x53C2;&#x6570;&#x6216;&#x64CD;&#x4F5C;&#x7B26;&#x5FC5;&#x987B;&#x91C7;&#x7528; <code>FP32</code> &#x683C;&#x5F0F;&#x624D;&#x80FD;&#x4FDD;&#x6301;&#x51C6;&#x786E;&#x5EA6;&#x3002;</li>
+</ul>
+<p>&#x6A21;&#x578B;&#x91CF;&#x5316;&#x6709;&#x4EE5;&#x4E0B;&#x597D;&#x5904;&#xFF1A;</p>
+<blockquote>
+<p>&#x53C2;&#x8003;<a href="https://mp.weixin.qq.com/s/9QeVVESP3_rBZ6n_D96lwg" target="_blank"> TensorFlow &#x6A21;&#x578B;&#x4F18;&#x5316;&#xFF1A;&#x6A21;&#x578B;&#x91CF;&#x5316;-&#x5F20;&#x76CA;&#x65B0;</a></p>
+</blockquote>
+<ul>
+<li><strong>&#x51CF;&#x5C0F;&#x6A21;&#x578B;&#x5927;&#x5C0F;</strong>&#xFF1A;&#x5982; <code>int8</code> &#x91CF;&#x5316;&#x53EF;&#x51CF;&#x5C11; <code>75%</code> &#x7684;&#x6A21;&#x578B;&#x5927;&#x5C0F;&#xFF0C;<code>int8</code> &#x91CF;&#x5316;&#x6A21;&#x578B;&#x5927;&#x5C0F;&#x4E00;&#x822C;&#x4E3A; <code>32</code> &#x4F4D;&#x6D6E;&#x70B9;&#x6A21;&#x578B;&#x5927;&#x5C0F;&#x7684; <code>1/4</code>&#xFF1A;<ul>
+<li>&#x51CF;&#x5C11;&#x5B58;&#x50A8;&#x7A7A;&#x95F4;&#xFF1A;&#x5728;&#x7AEF;&#x4FA7;&#x5B58;&#x50A8;&#x7A7A;&#x95F4;&#x4E0D;&#x8DB3;&#x65F6;&#x66F4;&#x5177;&#x5907;&#x610F;&#x4E49;&#x3002;</li>
+<li>&#x51CF;&#x5C11;&#x5185;&#x5B58;&#x5360;&#x7528;&#xFF1A;&#x66F4;&#x5C0F;&#x7684;&#x6A21;&#x578B;&#x5F53;&#x7136;&#x5C31;&#x610F;&#x5473;&#x7740;&#x4E0D;&#x9700;&#x8981;&#x66F4;&#x591A;&#x7684;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#x3002;</li>
+<li>&#x51CF;&#x5C11;&#x8BBE;&#x5907;&#x529F;&#x8017;&#xFF1A;&#x5185;&#x5B58;&#x8017;&#x7528;&#x5C11;&#x4E86;&#x63A8;&#x7406;&#x901F;&#x5EA6;&#x5FEB;&#x4E86;&#x81EA;&#x7136;&#x51CF;&#x5C11;&#x4E86;&#x8BBE;&#x5907;&#x529F;&#x8017;&#xFF1B;</li>
+</ul>
+</li>
+<li><strong>&#x52A0;&#x5FEB;&#x63A8;&#x7406;&#x901F;&#x5EA6;</strong>&#xFF0C;&#x8BBF;&#x95EE;&#x4E00;&#x6B21; <code>32</code> &#x4F4D;&#x6D6E;&#x70B9;&#x578B;&#x53EF;&#x4EE5;&#x8BBF;&#x95EE;&#x56DB;&#x6B21; <code>int8</code> &#x6574;&#x578B;&#xFF0C;&#x6574;&#x578B;&#x8FD0;&#x7B97;&#x6BD4;&#x6D6E;&#x70B9;&#x578B;&#x8FD0;&#x7B97;&#x66F4;&#x5FEB;&#xFF1B;<code>CPU</code> &#x7528; <code>int8</code> &#x8BA1;&#x7B97;&#x7684;&#x901F;&#x5EA6;&#x66F4;&#x5FEB;</li>
+<li><strong>&#x67D0;&#x4E9B;&#x786C;&#x4EF6;&#x52A0;&#x901F;&#x5668;&#x5982; DSP/NPU &#x53EA;&#x652F;&#x6301; int8</strong>&#x3002;&#x6BD4;&#x5982;&#x6709;&#x4E9B;&#x5FAE;&#x5904;&#x7406;&#x5668;&#x5C5E;&#x4E8E; <code>8</code> &#x4F4D;&#x7684;&#xFF0C;&#x4F4E;&#x529F;&#x8017;&#x8FD0;&#x884C;&#x6D6E;&#x70B9;&#x8FD0;&#x7B97;&#x901F;&#x5EA6;&#x6162;&#xFF0C;&#x9700;&#x8981;&#x8FDB;&#x884C; <code>8bit</code> &#x91CF;&#x5316;&#x3002;</li>
+</ul>
+<p>&#x603B;&#x7ED3;&#xFF1A;&#x6A21;&#x578B;&#x91CF;&#x5316;&#x4E3B;&#x8981;&#x610F;&#x4E49;&#x5C31;&#x662F;&#x52A0;&#x5FEB;&#x6A21;&#x578B;&#x7AEF;&#x4FA7;&#x7684;&#x63A8;&#x7406;&#x901F;&#x5EA6;&#xFF0C;&#x5E76;&#x964D;&#x4F4E;&#x8BBE;&#x5907;&#x529F;&#x8017;&#x548C;&#x51CF;&#x5C11;&#x5B58;&#x50A8;&#x7A7A;&#x95F4;&#xFF0C;</p>
+<p>&#x5DE5;&#x4E1A;&#x754C;&#x4E00;&#x822C;&#x53EA;&#x4F7F;&#x7528; <code>INT8</code> &#x91CF;&#x5316;&#x6A21;&#x578B;&#xFF0C;&#x5982; <code>NCNN</code>&#x3001;<code>TNN</code> &#x7B49;&#x79FB;&#x52A8;&#x7AEF;&#x6A21;&#x578B;&#x63A8;&#x7406;&#x6846;&#x67B6;&#x90FD;&#x652F;&#x6301;&#x6A21;&#x578B;&#x7684; <code>INT8</code> &#x91CF;&#x5316;&#x548C;&#x91CF;&#x5316;&#x6A21;&#x578B;&#x7684;&#x63A8;&#x7406;&#x529F;&#x80FD;&#x3002;</p>
+<p>&#x901A;&#x5E38;&#xFF0C;&#x53EF;&#x4EE5;&#x6839;&#x636E; <code>FP32</code> &#x548C; <code>INT8</code> &#x7684;&#x8F6C;&#x6362;&#x673A;&#x5236;&#x5BF9;<strong>&#x91CF;&#x5316;&#x6A21;&#x578B;&#x63A8;&#x7406;&#x65B9;&#x6848;</strong>&#x8FDB;&#x884C;&#x5206;&#x7C7B;&#x3002;&#x4E00;&#x4E9B;&#x6846;&#x67B6;&#x7B80;&#x5355;&#x5730;&#x5F15;&#x5165;&#x4E86; <code>Quantize</code> &#x548C; <code>Dequantize</code> &#x5C42;&#xFF0C;&#x5F53;&#x4ECE;&#x5377;&#x79EF;&#x6216;&#x5168;&#x94FE;&#x63A5;&#x5C42;&#x9001;&#x5165;&#x6216;&#x53D6;&#x51FA;&#x65F6;&#xFF0C;&#x5B83;&#x5C06; <code>FP32</code> &#x8F6C;&#x6362;&#x4E3A; <code>INT8</code> &#x6216;&#x76F8;&#x53CD;&#x3002;&#x5728;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5982;&#x4E0B;&#x56FE;&#x7684;&#x4E0A;&#x534A;&#x90E8;&#x5206;&#x6240;&#x793A;&#xFF0C;&#x6A21;&#x578B;&#x672C;&#x8EAB;&#x548C;&#x8F93;&#x5165;/&#x8F93;&#x51FA;&#x91C7;&#x7528; <code>FP32</code> &#x683C;&#x5F0F;&#x3002;&#x6DF1;&#x5EA6;&#x5B66;&#x4E60;&#x63A8;&#x7406;&#x6846;&#x67B6;&#x52A0;&#x8F7D;&#x6A21;&#x578B;&#x65F6;&#xFF0C;&#x91CD;&#x5199;&#x7F51;&#x7EDC;&#x4EE5;&#x63D2;&#x5165; <code>Quantize</code> &#x548C; <code>Dequantize</code> &#x5C42;&#xFF0C;&#x5E76;&#x5C06;&#x6743;&#x91CD;&#x8F6C;&#x6362;&#x4E3A; <code>INT8</code> &#x683C;&#x5F0F;&#x3002;</p>
+<blockquote>
+<p>&#x6CE8;&#x610F;&#xFF0C;&#x4E4B;&#x6240;&#x4EE5;&#x8981;&#x63D2;&#x5165;&#x53CD;&#x91CF;&#x5316;&#x5C42;&#xFF08;<code>Dequantize</code>&#xFF09;&#xFF0C;&#x662F;&#x56E0;&#x4E3A;&#x91CF;&#x5316;&#x6280;&#x672F;&#x7684;&#x65E9;&#x671F;&#xFF0C;&#x53EA;&#x6709;&#x5377;&#x79EF;&#x7B97;&#x5B50;&#x652F;&#x6301;&#x91CF;&#x5316;&#xFF0C;&#x4F46;&#x5B9E;&#x9645;&#x7F51;&#x7EDC;&#x4E2D;&#x8FD8;&#x5305;&#x542B;&#x5176;&#x4ED6;&#x7B97;&#x5B50;&#xFF0C;&#x800C;&#x5176;&#x4ED6;&#x7B97;&#x5B50;&#x53C8;&#x53EA;&#x652F;&#x6301; <code>FP32</code> &#x8BA1;&#x7B97;&#xFF0C;&#x56E0;&#x6B64;&#x9700;&#x8981;&#x628A; INT8 &#x8F6C;&#x6362;&#x6210; FP32&#x3002;&#x4F46;&#x968F;&#x7740;&#x6280;&#x672F;&#x7684;&#x8FED;&#x4EE3;&#xFF0C;&#x540E;&#x671F;&#x4F30;&#x8BA1;&#x4F1A;&#x9010;&#x6B65;&#x6539;&#x5584;&#x4E43;&#x81F3;&#x6D88;&#x9664;  <code>Dequantize</code> &#x64CD;&#x4F5C;&#xFF0C;&#x8FBE;&#x6210;&#x5168;&#x7F51;&#x7EDC;&#x7684;&#x91CF;&#x5316;&#x8FD0;&#x884C;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x90E8;&#x5206;&#x7B97;&#x5B50;&#x91CF;&#x5316;&#x8FD0;&#x884C;&#x3002;</p>
+</blockquote>
+<p><img src="../data/images/&#x6A21;&#x578B;&#x91CF;&#x5316;/&#x91CF;&#x5316;&#x6A21;&#x578B;&#x7684;&#x63A8;&#x7406;.svg" alt="&#x91CF;&#x5316;&#x6A21;&#x578B;&#x7684;&#x63A8;&#x7406;"></p>
+<blockquote>
+<p>&#x56FE;&#x56DB;&#xFF1A;&#x6DF7;&#x5408; FP32/INT8 &#x548C;&#x7EAF; INT8 &#x63A8;&#x7406;&#x3002;&#x7EA2;&#x8272;&#x4E3A; FP32&#xFF0C;&#x7EFF;&#x8272;&#x4E3A; INT8 &#x6216;&#x91CF;&#x5316;&#x3002;</p>
+</blockquote>
+<p>&#x5176;&#x4ED6;&#x4E00;&#x4E9B;&#x6846;&#x67B6;&#x5C06;&#x7F51;&#x7EDC;&#x6574;&#x4F53;&#x8F6C;&#x6362;&#x4E3A; <code>INT8</code> &#x683C;&#x5F0F;&#xFF0C;&#x56E0;&#x6B64;&#x5728;&#x63A8;&#x7406;&#x671F;&#x95F4;&#x6CA1;&#x6709;&#x683C;&#x5F0F;&#x8F6C;&#x6362;&#xFF0C;&#x5982;&#x4E0A;&#x56FE;&#x7684;&#x4E0B;&#x534A;&#x90E8;&#x5206;&#x3002;&#x8BE5;&#x65B9;&#x6CD5;&#x8981;&#x6C42;&#x7B97;&#x5B50;&#xFF08;<code>Operator</code>&#xFF09;&#x90FD;&#x652F;&#x6301;&#x91CF;&#x5316;&#xFF0C;&#x56E0;&#x4E3A;&#x8FD0;&#x7B97;&#x7B26;&#x4E4B;&#x95F4;&#x7684;&#x6570;&#x636E;&#x6D41;&#x662F; <code>INT8</code>&#x3002;&#x5BF9;&#x4E8E;&#x5C1A;&#x672A;&#x652F;&#x6301;&#x7684;&#x90A3;&#x4E9B;&#xFF0C;&#x5B83;&#x53EF;&#x80FD;&#x4F1A;&#x56DE;&#x843D;&#x5230; <code>Quantize/Dequantize</code> &#x65B9;&#x6848;&#x3002;</p>
+<h3 id="12&#xFF0C;&#x6A21;&#x578B;&#x91CF;&#x5316;&#x7684;&#x65B9;&#x6848;">1.2&#xFF0C;&#x6A21;&#x578B;&#x91CF;&#x5316;&#x7684;&#x65B9;&#x6848;</h3>
+<p>&#x5728;&#x5B9E;&#x8DF5;&#x4E2D;&#x5C06;&#x6D6E;&#x70B9;&#x6A21;&#x578B;&#x8F6C;&#x4E3A;&#x91CF;&#x5316;&#x6A21;&#x578B;&#x7684;&#x65B9;&#x6CD5;&#x6709;&#x4EE5;&#x4E0B;&#x4E09;&#x79CD;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<ol>
+<li><code>data free</code>&#xFF1A;&#x4E0D;&#x4F7F;&#x7528;&#x6821;&#x51C6;&#x96C6;&#xFF0C;&#x4F20;&#x7EDF;&#x7684;&#x65B9;&#x6CD5;&#x76F4;&#x63A5;&#x5C06;&#x6D6E;&#x70B9;&#x53C2;&#x6570;&#x8F6C;&#x5316;&#x6210;&#x91CF;&#x5316;&#x6570;&#xFF0C;&#x4F7F;&#x7528;&#x4E0A;&#x975E;&#x5E38;&#x7B80;&#x5355;&#xFF0C;&#x4F46;&#x662F;&#x4E00;&#x822C;&#x4F1A;&#x5E26;&#x6765;&#x5F88;&#x5927;&#x7684;&#x7CBE;&#x5EA6;&#x635F;&#x5931;&#xFF0C;&#x4F46;&#x662F;&#x9AD8;&#x901A;&#x6700;&#x65B0;&#x7684;&#x8BBA;&#x6587; <code>DFQ</code> &#x4E0D;&#x4F7F;&#x7528;&#x6821;&#x51C6;&#x96C6;&#x4E5F;&#x5F97;&#x5230;&#x4E86;&#x5F88;&#x9AD8;&#x7684;&#x7CBE;&#x5EA6;&#x3002;</li>
+<li><code>calibration</code>&#xFF1A;&#x57FA;&#x4E8E;&#x6821;&#x51C6;&#x96C6;&#x65B9;&#x6848;&#xFF0C;&#x901A;&#x8FC7;&#x8F93;&#x5165;&#x5C11;&#x91CF;&#x771F;&#x5B9E;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x7EDF;&#x8BA1;&#x5206;&#x6790;&#x3002;&#x5F88;&#x591A;&#x82AF;&#x7247;&#x5382;&#x5546;&#x90FD;&#x63D0;&#x4F9B;&#x8FD9;&#x6837;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x5982; <code>tensorRT</code>&#x3001;&#x9AD8;&#x901A;&#x3001;&#x6D77;&#x601D;&#x3001;&#x5730;&#x5E73;&#x7EBF;&#x3001;&#x5BD2;&#x6B66;&#x7EAA;</li>
+<li><code>finetune</code>&#xFF1A;&#x57FA;&#x4E8E;&#x8BAD;&#x7EC3; <code>finetune</code> &#x7684;&#x65B9;&#x6848;&#xFF0C;&#x5C06;&#x91CF;&#x5316;&#x8BEF;&#x5DEE;&#x5728;&#x8BAD;&#x7EC3;&#x65F6;&#x4EFF;&#x771F;&#x5EFA;&#x6A21;&#xFF0C;&#x8C03;&#x6574;&#x6743;&#x91CD;&#x4F7F;&#x5176;&#x66F4;&#x9002;&#x5408;&#x91CF;&#x5316;&#x3002;&#x597D;&#x5904;&#x662F;&#x80FD;&#x5E26;&#x6765;&#x66F4;&#x5927;&#x7684;&#x7CBE;&#x5EA6;&#x63D0;&#x5347;&#xFF0C;&#x7F3A;&#x70B9;&#x662F;&#x8981;&#x4FEE;&#x6539;&#x6A21;&#x578B;&#x8BAD;&#x7EC3;&#x4EE3;&#x7801;&#xFF0C;&#x5F00;&#x53D1;&#x5468;&#x671F;&#x8F83;&#x957F;&#x3002;</li>
+</ol>
+<p><code>TensorFlow</code> &#x6846;&#x67B6;&#x6309;&#x7167;&#x91CF;&#x5316;&#x9636;&#x6BB5;&#x7684;&#x4E0D;&#x540C;&#xFF0C;&#x5176;&#x6A21;&#x578B;&#x91CF;&#x5316;&#x529F;&#x80FD;&#x5206;&#x4E3A;&#x4EE5;&#x4E0B;&#x4E24;&#x79CD;&#xFF1A;</p>
+<ul>
+<li>Post-training quantization <code>PTQ</code>&#xFF08;&#x8BAD;&#x7EC3;&#x540E;&#x91CF;&#x5316;&#x3001;&#x79BB;&#x7EBF;&#x91CF;&#x5316;&#xFF09;&#xFF1B;</li>
+<li>Quantization-aware training <code>QAT</code>&#xFF08;&#x8BAD;&#x7EC3;&#x65F6;&#x91CF;&#x5316;&#xFF0C;&#x4F2A;&#x91CF;&#x5316;&#xFF0C;&#x5728;&#x7EBF;&#x91CF;&#x5316;&#xFF09;&#x3002;</li>
+</ul>
+<h4 id="121&#xFF0C;ptq-&#x7406;&#x89E3;">1.2.1&#xFF0C;PTQ &#x7406;&#x89E3;</h4>
+<p><code>PTQ</code> <code>Post Training Quantization</code> &#x662F;&#x8BAD;&#x7EC3;&#x540E;&#x91CF;&#x5316;&#xFF0C;&#x4E5F;&#x53EB;&#x505A;&#x79BB;&#x7EBF;&#x91CF;&#x5316;&#xFF0C;&#x6839;&#x636E;&#x91CF;&#x5316;&#x96F6;&#x70B9; $x_{zero_point}$ &#x662F;&#x5426;&#x4E3A; <code>0</code>&#xFF0C;&#x8BAD;&#x7EC3;&#x540E;&#x91CF;&#x5316;&#x5206;&#x4E3A;&#x5BF9;&#x79F0;&#x91CF;&#x5316;&#x548C;&#x975E;&#x5BF9;&#x79F0;&#x91CF;&#x5316;&#xFF1B;&#x6839;&#x636E;&#x6570;&#x636E;&#x901A;&#x9053;&#x987A;&#x5E8F; <code>NHWC</code>(TensorFlow) &#x8FD9;&#x4E00;&#x7EF4;&#x5EA6;&#x533A;&#x5206;&#xFF0C;&#x8BAD;&#x7EC3;&#x540E;&#x91CF;&#x5316;&#x53C8;&#x5206;&#x4E3A;&#x9010;&#x5C42;&#x91CF;&#x5316;&#x548C;&#x9010;&#x901A;&#x9053;&#x91CF;&#x5316;&#x3002;&#x76EE;&#x524D; <code>nvidia</code> &#x7684; <code>TensorRT</code> &#x6846;&#x67B6;&#x4E2D;&#x4F7F;&#x7528;&#x4E86;&#x9010;&#x5C42;&#x91CF;&#x5316;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x6BCF;&#x4E00;&#x5C42;&#x91C7;&#x7528;&#x540C;&#x4E00;&#x4E2A;&#x9608;&#x503C;&#x6765;&#x8FDB;&#x884C;&#x91CF;&#x5316;&#x3002;&#x9010;&#x901A;&#x9053;&#x91CF;&#x5316;&#x5C31;&#x662F;&#x5BF9;&#x6BCF;&#x4E00;&#x5C42;&#x6BCF;&#x4E2A;&#x901A;&#x9053;&#x90FD;&#x6709;&#x5404;&#x81EA;&#x7684;&#x9608;&#x503C;&#xFF0C;&#x5BF9;&#x7CBE;&#x5EA6;&#x53EF;&#x4EE5;&#x6709;&#x4E00;&#x4E2A;&#x5F88;&#x597D;&#x7684;&#x63D0;&#x5347;&#x3002;</p>
+<h3 id="13&#xFF0C;&#x91CF;&#x5316;&#x7684;&#x5206;&#x7C7B;">1.3&#xFF0C;&#x91CF;&#x5316;&#x7684;&#x5206;&#x7C7B;</h3>
+<p>&#x76EE;&#x524D;&#x5DF2;&#x77E5;&#x7684;&#x52A0;&#x5FEB;&#x63A8;&#x7406;&#x901F;&#x5EA6;&#x6982;&#x7387;&#x8F83;&#x5927;&#x7684;&#x91CF;&#x5316;&#x65B9;&#x6CD5;&#x4E3B;&#x8981;&#x6709;&#xFF1A;</p>
+<ol>
+<li><strong>&#x4E8C;&#x503C;&#x5316;</strong>&#xFF0C;&#x5176;&#x53EF;&#x4EE5;&#x7528;&#x7B80;&#x5355;&#x7684;&#x4F4D;&#x8FD0;&#x7B97;&#x6765;&#x540C;&#x65F6;&#x8BA1;&#x7B97;&#x5927;&#x91CF;&#x7684;&#x6570;&#x3002;&#x5BF9;&#x6BD4;&#x4ECE; nvdia gpu &#x5230; x86 &#x5E73;&#x53F0;&#xFF0C;1bit &#x8BA1;&#x7B97;&#x5206;&#x522B;&#x6709; 5 &#x5230;128&#x500D;&#x7684;&#x7406;&#x8BBA;&#x6027;&#x80FD;&#x63D0;&#x5347;&#x3002;&#x4E14;&#x5176;&#x53EA;&#x4F1A;&#x5F15;&#x5165;&#x4E00;&#x4E2A;&#x989D;&#x5916;&#x7684;&#x91CF;&#x5316;&#x64CD;&#x4F5C;&#xFF0C;&#x8BE5;&#x64CD;&#x4F5C;&#x53EF;&#x4EE5;&#x4EAB;&#x53D7;&#x5230; SIMD&#xFF08;&#x5355;&#x6307;&#x4EE4;&#x591A;&#x6570;&#x636E;&#x6D41;&#xFF09;&#x7684;&#x52A0;&#x901F;&#x6536;&#x76CA;&#x3002;</li>
+<li><strong>&#x7EBF;&#x6027;&#x91CF;&#x5316;</strong>(&#x6700;&#x5E38;&#x89C1;)&#xFF0C;&#x53C8;&#x53EF;&#x7EC6;&#x5206;&#x4E3A;&#x975E;&#x5BF9;&#x79F0;&#xFF0C;&#x5BF9;&#x79F0;&#x548C; <code>ristretto</code> &#x51E0;&#x79CD;&#x3002;&#x5728; <code>nvdia gpu</code>&#xFF0C;<code>x86</code>&#x3001;<code>arm</code> &#x548C; &#x90E8;&#x5206; <code>AI</code> &#x82AF;&#x7247;&#x5E73;&#x53F0;&#x4E0A;&#xFF0C;&#x5747;&#x652F;&#x6301; <code>8bit</code> &#x7684;&#x8BA1;&#x7B97;&#xFF0C;&#x6548;&#x7387;&#x63D0;&#x5347;&#x4ECE; <code>1</code> &#x500D;&#x5230; <code>16</code> &#x500D;&#x4E0D;&#x7B49;&#xFF0C;&#x5176;&#x4E2D; <code>tensor core</code> &#x751A;&#x81F3;&#x652F;&#x6301; <code>4bit</code>&#x8BA1;&#x7B97;&#xFF0C;&#x8FD9;&#x4E5F;&#x662F;&#x975E;&#x5E38;&#x6709;&#x6F5C;&#x529B;&#x7684;&#x65B9;&#x5411;&#x3002;&#x7EBF;&#x6027;&#x91CF;&#x5316;&#x5F15;&#x5165;&#x7684;&#x989D;&#x5916;&#x91CF;&#x5316;/&#x53CD;&#x91CF;&#x5316;&#x8BA1;&#x7B97;&#x90FD;&#x662F;&#x6807;&#x51C6;&#x7684;&#x5411;&#x91CF;&#x64CD;&#x4F5C;&#xFF0C;&#x56E0;&#x6B64;&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <code>SIMD</code> &#x8FDB;&#x884C;&#x52A0;&#x901F;&#xFF0C;&#x5E26;&#x6765;&#x7684;&#x989D;&#x5916;&#x8BA1;&#x7B97;&#x8017;&#x65F6;&#x4E0D;&#x5927;&#x3002;</li>
+<li><strong>&#x5BF9;&#x6570;&#x91CF;&#x5316;</strong>&#xFF0C;&#x4E00;&#x79CD;&#x6BD4;&#x8F83;&#x7279;&#x6B8A;&#x7684;&#x91CF;&#x5316;&#x65B9;&#x6CD5;&#x3002;&#x4E24;&#x4E2A;&#x540C;&#x5E95;&#x7684;&#x5E42;&#x6307;&#x6570;&#x8FDB;&#x884C;&#x76F8;&#x4E58;&#xFF0C;&#x90A3;&#x4E48;&#x7B49;&#x4EF7;&#x4E8E;&#x5176;&#x6307;&#x6570;&#x76F8;&#x52A0;&#xFF0C;&#x964D;&#x4F4E;&#x4E86;&#x8BA1;&#x7B97;&#x5F3A;&#x5EA6;&#x3002;&#x540C;&#x65F6;&#x52A0;&#x6CD5;&#x4E5F;&#x88AB;&#x8F6C;&#x53D8;&#x4E3A;&#x7D22;&#x5F15;&#x8BA1;&#x7B97;&#x3002;&#x76EE;&#x524D; <code>nvdia gpu</code>&#xFF0C;<code>x86</code>&#x3001;<code>arm</code> &#x4E09;&#x5927;&#x5E73;&#x53F0;&#x4E0A;&#x6CA1;&#x6709;&#x5B9E;&#x73B0;&#x5BF9;&#x6570;&#x91CF;&#x5316;&#x7684;&#x52A0;&#x901F;&#x5E93;&#xFF0C;&#x4F46;&#x662F;&#x76EE;&#x524D;&#x5DF2;&#x77E5;&#x6D77;&#x601D; <code>351X</code> &#x7CFB;&#x5217;&#x82AF;&#x7247;&#x4E0A;&#x4F7F;&#x7528;&#x4E86;&#x5BF9;&#x6570;&#x91CF;&#x5316;&#x3002;</li>
+</ol>
+<h4 id="131&#xFF0C;&#x7EBF;&#x6027;&#x91CF;&#x5316;&#x6982;&#x8FF0;">1.3.1&#xFF0C;&#x7EBF;&#x6027;&#x91CF;&#x5316;&#x6982;&#x8FF0;</h4>
+<p>&#x4E0E;&#x975E;&#x7EBF;&#x6027;&#x91CF;&#x5316;&#x4E0D;&#x540C;&#xFF0C;&#x7EBF;&#x6027;&#x91CF;&#x5316;&#x91C7;&#x7528;&#x5747;&#x5300;&#x5206;&#x5E03;&#x7684;&#x805A;&#x7C7B;&#x4E2D;&#x5FC3;&#xFF0C;&#x539F;&#x59CB;&#x6D6E;&#x70B9;&#x6570;&#x636E;&#x548C;&#x91CF;&#x5316;&#x540E;&#x7684;&#x5B9A;&#x70B9;&#x6570;&#x636E;&#x5B58;&#x5728;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x7EBF;&#x6027;&#x53D8;&#x6362;&#x5173;&#x7CFB;&#xFF0C;&#x56E0;&#x4E3A;&#x5377;&#x79EF;&#x3001;&#x5168;&#x8FDE;&#x63A5;&#x7B49;&#x7F51;&#x7EDC;&#x5C42;&#x672C;&#x8EAB;&#x53EA;&#x662F;&#x7B80;&#x5355;&#x7684;&#x7EBF;&#x6027;&#x8BA1;&#x7B97;&#xFF0C;&#x56E0;&#x6B64;&#x7EBF;&#x6027;&#x91CF;&#x5316;&#x4E2D;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x7528;&#x91CF;&#x5316;&#x540E;&#x7684;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x76F4;&#x63A5;&#x8BA1;&#x7B97;&#x3002;</p>
+<h2 id="2&#xFF0C;&#x91CF;&#x5316;&#x7B97;&#x672F;">2&#xFF0C;&#x91CF;&#x5316;&#x7B97;&#x672F;</h2>
+<p><strong>&#x6A21;&#x578B;&#x91CF;&#x5316;&#x8FC7;&#x7A0B;&#x53EF;&#x4EE5;&#x5206;&#x4E3A;&#x4E24;&#x90E8;&#x5206;&#xFF1A;&#x5C06;&#x6A21;&#x578B;&#x4ECE; FP32 &#x8F6C;&#x6362;&#x4E3A; INT8&#xFF0C;&#x4EE5;&#x53CA;&#x4F7F;&#x7528; INT8 &#x8FDB;&#x884C;&#x63A8;&#x7406;</strong>&#x3002;&#x672C;&#x8282;&#x8BF4;&#x660E;&#x8FD9;&#x4E24;&#x90E8;&#x5206;&#x80CC;&#x540E;&#x7684;&#x7B97;&#x672F;&#x539F;&#x7406;&#x3002;&#x5982;&#x679C;&#x4E0D;&#x4E86;&#x89E3;&#x57FA;&#x7840;&#x7B97;&#x672F;&#x539F;&#x7406;&#xFF0C;&#x5728;&#x8003;&#x8651;&#x91CF;&#x5316;&#x7EC6;&#x8282;&#x65F6;&#x901A;&#x5E38;&#x4F1A;&#x611F;&#x5230;&#x56F0;&#x60D1;&#x3002;</p>
+<h3 id="21&#xFF0C;&#x5B9A;&#x70B9;&#x548C;&#x6D6E;&#x70B9;">2.1&#xFF0C;&#x5B9A;&#x70B9;&#x548C;&#x6D6E;&#x70B9;</h3>
+<p><strong>&#x5B9A;&#x70B9;&#x548C;&#x6D6E;&#x70B9;&#x90FD;&#x662F;&#x6570;&#x503C;&#x7684;&#x8868;&#x793A;</strong>&#xFF08;representation&#xFF09;&#xFF0C;&#x5B83;&#x4EEC;&#x533A;&#x522B;&#x5728;&#x4E8E;&#xFF0C;&#x5C06;&#x6574;&#x6570;&#xFF08;integer&#xFF09;&#x90E8;&#x5206;&#x548C;&#x5C0F;&#x6570;&#xFF08;fractional&#xFF09;&#x90E8;&#x5206;&#x5206;&#x5F00;&#x7684;&#x70B9;&#xFF0C;&#x70B9;&#x5728;&#x54EA;&#x91CC;&#x3002;<strong>&#x5B9A;&#x70B9;&#x4FDD;&#x7559;&#x7279;&#x5B9A;&#x4F4D;&#x6570;&#x6574;&#x6570;&#x548C;&#x5C0F;&#x6570;&#xFF0C;&#x800C;&#x6D6E;&#x70B9;&#x4FDD;&#x7559;&#x7279;&#x5B9A;&#x4F4D;&#x6570;&#x7684;&#x6709;&#x6548;&#x6570;&#x5B57;&#xFF08;significand&#xFF09;&#x548C;&#x6307;&#x6570;&#xFF08;exponent&#xFF09;</strong>&#x3002;</p>
+<p>&#x7EDD;&#x5927;&#x591A;&#x6570;&#x73B0;&#x4EE3;&#x7684;&#x8BA1;&#x7B97;&#x673A;&#x7CFB;&#x7EDF;&#x91C7;&#x7EB3;&#x4E86;<strong>&#x6D6E;&#x70B9;&#x6570;&#x8868;&#x793A;&#x65B9;&#x5F0F;</strong>&#xFF0C;&#x8FD9;&#x79CD;&#x8868;&#x8FBE;&#x65B9;&#x5F0F;&#x5229;&#x7528;&#x79D1;&#x5B66;&#x8BA1;&#x6570;&#x6CD5;&#x6765;&#x8868;&#x8FBE;&#x5B9E;&#x6570;&#x3002;&#x5373;&#x7528;&#x4E00;&#x4E2A;&#x5C3E;&#x6570;(Mantissa&#xFF0C;&#x5C3E;&#x6570;&#x6709;&#x65F6;&#x4E5F;&#x79F0;&#x4E3A;&#x6709;&#x6548;&#x6570;&#x5B57;&#xFF0C;&#x5B83;&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x6709;&#x6548;&#x6570;&#x5B57;&#x7684;&#x975E;&#x6B63;&#x5F0F;&#x8BF4;&#x6CD5;)&#xFF0C;&#x4E00;&#x4E2A;&#x57FA;&#x6570;(Base)&#xFF0C;&#x4E00;&#x4E2A;&#x6307;&#x6570;(Exponent)&#x4EE5;&#x53CA;&#x4E00;&#x4E2A;&#x8868;&#x793A;&#x6B63;&#x8D1F;&#x7684;&#x7B26;&#x53F7;&#x6765;&#x8868;&#x8FBE;&#x5B9E;&#x6570;&#x3002;&#x5177;&#x4F53;&#x7EC4;&#x6210;&#x5982;&#x4E0B;&#xFF1A;</p>
+<ul>
+<li>&#x7B2C;&#x4E00;&#x90E8;&#x5206;&#x4E3A; <code>sign</code> &#x7B26;&#x53F7;&#x4F4D; $s$&#xFF0C;&#x5360; 1 bit&#xFF0C;&#x7528;&#x6765;&#x8868;&#x793A;&#x6B63;&#x8D1F;&#x53F7;&#xFF1B;</li>
+<li>&#x7B2C;&#x4E8C;&#x90E8;&#x5206;&#x4E3A; <code>exponent</code> &#x6307;&#x6570;&#x504F;&#x79FB;&#x503C; $k$&#xFF0C;&#x5360; 8 bits&#xFF0C;&#x7528;&#x6765;&#x8868;&#x793A;&#x5176;&#x662F; 2 &#x7684;&#x591A;&#x5C11;&#x6B21;&#x5E42;&#xFF1B;</li>
+<li>&#x7B2C;&#x4E09;&#x90E8;&#x5206;&#x662F; <code>fraction</code> &#x5206;&#x6570;&#x503C;&#xFF08;&#x6709;&#x6548;&#x6570;&#x5B57;&#xFF09; $M$&#xFF0C;&#x5360; 23 bits&#xFF0C;&#x7528;&#x6765;&#x8868;&#x793A;&#x8BE5;&#x6D6E;&#x70B9;&#x6570;&#x7684;&#x6570;&#x503C;&#x5927;&#x5C0F;&#x3002;</li>
+</ul>
+<p>&#x57FA;&#x4E8E;&#x4E0A;&#x8FF0;&#x8868;&#x793A;&#xFF0C;&#x6D6E;&#x70B9;&#x6570;&#x7684;&#x503C;&#x53EF;&#x4EE5;&#x7528;&#x4EE5;&#x4E0B;&#x516C;&#x5F0F;&#x8BA1;&#x7B97;&#xFF1A;</p>
+<p>$$(-1)^s \times M \times 2^k$$</p>
+<p>&#x503C;&#x5F97;&#x6CE8;&#x610F;&#x662F;&#xFF0C;&#x4E0A;&#x8FF0;&#x516C;&#x5F0F;&#x9690;&#x85CF;&#x4E86;&#x4E00;&#x4E9B;&#x7EC6;&#x8282;&#xFF0C;&#x5982;&#x6307;&#x6570;&#x504F;&#x79FB;&#x503C; $k$ &#x4F7F;&#x7528;&#x7684;&#x65F6;&#x5019;&#x9700;&#x8981;&#x52A0;&#x4E0A;&#x4E00;&#x4E2A;&#x56FA;&#x5B9A;&#x7684;&#x504F;&#x79FB;&#x503C;&#x3002;</p>
+<p>&#x6BD4;&#x5982; <code>123.45</code> &#x7528;&#x5341;&#x8FDB;&#x5236;&#x79D1;&#x5B66;&#x8BA1;&#x6570;&#x6CD5;&#x53EF;&#x4EE5;&#x8868;&#x793A;&#x4E3A; $1.2345\times 10^2$&#xFF0C;&#x5176;&#x4E2D; <code>1.2345</code> &#x4E3A;&#x5C3E;&#x6570;&#xFF0C;<code>10</code> &#x4E3A;&#x57FA;&#x6570;&#xFF0C;<code>2</code> &#x4E3A;&#x6307;&#x6570;&#x3002;</p>
+<p>&#x5355;&#x7CBE;&#x5EA6;&#x6D6E;&#x70B9;&#x7C7B;&#x578B; <code>float</code> &#x5360;&#x7528; <code>32bit</code>&#xFF0C;&#x6240;&#x4EE5;&#x4E5F;&#x79F0;&#x4F5C; <code>FP32</code>&#xFF1B;&#x53CC;&#x7CBE;&#x5EA6;&#x6D6E;&#x70B9;&#x7C7B;&#x578B; <code>double</code> &#x5360;&#x7528; <code>64bit</code>&#x3002;</p>
+<p><img src="../data/images/&#x6A21;&#x578B;&#x91CF;&#x5316;/&#x5B9A;&#x70B9;&#x548C;&#x6D6E;&#x70B9;&#x7684;&#x683C;&#x5F0F;&#x548C;&#x793A;&#x4F8B;.jpg" alt="&#x5B9A;&#x70B9;&#x548C;&#x6D6E;&#x70B9;&#x7684;&#x683C;&#x5F0F;&#x548C;&#x793A;&#x4F8B;"></p>
+<blockquote>
+<p>&#x56FE;&#x4E94;&#xFF1A;&#x5B9A;&#x70B9;&#x548C;&#x6D6E;&#x70B9;&#x7684;&#x683C;&#x5F0F;&#x548C;&#x793A;&#x4F8B;&#x3002;</p>
+</blockquote>
+<h3 id="22&#xFF0C;&#x91CF;&#x5316;&#x6D6E;&#x70B9;">2.2&#xFF0C;&#x91CF;&#x5316;&#x6D6E;&#x70B9;</h3>
+<p><code>32-bit</code> &#x6D6E;&#x70B9;&#x6570;&#x548C; <code>8-bit</code> &#x5B9A;&#x70B9;&#x6570;&#x7684;&#x8868;&#x793A;&#x8303;&#x56F4;&#x5982;&#x4E0B;&#x8868;&#x6240;&#x793A;&#xFF1A;</p>
+<table>
+<thead>
+<tr>
+<th>&#x6570;&#x636E;&#x7C7B;&#x578B;</th>
+<th>&#x6700;&#x5C0F;&#x503C;</th>
+<th>&#x6700;&#x5927;&#x503C;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>FP32</code></td>
+<td>-3.4e38</td>
+<td>3.4e38</td>
+</tr>
+<tr>
+<td><code>int8</code></td>
+<td>-128</td>
+<td>128</td>
+</tr>
+<tr>
+<td><code>uint8</code></td>
+<td>0</td>
+<td>255</td>
+</tr>
+</tbody>
+</table>
+<p>&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x7684;&#x63A8;&#x7406;&#x7531;&#x6D6E;&#x70B9;&#x8FD0;&#x7B97;&#x6784;&#x6210;&#x3002;<code>FP32</code> &#x548C; <code>INT8</code> &#x7684;&#x503C;&#x57DF;&#x662F; $[(2&#x2212;2^{23})&#xD7;2^{127},(2^{23}&#x2212;2)\times 2^{127}]$ &#x548C; $[&#x2212;128,127]$&#xFF0C;&#x800C;&#x53D6;&#x503C;&#x6570;&#x91CF;&#x5927;&#x7EA6;&#x5206;&#x522B;&#x4E3A; $2^{32}$ &#x548C; $2^8$ &#x3002;<code>FP32</code> &#x53D6;&#x503C;&#x8303;&#x56F4;&#x975E;&#x5E38;&#x5E7F;&#xFF0C;&#x56E0;&#x6B64;&#xFF0C;&#x5C06;&#x7F51;&#x7EDC;&#x4ECE; <code>FP32</code> &#x8F6C;&#x6362;&#x4E3A; <code>INT8</code> &#x5E76;&#x4E0D;&#x50CF;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x8F6C;&#x6362;&#x622A;&#x65AD;&#x90A3;&#x6837;&#x7B80;&#x5355;&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x4E00;&#x822C;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x6743;&#x91CD;&#x7684;&#x503C;&#x5206;&#x5E03;&#x8303;&#x56F4;&#x5F88;&#x7A84;&#xFF0C;&#x975E;&#x5E38;&#x63A5;&#x8FD1;&#x96F6;&#x3002;&#x56FE;&#x516B;&#x7ED9;&#x51FA;&#x4E86; <code>MobileNetV1</code> &#x4E2D;&#x5341;&#x5C42;&#xFF08;&#x62E5;&#x6709;&#x6700;&#x591A;&#x503C;&#x7684;&#x5C42;&#xFF09;&#x7684;&#x6743;&#x91CD;&#x5206;&#x5E03;&#x3002;</p>
+<p><img src="../data/images/&#x6A21;&#x578B;&#x91CF;&#x5316;/&#x5341;&#x5C42;%20MobileNetV1%20&#x7684;&#x6743;&#x91CD;&#x5206;&#x5E03;.svg" alt="&#x5341;&#x5C42; MobileNetV1 &#x7684;&#x6743;&#x91CD;&#x5206;&#x5E03;"></p>
+<blockquote>
+<p>&#x56FE;&#x516B;&#xFF1A;&#x5341;&#x5C42; MobileNetV1 &#x7684;&#x6743;&#x91CD;&#x5206;&#x5E03;&#x3002;</p>
+</blockquote>
+<p>&#x6839;&#x636E;&#x504F;&#x79FB;&#x91CF; $Z$ &#x662F;&#x5426;&#x4E3A; 0&#xFF0C;&#x53EF;&#x4EE5;&#x5C06;&#x6D6E;&#x70B9;&#x6570;&#x7684;&#x7EBF;&#x6027;&#x91CF;&#x5316;&#x5206;&#x4E3A;&#x4E24;&#x7C7B;-&#x5BF9;&#x79F0;&#x91CF;&#x5316;&#x548C;&#x975E;&#x5BF9;&#x79F0;&#x91CF;&#x5316;&#x3002;</p>
+<p>&#x5F53;&#x6D6E;&#x70B9;&#x503C;&#x57DF;&#x843D;&#x5728; $(-1,1)$ &#x4E4B;&#x95F4;&#xFF0C;&#x6743;&#x91CD;&#x6D6E;&#x70B9;&#x6570;&#x636E;&#x7684;&#x91CF;&#x5316;&#x8FD0;&#x7B97;&#x53EF;&#x4F7F;&#x7528;&#x4E0B;&#x5F0F;&#x7684;&#x65B9;&#x6CD5;&#x5C06; FP32 &#x6620;&#x5C04;&#x5230; INT8&#xFF0C;&#x8FD9;&#x662F;<strong>&#x5BF9;&#x79F0;&#x91CF;&#x5316;</strong>&#x3002;&#x5176;&#x4E2D; $x<em>{float}$ &#x8868;&#x793A; FP32 &#x6743;&#x91CD;&#xFF0C; $x</em>{quantized}$ &#x8868;&#x793A;&#x91CF;&#x5316;&#x7684; INT8 &#x6743;&#x91CD;&#xFF0C;$x_{scale}$ &#x662F;&#x7F29;&#x653E;&#x56E0;&#x5B50;&#xFF08;&#x6620;&#x5C04;&#x56E0;&#x5B50;&#x3001;&#x91CF;&#x5316;&#x5C3A;&#x5EA6;&#xFF08;&#x8303;&#x56F4;&#xFF09;/ <code>float32</code> &#x7684;&#x7F29;&#x653E;&#x56E0;&#x5B50;&#xFF09;&#x3002;</p>
+<p>$$x<em>{float} = x</em>{scale} \times x_{quantized}$$</p>
+<p>&#x5BF9;&#x79F0;&#x91CF;&#x5316;&#x7684;&#x6D6E;&#x70B9;&#x503C;&#x548C; <code>8</code> &#x4F4D;&#x5B9A;&#x70B9;&#x503C;&#x7684;&#x6620;&#x5C04;&#x5173;&#x7CFB;&#x5982;&#x4E0B;&#x56FE;&#xFF0C;&#x4ECE;&#x56FE;&#x4E2D;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;&#x5BF9;&#x79F0;&#x91CF;&#x5316;&#x5C31;&#x662F;&#x5C06;&#x4E00;&#x4E2A; <code>tensor</code> &#x4E2D;&#x7684; $[-max(|\mathrm{x}|),max(|\mathrm{x}|)]$ &#x5185;&#x7684; <code>FP32</code> &#x503C;&#x5206;&#x522B;&#x6620;&#x5C04;&#x5230; <code>8 bit</code> &#x6570;&#x636E;&#x7684; <code>[-128, 127]</code> &#x7684;&#x8303;&#x56F4;&#x5185;&#xFF0C;&#x4E2D;&#x95F4;&#x503C;&#x6309;&#x7167;&#x7EBF;&#x6027;&#x5173;&#x7CFB;&#x8FDB;&#x884C;&#x6620;&#x5C04;&#xFF0C;&#x79F0;&#x8FD9;&#x79CD;&#x6620;&#x5C04;&#x5173;&#x7CFB;&#x662F;&#x5BF9;&#x79F0;&#x91CF;&#x5316;&#x3002;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;&#x5BF9;&#x79F0;&#x91CF;&#x5316;&#x7684;&#x6D6E;&#x70B9;&#x503C;&#x548C;&#x91CF;&#x5316;&#x503C;&#x8303;&#x56F4;&#x90FD;&#x662F;&#x76F8;&#x5BF9;&#x4E8E;&#x96F6;&#x5BF9;&#x79F0;&#x7684;&#x3002;</p>
+<p><img src="../data/images/quantization/&#x5BF9;&#x79F0;&#x91CF;&#x5316;.png" alt="&#x5BF9;&#x79F0;&#x91CF;&#x5316;"></p>
+<p>&#x56E0;&#x4E3A;&#x5BF9;&#x79F0;&#x91CF;&#x5316;&#x7684;&#x7F29;&#x653E;&#x65B9;&#x6CD5;&#x53EF;&#x80FD;&#x4F1A;&#x5C06; FP32 &#x96F6;&#x6620;&#x5C04;&#x5230; INT8 &#x96F6;&#xFF0C;&#x4F46;&#x6211;&#x4EEC;&#x4E0D;&#x5E0C;&#x671B;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x51FA;&#x73B0;&#xFF0C;&#x4E8E;&#x662F;&#x51FA;&#x73B0;&#x4E86;&#x6570;&#x5B57;&#x4FE1;&#x53F7;&#x5904;&#x7406;&#x4E2D;&#x7684;&#x5747;&#x4E00;&#x91CF;&#x5316;&#xFF0C;&#x5373;<strong>&#x975E;&#x5BF9;&#x79F0;&#x91CF;&#x5316;</strong>&#x3002;&#x6570;&#x5B66;&#x8868;&#x8FBE;&#x5F0F;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF0C;&#x5176;&#x4E2D; $x_{zero_point}$ &#x8868;&#x793A;&#x91CF;&#x5316;&#x96F6;&#x70B9;&#xFF08;&#x91CF;&#x5316;&#x504F;&#x79FB;&#xFF09;&#x3002;</p>
+<p>$$x<em>{float} = x</em>{scale} \times (x<em>{quantized} - x</em>{zero_point})$$</p>
+<p>&#x5927;&#x591A;&#x6570;&#x60C5;&#x51B5;&#x4E0B;&#x91CF;&#x5316;&#x662F;&#x9009;&#x7528;&#x65E0;&#x7B26;&#x53F7;&#x6574;&#x6570;&#xFF0C;&#x5373; <code>INT8</code> &#x7684;&#x503C;&#x57DF;&#x5C31;&#x4E3A; $[0,255]$ &#xFF0C;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#xFF0C;&#x663E;&#x7136;&#x8981;&#x7528;&#x975E;&#x5BF9;&#x79F0;&#x91CF;&#x5316;&#x3002;&#x975E;&#x5BF9;&#x79F0;&#x91CF;&#x5316;&#x7684;&#x6D6E;&#x70B9;&#x503C;&#x548C; <code>8</code> &#x4F4D;&#x5B9A;&#x70B9;&#x503C;&#x7684;&#x6620;&#x5C04;&#x5173;&#x7CFB;&#x5982;&#x4E0B;&#x56FE;&#xFF1A;</p>
+<p><img src="../data/images/quantization/&#x975E;&#x5BF9;&#x79F0;&#x91CF;&#x5316;.png" alt="&#x975E;&#x5BF9;&#x79F0;&#x91CF;&#x5316;"></p>
+<p>&#x603B;&#x7684;&#x6765;&#x8BF4;&#xFF0C;<strong>&#x6743;&#x91CD;&#x91CF;&#x5316;&#x6D6E;&#x70B9;&#x503C;&#x53EF;&#x4EE5;&#x5206;&#x4E3A;&#x4E24;&#x4E2A;&#x6B65;&#x9AA4;</strong>&#xFF1A;</p>
+<ol>
+<li>&#x901A;&#x8FC7;&#x5728;&#x6743;&#x91CD;&#x5F20;&#x91CF;&#xFF08;Tensor&#xFF09;&#x4E2D;&#x627E;&#x5230; $min$ &#x548C; $max$ &#x503C;&#x4ECE;&#x800C;&#x786E;&#x5B9A; $x<em>{scale}$ &#x548C;$x</em>{zero_point}$&#x3002;</li>
+<li>&#x5C06;&#x6743;&#x91CD;&#x5F20;&#x91CF;&#x7684;&#x6BCF;&#x4E2A;&#x503C;&#x4ECE; FP32 &#x8F6C;&#x6362;&#x4E3A; INT8 &#x3002;
+$$
+\begin{align}
+x<em>{float} &amp;\in [x</em>{float}^{min}, x<em>{float}^{max}] \
+x</em>{scale} &amp;= \frac{x<em>{float}^{max} - x</em>{float}^{min}}{x<em>{quantized}^{max} - x</em>{quantized}^{min}} \
+x<em>{zero_point} &amp;= x</em>{quantized}^{max} - x<em>{float}^{max} \div x</em>{scale} \
+x<em>{quantized} &amp;= x</em>{float} \div x<em>{scale} + x</em>{zero_point}
+\end{align}$$</li>
+</ol>
+<p>&#x6CE8;&#x610F;&#xFF0C;&#x5F53;&#x6D6E;&#x70B9;&#x8FD0;&#x7B97;&#x7ED3;&#x679C;&#x4E0D;&#x7B49;&#x4E8E;&#x6574;&#x6570;&#x65F6;&#xFF0C;&#x9700;&#x8981;<strong>&#x989D;&#x5916;&#x7684;&#x820D;&#x5165;&#x6B65;&#x9AA4;</strong>&#x3002;&#x4F8B;&#x5982;&#x5C06; FP32 &#x503C;&#x57DF; [&#x2212;1,1] &#x6620;&#x5C04;&#x5230; INT8 &#x503C;&#x57DF; [0,255]&#xFF0C;&#x6709; $x<em>{scale}=\frac{2}{255}$&#xFF0C;&#x800C;$x</em>{zero_point}= 255&#x2212;\frac{255}{2}&#x2248;127$&#x3002;</p>
+<p>&#x6CE8;&#x610F;&#xFF0C;&#x91CF;&#x5316;&#x8FC7;&#x7A0B;&#x4E2D;&#x5B58;&#x5728;&#x8BEF;&#x5DEE;&#x662F;&#x4E0D;&#x53EF;&#x907F;&#x514D;&#x7684;&#xFF0C;&#x5C31;&#x50CF;&#x6570;&#x5B57;&#x4FE1;&#x53F7;&#x5904;&#x7406;&#x4E2D;&#x91CF;&#x5316;&#x4E00;&#x6837;&#x3002;<strong>&#x975E;&#x5BF9;&#x79F0;&#x7B97;&#x6CD5;&#x4E00;&#x822C;&#x80FD;&#x591F;&#x8F83;&#x597D;&#x5730;&#x5904;&#x7406;&#x6570;&#x636E;&#x5206;&#x5E03;&#x4E0D;&#x5747;&#x5300;&#x7684;&#x60C5;&#x51B5;</strong>&#x3002;</p>
+<h3 id="22&#xFF0C;&#x91CF;&#x5316;&#x7B97;&#x672F;">2.2&#xFF0C;&#x91CF;&#x5316;&#x7B97;&#x672F;</h3>
+<p>&#x91CF;&#x5316;&#x7684;&#x4E00;&#x4E2A;&#x91CD;&#x8981;&#x8BAE;&#x9898;&#x662F;&#x7528;&#x91CF;&#x5316;&#x7B97;&#x672F;&#x8868;&#x793A;&#x975E;&#x91CF;&#x5316;&#x7B97;&#x672F;&#xFF0C;&#x5373;&#x91CF;&#x5316;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x4E2D;&#x7684; <code>INT8</code> &#x8BA1;&#x7B97;&#x662F;&#x63CF;&#x8FF0;&#x5E38;&#x89C4;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x7684; <code>FP32</code> &#x8BA1;&#x7B97;&#xFF0C;&#x5BF9;&#x5E94;&#x7684;&#x5C31;&#x662F;&#x53CD;&#x91CF;&#x5316;&#x8FC7;&#x7A0B;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x5982;&#x4F55;&#x5C06; <code>INT8</code> &#x7684;&#x5B9A;&#x70B9;&#x6570;&#x636E;&#x53CD;&#x91CF;&#x5316;&#x6210; <code>FP32</code> &#x7684;&#x6D6E;&#x70B9;&#x6570;&#x636E;&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#x7684;&#x7B49;&#x5F0F; 5-10 &#x662F;&#x53CD;&#x91CF;&#x5316;&#x4E58;&#x6CD5; $x<em>{float} \cdot y</em>{float}$ &#x7684;&#x8FC7;&#x7A0B;&#x3002;&#x5BF9;&#x4E8E;&#x7ED9;&#x5B9A;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#xFF0C;&#x8F93;&#x5165; $x$&#x3001;&#x6743;&#x91CD; $y$ &#x548C;&#x8F93;&#x51FA; $z$ &#x7684;&#x7F29;&#x653E;&#x56E0;&#x5B50;&#x80AF;&#x5B9A;&#x662F;&#x5DF2;&#x77E5;&#x7684;&#xFF0C;&#x56E0;&#x6B64;&#x7B49;&#x5F0F; 14 &#x7684; $Multiplier<em>{x,y,z} = \frac{x</em>{scale}y<em>{scale}}{z</em>{scale}}$ &#x4E5F;&#x662F;&#x5DF2;&#x77E5;&#x7684;&#xFF0C;&#x5728;&#x53CD;&#x91CF;&#x5316;&#x8FC7;&#x7A0B;&#x4E4B;&#x524D;&#x53EF;&#x9884;&#x5148;&#x8BA1;&#x7B97;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x9664;&#x4E86; $Multiplier<em>{x,y,z}$ &#x548C; $(x</em>{quantized} - x<em>{zero_point})\cdot (y</em>{quantized} - y_{zero_point})$ &#x4E4B;&#x95F4;&#x7684;&#x4E58;&#x6CD5;&#x5916;&#xFF0C;&#x7B49;&#x5F0F; 16 &#x4E2D;&#x7684;&#x8FD0;&#x7B97;&#x90FD;&#x662F;&#x6574;&#x6570;&#x8FD0;&#x7B97;&#x3002;</p>
+<p>$$\begin{align}
+z<em>{float} &amp; = x</em>{float} \cdot y<em>{float} \
+z</em>{scale} \cdot (z<em>{quantized} - z</em>{zero_point})
+&amp; = (x<em>{scale} \cdot (x</em>{quantized} - x<em>{zero_point})) \cdot
+(y</em>{scale} \cdot (y<em>{quantized} - y</em>{zero_point})) \
+z<em>{quantized} - z</em>{zero_point}
+&amp;= \frac{x<em>{scale} \cdot y</em>{scale}}{z<em>{scale}} \cdot
+(x</em>{quantized} - x<em>{zero_point}) \cdot (y</em>{quantized} - y<em>{zero_point}) \
+z</em>{quantized}
+&amp;= \frac{x<em>{scale} \cdot y</em>{scale}}{z<em>{scale}} \cdot
+(x</em>{quantized} - x<em>{zero_point}) \cdot (y</em>{quantized} - y<em>{zero_point}) + z</em>{zero_point} \
+Multiplier<em>{x,y,z} &amp;= \frac{x</em>{scale} \cdot y<em>{scale}}{z</em>{scale}} \
+z<em>{quantized}
+&amp;= Multiplier</em>{x,y,z} \cdot (x<em>{quantized} - x</em>{zero_point}) \cdot
+(y<em>{quantized} - y</em>{zero_point}) + z_{zero_point} \
+\end{align}$$</p>
+<blockquote>
+<p>&#x7B49;&#x5F0F;&#xFF1A;&#x53CD;&#x91CF;&#x5316;&#x7B97;&#x672F;&#x8FC7;&#x7A0B;&#x3002;</p>
+</blockquote>
+<p>&#x5BF9;&#x4E8E;&#x7B49;&#x5F0F; <code>10</code> &#x53EF;&#x4EE5;&#x5E94;&#x7528;&#x7684;&#x5927;&#x591A;&#x6570;&#x60C5;&#x51B5;&#xFF0C;$quantized$ &#x548C; $zero_point$ &#x53D8;&#x91CF; (x,y) &#x90FD;&#x662F; <code>INT8</code> &#x7C7B;&#x578B;&#xFF0C;$scale$ &#x662F; <code>FP32</code>&#x3002;&#x5B9E;&#x9645;&#x4E0A;&#x4E24;&#x4E2A; <code>INT8</code> &#x4E4B;&#x95F4;&#x7684;&#x7B97;&#x672F;&#x8FD0;&#x7B97;&#x4F1A;&#x7D2F;&#x52A0;&#x5230; <code>INT16</code> &#x6216; <code>INT32</code>&#xFF0C;&#x8FD9;&#x65F6; <code>INT8</code> &#x7684;&#x503C;&#x57DF;&#x53EF;&#x80FD;&#x65E0;&#x6CD5;&#x4FDD;&#x5B58;&#x8FD0;&#x7B97;&#x7ED3;&#x679C;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x5BF9;&#x4E8E; $x<em>{quantized}=20$&#x3001;$x</em>{zero_point} = 50$ &#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x6709; $(x<em>{quantized} &#x2212; x</em>{zero_point}) = &#x2212;30$ &#x8D85;&#x51FA; <code>INT8</code> &#x503C;&#x8303;&#x56F4; $[0,255]$&#x3002;</p>
+<p>&#x6570;&#x636E;&#x7C7B;&#x578B;&#x8F6C;&#x6362;&#x53EF;&#x80FD;&#x5C06; $Multiplier<em>{x,y,z} \cdot (x</em>{quantized} - x<em>{zero_point}) \cdot (y</em>{quantized} - y<em>{zero_point})$ &#x8F6C;&#x6362;&#x4E3A; INT32 &#x6216; INT16&#xFF0C;&#x548C; $z</em>{zero_point}$ &#x4E00;&#x8D77;&#x786E;&#x4FDD;&#x8BA1;&#x7B97;&#x7ED3;&#x679C;&#x51E0;&#x4E4E;&#x5168;&#x90E8;&#x843D;&#x5165; INT8 &#x503C;&#x57DF; [0,255] &#x4E2D;&#x3002;</p>
+<p>&#x5BF9;&#x4E8E;&#x4EE5;&#x4E0A;&#x60C5;&#x51B5;&#xFF0C;&#x5728;&#x5DE5;&#x7A0B;&#x4E2D;&#xFF0C;&#x6BD4;&#x5982;&#x5BF9;&#x4E8E;&#x5377;&#x79EF;&#x7B97;&#x5B50;&#x7684;&#x8BA1;&#x7B97;&#xFF0C;<code>sum(x*y)</code> &#x7684;&#x7ED3;&#x679C;&#x9700;&#x8981;&#x7528; INT32 &#x4FDD;&#x5B58;&#xFF0C;&#x540C;&#x65F6;&#xFF0C;<code>b</code> &#x503C;&#x4E00;&#x822C;&#x4E5F;&#x662F; <code>INT32</code> &#x683C;&#x5F0F;&#x7684;&#xFF0C;&#x4E4B;&#x540E;&#x518D; <code>requantize</code> (&#x91CD;&#x65B0;&#x91CF;&#x5316;)&#x6210; <code>INT8</code>&#x3002;</p>
+<h2 id="3&#xFF0C;&#x91CF;&#x5316;&#x65B9;&#x6CD5;&#x7684;&#x6539;&#x8FDB;">3&#xFF0C;&#x91CF;&#x5316;&#x65B9;&#x6CD5;&#x7684;&#x6539;&#x8FDB;</h2>
+<p>&#x91CF;&#x5316;&#x6D6E;&#x70B9;&#x90E8;&#x5206;&#x4E2D;&#x63CF;&#x8FF0;&#x6743;&#x91CD;&#x6D6E;&#x70B9;&#x91CF;&#x5316;&#x65B9;&#x6CD5;&#x662F;&#x975E;&#x5E38;&#x7B80;&#x5355;&#x7684;&#x3002;&#x5728;&#x6DF1;&#x5EA6;&#x5B66;&#x4E60;&#x6846;&#x67B6;&#x7684;&#x65E9;&#x671F;&#x5F00;&#x53D1;&#x4E2D;&#xFF0C;&#x8FD9;&#x79CD;&#x7B80;&#x5355;&#x7684;&#x65B9;&#x6CD5;&#x80FD;&#x5FEB;&#x901F;&#x8DD1;&#x901A; <code>INT8</code> &#x63A8;&#x7406;&#x529F;&#x80FD;&#xFF0C;&#x7136;&#x800C;&#x91C7;&#x7528;&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#x7684;&#x7F51;&#x7EDC;&#x7684;&#x9884;&#x6D4B;&#x51C6;&#x786E;&#x5EA6;&#x901A;&#x5E38;&#x4F1A;&#x51FA;&#x73B0;&#x660E;&#x663E;&#x7684;&#x4E0B;&#x964D;&#x3002;</p>
+<p>&#x867D;&#x7136; FP32 &#x6743;&#x91CD;&#x7684;&#x503C;&#x57DF;&#x5F88;&#x7A84;&#xFF0C;&#x5728;&#x8FD9;&#x503C;&#x57DF;&#x4E2D;&#x6570;&#x503C;&#x70B9;&#x6570;&#x91CF;&#x5374;&#x5F88;&#x5927;&#x3002;&#x4EE5;&#x4E0A;&#x6587;&#x7684;&#x7F29;&#x653E;&#x4E3A;&#x4F8B;&#xFF0C;$[&#x2212;1,1]$ &#x503C;&#x57DF;&#x4E2D; $2^{31}$&#xFF08;&#x662F;&#x7684;&#xFF0C;&#x57FA;&#x672C;&#x4E0A;&#x662F;&#x603B;&#x5F97;&#x53EF;&#x8868;&#x793A;&#x6570;&#x503C;&#x7684;&#x4E00;&#x534A;&#xFF09;&#x4E2A; FP32 &#x503C;&#x88AB;&#x6620;&#x5C04;&#x5230; $256$ &#x4E2A; INT8 &#x503C;&#x3002;</p>
+<ul>
+<li>&#x91CF;&#x5316;&#x7C7B;&#x578B;&#xFF1A;&#xFF08;<code>SYMMETRIC</code>&#xFF09; &#x5BF9;&#x79F0;&#x91CF;&#x5316;&#x548C; (<code>NON-SYMMETRIC</code>&#xFF09; &#x975E;&#x5BF9;&#x79F0;&#x91CF;&#x5316;&#xFF1B;</li>
+<li>&#x91CF;&#x5316;&#x7B97;&#x6CD5;&#xFF1A;<code>MINMAX</code>&#x3001;<code>KL</code> &#x6563;&#x5EA6;&#x3001;<code>ADMM</code>&#xFF1B;</li>
+<li>&#x6743;&#x91CD;&#x91CF;&#x5316;&#x7C7B;&#x578B;&#xFF1A;<code>per-channel</code> <code>per-layer</code>&#xFF1B;</li>
+</ul>
+<p>&#x91C7;&#x7528;&#x666E;&#x901A;&#x91CF;&#x5316;&#x65B9;&#x6CD5;&#x65F6;&#xFF0C;&#x9760;&#x8FD1;&#x96F6;&#x7684;&#x6D6E;&#x70B9;&#x503C;&#x5728;&#x91CF;&#x5316;&#x65F6;&#x6CA1;&#x6709;&#x7CBE;&#x786E;&#x5730;&#x7528;&#x5B9A;&#x70B9;&#x503C;&#x8868;&#x793A;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x4E0E;&#x539F;&#x59CB;&#x7F51;&#x7EDC;&#x76F8;&#x6BD4;&#xFF0C;&#x91CF;&#x5316;&#x7F51;&#x7EDC;&#x4E00;&#x822C;&#x4F1A;&#x6709;&#x660E;&#x663E;&#x7684;&#x7CBE;&#x5EA6;&#x635F;&#x5931;&#x3002;&#x5BF9;&#x4E8E;&#x7EBF;&#x6027;&#xFF08;&#x5747;&#x5300;&#xFF09;&#x91CF;&#x5316;&#xFF0C;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x662F;&#x4E0D;&#x53EF;&#x907F;&#x514D;&#x7684;&#x3002;</p>
+<p>&#x540C;&#x65F6;&#x503C;&#x6620;&#x5C04;&#x7684;&#x7CBE;&#x5EA6;&#x662F;&#x53D7;&#x7531; $x<em>{float}^{min}$ &#x548C; $x</em>{float}^{max}$ &#x5F97;&#x5230;&#x7684; $x<em>{scale}$ &#x663E;&#x8457;&#x5F71;&#x54CD;&#x7684;&#x3002;&#x5E76;&#x4E14;&#xFF0C;&#x5982;&#x56FE;&#x5341;&#x6240;&#x793A;&#xFF0C;&#x6743;&#x91CD;&#x4E2D;&#x90BB;&#x8FD1; $x</em>{float}^{min}$ &#x548C; $x_{float}^{max}$ &#x9644;&#x8FD1;&#x7684;&#x503C;&#x901A;&#x5E38;&#x662F;&#x53EF;&#x5FFD;&#x7565;&#x7684;&#xFF0C;&#x5176;&#x5B9E;&#x5C31;&#x7B49;&#x540C;&#x4E8E;<strong>&#x6620;&#x5C04;&#x5173;&#x7CFB;&#x4E2D;&#x6D6E;&#x70B9;&#x503C;&#x7684; <code>min</code> &#x548C; <code>max</code> &#x503C;&#x662F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x7B97;&#x6CD5;&#x9009;&#x62E9;&#x7684;</strong>&#x3002;</p>
+<p><img src="../data/images/&#x6A21;&#x578B;&#x91CF;&#x5316;/&#x56FE;&#x5341;&#x5C06;&#x6D6E;&#x70B9;&#x91CF;&#x5316;&#x4E3A;&#x5B9A;&#x70B9;&#x65F6;&#x8C03;&#x6574;&#x6700;&#x5C0F;&#x503C;-&#x6700;&#x5927;&#x503C;.jpg" alt="&#x56FE;&#x5341;&#x5C06;&#x6D6E;&#x70B9;&#x91CF;&#x5316;&#x4E3A;&#x5B9A;&#x70B9;&#x65F6;&#x8C03;&#x6574;&#x6700;&#x5C0F;&#x503C;-&#x6700;&#x5927;&#x503C;"></p>
+<blockquote>
+<p>&#x56FE;&#x5341;&#x5C06;&#x6D6E;&#x70B9;&#x91CF;&#x5316;&#x4E3A;&#x5B9A;&#x70B9;&#x65F6;&#x8C03;&#x6574;&#x6700;&#x5C0F;&#x503C;-&#x6700;&#x5927;&#x503C;&#x3002;</p>
+</blockquote>
+<p>&#x4E0A;&#x56FE;&#x5C55;&#x793A;&#x4E86;&#x53EF;&#x4EE5;&#x8C03;&#x6574; <code>min/max</code> &#x6765;&#x9009;&#x62E9;&#x4E00;&#x4E2A;&#x503C;&#x57DF;&#xFF0C;&#x4F7F;&#x5F97;&#x503C;&#x57DF;&#x7684;&#x503C;&#x66F4;&#x51C6;&#x786E;&#x5730;&#x91CF;&#x5316;&#xFF0C;&#x800C;&#x8303;&#x56F4;&#x5916;&#x7684;&#x503C;&#x5219;&#x76F4;&#x63A5;&#x6620;&#x5C04;&#x5230;&#x5B9A;&#x70B9;&#x7684; min/max&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x5F53;&#x4ECE;&#x539F;&#x59CB;&#x503C;&#x8303;&#x56F4; $[&#x2212;1,1]$ &#x4E2D;&#x9009;&#x5B9A;$x<em>{min}^{float} = &#x2212;0.9$ &#x548C; $x</em>{max}^{float} = 0.8$ &#xFF0C;$[&#x2212;0.9,0.8]$ &#x4E2D;&#x7684;&#x503C;&#x5C06;&#x80FD;&#x66F4;&#x51C6;&#x786E;&#x5730;&#x6620;&#x5C04;&#x5230; $[0,255]$ &#x4E2D;&#xFF0C;&#x800C; $[&#x2212;1,&#x2212;0.9]$ &#x548C; $[0.8,1]$ &#x4E2D;&#x7684;&#x503C;&#x5206;&#x522B;&#x6620;&#x5C04;&#x4E3A; $0$ &#x548C; $255$&#x3002;</p>
+<h3 id="31&#xFF0C;&#x6D6E;&#x70B9;&#x6570;&#x52A8;&#x6001;&#x8303;&#x56F4;&#x9009;&#x62E9;">3.1&#xFF0C;&#x6D6E;&#x70B9;&#x6570;&#x52A8;&#x6001;&#x8303;&#x56F4;&#x9009;&#x62E9;</h3>
+<blockquote>
+<p>&#x53C2;&#x8003;<a href="https://mp.weixin.qq.com/s/LR3Z2rlkxdl-1KnsU734VQ" target="_blank">&#x5E72;&#x8D27;&#xFF1A;&#x6DF1;&#x5EA6;&#x5B66;&#x4E60;&#x6A21;&#x578B;&#x91CF;&#x5316;&#xFF08;&#x4F4E;&#x7CBE;&#x5EA6;&#x63A8;&#x7406;&#xFF09;&#x5927;&#x603B;&#x7ED3;</a>&#x3002;</p>
+</blockquote>
+<p>&#x901A;&#x8FC7;&#x524D;&#x6587;&#x5BF9;&#x91CF;&#x5316;&#x7B97;&#x6570;&#x7684;&#x7406;&#x89E3;&#x548C;&#x4E0A;&#x9762;&#x4E24;&#x79CD;&#x91CF;&#x5316;&#x7B97;&#x6CD5;&#x7684;&#x4ECB;&#x7ECD;&#x6211;&#x4EEC;&#x4E0D;&#x96BE;&#x53D1;&#x73B0;&#xFF0C;&#x4E3A;&#x4E86;&#x8BA1;&#x7B97; <code>scale</code> &#x548C; <code>zero_point</code>&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x77E5;&#x9053; <code>FP32 weight/activation</code> &#x7684;&#x5B9E;&#x9645;&#x52A8;&#x6001;&#x8303;&#x56F4;&#x3002;&#x5BF9;&#x4E8E;&#x63A8;&#x7406;&#x8FC7;&#x7A0B;&#x6765;&#x8BF4;&#xFF0C;<code>weight</code> &#x662F;&#x4E00;&#x4E2A;&#x5E38;&#x91CF;&#x5F20;&#x91CF;&#xFF0C;&#x52A8;&#x6001;&#x8303;&#x56F4;&#x662F;&#x56FA;&#x5B9A;&#x7684;&#xFF0C;<code>activation</code> &#x7684;&#x52A8;&#x6001;&#x8303;&#x56F4;&#x662F;&#x53D8;&#x5316;&#x7684;&#xFF0C;&#x5B83;&#x7684;&#x5B9E;&#x9645;&#x52A8;&#x6001;&#x8303;&#x56F4;&#x5FC5;&#x987B;&#x7ECF;&#x8FC7;&#x91C7;&#x6837;&#x83B7;&#x53D6;&#xFF08;&#x4E00;&#x822C;&#x628A;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x79F0;&#x4E3A;&#x6570;&#x636E;&#x6821;&#x51C6;(<code>calibration</code>)&#xFF09;&#x3002;</p>
+<p>&#x5C06;&#x6D6E;&#x70B9;&#x91CF;&#x5316;&#x8F6C;&#x4E3A;&#x5B9A;&#x70B9;&#x65F6;&#x8C03;&#x6574;&#x6700;&#x5C0F;&#x503C;/&#x6700;&#x5927;&#x503C;&#xFF08;<strong>&#x503C;&#x57DF;&#x8C03;&#x6574;</strong>&#xFF09;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x6D6E;&#x70B9;&#x6570;&#x52A8;&#x6001;&#x8303;&#x56F4;&#x7684;&#x9009;&#x62E9;&#xFF0C;<strong>&#x52A8;&#x6001;&#x8303;&#x56F4;&#x7684;&#x9009;&#x53D6;&#x76F4;&#x63A5;&#x51B3;&#x5B9A;&#x4E86;&#x91CF;&#x5316;&#x6570;&#x636E;&#x7684;&#x5206;&#x5E03;&#x60C5;&#x51B5;&#xFF0C;&#x5904;&#x4E8E;&#x52A8;&#x6001;&#x8303;&#x56F4;&#x4E4B;&#x5916;&#x7684;&#x6570;&#x636E;&#x5C06;&#x88AB;&#x6620;&#x5C04;&#x6210;&#x91CF;&#x5316;&#x6570;&#x636E;&#x7684;&#x8FB9;&#x754C;&#x70B9;&#xFF0C;&#x5373;&#x503C;&#x57DF;&#x7684;&#x9009;&#x62E9;&#x76F4;&#x63A5;&#x51B3;&#x5B9A;&#x4E86;&#x91CF;&#x5316;&#x7684;&#x8BEF;&#x5DEE;</strong>&#x3002;</p>
+<p>&#x76EE;&#x524D;&#x5404;&#x5927;&#x6DF1;&#x5EA6;&#x5B66;&#x4E60;&#x6846;&#x67B6;&#x548C;&#x4E09;&#x5927;&#x5E73;&#x53F0;&#x7684;&#x63A8;&#x7406;&#x6846;&#x67B6;&#x4F7F;&#x7528;&#x6700;&#x591A;&#x7684;&#x6709;&#x6700;&#x5927;&#x6700;&#x5C0F;&#x503C;&#xFF08;<code>MinMax</code>&#xFF09;&#x3001;&#x6ED1;&#x52A8;&#x5E73;&#x5747;&#x6700;&#x5927;&#x6700;&#x5C0F;&#x503C;&#xFF08;<code>MovingAverageMinMax</code>&#xFF09;&#x548C; <code>KL</code> &#x8DDD;&#x79BB;&#xFF08;Kullback-Leibler divergence&#xFF09;&#x4E09;&#x79CD;&#x65B9;&#x6CD5;&#xFF0C;&#x53BB;&#x786E;&#x5B9A;&#x6D6E;&#x70B9;&#x6570;&#x7684;&#x52A8;&#x6001;&#x8303;&#x56F4;&#x3002;&#x5982;&#x679C;&#x91CF;&#x5316;&#x8FC7;&#x7A0B;&#x4E2D;&#x7684;&#x6BCF;&#x4E00;&#x4E2A; <code>FP32</code> &#x6570;&#x503C;&#x90FD;&#x5728;&#x8FD9;&#x4E2A;&#x5B9E;&#x9645;&#x52A8;&#x6001;&#x8303;&#x56F4;&#x5185;&#xFF0C;&#x6211;&#x4EEC;&#x4E00;&#x822C;&#x79F0;&#x8FD9;&#x79CD;&#x4E3A;&#x4E0D;&#x9971;&#x548C;&#x72B6;&#x6001;&#xFF1B;&#x53CD;&#x4E4B;&#x5982;&#x679C;&#x51FA;&#x73B0;&#x67D0;&#x4E9B; <code>FP32</code> &#x6570;&#x503C;&#x4E0D;&#x5728;&#x8FD9;&#x4E2A;&#x5B9E;&#x9645;&#x52A8;&#x6001;&#x8303;&#x56F4;&#x4E4B;&#x5185;&#x6211;&#x4EEC;&#x79F0;&#x4E4B;&#x4E3A;&#x9971;&#x548C;&#x72B6;&#x6001;&#x3002;</p>
+<h3 id="32&#xFF0C;&#x6700;&#x5927;&#x6700;&#x5C0F;&#x503C;&#xFF08;minmax&#xFF09;">3.2&#xFF0C;&#x6700;&#x5927;&#x6700;&#x5C0F;&#x503C;&#xFF08;MinMax&#xFF09;</h3>
+<p><code>MinMax</code> &#x662F;&#x4F7F;&#x7528;&#x6700;&#x7B80;&#x5355;&#x4E5F;&#x662F;&#x8F83;&#x4E3A;&#x5E38;&#x7528;&#x7684;&#x4E00;&#x79CD;&#x91C7;&#x6837;&#x65B9;&#x6CD5;&#x3002;&#x57FA;&#x672C;&#x601D;&#x60F3;&#x662F;&#x76F4;&#x63A5;&#x4ECE; <code>FP32</code> &#x5F20;&#x91CF;&#x4E2D;&#x9009;&#x53D6;&#x6700;&#x5927;&#x503C;&#x548C;&#x6700;&#x5C0F;&#x503C;&#x6765;&#x786E;&#x5B9A;&#x5B9E;&#x9645;&#x7684;&#x52A8;&#x6001;&#x8303;&#x56F4;&#xFF0C;&#x5982;&#x4E0B;&#x516C;&#x5F0F;&#x6240;&#x793A;&#x3002;
+$x<em>{min} = \left{\begin{matrix}min(X) &amp; if\ x</em>{min} = None \  min(x_{min}, min(X))  &amp; otherwise\end{matrix}\right.$</p>
+<p>$x<em>{max} = \left{\begin{matrix}max(X) &amp; if\ x</em>{max} = None \  max(x_{max}, max(X))  &amp; otherwise\end{matrix}\right.$</p>
+<p>&#x5BF9; <code>weights</code> &#x800C;&#x8A00;&#xFF0C;&#x8FD9;&#x79CD;&#x91C7;&#x6837;&#x65B9;&#x6CD5;&#x662F;&#x4E0D;&#x9971;&#x548C;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x5BF9;&#x4E8E; <code>activation</code> &#x800C;&#x8A00;&#xFF0C;&#x5982;&#x679C;&#x91C7;&#x6837;&#x6570;&#x636E;&#x4E2D;&#x51FA;&#x73B0;&#x79BB;&#x7FA4;&#x70B9;&#xFF0C;&#x5219;&#x53EF;&#x80FD;&#x660E;&#x663E;&#x6269;&#x5927;&#x5B9E;&#x9645;&#x7684;&#x52A8;&#x6001;&#x8303;&#x56F4;&#xFF0C;&#x6BD4;&#x5982;&#x5B9E;&#x9645;&#x8BA1;&#x7B97;&#x65F6; <code>99%</code> &#x7684;&#x6570;&#x636E;&#x90FD;&#x5747;&#x5300;&#x5206;&#x5E03;&#x5728; <code>[-100, 100]</code> &#x4E4B;&#x95F4;&#xFF0C;&#x4F46;&#x662F;&#x5728;&#x91C7;&#x6837;&#x65F6;&#x6709;&#x4E00;&#x4E2A;&#x79BB;&#x7FA4;&#x70B9;&#x7684;&#x6570;&#x503C;&#x4E3A; <code>10000</code>&#xFF0C;&#x8FD9;&#x65F6;&#x5019;&#x91C7;&#x6837;&#x83B7;&#x5F97;&#x7684;&#x52A8;&#x6001;&#x8303;&#x56F4;&#x5C31;&#x53D8;&#x6210; <code>[-100, 10000]</code>&#x3002;</p>
+<h3 id="33&#xFF0C;&#x6ED1;&#x52A8;&#x5E73;&#x5747;&#x6700;&#x5927;&#x6700;&#x5C0F;&#x503C;movingaverageminmax">3.3&#xFF0C;&#x6ED1;&#x52A8;&#x5E73;&#x5747;&#x6700;&#x5927;&#x6700;&#x5C0F;&#x503C;(MovingAverageMinMax)</h3>
+<p>&#x4E0E; <code>MinMax</code> &#x7B97;&#x6CD5;&#x76F4;&#x63A5;&#x66FF;&#x6362;&#x4E0D;&#x540C;&#xFF0C;MovingAverageMinMax &#x4F1A;&#x91C7;&#x7528;&#x4E00;&#x4E2A;&#x8D85;&#x53C2;&#x6570; <code>c</code> (Pytorch &#x9ED8;&#x8BA4;&#x503C;&#x4E3A;0.01)&#x9010;&#x6B65;&#x66F4;&#x65B0;&#x52A8;&#x6001;&#x8303;&#x56F4;&#x3002;
+$x<em>{min} = \left{\begin{matrix}min(X) &amp; if x</em>{min} = None \ (1-c)x_{min}+c \; min(X) &amp; otherwise\end{matrix}\right.$</p>
+<p>$x<em>{max} = \left{\begin{matrix}max(X) &amp; if x</em>{max} = None \  (1-c)x_{max}+c \; max(X) &amp; otherwise\end{matrix}\right.$
+&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#x83B7;&#x5F97;&#x7684;&#x52A8;&#x6001;&#x8303;&#x56F4;&#x4E00;&#x822C;&#x8981;&#x5C0F;&#x4E8E;&#x5B9E;&#x9645;&#x7684;&#x52A8;&#x6001;&#x8303;&#x56F4;&#x3002;&#x5BF9;&#x4E8E; weights &#x800C;&#x8A00;&#xFF0C;&#x7531;&#x4E8E;&#x4E0D;&#x5B58;&#x5728;&#x91C7;&#x6837;&#x7684;&#x8FED;&#x4EE3;&#xFF0C;&#x56E0;&#x6B64; MovingAverageMinMax &#x4E0E; MinMax &#x7684;&#x6548;&#x679C;&#x662F;&#x4E00;&#x6837;&#x7684;&#x3002;</p>
+<h3 id="34&#xFF0C;kl-&#x8DDD;&#x79BB;&#x91C7;&#x6837;&#x65B9;&#x6CD5;kullback&#x2013;leibler-divergence">3.4&#xFF0C;KL &#x8DDD;&#x79BB;&#x91C7;&#x6837;&#x65B9;&#x6CD5;(Kullback&#x2013;Leibler divergence)</h3>
+<p>&#x7406;&#x89E3; KL &#x6563;&#x5EA6;&#x65B9;&#x6CD5;&#x4E4B;&#x524D;&#xFF0C;&#x6211;&#x4EEC;&#x5148;&#x770B;&#x4E0B; <code>TensorRT</code> &#x5173;&#x4E8E;&#x503C;&#x57DF;&#x8303;&#x56F4;&#x9608;&#x503C;&#x9009;&#x62E9;&#x7684;&#x4E00;&#x5F20;&#x56FE;&#xFF1A;</p>
+<p><img src="../data/images/quantization/&#x9608;&#x503C;&#x9009;&#x62E9;.png" alt="&#x9608;&#x503C;&#x9009;&#x62E9;"></p>
+<p>&#x8FD9;&#x5F20;&#x56FE;&#x5C55;&#x793A;&#x7684;&#x662F;&#x4E0D;&#x540C;&#x7F51;&#x7EDC;&#x7ED3;&#x6784;&#x7684;&#x4E0D;&#x540C; <code>layer</code> &#x7684;&#x6FC0;&#x6D3B;&#x503C;&#x5206;&#x5E03;&#x7EDF;&#x8BA1;&#x56FE;&#xFF0C;&#x6A2A;&#x5750;&#x6807;&#x662F;&#x6FC0;&#x6D3B;&#x503C;&#xFF0C;&#x7EB5;&#x5750;&#x6807;&#x662F;&#x7EDF;&#x8BA1;&#x6570;&#x91CF;&#x7684;&#x5F52;&#x4E00;&#x5316;&#x8868;&#x793A;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x7EDD;&#x5BF9;&#x6570;&#x503C;&#x7EDF;&#x8BA1;&#xFF1B;&#x56FE;&#x4E2D;&#x6709;&#x5377;&#x79EF;&#x5C42;&#x548C;&#x6C60;&#x5316;&#x5C42;&#xFF0C;&#x5B83;&#x4EEC;&#x4E4B;&#x95F4;&#x5206;&#x5E03;&#x5F88;&#x4E0D;&#x76F8;&#x540C;&#xFF0C;&#x56E0;&#x6B64;&#x5408;&#x7406;&#x7684;&#x91CF;&#x5316;&#x65B9;&#x6CD5;&#x5E94;&#x8BE5;&#x662F;&#x9002;&#x7528;&#x4E8E;&#x4E0D;&#x540C;&#x7684;&#x6FC0;&#x6D3B;&#x503C;&#x5206;&#x5E03;&#xFF0C;&#x5E76;&#x4E14;&#x51CF;&#x5C0F;&#x4FE1;&#x606F;&#x635F;&#x5931;&#xFF0C;&#x56E0;&#x4E3A;&#x4ECE; <code>FP32</code> &#x5230; <code>INT8</code> &#x5176;&#x5B9E;&#x4E5F;&#x662F;&#x4E00;&#x79CD;&#x4FE1;&#x606F;&#x518D;&#x7F16;&#x7801;&#x7684;&#x8FC7;&#x7A0B;&#x3002;</p>
+<p>&#x7B80;&#x5355;&#x7684;&#x5C06;&#x4E00;&#x4E2A; tensor &#x4E2D;&#x7684; -|max| &#x548C; |max| FP32 value &#x6620;&#x5C04;&#x4E3A; -127 &#x548C; 127 &#xFF0C;&#x4E2D;&#x95F4;&#x503C;&#x6309;&#x7167;&#x7EBF;&#x6027;&#x5173;&#x7CFB;&#x8FDB;&#x884C;&#x6620;&#x5C04;&#xFF0C;&#x8FD9;&#x79CD;&#x6620;&#x5C04;&#x5173;&#x7CFB;&#x4E3A;&#x4E0D;&#x9971;&#x548C;&#x7684;&#xFF08;No saturation&#xFF09;&#xFF0C;&#x5373;&#x5BF9;&#x79F0;&#x7684;&#x3002;&#x5BF9;&#x4E8E;&#x8FD9;&#x79CD;&#x7B80;&#x5355;&#x7684;&#x91CF;&#x5316;&#x6D6E;&#x70B9;&#x65B9;&#x6CD5;&#xFF0C;&#x8BD5;&#x9A8C;&#x7ED3;&#x679C;&#x663E;&#x793A;&#x4F1A;&#x5BFC;&#x81F4;&#x6BD4;&#x8F83;&#x5927;&#x7684;&#x7CBE;&#x5EA6;&#x635F;&#x5931;&#x3002;</p>
+<p>&#x901A;&#x8FC7;&#x4E0A;&#x56FE;&#x53EF;&#x4EE5;&#x5206;&#x6790;&#x51FA;&#xFF0C;&#x7EBF;&#x6027;&#x91CF;&#x5316;&#x4E2D;&#x4F7F;&#x7528;&#x7B80;&#x5355;&#x7684;&#x91CF;&#x5316;&#x6D6E;&#x70B9;&#x65B9;&#x6CD5;&#x5BFC;&#x81F4;&#x7CBE;&#x5EA6;&#x635F;&#x5931;&#x8F83;&#x5927;&#x7684;&#x539F;&#x56E0;&#x662F;&#xFF1A;</p>
+<ul>
+<li>&#x4E0A;&#x56FE;&#x7684;&#x6FC0;&#x6D3B;&#x503C;&#x7EDF;&#x8BA1;&#x9488;&#x5BF9;&#x7684;&#x662F;&#x4E00;&#x6279;&#x56FE;&#x7247;&#xFF0C;&#x4E0D;&#x540C;&#x56FE;&#x7247;&#x8F93;&#x51FA;&#x7684;&#x6FC0;&#x6D3B;&#x503C;&#x4E0D;&#x5B8C;&#x5168;&#x76F8;&#x540C;&#xFF0C;&#x6240;&#x4EE5;&#x56FE;&#x4E2D;&#x662F;&#x591A;&#x6761;&#x66F2;&#x7EBF;&#x800C;&#x4E0D;&#x662F;&#x4E00;&#x6761;&#x66F2;&#x7EBF;&#xFF0C;&#x66F2;&#x7EBF;&#x4E2D;&#x524D;&#x9762;&#x4E00;&#x90E8;&#x5206;&#x6570;&#x636E;&#x91CD;&#x5408;&#x5728;&#x4E00;&#x8D77;&#x4E86;&#xFF08;&#x7EA2;&#x8272;&#x865A;&#x7EBF;&#xFF09;&#xFF0C;&#x8BF4;&#x660E;&#x4E0D;&#x540C;&#x56FE;&#x7247;&#x751F;&#x6210;&#x7684;&#x5927;&#x90E8;&#x5206;&#x6FC0;&#x6D3B;&#x503C;&#x5176;&#x5206;&#x5E03;&#x662F;&#x76F8;&#x4F3C;&#x7684;&#xFF1B;&#x4F46;&#x662F;&#x5728;&#x66F2;&#x7EBF;&#x7684;&#x53F3;&#x8FB9;&#xFF0C;&#x6FC0;&#x6D3B;&#x503C;&#x6BD4;&#x8F83;&#x5927;&#x65F6;&#xFF08;&#x7EA2;&#x8272;&#x5B9E;&#x73B0;&#x5708;&#x8D77;&#x6765;&#x7684;&#x90E8;&#x5206;&#xFF09;&#xFF0C;&#x66F2;&#x7EBF;&#x4E0D;&#x91CD;&#x590D;&#x4E86;&#xFF0C;&#x4E00;&#x4E2A;&#x6FC0;&#x6D3B;&#x503C;&#x4F1A;&#x5BF9;&#x5E94;&#x591A;&#x4E2A;&#x4E0D;&#x540C;&#x7684;&#x7EDF;&#x8BA1;&#x91CF;&#xFF0C;&#x8FD9;&#x65F6;&#x6FC0;&#x6D3B;&#x503C;&#x5206;&#x5E03;&#x662F;&#x6BD4;&#x8F83;&#x4E71;&#x7684;&#x3002;</li>
+<li>&#x66F2;&#x7EBF;&#x540E;&#x9762;&#x6FC0;&#x6D3B;&#x503C;&#x5206;&#x5E03;&#x6BD4;&#x8F83;&#x4E71;&#x7684;&#x90E8;&#x5206;&#x5728;&#x6574;&#x4E2A;&#x7F51;&#x7EDC;&#x5C42;&#x5360;&#x662F;&#x5360;&#x5C11;&#x6570;&#x7684;&#xFF08;&#x6BD4;&#x5982; $10^-9$, $10^-7$, $10^-3$&#xFF09;&#xFF0C;&#x56E0;&#x6B64;&#x66F2;&#x7EBF;&#x540E;&#x9762;&#x7684;&#x6FC0;&#x6D3B;&#x503C;&#x5206;&#x5E03;&#x90E8;&#x5206;&#x53EF;&#x4EE5;&#x4E0D;&#x8003;&#x8651;&#x5230;&#x6620;&#x5C04;&#x5173;&#x7CFB;&#x4E2D;&#xFF0C;&#x53EA;&#x4FDD;&#x7559;&#x6FC0;&#x6D3B;&#x503C;&#x5206;&#x5E03;&#x7684;&#x4E3B;&#x65B9;&#x5411;&#x3002;</li>
+</ul>
+<p>&#x4E00;&#x822C;&#x8BA4;&#x4E3A;&#x91CF;&#x5316;&#x4E4B;&#x540E;&#x7684;&#x6570;&#x636E;&#x5206;&#x5E03;&#x4E0E;&#x91CF;&#x5316;&#x524D;&#x7684;&#x6570;&#x636E;&#x5206;&#x5E03;&#x8D8A;&#x76F8;&#x4F3C;&#xFF0C;&#x91CF;&#x5316;&#x5BF9;&#x539F;&#x59CB;&#x6570;&#x636E;&#x4FE1;&#x606F;&#x7684;&#x635F;&#x5931;&#x4E5F;&#x5C31;&#x8D8A;&#x5C0F;&#xFF0C;&#x5373;&#x91CF;&#x5316;&#x7B97;&#x6CD5;&#x7CBE;&#x5EA6;&#x8D8A;&#x9AD8;&#x3002;<code>KL</code> &#x8DDD;&#x79BB;(&#x4E5F;&#x53EB; <code>KL</code> &#x6563;&#x5EA6;)&#x4E00;&#x822C;&#x88AB;&#x7528;&#x6765;&#x5EA6;&#x91CF;&#x4E24;&#x4E2A;&#x5206;&#x5E03;&#x4E4B;&#x95F4;&#x7684;&#x76F8;&#x4F3C;&#x6027;&#x3002;&#x8FD9;&#x91CC;&#x7684;&#x6570;&#x636E;&#x5206;&#x5E03;&#x90FD;&#x662F;&#x79BB;&#x6563;&#x5F62;&#x5F0F;&#x7684;&#xFF0C;&#x5176;&#x79BB;&#x6563;&#x6570;&#x636E;&#x7684; KL &#x6563;&#x5EA6;&#x516C;&#x5F0F;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p>$$D<em>{KL}(P | Q) = \sum_i P(i)log</em>{a} \frac{P(i)}{Q(i)} = \sum_i P(i)[logP(x) - log Q(x)]$$</p>
+<p>&#x5F0F;&#x4E2D; P &#x548C; Q &#x5206;&#x5E03;&#x8868;&#x793A;&#x91CF;&#x5316;&#x524D; FP32 &#x7684;&#x6570;&#x636E;&#x5206;&#x5E03;&#x548C;&#x91CF;&#x5316;&#x540E;&#x7684; INT8 &#x6570;&#x636E;&#x5206;&#x5E03;&#x3002;&#x6CE8;&#x610F;&#x516C;&#x5F0F;&#x8981;&#x6C42; P&#x3001;Q &#x4E24;&#x4E2A;&#x7EDF;&#x8BA1;&#x76F4;&#x65B9;&#x56FE;&#x957F;&#x5EA6;&#x4E00;&#x6837;&#xFF08;&#x4E5F;&#x5C31;&#x662F; bins &#x7684;&#x6570;&#x91CF;&#x4E00;&#x6837;&#xFF09;&#x3002;</p>
+<p>TensorRT &#x4F7F;&#x7528; KL &#x6563;&#x5EA6;&#x7B97;&#x6CD5;&#x8FDB;&#x884C;&#x91CF;&#x5316;&#x6821;&#x51C6;&#x7684;&#x8FC7;&#x7A0B;&#xFF1A;&#x9996;&#x5148;&#x5728;&#x6821;&#x51C6;&#x96C6;&#x4E0A;&#x8FD0;&#x884C; FP32 &#x63A8;&#x7406;&#xFF0C;&#x7136;&#x540E;&#x5BF9;&#x4E8E;&#x7F51;&#x7EDC;&#x6BCF;&#x4E00;&#x5C42;&#x6267;&#x884C;&#x4EE5;&#x4E0B;&#x6B65;&#x9AA4;&#xFF1A;</p>
+<ol>
+<li>&#x6536;&#x96C6;&#x6FC0;&#x6D3B;&#x8F93;&#x51FA;&#x7684;&#x76F4;&#x65B9;&#x56FE;&#x3002;</li>
+<li>&#x751F;&#x6210;&#x8BB8;&#x591A;&#x5177;&#x6709;&#x4E0D;&#x540C;&#x9971;&#x548C;&#x5EA6;&#x9608;&#x503C;&#x7684;&#x91CF;&#x5316;&#x5206;&#x5E03;&#x3002;</li>
+<li>&#x9009;&#x62E9;&#x6700;&#x5C0F;&#x5316; KL_divergence(ref_distr, quant_distr) &#x7684;&#x9608;&#x503C; <code>T</code>&#xFF0C;&#x5E76;&#x786E;&#x5B9A; <code>Scale</code>&#x3002;</li>
+</ol>
+<p>&#x4EE5;&#x4E0A;&#x4F7F;&#x7528;&#x6821;&#x51C6;&#x96C6;&#x7684;&#x6A21;&#x578B;&#x91CF;&#x5316;&#x8FC7;&#x7A0B;&#x901A;&#x5E38;&#x53EA;&#x9700;&#x51E0;&#x5206;&#x949F;&#x65F6;&#x95F4;&#x3002;</p>
+<h3 id="35&#xFF0C;&#x603B;&#x7ED3;">3.5&#xFF0C;&#x603B;&#x7ED3;</h3>
+<ul>
+<li>&#x5BF9;&#x79F0;&#x7684;&#xFF0C;&#x4E0D;&#x9971;&#x548C;&#x7684;&#x7EBF;&#x6027;&#x91CF;&#x5316;&#xFF0C;&#x4F1A;&#x5BFC;&#x81F4;&#x7CBE;&#x5EA6;&#x635F;&#x5931;&#x8F83;&#x5927;&#xFF1B;</li>
+<li>&#x901A;&#x8FC7;&#x6700;&#x5C0F;&#x5316; <code>KL</code> &#x6563;&#x5EA6;&#x6765;&#x9009;&#x62E9; &#x9971;&#x548C;&#x91CF;&#x5316;&#x4E2D;&#x7684; &#x9608;&#x503C; <code>|T|</code>;</li>
+</ul>
+<h2 id="4&#xFF0C;&#x91CF;&#x5316;&#x5B9E;&#x6218;&#x7ECF;&#x9A8C;">4&#xFF0C;&#x91CF;&#x5316;&#x5B9E;&#x6218;&#x7ECF;&#x9A8C;</h2>
+<blockquote>
+<p>&#x53C2;&#x8003;<a href="https://www.sensetime.com/cn/technology-new-detail/3563?categoryId=53" target="_blank">&#x3010;&#x5546;&#x6C64;&#x6CF0;&#x5766;&#x516C;&#x5F00;&#x8BFE;&#x3011;&#x6A21;&#x578B;&#x91CF;&#x5316;&#x4E86;&#x89E3;&#x4E00;&#x4E0B;&#xFF1F;</a></p>
+</blockquote>
+<p>1&#xFF0C;&#x91CF;&#x5316;&#x662F;&#x4E00;&#x79CD;&#x5DF2;&#x7ECF;&#x83B7;&#x5F97;&#x4E86;&#x5DE5;&#x4E1A;&#x754C;&#x8BA4;&#x53EF;&#x548C;&#x4F7F;&#x7528;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x5728;&#x8BAD;&#x7EC3; (Training) &#x4E2D;&#x4F7F;&#x7528; <code>FP32</code> &#x7CBE;&#x5EA6;&#xFF0C;&#x5728;&#x63A8;&#x7406; (Inference) &#x671F;&#x95F4;&#x4F7F;&#x7528; <code>INT8</code> &#x7CBE;&#x5EA6;&#x7684;&#x8FD9;&#x5957;&#x91CF;&#x5316;&#x4F53;&#x7CFB;&#x5DF2;&#x7ECF;&#x88AB;&#x5305;&#x62EC; <code>TensorFlow</code>&#xFF0C;<code>TensorRT</code>&#xFF0C;<code>PyTorch</code>&#xFF0C;<code>MxNet</code> &#x7B49;&#x4F17;&#x591A;&#x6DF1;&#x5EA6;&#x5B66;&#x4E60;&#x6846;&#x67B6;&#x548C;&#x542F;&#x7528;&#xFF0C;&#x5730;&#x5E73;&#x7EBF;&#x673A;&#x5668;&#x4EBA;&#x3001;&#x6D77;&#x601D;&#x3001;&#x5B89;&#x9738;&#x7B49;&#x4F17;&#x591A; <code>AI</code> &#x82AF;&#x7247;&#x5382;&#x5546;&#x4E5F;&#x5728;&#x6DF1;&#x5EA6;&#x5B66;&#x4E60;&#x5DE5;&#x5177;&#x94FE;&#x4E2D;&#x63D0;&#x4F9B;&#x4E86;&#x5404;&#x81EA;&#x7248;&#x672C;&#x7684;&#x6A21;&#x578B;&#x91CF;&#x5316;&#x529F;&#x80FD;&#x3002;
+2&#xFF0C;&#x91CF;&#x5316;&#x662F;&#x4E00;&#x4E2A;&#x5927;&#x90E8;&#x5206;&#x786C;&#x4EF6;&#x5E73;&#x53F0;&#x90FD;&#x4F1A;&#x652F;&#x6301;&#x7684;&#xFF0C;&#x56E0;&#x6B64;&#x6BD4;&#x8F83;&#x5E38;&#x7528;&#xFF1B;&#x77E5;&#x8BC6;&#x84B8;&#x998F;&#x6709;&#x5229;&#x4E8E;&#x83B7;&#x5F97;&#x5C0F;&#x6A21;&#x578B;&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x8FDB;&#x4E00;&#x6B65;&#x63D0;&#x5347;&#x91CF;&#x5316;&#x6A21;&#x578B;&#x7684;&#x7CBE;&#x5EA6;&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x4E2A;&#x6280;&#x5DE7;&#x4E5F;&#x4F1A;&#x4F7F;&#x7528;&#xFF0C;&#x5C24;&#x5176;&#x662F;&#x5728;&#x6709;&#x5DF2;&#x7ECF;&#x8BAD;&#x597D;&#x6BD4;&#x8F83;&#x5F3A;&#x7684;&#x5927;&#x6A21;&#x578B;&#x7684;&#x57FA;&#x7840;&#x4E0A;&#x4F1A;&#x975E;&#x5E38;&#x6709;&#x7528;&#x3002;&#x526A;&#x679D;&#x7528;&#x7684;&#x4F1A;&#x76F8;&#x5BF9;&#x8F83;&#x5C11;&#xFF0C;&#x56E0;&#x4E3A;&#x53EF;&#x4EE5;&#x88AB;&#x7F51;&#x7EDC;&#x7ED3;&#x6784;&#x641C;&#x7D22;&#x8986;&#x76D6;&#x3002;</p>
+<h2 id="&#x53C2;&#x8003;&#x8D44;&#x6599;">&#x53C2;&#x8003;&#x8D44;&#x6599;</h2>
+<ul>
+<li><a href="https://zhuanlan.zhihu.com/p/71881443" target="_blank">NCNN Conv&#x91CF;&#x5316;&#x8BE6;&#x89E3;&#xFF08;&#x4E00;&#xFF09;</a></li>
+<li><a href="https://jackwish.net/2019/convolution-neural-networks-optimization.html" target="_blank">&#x5377;&#x79EF;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x4F18;&#x5316;&#x7B97;&#x6CD5;</a></li>
+<li><a href="https://jackwish.net/2019/neural-network-quantization-introduction-chn.html" target="_blank">&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x91CF;&#x5316;&#x7B80;&#x4ECB;</a></li>
+<li><a href="https://jackwish.net/2019/reveal-qnnpack-implementation.html" target="_blank">QNNPACK &#x5B9E;&#x73B0;&#x63ED;&#x79D8;</a></li>
+<li>&#x300A;8-bit Inference with TensorRT&#x300B;</li>
+</ul>
+<footer class="page-footer"><span class="copyright">Copyright &#xA9; zhg5200211@outlook.com 2022 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x8BE5;&#x6587;&#x7AE0;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
+2022-12-03 05:38:08
+</span></footer>
+<script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                
+                <a href="../../8-high-performance_computing/" class="navigation navigation-next navigation-unique" aria-label="Next page: 8. 高性能计算">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"神经网络量化","level":"1.9.2.1","depth":3,"next":{"title":"8. 高性能计算","level":"1.10","depth":1,"path":"8-high-performance_computing/README.md","ref":"8-high-performance_computing/README.md","articles":[{"title":"0-处理器基础知识","level":"1.10.1","depth":2,"path":"8-high-performance_computing/0-处理器基础知识.md","ref":"8-high-performance_computing/0-处理器基础知识.md","articles":[]},{"title":"1-卷积算法的优化","level":"1.10.2","depth":2,"path":"8-high-performance_computing/1-卷积算法的优化.md","ref":"8-high-performance_computing/1-卷积算法的优化.md","articles":[]},{"title":"2-模型编译优化","level":"1.10.3","depth":2,"path":"8-high-performance_computing/2-模型编译优化.md","ref":"8-high-performance_computing/2-模型编译优化.md","articles":[]},{"title":"通用矩阵乘算法从入门到实践","level":"1.10.4","depth":2,"path":"8-high-performance_computing/通用矩阵乘算法从入门到实践.md","ref":"8-high-performance_computing/通用矩阵乘算法从入门到实践.md","articles":[]}]},"previous":{"title":"神经网络量化","level":"1.9.2","depth":2,"ref":"","articles":[{"title":"神经网络量化","level":"1.9.2.1","depth":3,"path":"7-model_compression/神经网络量化/神经网络量化基础.md","ref":"7-model_compression/神经网络量化/神经网络量化基础.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["toggle-chapters","back-to-top-button","chapter-fold","code","splitter","-lunr","search-pro","pageview-count","tbfed-pagefooter","popup","sharing-plus","donate"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy zhg5200211@outlook.com 2022","modify_label":"该文章修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"splitter":{},"search-pro":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"donate":{"alipay":"./data/article_cover/alipay.png","alipayText":"支付宝","button":"捐赠","title":"赞赏","wechat":"./data/article_cover/wechat.png","wechatText":"微信"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"pageview-count":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["douban","facebook","google","twitter","weibo","qq"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"toggle-chapters":{}},"theme":"default","author":"zhanghonggao","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"cv算法工程师成长之路","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"7-model_compression/神经网络量化/神经网络量化基础.md","mtime":"2022-12-02T21:38:08.273Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-12-02T22:49:44.465Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-toggle-chapters/toggle.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-pageview-count/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing-plus/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-donate/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

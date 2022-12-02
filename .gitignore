@@ -1,6 +1,7 @@
 /.vs
 /.vscode
 /_book
+/node_modules
 .history/
 .DS_Store
 .book.json

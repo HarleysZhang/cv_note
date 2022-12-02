@@ -1,0 +1,9 @@
+.MathJaxBlock .MathJaxBlock-MathJaxSVG {
+    text-align: center;
+    margin: 1em 0em;
+    width: 100%;
+}
+
+.MathJaxBlock > img {
+    vertical-align: top;
+}

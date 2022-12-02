@@ -1,0 +1,15 @@
+{
+    "default": "#f1da50",
+    "rust": "#dea584",
+    "r": "#198ce7",
+    "c++": "#f34b7d",
+    "go": "#375eab",
+    "php": "#4F5D95",
+    "js": "#f1da50",
+    "scala": "#f1da50",
+    "java": "#b07219",
+    "clojure": "#db5855",
+    "python": "#3581ba",
+    "swift": "#ffac45",
+    "ruby": "#701516"
+}

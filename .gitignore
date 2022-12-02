@@ -1,5 +1,8 @@
 /.vs
 /.vscode
+/_book
 .history/
 .DS_Store
-
+.book.json
+.package-lock.json
+.SUMMARY.md

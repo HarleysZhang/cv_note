@@ -1,6 +1,11 @@
-目录
----
-[toc]
+- [torch.Tensor](#torchtensor)
+- [Tensor 数据类型](#tensor-数据类型)
+- [Tensor 的属性](#tensor-的属性)
+  - [view 和 reshape 的区别](#view-和-reshape-的区别)
+- [Tensor 与 ndarray](#tensor-与-ndarray)
+- [创建 Tensor](#创建-tensor)
+  - [传入维度的方法](#传入维度的方法)
+- [参考资料](#参考资料)
 
 ## torch.Tensor
 

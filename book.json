@@ -1,0 +1,42 @@
+{
+    "title": "cv算法工程师成长之路",
+    "author": "zhanghonggao",
+    "theme-default": {
+        "showLevel": true
+    },
+    "plugins": [
+        "mathjax-pro", 
+        "toggle-chapters", 
+        "back-to-top-button",
+        "chapter-fold",
+        "code",
+        "splitter",
+        "-lunr", 
+        "search-pro",
+        "pageview-count",
+        "tbfed-pagefooter",
+        "popup",
+        "sharing-plus",
+        "donate"
+    ],
+    "pluginsConfig": {
+        "tbfed-pagefooter": {
+            "copyright": "Copyright &copy zhg5200211@outlook.com 2022",
+            "modify_label": "该文章修订时间：",
+            "modify_format": "YYYY-MM-DD HH:mm:ss"
+        },
+        "sharing": {
+            "all": [
+                "douban", "facebook", "google", "twitter", "weibo", "qq"
+            ]
+        },
+        "donate": {
+            "wechat": "./data/article_cover/wechat.png",
+            "alipay": "./data/article_cover/alipay.png",
+            "title": "赞赏",
+            "button": "捐赠",
+            "alipayText": "支付宝",
+            "wechatText": "微信"
+        }
+    }
+}

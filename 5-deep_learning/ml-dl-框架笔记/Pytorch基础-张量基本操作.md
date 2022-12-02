@@ -1,6 +1,18 @@
-目录
----
-[toc]
+- [一，张量的基本操作](#一张量的基本操作)
+- [二，维度变换](#二维度变换)
+  - [2.1，squeeze vs unsqueeze 维度增减](#21squeeze-vs-unsqueeze-维度增减)
+  - [2.2，transpose vs permute 维度交换](#22transpose-vs-permute-维度交换)
+- [三，索引切片](#三索引切片)
+  - [3.1，规则索引切片方式](#31规则索引切片方式)
+  - [3.2，gather 和 torch.index\_select 算子](#32gather-和-torchindex_select-算子)
+- [四，合并分割](#四合并分割)
+  - [4.1，torch.cat 和 torch.stack](#41torchcat-和-torchstack)
+  - [4.2，torch.split 和  torch.chunk](#42torchsplit-和--torchchunk)
+- [五，卷积相关算子](#五卷积相关算子)
+  - [5.1，上采样方法总结](#51上采样方法总结)
+  - [5.2，F.interpolate 采样函数](#52finterpolate-采样函数)
+  - [5.3，nn.ConvTranspose2d 反卷积](#53nnconvtranspose2d-反卷积)
+- [参考资料](#参考资料)
 
 > 授人以鱼不如授人以渔，原汁原味的知识才更富有精华，本文只是对张量基本操作知识的理解和学习笔记，看完之后，想要更深入理解，建议去 pytorch 官方网站，查阅相关函数和操作，英文版在[这里](https://pytorch.org/docs/1.7.0/torch.html)，中文版在[这里](https://pytorch-cn.readthedocs.io/zh/latest/package_references/torch/#tensors)。本文的代码是在 `pytorch1.7` 版本上测试的，其他版本一般也没问题。
 

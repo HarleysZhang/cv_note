@@ -1,0 +1,47 @@
+{
+    "rust": [
+    ],
+    "r": [
+    ],
+    "c++": [
+        "c"
+    ],
+    "go": [
+        "golang",
+        "gopher",
+        "martini"
+    ],
+    "php": [
+        "laravel",
+        "wordpress"
+    ],
+    "js": [
+        "javascript",
+        "nodejs",
+        "node.js",
+        "jquery",
+        "angular",
+        "angularjs"
+    ],
+    "scala": [
+    ],
+    "java": [
+        "tomcat",
+        "android"
+    ],
+    "clojure": [
+        "noir",
+        "leiningen"
+    ],
+    "python": [
+        "django",
+        "flask"
+    ],
+    "swift": [
+    ],
+    "ruby": [
+        "rails",
+        "sinatra",
+        "chef"
+    ]
+}

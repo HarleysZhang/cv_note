@@ -5,7 +5,6 @@
         "showLevel": true
     },
     "plugins": [
-        "mathjax-pro", 
         "toggle-chapters", 
         "back-to-top-button",
         "chapter-fold",

@@ -91,9 +91,10 @@
 
 ### 3.1，数据结构与算法课程
 1. 《图解算法》：存在 `PDF` 电子版，内容较为基础且通俗易懂，适合快速了解数据结构与算法的基础知识，但深度不够，示例代码为 `Python`。
-1. [专栏-数据结构与算法之美](https://time.geekbang.org/column/intro/126): 学习数据结构与算法的知识点课程，**内容全且深度足够**。官方例子为 `java` 代码，同时 `github` 仓库提供 `C/C++/GO/Python` 等代码。
+2. [专栏-数据结构与算法之美](https://time.geekbang.org/column/intro/126): 学习数据结构与算法的知识点课程，**内容全且深度足够**。官方例子为 `java` 代码，同时 `github` 仓库提供 `C/C++/GO/Python` 等代码。
 
 ### 3.2，算法题解
+1. [LABULADONG 的算法网站](https://labuladong.github.io/algo/): 主要传递了刷题的算法思维。
 2. [《剑指Offer》面试题: Python实现](https://github.com/JushuangQiao/Python-Offer): 题目为《剑指Offer》书籍原题，代码实现为 `Python`，仓库简洁，阅读体验不错，无任何广告，适合刚学完数据结构与算法基础知识的同学。
 3. [力扣++-算法图解](https://leetcode-solution-leetcode-pp.gitbook.io/leetcode-solution/): `leetcode` 高频题图解，题解分析很多，部分题目有动画分析，提供 `Python/Java/C++` 实现，但也存在部分题解分析废话较多，不够精简的问题。
 4. [小浩算法](https://www.geekxh.com/): 一部图解算法题典，讲解 `105` 道高频面试算法题目，`go` 代码实现。

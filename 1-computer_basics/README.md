@@ -4,7 +4,7 @@
 
 ## 效率工具
 
-- [git命令学习笔记](./效率工具/git命令学习笔记.md)
+- [git命令学习笔记](./效率工具/git常用命令总结.md)
 - [ubuntu16.04安装mmdetection库](./效率工具/ubuntu16.04安装mmdetection库.md)
 - [Docker基础和常用命令](./效率工具/Docker基础和常用命令.md)
 

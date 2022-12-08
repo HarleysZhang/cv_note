@@ -4,8 +4,11 @@
 - [参考资料](#参考资料)
 
 ## 概述
+
 `Linux` 下使用 Shell 处理文本时最常用的工具有： `find、grep、xargs、sort、uniq、tr、cut、paste、wc、sed、awk`。
+
 ## find 文件查找
+
 `man` 文档给出的 `find` 命令的一般形式为：
 ```shell 
 find [-H] [-L] [-P] [-D debugopts] [-Olevel] [starting-point...] [expression]

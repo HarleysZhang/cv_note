@@ -64,6 +64,7 @@ $man 3 printf
 ```
 
 ### 查看命令程序路径 which
+
 查看程序的 `binary` 文件所在路径，可用 `which` 命令。
 
 ```bash
@@ -87,4 +88,5 @@ ls: /bin/ls /usr/share/man/man1/ls.1.gz
 本文总共讲解了 `whatis info man which whereis` 五个帮助命令的使用，`Linux` 命令的熟练使用需要我们在项目中多加实践、思考和总结。
 
 ### 参考资料
+
 [《Linux基础》](https://linuxtools-rst.readthedocs.io/zh_CN/latest/base/index.html)

@@ -24,8 +24,8 @@
 
 - [Faster RCNN网络详解](./2D目标检测/2-Faster%20RCNN网络详解.md)
 - [FPN网络详解](./2D目标检测/3-FPN网络详解.md)
-- [Mask RCNN详解](./2D目标检测/4-Mask%20RCNN详解.md)
-- [Cascade RCNN论文解读](./2D目标检测/5-Cascade%20RCNN论文解读.md)
+- [Mask RCNN详解](./2D目标检测/4-Mask-RCNN详解.md)
+- [Cascade RCNN论文解读](./2D目标检测/5-Cascade-RCNN论文解读.md)
 ### 2.3，一阶段目标检测算法
 
 - [RetinaNet网络详解](./2D目标检测/6-RetinaNet网络详解.md)

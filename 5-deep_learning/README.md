@@ -18,9 +18,9 @@
 
 ## Backbone 网络
 
-- [1-DenseNet 网络](./backbone论文解读/DenseNet论文解读.md)
-- [2-ResNetv2 网络](./backbone论文解读/ResNetv2论文解读.md)
-- [经典 backbone 网络总结](./backbone论文解读/经典backbone总结.md)
+- [1-DenseNet 网络](./经典backbone详解/DenseNet论文解读.md)
+- [2-ResNetv2 网络](./经典backbone详解/ResNetv2论文解读.md)
+- [经典 backbone 网络总结](./经典backbone详解/经典backbone总结.md)
 
 ## 深度学习面试题
 

@@ -33,25 +33,25 @@ $[\mathrm{\mathrm{x_0},\mathrm{x_1},...,\mathrm{x_{l-1}}]}$ 表示网络层 $0,.
 
 `DenseBlock` 的结构图如下图所示。
 
-![densenet-block结构图](../../data/images/densenet/densenet-block结构图.png)
+![densenet-block结构图](https://img2023.cnblogs.com/blog/2989634/202212/2989634-20221214141525791-76891077.png)
 
 在 `DenseBlock` 的设计中，作者重点提到了一个参数 $k$，被称为网络的增长率（`growth of the network`），其实是 `DenseBlock` 中任何一个 $3\times 3$ 卷积层的滤波器个数（输出通道数）。如果每个 $H_l(\cdot)$ 函数都输出 $k$ 个特征图，那么第 $l$ 层的输入特征图数量为 $k_0 + k\times (l-1)$，$k_0$ 是 `DenseBlock` 的输入特征图数量（即第一个卷积层的输入通道数）。`DenseNet` 网络和其他网络最显著的区别是，$k$ 值可以变得很小，比如 $k=12$，即网络变得很“窄”，但又不影响精度。如表 4 所示。
 
-![densenet对比实验结果](../../data/images/densenet/densenet对比实验结果.png)
+![densenet对比实验结果](https://img2023.cnblogs.com/blog/2989634/202212/2989634-20221214141526378-1230221415.png)
 
 为了在 `DenseNet` 网络中，保持 `DenseBlock` 的卷积层的 feature map 大小一致，作者在两个 `DenseBlock` 中间插入 `transition` 层。其由 $2\times 2$ average pool, stride=2，和 $1\times 1$ conv 层组合而成，具体为 **BN + ReLU + 1x1 Conv + 2x2 AvgPooling**。`transition` 层完成降低特征图大小和降维的作用。
 > `CNN` 网络一般通过 Pooling 层或者 stride>1 的卷积层来降低特征图大小（比如 stride=2 的 3x3 卷积层），
 
 下图给出了一个 `DenseNet` 的网路结构，它共包含 `3` 个（一半用 `4` 个）`DenseBlock`，各个 `DenseBlock` 之间通过 `Transition` 连接在一起。
 
-![densenet网络结构图](../../data/images/densenet/densenet网络结构图.png)
+![densenet网络结构图](https://img2023.cnblogs.com/blog/2989634/202212/2989634-20221214141526927-1028513010.png)
 
 和 `ResNet` 一样，`DenseNet` 也有 `bottleneck` 单元，来适应更深的 `DenseNet`。`Bottleneck` 单元是 BN-ReLU-Conv(1x1)-BN-ReLU-Conv(3x3)这样连接的结构，作者将具有 `bottleneck` 的密集单元组成的网络称为 `DenseNet-B`。
 > `Bottleneck` 译为瓶颈，一端大一端小，对应着 1x1 卷积通道数多，3x3 卷积通道数少。
 
 对于 `ImageNet` 数据集，图片输入大小为 $224\times 224$ ，网络结构采用包含 `4` 个 `DenseBlock` 的`DenseNet-BC`，网络第一层是 `stride=2` 的 $7\times 7$卷积层，然后是一个 `stride=2` 的 $3\times 3$ MaxPooling 层，而后是 `DenseBlock`。`ImageNet` 数据集所采用的网络配置参数表如表 1 所示：
 
-![densenet系列网络参数表](../../data/images/densenet/densenet系列网络参数表.png)
+![densenet系列网络参数表](https://img2023.cnblogs.com/blog/2989634/202212/2989634-20221214141527300-297964922.png)
 
 网络中每个阶段卷积层的 `feature map` 数量都是 `32`。
 

@@ -1,12 +1,12 @@
-# Python 数据分析-pandas 库入门
-# pandas 库概述
+
+## pandas 库概述
 pandas 提供了快速便捷处理结构化数据的大量数据结构和函数。自从2010年出现以来，它助使 Python 成为强大而高效的数据分析环境。pandas使用最多的数据结构对象是 DataFrame，它是一个面向列（column-oriented）的二维表结构，另一个是 Series，一个一维的标签化数组对象。
 
 pandas 兼具 NumPy 高性能的数组计算功能以及电子表格和关系型数据库（如SQL）灵活的数据处理功能。它提供了复杂精细的索引功能，能更加便捷地完成重塑、切片和切块、聚合以及选取数据子集等操作。数据操作、准备、清洗是数据分析最重要的技能，pandas 是首选 python 库之一。
 
 个人觉得，学习 pandas 还是最好在 anaconda 的 jupyter 环境下进行，方便断点调试分析，也方便一行行运行代码。
 
-# 安装 pandas
+## 安装 pandas
 Windows/Linux系统环境下安装
 
 conda方式安装
@@ -20,7 +20,7 @@ pip3方式安装
 py -3 -m pip install --upgrade pandas    #Windows系统
 python3 -m pip install --upgrade pandas    #Linux系统
 ```
-# pandas 库使用
+## pandas 库使用
 pandas 采用了大量的 NumPy 编码风格，但二者最大的不同是 pandas 是专门为处理表格和混杂数据设计的。而 NumPy 更适合处理统一的数值数组数据。
 
 导入 pandas 模块，和常用的子模块 Series 和 DataFrame
@@ -45,10 +45,10 @@ s
 5    8.0
 dtype:  float64
 
-# pandas数据结构介绍
+## pandas数据结构介绍
 要使用 pandas，你首先就得熟悉它的两个主要数据结构：**Series 和 DataFrame**。虽然它们并不能解决所有问题，但它们为大多数应用提供了一种可靠的、易于使用的基础。
 
-## Series数据结构
+### Series数据结构
 Series 是一种类似于一维数组的对象，它由一组数据（各种 NumPy 数据类型）以及一组与之相关的数据标签（即索引）组成。仅由一组数据即可产生最简单的 Series。代码示例：
 
 ```Plain Text
@@ -56,7 +56,7 @@ import pandas as pd
 obj = pd.Series([1,4,7,8,9])
 obj
 ```
-![image](images/mehHOUu698p5GFHptdAl1TS1PZuqzwvUpJKGLHfuqEY.png)
+![image](../../data/images/pandas/mehHOUu698p5GFHptdAl1TS1PZuqzwvUpJKGLHfuqEY.png)
 
 Series 的字符串表现形式为：索引在左边，值在右边。由于我们没有为数据指定索引，于是会自动创建一个 0 到 N-1（ N 为数据的长度）的整数型索引。也可以通过Series 的 values 和 index 属性获取其数组表示形式和索引对象，代码示例：
 
@@ -87,7 +87,7 @@ dtype:  int64
 
 > Index(\[‘a’, ‘b’, ‘c’, ‘d’, ‘e’\], dtype=’object’)
 
-![image](images/zjIofANE2EH8FbL8t5R2ivTG3ieIx3DrA1ufwfTJKG4.png)
+![image](../../data/images/pandas/zjIofANE2EH8FbL8t5R2ivTG3ieIx3DrA1ufwfTJKG4.png)
 
 与普通 NumPy 数组相比，你可以通过索引的方式选取 Series 中的单个或一组值，代码示例：
 
@@ -96,7 +96,7 @@ obj2[['a', 'b', 'c']]
 obj2['a']=2
 obj2[['a', 'b', 'c']]
 ```
-![image](images/pnppCnVHQV3YWboi44iaDHOgOzdAUpnnYFV8EwAnodU.png)
+![image](../../data/images/pandas/pnppCnVHQV3YWboi44iaDHOgOzdAUpnnYFV8EwAnodU.png)
 
 \[‘a’,’b’,’c\]是索引列表，即使它包含的是字符串而不是整数。
 
@@ -106,7 +106,7 @@ obj2[['a', 'b', 'c']]
 obj2*2
 np.exp(obj2)
 ```
-![image](images/dHcDtD_Y6NZGCUIb_zVvp_5lJLBZaTzZTm823dlaqmg.png)
+![image](../../data/images/pandas/dHcDtD_Y6NZGCUIb_zVvp_5lJLBZaTzZTm823dlaqmg.png)
 
 还可以将 Series 看成是一个定长的有序字典，因为它是索引值到数据值的一个映射。它可以用在许多原本需要字典参数的函数中，代码示例：
 
@@ -127,9 +127,9 @@ obj3
 
 > dtype: int64
 
-![image](images/4GjLOFJv3__gjLkru7fU5DlPrU68R6mmI0Y6daaFPuc.png)
+![image](../../data/images/pandas/4GjLOFJv3__gjLkru7fU5DlPrU68R6mmI0Y6daaFPuc.png)
 
-## DataFrame数据结构
+### DataFrame数据结构
 DataFrame 是一个表格型的数据结构，它含有一组有序的列，每列可以是不同的值类型（数值、字符串、布尔值等）。DataFrame 既有行索引也有列索引，它可以被看做由 Series 组成的字典（共用同一个索引）。DataFrame 中的数据是以一个或多个二维块存放的（而不是列表、字典或别的一维数据结构）。
 
 > 虽然 DataFrame 是以二维结构保存数据的，但你仍然可以轻松地将其表示为更高维度的数据（层次化索引的表格型结构，这是 pandas中许多高级数据处理功能的关键要素 ）
@@ -145,7 +145,7 @@ frame
 ```
 结果 DataFrame 会自动加上索引（跟 Series 一样），且全部列会被有序排列，输出如下：
 
-![image](images/yw-a9Kc_vSLq0X6TLKUBbT9dve1ihpi437Izvu_L8oM.png)
+![image](../../data/images/pandas/yw-a9Kc_vSLq0X6TLKUBbT9dve1ihpi437Izvu_L8oM.png)
 
 对于特别大的 DataFrame，head 方法会选取前五行：
 
@@ -157,7 +157,7 @@ frame.head()
 ```Plain Text
 pd.DataFrame(data,columns=['state','year','pop'])
 ```
-![image](images/6suW8Y3Om3nd9x6b0-GdWDCssQVsltgFion2NLZv-vM.png)
+![image](../../data/images/pandas/6suW8Y3Om3nd9x6b0-GdWDCssQVsltgFion2NLZv-vM.png)
 
 如果传入的列在数据中找不到，就会在结果中产生缺失值，代码示例：
 
@@ -166,7 +166,7 @@ frame2 = pd.DataFrame(data,columns=['state','year','pop','debt'],
                                     index=['one','two','three','four','five','six'])
 frame2
 ```
-![image](images/GUFyyIupGf-1EizI7KuJBtuogx9O83eWMPZGMHWgNV0.png)
+![image](../../data/images/pandas/GUFyyIupGf-1EizI7KuJBtuogx9O83eWMPZGMHWgNV0.png)
 
 获取 DataFrame 的 columns 和 index，代码示例：
 
@@ -180,7 +180,7 @@ frame2.index
 
 > Index(\[‘one’, ‘two’, ‘three’, ‘four’, ‘five’, ‘six’\], dtype=’object’)
 
-![image](images/vybZ_9BZL19pm3PW54JMxn_OtrnSB_ibDYHVYiH3l98.png)
+![image](../../data/images/pandas/vybZ_9BZL19pm3PW54JMxn_OtrnSB_ibDYHVYiH3l98.png)
 
 通过类似字典标记的方式或属性的方式，可以将 DataFrame 的列获取为一个 Series，代码示例：
 
@@ -188,7 +188,7 @@ frame2.index
 frame2['state']
 frame2.state
 ```
-![image](images/LVh77V4fUh10o4mU5AloGJg_spSi3H1cHvrGhxg3whY.png)
+![image](../../data/images/pandas/LVh77V4fUh10o4mU5AloGJg_spSi3H1cHvrGhxg3whY.png)
 
 列可以通过赋值的方式进行修改，赋值方式类似 Series。例如，我们可以给那个空的 “debt” 列赋上一个标量值或一组值（数组或列表形式），代码示例：
 
@@ -196,7 +196,7 @@ frame2.state
 frame2.debt = np.arange(6.)
 frame2
 ```
-![image](images/b5g2YOTWsxoPnIZxyeSOkoV3P_8nxJpXSsf2ZuLO7co.png)
+![image](../../data/images/pandas/b5g2YOTWsxoPnIZxyeSOkoV3P_8nxJpXSsf2ZuLO7co.png)
 
 注意：将列表或数组赋值给某个列时，其长度必须跟DataFrame的长度相匹配。
 
@@ -215,7 +215,7 @@ frame2
 frame2['eastern'] = frame2.state=='Ohio'
 frame2
 ```
-![image](images/bVlf3zi_oCdjSzgdHHfeya1rYQUMWgLPWmYUsGMXi30.png)
+![image](../../data/images/pandas/bVlf3zi_oCdjSzgdHHfeya1rYQUMWgLPWmYUsGMXi30.png)
 
 DataFrame 另一种常见的数据形式是嵌套字典，如果嵌套字典传给 DataFrame，pandas 就会被解释为：外层字典的键作为列，内层键则作为行索引，代码示例：
 
@@ -228,13 +228,13 @@ pop = {
 frame3 = pd.DataFrame(pop,columns=['Nvidia','Intel'])
 frame3
 ```
-![image](images/5NqSbp4XB_LEPBOnbqRv27Ou3Of3RNL1-6zib6v9l7I.png)
+![image](../../data/images/pandas/5NqSbp4XB_LEPBOnbqRv27Ou3Of3RNL1-6zib6v9l7I.png)
 
 **表5-1列出了DataFrame构造函数所能接受的各种数据**
 
-![image](images/_7XUyaBIMZVAO41Ih8BY10W21yMODIQz9SNWmFekhWQ.png)
+![image](../../data/images/pandas/_7XUyaBIMZVAO41Ih8BY10W21yMODIQz9SNWmFekhWQ.png)
 
-## 索引对象
+### 索引对象
 pandas 的索引对象负责管理轴标签和其他元数据（比如轴名称等）。构建 Series 或 DataFrame 时，所用到的任何数组或其他序列的标签都会被转换成一个 Index，代码示例：
 
 ```Plain Text
@@ -245,7 +245,7 @@ index = obj.index
 #index
 index[:-1]
 ```
-![image](images/eN7Nbjg4bMr0CpiB0C44WN_TidMdM_1_kemHxwk3XIM.png)
+![image](../../data/images/pandas/eN7Nbjg4bMr0CpiB0C44WN_TidMdM_1_kemHxwk3XIM.png)
 
 注意：Index 对象是不可变的，因此用户不能对其进行修改。
 
@@ -259,7 +259,7 @@ obj2 = pd.Series([1.5, -2.5, 0], index=labels)
 obj2
 #print(obj2.index is labels)
 ```
-![image](images/HdxGMf8q3VQvdnWZelz2xtTBOQYju7PxKFsJO-Azm74.png)
+![image](../../data/images/pandas/HdxGMf8q3VQvdnWZelz2xtTBOQYju7PxKFsJO-Azm74.png)
 
 > 注意：虽然用户不需要经常使用 Index 的功能，但是因为一些操作会生成包含被索引化的数据，理解它们的工作原理是很重要的。
 
@@ -271,9 +271,9 @@ dup_labels
 ```
 每个索引都有一些方法和属性，它们可用于设置逻辑并回答有关该索引所包含的数据的常见问题。表5-2列出了这些函数。
 
-![image](images/NYmjzWqZnomg7PIbJQx3KYgg3--Xb0MpCpjBKSyK4Mc.png)
+![image](../../data/images/pandas/NYmjzWqZnomg7PIbJQx3KYgg3--Xb0MpCpjBKSyK4Mc.png)
 
-# pandas 选择数据
+## pandas 选择数据
 ```Plain Text
 import numpy as np
 import pandas as pd
@@ -375,9 +375,9 @@ print(df[df.A>8])
 2019-03-30  20  21  22  23
 '''
 ```
-# 总结
+## 总结
 本文主要记录了 Series 和 DataFrame 作为 pandas 库的基本结构的一些特性，如何创建 pandas 对象、指定 columns 和 index 创建 Series 和 DataFrame 对象、赋值操作、属性获取、索引对象等，这章介绍操作 Series 和 DataFrame 中的数据的基本手段。
 
-# 参考资料
+## 参考资料
 * 《利用python进行数据分析》
 

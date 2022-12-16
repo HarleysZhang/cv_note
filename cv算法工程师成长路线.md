@@ -5,6 +5,7 @@
 - [二，编程语言](#二编程语言)
   - [2.1，C++ 学习资料](#21c-学习资料)
   - [2.2，Python 学习资料](#22python-学习资料)
+  - [2.3，Linux \& Shell 学习](#23linux--shell-学习)
 - [三，数据结构与算法](#三数据结构与算法)
   - [3.1，数据结构与算法课程](#31数据结构与算法课程)
   - [3.2，算法题解](#32算法题解)
@@ -36,7 +37,9 @@
 - [九，模型部署(算法SDK开发)](#九模型部署算法sdk开发)
   - [9.1，模型部署文章](#91模型部署文章)
 - [效率工具](#效率工具)
+  - [快捷导航](#快捷导航)
   - [markdown/latex 写作](#markdownlatex-写作)
+- [业余生活](#业余生活)
 - [博客阅读后的知识点总结](#博客阅读后的知识点总结)
 - [参考资料](#参考资料)
 
@@ -87,6 +90,12 @@
 
 1. [《廖雪峰-Python3教程》](https://www.liaoxuefeng.com/wiki/1016959663602400): 内容很全且通俗易懂，适合初学者，但代码示例不够丰富。描述的知识点有：Python 基础、函数、高级特性、函数式编程、模块、面向对象编程、面向对象高级编程、错误、调试和测试、IO 编程、进程和线程、正则表达式、常用内建模块、常用第三方模块、图形界面、网络编程、异步IO 等内容。电子书可在[github仓库-cv_books](https://github.com/HarleysZhang/cv-books) 中下载。
 2. [Python 工匠系列文章](https://github.com/piglei/one-python-craftsman): 很适合**深入理解** Python 面向对象编程、装饰器、模块、异常处理等内容。
+
+### 2.3，Linux & Shell 学习
+
+1. 《鸟哥的Linux私房菜 基础篇 第四版》: 很经典的教材，虽然内容描述有些啰嗦，但是很多人推荐，应该还是很适合初学者的。存在开源 PDF，也有[繁体中文在线网站](https://linux.vbird.org/linux_basic_train/centos8/)。
+2. [Linux 工具快速教程](https://linuxtools-rst.readthedocs.io/zh_CN/latest/index.html): 适合有一定 Linux 基础的同学，全书分为三个部分: 基础篇、进阶篇和工具参考篇。本书我看下来的感觉就是，目录和导航索引做的很好，但是部分知识点的描述很少或者不清晰，更偏向于实例使用教程的感觉，**适合当作参考书使用**。
+3. 
 ## 三，数据结构与算法
 
 ### 3.1，数据结构与算法课程
@@ -99,6 +108,7 @@
 3. [力扣++-算法图解](https://leetcode-solution-leetcode-pp.gitbook.io/leetcode-solution/): `leetcode` 高频题图解，题解分析很多，部分题目有动画分析，提供 `Python/Java/C++` 实现，但也存在部分题解分析废话较多，不够精简的问题。
 4. [小浩算法](https://www.geekxh.com/): 一部图解算法题典，讲解 `105` 道高频面试算法题目，`go` 代码实现。
 5. [LeetCode题解](https://algorithm-essentials.soulmachine.me/): `leetcode` 高频题题解，全书代码默认使用 `C++11` 语法编写，题解为文字性描述，题解分析较短且不够通俗易懂。本书的目标读者是准备去硅谷找工作的码农，也适用于在国内找工作的码农，以及刚接触 `ACM` 算法竞赛的新手。
+6. [CodeTop 企业题库](https://codetop.cc/home): 针对企业的刷题题库，但是个人觉得好像也没必要去这样刷。
 
 ## 四，机器学习
 
@@ -291,12 +301,23 @@
 
 ## 效率工具
 
+### 快捷导航
+
+1. [Quick Reference](https://quickref.me/): 一些由开源天使贡献的代码备忘录和快速参考。
+2. [Qwerty Learner](https://qwerty.kaiyi.cool/): 适合用键盘学习单词的网站
+3. [GitHub Readme Stats](https://github.com/anuraghazra/github-readme-stats): 在你的 README 中获取动态生成的 GitHub 统计信息！
+
 ### markdown/latex 写作
 
 1. [markdown语法大全](https://www.cnblogs.com/miki-peng/articles/12502985.html): 这篇文章对 `markdown` 语法整理得很好，文章排版也做的好，读完很容易就掌握 `markdown` 语法。
 2. [通用 LaTeX 数学公式语法手册](http://www.uinio.com/Math/LaTex/): 文章排版很好，目录结构清晰明了，阅读起来很舒服，推荐用来学习 `latex` 语法内容。
 3. https://latex.codecogs.com/eqneditor/editor.php: 在线 `latex` 语法。
 
+## 业余生活
+
+1. [小霸王游戏网页版-其乐无穷](https://www.yikm.net/)
+2. [低端影视](https://ddys.tv/category/movie/)
+3. [AGE 动漫](https://www.agemys.net/rank)
 ## 博客阅读后的知识点总结
 
 1，为了尽可能地提高 `MAC阵列` 的利用率以及卷积运算效率，阵列控制模块会根据第一卷积参数矩阵的行数和第一卷积数据阵列的行数来确定第一乘法累加窗口的列数。

@@ -19,13 +19,13 @@
 
  目标检测是一个复杂的问题，需要解决两个主要任务。首先，检测器必须解决**识别**问题，区分前景目标和背景目标，并为其分配匹配的类别标签。其次，探测器必须解决**定位**问题，为不同的目标分配精确的 `bounding box`。许多目标探测器都是基于两阶段网络框架 `Faster R-CNN` 的。双阶段检测网络是一个多任务学习问题，包括目标的分类和边界回归。**与物体识别不同的是，定义正/负样本需要一个 IoU 阈值**。通常使用的 `IOU` 阈值 `u=0.5`，`0.5` 对 `IOU` 的设置是相当低的。检测的目标经常包含很多噪声，如图 (a)所示。IOU 阈值取0.5，会有很多假的预测信息也都包含在内，从而会产生很多错误的预测信息。
 
-![Figure1](../../data/images/cascade%20rcnn/Figure1.png)
+![Figure1](../../data/images/cascade-rcnn/Figure1.png)
 
 ### 1.1，Faster RCNN 回顾
 
 先回顾下 `Faster RCNN` 的结构，下图是 `Faster RCNN` 的结构图。
 
-![Faster-rcnn网络结构图](../../data/images/faster-rcnn/Faster-rcnn网络结构图.png)
+![Faster-rcnn网络结构图](https://img2023.cnblogs.com/blog/2989634/202212/2989634-20221220161538012-141903048.png)
 
 `training` 阶段和 `inference` 阶段的不同在于，`inference` 阶段不能对 `proposala` 进行采样（因为不知道 `gt`，自然无法计算 `IoU`），所以 `RPN` 网络输出的 `300` `RoIs`(`Proposals`)会直接输入到 `RoI pooling` 中，之后通过两个全连接层分别进行类别分类和 `bbox` 回归。
 
@@ -39,7 +39,7 @@
 
 ### 2.1，改变IoU阈值对Detector性能的影响
 
-![提升IOU阈值对检测器性能的影响](../../data/images/cascade%20rcnn/提升IOU阈值对检测器性能的影响.png)
+![提升IOU阈值对检测器性能的影响](../../data/images/cascade-rcnn/提升IOU阈值对检测器性能的影响.png)
 
 从上图可以看出：
 
@@ -50,7 +50,7 @@
 
 主要是分析对提高 IoU 阈值对 RPN 输出 Proposal 数量的影响，实验结果如下图所示。
 
-![提高IoU阈值的影响](../../data/images/cascade%20rcnn/提高IoU阈值的影响.png)
+![提高IoU阈值的影响](../../data/images/cascade-rcnn/提高IoU阈值的影响.png)
 
 上图纵坐标表示 `RPN` 输出 proposal 在各个 IoU 范围内的数量。
 
@@ -68,7 +68,7 @@
 - 单一阈值 `0.5` 是无法对所有 `proposal` 取得良好效果。
 - 此外，`detector` 会改变样本的分布，使用同一个共享的 `H` 对检测是有影响的。作者做了下面的实验证明样本分布在各个`stage` 的变化。
 
-![Figure2](../../data/images/cascade%20rcnn/Figure2.png)
+![Figure2](../../data/images/cascade-rcnn/Figure2.png)
 
 红色表示离群点。
 
@@ -79,7 +79,7 @@
 
 网络结构如下图(d)
 
-![cascade_rcnn和其他框架的网络结构简略图](../../data/images/cascade%20rcnn/cascade_rcnn和其他框架的网络结构简略图.png)
+![cascade_rcnn和其他框架的网络结构简略图](../../data/images/cascade-rcnn/cascade_rcnn和其他框架的网络结构简略图.png)
 
 上图中 (d) 和 (c) 很像，`iterative bbox at inference` 是在推断时候对回归框进行后处理，即模型输出预测结果后再多次处理，而 `Cascade R-CNN` 在训练的时候就进行重新采样，不同的 `stage` 的输入数据分布已经是不同的了。
 
@@ -89,7 +89,7 @@ Cascade R-CNN 的几个检测网络（`Head` 网络）是基于不同的 IOU 阈
 
 作者在 COCO 数据集上做了对比实验，达到了 `state-of-the-art` 精度。其中 `backbone` 为`RsNet-101` 的 `Cascade RCNN` 的 `AP` 达到了 `42.8`。
 
-![对比实验结果](../../data/images/cascade%20rcnn/对比实验结果.png)
+![对比实验结果](../../data/images/cascade-rcnn/对比实验结果.png)
 
 ## 参考资料
 

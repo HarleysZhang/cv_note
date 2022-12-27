@@ -84,7 +84,7 @@
 ### 常见命令图解
 这个思维导图记录了常见命令，有利于索引，来源[Linux基础命令（01）【Linux基础命令、ip查看、目录结构、网络映射配置】](https://blog.csdn.net/zkk1973/article/details/80606832)
 
-![image](https://img2023.cnblogs.com/blog/2989634/202212/2989634-20221202180156733-1959428090.png)
+![image](images/0.3605952030126039.png)
 
 ### 参考资料
 * [新手linux命令必须掌握命令](https://man.linuxde.net/xinshoumingling)

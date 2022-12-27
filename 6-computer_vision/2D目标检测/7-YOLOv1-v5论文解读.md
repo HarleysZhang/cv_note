@@ -86,7 +86,7 @@ YOLO 系列算法的核心思想是将输入的图像经过 backbone 提取特�
 
 YOLO 检测系统如图 1 所示。单个检测卷积网络可以同时预测多个目标的边界框和类别概率。`YOLO` 和传统的目标检测方法相比有诸多优点。
 
-![yolo检测系统](https://img2023.cnblogs.com/blog/2989634/202212/2989634-20221214153738164-1624128826.png)
+![yolo检测系统](../../data/images/yolo/yolo_figure1.png)
 
 首先，`YOLO` 速度非常快，我们将检测视为**回归**问题，所以检测流程也简单。其次，`YOLO` 在进行预测时，会对图像进行全面地推理。第三，`YOLO` 模型具有泛化能力，其比 `DPM` 和`R-CNN` 更好。最后，虽然 `YOLO` 模型在精度上依然落后于最先进（state-of-the-art）的检测系统，但是其速度更快。
 
@@ -99,7 +99,7 @@ YOLO 检测系统如图 1 所示。单个检测卷积网络可以同时预测多
 每个边界框（`bounding box`）包含 `5` 个预测变量：$x$，$y$，$w$，$h$ 和 `confidence`。$(x,y)$ 坐标不是边界框中心的实际坐标，而是相对于网格单元左上角坐标的**偏移**（需要看代码才能懂，论文只描述了出“相对”的概念）。而边界框的宽度和高度是相对于整个图片的宽与高的比例，因此理论上以上 `4` 预测量都应该在 $[0,1]$ 范围之内。最后，置信度预测表示预测框与实际边界框之间的 `IOU`。
 > 值得注意的是，中心坐标的预测值 $(x,y)$ 是相对于每个单元格左上角坐标点的偏移值，偏移量 = 目标位置 - grid的位置。
 
-![yolo检测系统](https://img2023.cnblogs.com/blog/2989634/202212/2989634-20221214153738881-1479313837.png)
+![yolo检测系统](../../data/images/yolo/边界框坐标定义.png)
 
 **分类任务**：每个网格单元（`grid`）还会预测 $C$ 个类别的概率 $Pr(Class_i)|Object)$。`grid` 包含目标时才会预测 $Pr$，且只预测一组类别概率，而不管边界框 $B$ 的数量是多少。
 
@@ -111,7 +111,7 @@ $$Pr(Class_i)|Object)*Pr(Object)*IOU_{pred}^{truth} = Pr(Class_i)*IOU_{pred}^{tr
 
 在 `Pscal VOC` 数据集上评测 `YOLO` 模型时，我们设置 $S=7$, $B=2$（即每个 `grid` 会生成 `2` 个边界框）。`Pscal VOC` 数据集有 `20` 个类别，所以 $C=20$。所以，模型最后预测的张量维度是 $7 \times 7\times (20+5*2) = 1470$。
 
-![yolo 模型输出张量维度](https://img2023.cnblogs.com/blog/2989634/202212/2989634-20221214153739550-423872105.png)
+![yolo 模型输出张量维度](../../data/images/yolo/yolo_figure2.png)
 
 **总结**：`YOLO` 系统将检测建模为回归问题。它将图像分成 $S \times S$ 的 `gird`，每个 `grid` 都会预测 $B$ 个边界框，同时也包含 $C$ 个类别的概率，这些预测对应的就是 $S \times S \times (C + 5*B)$。
 
@@ -166,14 +166,14 @@ def encoder(self, boxes, labels):
 
 `YOLO` 的网络架构受 `GooLeNet` 图像分类模型的启发。网络有 `24` 个卷积层，最后面是 `2` 个全连接层。整个网络的卷积只有 $1 \times 1$ 和 $3 \times 3$ 卷积层，其中 $1 \times 1$ 卷积负责降维 ，而不是 `GoogLeNet` 的 `Inception` 模块。
 
-![yolo 模型架构](https://img2023.cnblogs.com/blog/2989634/202212/2989634-20221214153740212-379738943.png)
+![yolo 模型架构](../../data/images/yolo/yolo_figure3.png)
 **图3：网络架构**。作者在 `ImageNet` 分类任务上以一半的分辨率（输入图像大小 $224\times 224$）训练卷积层，但预测时分辨率加倍。
 
 `Fast YOLO` 版本使用了更少的卷积，其他所有训练参数及测试参数都和 `base YOLO` 版本是一样的。
 
 网络的最终输出是 $7\times 7\times 30$ 的张量。这个张量所代表的具体含义如下图所示。对于每一个单元格，前 `20` 个元素是类别概率值，然后 `2` 个元素是边界框置信度，两者相乘可以得到**类别置信度**，最后 `8` 个元素是边界框的 $(x,y,w,h)$ 。之所以把置信度 $c$ 和 $(x,y,w,h)$ 都分开排列，而不是按照$(x,y,w,h,c)$ 这样排列，存粹是为了后续计算时方便。
 
-![yolo 模型架构](https://img2023.cnblogs.com/blog/2989634/202212/2989634-20221214153740706-460646833.png)
+![yolo 模型架构](../../data/images/yolo/输出张量解释.png)
 
 > 划分 $7 \times 7$ 网格，共 `98` 个边界框，`2` 个框对应一个类别，所以 `YOLOv1` 只能在一个网格中检测出一个目标、单张图片最多预测 `49` 个目标。
 
@@ -193,7 +193,7 @@ def encoder(self, boxes, labels):
 
 最终网络总的损失函数计算公式如下：
 
-![yolo 模型架构](https://img2023.cnblogs.com/blog/2989634/202212/2989634-20221214153741270-1538925963.png)
+![yolo 模型架构](../../data/images/yolo/yolo_loss.png)
 
 $I_{ij}^{obj}$ 指的是第 $i$ 个单元格存在目标，且该单元格中的第 $j$ 个边界框负责预测该目标。 $I_{i}^{obj}$ 指的是第 $i$ 个单元格存在目标。
 
@@ -281,7 +281,7 @@ def decoder(pred):
 
 基于 GPU Titan X 硬件环境下，与他检测算法的性能比较如下。
 
-![Yolov1 实验对比结果](https://img2023.cnblogs.com/blog/2989634/202212/2989634-20221214153741647-1761221415.png)
+![Yolov1 实验对比结果](../../data/images/yolo/yolo_compare_with_others.png)
 
 ### 5，代码实现思考
 
@@ -316,7 +316,7 @@ def decoder(pred):
 
 **边界框的编码过程**：`YOLOv2` 参考了两阶段网络的 `anchor boxes` 来预测边界框相对先验框的偏移，同时沿用 `YOLOv1` 的方法预测边界框中心点相对于 `grid` 左上角位置的相对偏移值。$(x,y,w,h)$ 的偏移值和实际坐标值的关系如下图所示。
 
-![偏移量计算](https://img2023.cnblogs.com/blog/2989634/202212/2989634-20221214153742059-600399545.png)
+![偏移量计算](../../data/images/yolov2/偏移量计算.png)
 
 各个字母的含义如下：
 
@@ -450,7 +450,7 @@ def decode(self, outputs, input_size):
 `YOLOv2` 首先把 $7 \times 7$ 个区域改为 $13 \times 13$ 个 `grid`（区域），每个区域有 5 个anchor，且每个 anchor 对应着 1 个类别，那么，输出的尺寸就应该为：`[N,13,13,125]`
 > $125 = 5 \times (5 + 20)$
 
-![anchor的挑选](https://img2023.cnblogs.com/blog/2989634/202212/2989634-20221214153742463-866635972.png)
+![anchor的挑选](../../data/images/yolov2/anchor的挑选.png)
 
 值得注意的是之前 `YOLOv1` 的每个 `grid` 只能预测一个目标的分类概率值，两个 `boxes` 共享这个置信度概率。现在 `YOLOv2` 使用了 `anchor` 先验框后，每个 `grid` 的每个 `anchor` 都单独预测一个目标的分类概率值。
 
@@ -466,7 +466,7 @@ $$d(box, centroid) = 1-IOU(box, centroid)$$
 
 `Darknet-19` 网络总共有 `19` 个卷积层（`convolution`）、`5` 最大池化层（`maxpooling`）。`Darknet-19` 以 `5.58` T的计算量在 `ImageNet` 数据集上取得了 `72.9%` 的 top-1 精度和 `91.2%` 的 top-5 精度。Darket19 网络参数表如下图所示。
 
-![Darket19网络参数表](https://img2023.cnblogs.com/blog/2989634/202212/2989634-20221214153742850-335039385.png)
+![Darket19网络参数表](../../data/images/yolov2/Darket19网络参数表.png)
 
 **检测训练**。在 `Darknet19` 网络基础上进行修改后用于目标检测。首先，移除网络的最后一个卷积层，然后添加滤波器个数为 `1024` 的 $3 \times 3$ 卷积层，最后添加一个 $1 \times 1$ 卷积层，其滤波器个数为模型检测需要输出的变量个数。对于 `VOC` 数据集，每个 `grid` 预测 `5` 个边界框，每个边界框有 `5` 个坐标（$t_x, t_y, t_w, t_h \ 和\ t_o$）和 `20` 个类别，所以共有 `125` 个滤波器。我们还添加了从最后的 `3×3×512` 层到倒数第二层卷积层的直通层，以便模型可以使用细粒度特征。
 
@@ -545,13 +545,13 @@ if __name__ == "__main__":
 
 采用 `Multi-Scale Training` 策略，`YOLOv2` 可以适应不同输入大小的图片，并且预测出很好的结果。在测试时，`YOLOv2` 可以采用不同大小的图片作为输入，在 `VOC 2007` 数据集上的测试结果如下图所示。
 
-![在voc2007数据集上的测试结果](https://img2023.cnblogs.com/blog/2989634/202212/2989634-20221214153743189-1499366016.png)
+![在voc2007数据集上的测试结果](../../data/images/yolov2/voc2007数据集测试结果.png)
 
 ### 损失函数
 
 **`YOLOv2` 的损失函数的计算公式归纳如下**
 
-![损失函数计算](https://img2023.cnblogs.com/blog/2989634/202212/2989634-20221214153743665-884802510.png)
+![损失函数计算](../../data/images/yolov2/损失函数计算.jfif)
 
 第 2,3 行：$t$ 是迭代次数，即前 `12800` 步我们计算这个损失，后面不计算了。即前 `12800` 步我们会优化预测的 $(x,y,w,h)$ 与 `anchor` 的 $(x,y,w,h)$ 的距离 `+` 预测的 $(x,y,w,h)$ 与 `GT` 的 $(x,y,w,h)$ 的距离，`12800` 步之后就只优化预测的 $(x,y,w,h)$与 `GT` 的 $(x,y,w,h)$ 的距离，原因是这时的预测结果已经较为准确了，`anchor`已经满足检测系统的需要，而在一开始预测不准的时候，用上 `anchor` 可以加速训练。
 
@@ -644,7 +644,7 @@ class YOLOLoss(nn.Module):
 
 `YOLOv2` 在 `VOC2007` 数据集上和其他 `state-of-the-art` 模型的测试结果的比较如下曲线所示。
 
-![voc2007数据集测试结果](https://img2023.cnblogs.com/blog/2989634/202212/2989634-20221214153743189-1499366016.png)
+![voc2007数据集测试结果](../../data/images/yolov2/voc2007数据集测试结果.png)
 
 ## 三，YOLOv3
 
@@ -675,7 +675,7 @@ b_y = \sigma(t_y) + c_y \\\\
 b_w = p_{w}e^{t_w} \\\\
 b_h = p_{h}e^{t_h} $$
 
-![偏移量计算](https://img2023.cnblogs.com/blog/2989634/202212/2989634-20221214153742059-600399545.png)
+![偏移量计算](../../data/images/yolov2/偏移量计算.png)
 
 $b_x,b_y,b_w,b_h$ 是边界框的实际中心坐标和宽高值。在训练过程中，我们使用平方误差损失函数。利用上面的公式，可以轻松推出这样的结论：如果预测坐标的真实值（`ground truth`）是 $\hat{t}_{\ast}$，那么梯度就是真实值减去预测值 $\hat{t}_{\ast} - t_{\ast }$。
 > 梯度变成 $\hat{t}_{\ast} - t_{\ast }$ 有什么好处呢？
@@ -843,7 +843,7 @@ def build_targets(p, targets, model):
 
 我们使用一个新的网络来执行特征提取。它是 `Darknet-19`和新型残差网络方法的融合，由连续的 $3\times 3$ 和 $1\times 1$ 卷积层组合而成，并添加了一些 `shortcut connection`，整体体量更大。因为一共有 $53 = (1+2+8+8+4)\times 2+4+2+1 $ 个卷积层，所以我们称为 `Darknet-53`。
 
-![Darknet-53网络参数表](https://img2023.cnblogs.com/blog/2989634/202212/2989634-20221214153744055-1717630260.png)
+![Darknet-53网络参数表](../../data/images/yolov3/darknet-53.png)
 
 总的来说，`DarkNet-53` 不仅使用了全卷积网络，将 `YOLOv2` 中降采样作用 `pooling` 层都换成了 `convolution`(`3x3，stride=2`) 层；而且引入了残差（`residual`）结构，不再使用类似 `VGG` 那样的直连型网络结构，因此可以训练更深的网络，即卷积层数达到了 `53` 层。（更深的网络，特征提取效果会更好）
 
@@ -965,7 +965,7 @@ def darknet53(pretrained, **kwargs):
 
 `YOLOv3` 的 `backbone` 选择 `Darknet-53`后，其检测性能远超 `Darknet-19`，同时效率上也优于 `ResNet-101` 和 `ResNet-152`，对比实验结果如下：
 
-![和其他backbone的比较结果](https://img2023.cnblogs.com/blog/2989634/202212/2989634-20221214153744429-1992702376.png)
+![和其他backbone的比较结果](../../data/images/yolov3/和其他backbone的比较结果.png)
 
 在对比实验中，每个网络都使用相同的设置进行训练和测试。运行速度 `FPS` 是在 `Titan X` 硬件上，输入图像大小为 $256 \times 256$ 上测试得到的。从上表可以看出，`Darknet-53` 和 `state-of-the-art` 分类器相比，有着更少的 `FLOPs` 和更快的速度。和 `ResNet-101` 相比，精度更高并且速度是前者的 `1.5` 倍；和 `ResNet-152` 相比，精度相似，但速度是它的 `2` 倍以上。
 
@@ -977,7 +977,7 @@ def darknet53(pretrained, **kwargs):
 
 **损失函数的计算公式如下**。
 
-![YOLOv3的损失函数计算公式](https://img2023.cnblogs.com/blog/2989634/202212/2989634-20221214153744760-142812795.png)
+![YOLOv3的损失函数计算公式](../../data/images/yolov3/yolov3的损失函数计算公式.jpg)
 
 `YOLO v3` 使用多标签分类，用多个独立的 `logistic` 分类器代替 `softmax` 函数，以计算输入属于特定标签的可能性。在计算分类损失进行训练时，`YOLOv3` 对每个标签使用二元交叉熵损失。
 
@@ -992,7 +992,7 @@ def darknet53(pretrained, **kwargs):
 
 **YOLOv3 网络结构图如下所示**（这里输入图像大小为 `608*608`，来源 [这里](https://zhuanlan.zhihu.com/p/183781646?utm_source=wechat_session&utm_medium=social&utm_oi=737449911926140928) ）。
 
-![yolov3网络结构图](https://img2023.cnblogs.com/blog/2989634/202212/2989634-20221214153745151-15140273.png)
+![yolov3网络结构图](../../data/images/yolov3/yolov3结构图.png)
 
 ### 2.5，推理
 
@@ -1013,7 +1013,7 @@ output = torch.cat((pred_boxes.view(bs, -1, 4) * _scale,
 
 `YOLOv3` 实验结果非常好！详情见表3。
 
-![YOLOv3的实验结果表格](https://img2023.cnblogs.com/blog/2989634/202212/2989634-20221214153745557-1355611112.png)
+![YOLOv3的实验结果表格](../../data/images/yolov3/YOLOv3的实验结果表格.png)
 
 就 `COCO` 的 `mAP` 指标而言，`YOLOv3` 和 `SSD` 变体相近，但是速度却比后者快了 `3` 倍。尽管如此，`YOLOv3` 还是比 `Retinanet` 这样的模型在精度上要差一些。
 
@@ -1023,7 +1023,7 @@ output = torch.cat((pred_boxes.view(bs, -1, 4) * _scale,
 
 当我们基于 $AP_{50}$ 指标绘制精度和速度曲线（`Figure 3`）时，我们发现YOLOv3与其他检测系统相比具有显着优势，换句话说，它更快更好。
 
-![yolov3在coco数据集上测试结果](https://img2023.cnblogs.com/blog/2989634/202212/2989634-20221214153746003-1512861263.png)
+![yolov3在coco数据集上测试结果](../../data/images/yolov3/yolov3在coco数据集上测试结果.png)
 > 从 `Figure 3` 可以看出，`YOLOv3` 的曲线非常靠近曲线坐标的同时又非常高，这意味着 `YOLOv3` 有着良好速度的同时又有很好的精度，无愧当前最强目标检测模型。
 
 ### 4，失败的尝试
@@ -1058,7 +1058,7 @@ output = torch.cat((pred_boxes.view(bs, -1, 4) * _scale,
 
 我们总共使用了：`WRC`、`CSP`、`CmBN`、`SAT`、`Mish` 激活和 `Mosaic` 数据增强、`CIoU` 损失方法，并组合其中的一部分，使得最终的检测模型在 `MS COCO` 数据集、`Tesla V100` 显卡上达到了 `43.5%` `AP` 精度 和 `65` `FPS` 速度。
 
-![更好训练目标检测模型的方法](https://img2023.cnblogs.com/blog/2989634/202212/2989634-20221214153746407-525793450.png)
+![更好训练目标检测模型的方法](../../data/images/yolov4/yolov4和其他目标检测模型的比较.png)
 
 我们的主要贡献在于：
 
@@ -1067,7 +1067,7 @@ output = torch.cat((pred_boxes.view(bs, -1, 4) * _scale,
 
 目前的目标检测网络分为两种：一阶段和两阶段。检测算法的组成：`Object detector = backbone + neck + head`，具体结构如下图所示。
 
-![目标检测器通用结构图](https://img2023.cnblogs.com/blog/2989634/202212/2989634-20221214153746858-1696361160.png)
+![目标检测器通用结构图](../../data/images/yolov4/目标检测器结构图.png)
 
 ### 2，相关工作
 
@@ -1077,7 +1077,7 @@ output = torch.cat((pred_boxes.view(bs, -1, 4) * _scale,
 
 一般，目标检测器由以下几部分组成：
 
-![目标检测器的各个组成部分](https://img2023.cnblogs.com/blog/2989634/202212/2989634-20221214153747277-1540567331.png)
+![目标检测器的各个组成部分](../../data/images/yolov4/目标检测器的各个组成部分.png)
 
 #### 2.2，Bag of freebies（免费技巧）
 
@@ -1120,7 +1120,7 @@ coarse-to-fine semantic segmentation`)介绍了知识蒸馏的概念来设计标
 我们的目标是在输入图像分辨率、卷积层数量、参数量、层输出（滤波器）数量之间找到最优平衡。我们大量的研究表面，在 `ILSVRC2012(ImageNet)` 分类数据集上，`CSPResNext50` 网络优于 `CSPDarknet`，但是在 `MS COCO` 目标检测数据集上，却相反。
 > 这是为什么呢，两种网络，一个分类数据集表现更好，一个检测数据集表现更好。
 
-![CSPDarknet53和CSPResNext50的比较](https://img2023.cnblogs.com/blog/2989634/202212/2989634-20221214153747660-1377696752.png)
+![CSPDarknet53和CSPResNext50的比较](../../data/images/yolov4/CSPDarknet53和CSPResNext50的比较.png)
 
 在分类问题上表现最优的参考模型并不一定总是在检测问题上也表现最优。与分类器相比，检测器需要满足以下条件：
 
@@ -1169,15 +1169,15 @@ coarse-to-fine semantic segmentation`)介绍了知识蒸馏的概念来设计标
 
 `Mosaic` 是一种新的数据增强方法，不像 `cutmix` 仅混合了两张图片，它混合了 $4$ 张训练图像，从而可以检测到超出其正常上下文的对象。 此外，`BN` 在每层上计算的激活统计都是来自 `4` 张不同图像，这大大减少了对大 `batch size` 的需求。
 
-![Mosic数据增强方法](https://img2023.cnblogs.com/blog/2989634/202212/2989634-20221214153748273-310262134.png)
+![Mosic数据增强方法](../../data/images/yolov4/Mosic数据增强方法.png)
 
 `CmBN` 仅收集单个批次中的 `mini-batch` 之间的统计信息。
 
-![CmBN](https://img2023.cnblogs.com/blog/2989634/202212/2989634-20221214153744429-1992702376.png)
+![CmBN](../../data/images/yolov3/和其他backbone的比较结果.png)
 
 我们将 `SAM` 从 `spatial-wise attentation` 改为 `point-wise attention`，并将 `PAN` 的 `shortcut` 连接改为 `concatenation`（拼接），分别如图 5 和图 6 所示。
 
-![修改后的SAM和PAN](https://img2023.cnblogs.com/blog/2989634/202212/2989634-20221214153748901-490144675.png)
+![修改后的SAM和PAN](../../data/images/yolov4/修改后的SAM和PAN.png)
 
 #### 3.4 YOLOv4
 
@@ -1204,11 +1204,11 @@ coarse-to-fine semantic segmentation`)介绍了知识蒸馏的概念来设计标
 
 图 `7` 可视化了不同数据增强方法的效果。
 
-![不同数据增强方法效果的可视化](https://img2023.cnblogs.com/blog/2989634/202212/2989634-20221214153749673-1364956372.png)
+![不同数据增强方法效果的可视化](../../data/images/yolov4/不同数据增强方法效果的可视化.png)
 
 表 `2` 的实验结果告诉我们，`CutMix` 和 `Mosaic` 数据增强，类别标签平滑及 `Mish` 激活可以提高分类器的精度，尤其是 `Mish` 激活提升效果很明显。
 
-![Mish和其他一些方法对分类器精度的影响](https://img2023.cnblogs.com/blog/2989634/202212/2989634-20221214153750193-1123231456.png)
+![Mish和其他一些方法对分类器精度的影响](../../data/images/yolov4/Mish和其他一些方法对分类器精度的影响.png)
 
 #### 4.3，对于检测器训练过程中不同特性的影响
 
@@ -1217,7 +1217,7 @@ coarse-to-fine semantic segmentation`)介绍了知识蒸馏的概念来设计标
 - $CIoU$：使用了 `GIoU，CIoU，DIoU，MSE` 这些误差算法来实现边框回归，验证出 `CIoU` 损失效果最好。
 - 略
 
-![不同方法对检测器性能的影响](https://img2023.cnblogs.com/blog/2989634/202212/2989634-20221214153750552-1359836883.png)
+![不同方法对检测器性能的影响](../../data/images/yolov4/不同方法对检测器性能的影响.png)
 
 同时实验证明，当使用 `SPP`，`PAN` 和 `SAM` 时，检测器将获得最佳性能。
 
@@ -1225,7 +1225,7 @@ coarse-to-fine semantic segmentation`)介绍了知识蒸馏的概念来设计标
 
 综合各种改进后的骨干网络对比实验，发现 `CSPDarknet53` 比 `CSPResNext` 模型显示出提高检测器精度的更大能力。
 
-![不同骨干网络对检测器性能的影响比较](https://img2023.cnblogs.com/blog/2989634/202212/2989634-20221214153750913-66443406.png)
+![不同骨干网络对检测器性能的影响比较](../../data/images/yolov4/不同骨干网络对检测器性能的影响比较.png)
 
 #### 4.5，不同小批量的大小对检测器训练的影响
 
@@ -1269,7 +1269,7 @@ coarse-to-fine semantic segmentation`)介绍了知识蒸馏的概念来设计标
 
 `CSPDarknet53` 包含 `5` 个 `CSP` 模块，`CSP` 中残差单元的数量依次是 $[1, 2,8,8,4]$，这点和 `Darknet53` 类似。每个 `CSP` 模块最前面的卷积核的大小都是 $3\times 3$，`stride=2`，因此可以起到下采样的作用（特征图大小缩小一倍）。因为 `backbone` 总共有 `5` 个 `CSP`模块，而输入图像是 $608\times 608$，所以特征图大小变化是：`608->304->152->76->38->19`，即经过 `bckbone` 网络后得到 $19\times 19$ 大小的特征图。`CSPDarknet53` 网络结构图如下图所示。
 
-![CSPDarknet53](https://img2023.cnblogs.com/blog/2989634/202212/2989634-20221214153751346-504629124.png)
+![CSPDarknet53](../../data/images/yolov4/CSPDarknet53.jpg)
 
 > `CSPNet` 作者认为，`MobiletNet`、`ShuffleNet` 系列模型是专门为移动端（`CPU`）平台上设计的，它们所采用的深度可分离卷积技术（`DW+PW Convolution`）并不兼容用于边缘计算的 `ASIC` 芯片。
 
@@ -1295,7 +1295,7 @@ $$
 
 `Mish` 函数曲线图和 `Swish` 类似，如下图所示。
 
-![Mish函数曲线图](https://img2023.cnblogs.com/blog/2989634/202212/2989634-20221214153751810-639099680.png)
+![Mish函数曲线图](../../data/images/yolov4/Mish函数曲线图.png)
 
 值得注意的是 `Yolov4` 的 `Backbone` 中的激活函数都使用了`Mish` 激活，但后面的 `neck + head` 网络则还是使用`leaky_relu` 函数。
 
@@ -1320,13 +1320,13 @@ $$
 
 先看看 `YOLOv3` 的 `neck` 网络的立体图是什么样的，如下图所示。
 
-![YOLOv3的neck结构立体图](https://img2023.cnblogs.com/blog/2989634/202212/2989634-20221214153752135-1986462249.png)
+![YOLOv3的neck结构立体图](../../data/images/yolov4/YOLOv3的neck结构立体图.jpg)
 
 `FPN` 是自顶向下的，将高层的特征信息经过上采样后和低层的特征信息进行传递融合，从而得到进行预测的特征图 ①②③。
 
 再看下图 `YOLOv4` 的 `Neck` 网络的立体图像，可以更清楚的理解 `neck` 是如何通过 `FPN+PAN` 结构进行融合的。
 
-![FPN+PAN](https://img2023.cnblogs.com/blog/2989634/202212/2989634-20221214153752455-1319923253.png)
+![FPN+PAN](../../data/images/yolov4/FPN+PAN.jpg)
 
 `FPN` 层自顶向下传达强语义特征，而特征金字塔则自底向上传达强定位特征，两两联手，从不同的主干层对不同的检测层进行参数聚合，这种正向反向同时结合的操作确实 `6` 啊。
 
@@ -1334,7 +1334,7 @@ $$
 
 另外一点是，原本的 `PANet` 网络的 `PAN` 结构中，两个特征图结合是采用 `shortcut + element-wise` 操作，而 `Yolov4` 中则采用 `concat（route）`操作，特征图融合后的尺寸会变化。原本 `PAN` 和修改后的 `PAN` 结构对比图如下图所示。
 
-![原始的PAN和YOLOv4中的PAN的不同](https://img2023.cnblogs.com/blog/2989634/202212/2989634-20221214153752821-1004007327.png)
+![原始的PAN和YOLOv4中的PAN的不同](../../data/images/yolov4/原始的PAN和YOLOv4中的PAN的不同.png)
 
 #### 6.3，预测的改进
 
@@ -1350,11 +1350,11 @@ $$
 
 `YOLOv4` 原创的 `Mosaic` 数据增强方法是基于 `2019` 年提出的 `CutMix` 数据增强方法做的优化。`CutMix` 只对两张图片进行拼接，而 `Mosaic` 更激进，采用 `4` 张图片，在各自随机缩放、裁剪和排布后进行拼接。
 
-![CutMix->Mosaic数据增强](https://img2023.cnblogs.com/blog/2989634/202212/2989634-20221214153753234-733733867.png)
+![CutMix->Mosaic数据增强](../../data/images/yolov4/Mosaic数据增强.jpg)
 
 在目标检测器训练过程中，小目标的 `AP` 一般比中目标和大目标低很多。而 `COCO` 数据集中也包含大量的小目标，但比较麻烦的是小目标的分布并不均匀。在整体的数据集中，它们的占比并不平衡。
 
-![COCO数据集小中大目标分布情况](https://img2023.cnblogs.com/blog/2989634/202212/2989634-20221214153753587-1266334305.png)
+![COCO数据集小中大目标分布情况](../../data/images/yolov4/COCO数据集小中大目标分布情况.jpg)
 
 如上表所示，在 `COCO` 数据集中，小目标占比达到 `41.4%`，数量比中目标和大目标要大得多，但是在所有的训练集图片中，只有 `52.3%` 的图片有小目标，即**小物体数量很多、但分布非常不均匀**，而中目标和大目标的分布相对来说更加均匀一些。
 > 少部分图片却包含了大量的小目标。
@@ -1394,7 +1394,7 @@ Focus 结构可以简单理解为将 $W\times H$ 大小的输入图片 4 个像�
 
 以 Yolov5s 的结构为例，原始 640x640x3 的图像输入 Focus 结构，采用切片操作，先变成 320×320×12 的特征图，再经过一次 32 个卷积核的卷积操作，最终变成 320×320×32 的特征图。
 
-![focus结构示例](https://img2023.cnblogs.com/blog/2989634/202212/2989634-20221214153753967-1797046623.png)
+![focus结构示例](../../data/images/yolov5/focus结构示例.png)
 
 ### 5.3，四种网络结构
 
@@ -1403,7 +1403,7 @@ YOLOv5 通过在网络结构问价 `yaml` 中设置不同的 `depth_multiple` �
 
 各个版本的 `YOLOv5` 在 `COCO` 数据集上和 `V100 GPU` 平台上的模型精度和速度实验结果曲线如下所示。
 
-![yolov5实验结果](https://img2023.cnblogs.com/blog/2989634/202212/2989634-20221214153754402-1928948225.png)
+![yolov5实验结果](../../data/images/yolov5/yolov5对比实验曲线图.png)
 
 ## 参考资料
 

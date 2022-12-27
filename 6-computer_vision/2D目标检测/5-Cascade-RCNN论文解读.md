@@ -25,7 +25,7 @@
 
 先回顾下 `Faster RCNN` 的结构，下图是 `Faster RCNN` 的结构图。
 
-![Faster-rcnn网络结构图](https://img2023.cnblogs.com/blog/2989634/202212/2989634-20221220161538012-141903048.png)
+![Faster-rcnn网络结构图](../../data/images/faster-rcnn/Faster-rcnn网络结构图.png)
 
 `training` 阶段和 `inference` 阶段的不同在于，`inference` 阶段不能对 `proposala` 进行采样（因为不知道 `gt`，自然无法计算 `IoU`），所以 `RPN` 网络输出的 `300` `RoIs`(`Proposals`)会直接输入到 `RoI pooling` 中，之后通过两个全连接层分别进行类别分类和 `bbox` 回归。
 

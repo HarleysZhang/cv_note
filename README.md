@@ -8,6 +8,7 @@ CV 算法工程师成长之路
   <a href="https://www.zhihu.com/people/tang-fen-44-49"><img src="https://img.shields.io/badge/zhihu-知乎-informational" alt="进击的程序猿"></a>
   <a href="https://blog.csdn.net/qq_20986663"><img src="https://img.shields.io/badge/csdn-CSDN-red.svg" alt="嵌入式视觉"></a>
   <a href="https://www.cnblogs.com/armcvai/"><img src="https://img.shields.io/badge/cnblogs-博客园-important.svg" alt="嵌入式视觉"></a>
+  <a href="https://juejin.cn/user/3034307824977127/columns"><img src="https://img.shields.io/badge/juejin-%E6%8E%98%E9%87%91-important.svg" alt="嵌入式视觉"></a>
   <a href="https://github.com/HarleysZhang/2021_algorithm_intern_information/stargazers"><img src="https://badgen.net/github/stars/HarleysZhang/2021_algorithm_intern_information?color=cyan" alt="stars"></a>
   <a href="https://github.com/HarleysZhang/2021_algorithm_intern_information/network/members"><img src="https://badgen.net/github/forks/HarleysZhang/2021_algorithm_intern_information?color=cyan" alt="forks"></a>
 </p>

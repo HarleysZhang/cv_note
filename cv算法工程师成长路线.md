@@ -257,7 +257,7 @@
 
 1. [优化 TensorFlow Lite 推理运行环境内存占用](https://mp.weixin.qq.com/s/qWLgTKRRhwjLucRegHLcBA)
 2. [ncnn源码解析（五）：执行器Extractor](https://blog.csdn.net/sinat_31425585/article/details/100674365?spm=1001.2014.3001.5502)
-
+3. [动手编写深度学习推理框架 Planer](https://github.com/Image-Py/planer): 自制深度学习推理框架 `demo` 实战。
 ## 八，高性能计算
 
 ### 8.1，CPU/GPU/AI 芯片科普

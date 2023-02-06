@@ -312,8 +312,9 @@
 
 ### matplotlib
 
-1. [matplotlib-tutorial](https://github.com/rougier/matplotlib-tutorial): 初学者的 Matplotlib 教程，github stars 数高达 2.6k+。
-2. [Matplotlib中文教程](https://github.com/datawhalechina/fantastic-matplotlib): Datawhale 数据可视化小组的一个开源项目，系统梳理了 matplotlib 的绘图接口，github stars 数高达 377。
+1. [Python绘图库Matplotlib入门教程](https://paul.pub/matplotlib-basics/): 中文版Matplotlib入门教程，文章较为容易理解，但深度和细节不够无法建立Matplotlib绘图的系统思维 ，适合快速阅览。
+2. [matplotlib-tutorial](https://github.com/rougier/matplotlib-tutorial): 初学者的 Matplotlib 教程，github stars 数高达 2.6k+。
+3. [Matplotlib中文教程](https://github.com/datawhalechina/fantastic-matplotlib): Datawhale 数据可视化小组的一个开源项目，系统梳理了 matplotlib 的绘图接口，github stars 数高达 377。
 > 还没来得及细看，后续看完更新阅读感受。
 
 ## 效率工具

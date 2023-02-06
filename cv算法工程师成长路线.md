@@ -36,7 +36,11 @@
   - [8.3，矩阵乘优化文章](#83矩阵乘优化文章)
 - [九，模型部署(算法SDK开发)](#九模型部署算法sdk开发)
   - [9.1，模型部署文章](#91模型部署文章)
+- [十，数据分析](#十数据分析)
+  - [pandas](#pandas)
+  - [matplotlib](#matplotlib)
 - [效率工具](#效率工具)
+  - [外面的世界](#外面的世界)
   - [快捷导航](#快捷导航)
   - [markdown/latex 写作](#markdownlatex-写作)
 - [业余生活](#业余生活)
@@ -298,8 +302,26 @@
 5. [深度学习模型转换与部署那些事(含ONNX格式详细分析)](https://bindog.github.io/blog/2020/03/13/deep-learning-model-convert-and-depoly/)
 6. [ONNX初探](https://mp.weixin.qq.com/s/H1tDcmrg0vTcSw9PgpgIIQ)
 
+## 十，数据分析
+
+### pandas
+
+1. [10 minutes to pandas.](https://pandas.pydata.org/docs/dev/user_guide/index.html): 官方User Guide，10 分钟快速入门 pandas。
+2. 《利用Python进行数据分析 第二版 A5》：国外很经典的python数据分析教程，内容比较通俗易懂，网上有 PDF 电子版。
+3. [《Joyful Pandas》](https://github.com/datawhalechina/joyful-pandas)：国内教程，github 开源资料。
+
+### matplotlib
+
+1. [matplotlib-tutorial](https://github.com/rougier/matplotlib-tutorial): 初学者的 Matplotlib 教程，github stars 数高达 2.6k+。
+2. [Matplotlib中文教程](https://github.com/datawhalechina/fantastic-matplotlib): Datawhale 数据可视化小组的一个开源项目，系统梳理了 matplotlib 的绘图接口，github stars 数高达 377。
+> 还没来得及细看，后续看完更新阅读感受。
 
 ## 效率工具
+
+### 外面的世界
+
+1. [还算不错的使用谷歌搜索工具](https://freegecko.com/): 非常稳定和快速的 `IPLC` 工具（"International Private Leased Circuit" 的缩写，即“国际私用出租线路”）。我已经稳定使用 2 年多了，可以考虑使用我的邀请码注册（`VDHtU3A7`），点击[链接](https://freegecko.com/index.php#/register?code=VDHtU3A7)直接注册。 
+> 想要技术学的更好，会使用 `google` 搜索、`github`、`stack overflow` 等网站是基础技能。
 
 ### 快捷导航
 

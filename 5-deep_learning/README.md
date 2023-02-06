@@ -4,27 +4,22 @@
 
 ## 深度学习基础
 
-- [1-深度学习算法基础](./深度学习基础/1-深度学习算法基础.md)
-- [2-使用 CNN 进行图像分类](./深度学习基础/2-使用CNN进行图像分类.md)
-- [3-CNN 基本部件](./深度学习基础/)
-  - [常用激活函数](深度学习基础/CNN基本部件-常用激活函数.md)
-
-## 深度学习框架笔记
-
-1. [MXNet 框架学习](ml-dl-框架笔记/MXNet学习笔记.md)
-2. [Pytorch 框架学习](ml-dl-框架笔记/)
-   - [Pytorch 基础-张量基本操作](ml-dl-框架笔记/Pytorch基础-张量基本操作.md)
-   - [Pytorch 基础-tensor 数据结构](./ml-dl-框架笔记/Pytorch基础-tensor数据结构.md)
+1. [深度学习基础](https://github.com/HarleysZhang/deep_learning_alchemy/tree/main/2-deep_learning_basic)
 
 ## Backbone 网络
 
-- [1-DenseNet 网络](./经典backbone详解/DenseNet论文解读.md)
-- [2-ResNetv2 网络](./经典backbone详解/ResNetv2论文解读.md)
-- [经典 backbone 网络总结](./经典backbone详解/经典backbone总结.md)
+1. [DenseNet 网络详解](./经典backbone详解/DenseNet论文解读.md)
+2. [ResNetv2 网络详解](./经典backbone详解/ResNetv2论文解读.md)
+3. [经典 backbone 网络总结](./经典backbone详解/经典backbone总结.md)
+
+## Pytorch 框架笔记
+
+1. [Pytorch 基础-tensor 数据结构](./ml-dl-框架笔记/Pytorch基础-tensor数据结构.md)
+2. [Pytorch 基础-张量基本操作](ml-dl-框架笔记/Pytorch基础-张量基本操作.md)
 
 ## 深度学习面试题
 
-- [必问深度学习面试题](深度学习面试题.md)
+- [大厂必问深度学习面试题](深度学习面试题.md)
 
 ## 参考资料
 - 《深度学习》

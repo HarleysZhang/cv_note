@@ -4,18 +4,19 @@
 
 ## cpp
 
-* [C++ Primer 学习笔记](cpp/C++%20Primer学习笔记.md)
-* [C++ 基础-资源管理:堆栈与RAII](cpp/C++基础-资源管理:堆栈与RAII.md)
-* [C++ 日期和时间编程总结](cpp/C++日期和时间编程总结.md)
-* [C++ 编程基础](cpp/C++编程基础.md)
+* [c++基础-资源管理:堆栈与RAII](cpp/c++基础-资源管理:堆栈与RAII.md)
+* [c++日期和时间编程总结](cpp/c++日期和时间编程总结.md)
 
 ## python
 
-* [Python3 编程面试题](python3/Python3编程面试题.md)
+* [python3 编程面试题](python3/python3编程面试题.md)
+* [numpy基础-堆叠数组函数总结](python3/numpy基础-堆叠数组函数总结.md)
+* [python数据分析-pandas库入门](python3/python数据分析-pandas库入门.md)
+* [python图像处理-读取图像方式总结](python3/python图像处理-读取图像方式总结.md)
 
 ## shell
 
-* [Shell 语法基础](shell/Shell语法基础.md)
+* [shell 语法基础](shell/shell语法基础.md)
 
 ## 参考资料
 

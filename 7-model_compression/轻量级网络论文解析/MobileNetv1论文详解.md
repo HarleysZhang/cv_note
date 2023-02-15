@@ -33,6 +33,17 @@
 
 ![卷积过程](https://img-blog.csdn.net/20160707204048899)
 
+上述动态图侧重于滤波器的划窗计算过程，而下图则侧重于解释标准卷积层五个概念的关系，图片来源 [这里](https://microsoft.github.io/ai-edu/%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/A2-%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/%E7%AC%AC8%E6%AD%A5%20-%20%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/17.1-%E5%8D%B7%E7%A7%AF%E7%9A%84%E5%89%8D%E5%90%91%E8%AE%A1%E7%AE%97%E5%8E%9F%E7%90%86.html)。
+
+- 输入 Input Channel
+- 卷积核组 WeightsBias
+- 过滤器 Filter
+- 卷积核 kernel
+- 输出 Feature Map
+
+![三通道经过两组过滤器的卷积过程](../../data/images/mobilenetv1/conv3d.png)
+
+在此例中，输入是三维数据 $3\times 32 \times32$，经过权重参数尺寸为 $2\times 3\times 5\times 5$ 的卷积层后，输出为三维 $2\times 28\times 28$，维数并没有变化，只是每一维内部的尺寸有了变化，一般都是要向更小的尺寸变化，以便于简化计算。
 ### 分组卷积
 
 `Group Convolution` 分组卷积，最早见于 `AlexNet`。常规卷积与分组卷积的输入 feature map 与输出 feature map 的连接方式如下图所示，图片来自[CondenseNet](https://www.researchgate.net/figure/The-transformations-within-a-layer-in-DenseNets-left-and-CondenseNets-at-training-time_fig2_321325862)。

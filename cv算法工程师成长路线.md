@@ -304,8 +304,8 @@
 
 ## 十，数据分析
 
-[python-numpy-pandas-matplotlib-Cheatsheets](https://github.com/sentientmachine/Cheatsheets#python_pandas_intermediate): 编程备忘录，图片很好看，适合有一定基础的编程者总结回顾常用操作。
-
+1. [python-numpy-pandas-matplotlib-Cheatsheets](https://github.com/sentientmachine/Cheatsheets#python_pandas_intermediate): 编程备忘录，图片很好看，适合有一定基础的编程者总结回顾常用操作。
+2. [Distill](https://distill.pub/about/): 机器学习研究 应该清晰、动态和生动。
 ### pandas
 
 1. [10 minutes to pandas.](https://pandas.pydata.org/docs/dev/user_guide/index.html): 官方User Guide，10 分钟快速入门 pandas。

@@ -55,11 +55,7 @@ Residual Block（残差块）之间的衔接，在原论文中，$F(x)+x$ 是经
 
 ## 二，ResNet18 模型结构分析
 
-残差网络中，将堆叠的几层卷积 `layer` 称为残差块（`Residual Block`），多个相似的残差块串联构成 ResNet。
-
-ResNet18 和 ResNet34 Backbone用的都是两层的残差学习单元（`basic block`），更深层的ResNet则使用的是三层的残差学习单元（`bottle block`）。
-
-ResNet18 模型的卷积层数是 $18$ 层，对应的残差学习 `Blocks` 的单元数量分别为 2、2、2 和 2。
+残差网络中，将堆叠的几层卷积 `layer` 称为残差块（`Residual Block`），多个相似的残差块串联构成 ResNet。ResNet18 和 ResNet34 Backbone用的都是两层的残差学习单元（`basic block`），更深层的ResNet则使用的是三层的残差学习单元（`bottle block`）。
 
 ResNet18 其结构如下图所示。
 

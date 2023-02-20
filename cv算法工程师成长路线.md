@@ -25,7 +25,7 @@
   - [6.5，语义分割文章](#65语义分割文章)
   - [6.6，3D 视觉技术文章](#663d-视觉技术文章)
   - [6.7，深度学习的评价指标文章](#67深度学习的评价指标文章)
-- [七，模型压缩与量化](#七模型压缩与量化)
+- [七，模型压缩](#七模型压缩)
   - [7.1，轻量级网络设计](#71轻量级网络设计)
   - [7.2，模型压缩文章](#72模型压缩文章)
   - [7.3，神经网络量化文章](#73神经网络量化文章)
@@ -221,7 +221,10 @@
 4. [PLASTER：一个与深度学习性能有关的框架](https://zhuanlan.zhihu.com/p/38315051)
 5. [The Correct Way to Measure Inference Time of Deep Neural Networks](https://towardsdatascience.com/the-correct-way-to-measure-inference-time-of-deep-neural-networks-304a54e5187f)
 
-## 七，模型压缩与量化
+## 七，模型压缩
+
+模型压缩与模型推理系统的知识，推荐看微软的[《人工智能系统》](https://microsoft.github.io/AI-System/)教程资料，写的很全且容易理解，个人觉得是个非常不错的教程。
+
 ### 7.1，轻量级网络设计
 
 1. [轻量卷积神经网络的设计](https://zhuanlan.zhihu.com/p/64400678 "轻量卷积神经网络的设计")

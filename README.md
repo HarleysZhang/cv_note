@@ -16,7 +16,7 @@ CV 算法工程师成长之路
 - [前言](#前言)
 - [目录](#目录)
 - [学习路线](#学习路线)
-- [面试题](#面试题)
+- [算法基础](#算法基础)
 - [可投递公司](#可投递公司)
 - [我的公众号](#我的公众号)
 ## 前言
@@ -48,13 +48,12 @@ CV 算法工程师成长之路
 
 [cv算法工程师学习成长路线](./cv算法工程师成长路线.md)
 
-## 面试题
+## 算法基础
 
 > 深度学习基础的一些面试题和 `Python` 编程相关的面试题，部分题目来源网上资料。
 
-+ [深度学习面试题](https://github.com/HarleysZhang/cv_note/blob/master/5-deep_learning/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E9%9D%A2%E8%AF%95%E9%A2%98.md)
-+ [Python3 编程面试题](2-programming_language/python3/Python3编程面试题.md)
-
++ [深度学习基础](5-deep_learning/深度学习基础总结.md)
++ [Python3 基础](2-programming_language/python3/python3编程总结.md)
 
 ## 可投递公司
 > 鉴于 2019 年写的春招算法实习岗位表绝大部分已经失效，本人也再无精力维护，故将其移除，故不在展示在仓库主页上。

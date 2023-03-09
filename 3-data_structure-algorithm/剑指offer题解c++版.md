@@ -172,7 +172,7 @@ public:
         int rows = matrix.size();
         int cols = (*matrix.begin()).size();
         int r = 0, c = cols -1; // 从右上角开始
-        while(r<=rows-1 && c >>0){
+        while(r<=rows-1 && c >= 0){
             if(target == matrix[r][c])
                 return true;
             else if(target > matrix[r][c])

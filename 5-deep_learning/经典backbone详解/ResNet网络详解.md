@@ -30,7 +30,7 @@
 > 这就把前面的问题转换成了学习一个残差函数 $F(x) = H(x) - x$。
 
 综上**总结**：可以认为 Residual Learning 的初衷（原理），其实是**让模型的内部结构至少有恒等映射的能力**。以保证在堆叠网络的过程中，网络至少不会因为继续堆叠而产生退化！
-> 注意，很多博客片面解释 resnet 解决了梯度消失问题所以有效的的观点是片面的且方向也错了！resnet 到底解决了什么问题以及为什么有效问题的更细节回答，可以参考这个[回答](https://www.zhihu.com/question/64494691/answer/786270699?utm_campaign=shareopn&utm_content=group3_Answer&utm_medium=social&utm_oi=815221330185170944&utm_psn=1615385485534294017&utm_source=wechat_session)。
+> resnet 到底解决了什么问题以及为什么有效问题的更细节回答，可以参考这个[回答](https://www.zhihu.com/question/64494691/answer/786270699?utm_campaign=shareopn&utm_content=group3_Answer&utm_medium=social&utm_oi=815221330185170944&utm_psn=1615385485534294017&utm_source=wechat_session)。
 
 ### 1.2，两种不同的残差路径
 

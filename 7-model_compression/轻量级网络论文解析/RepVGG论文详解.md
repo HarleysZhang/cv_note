@@ -288,8 +288,8 @@ $$
 
 `RepVGG` 的推理模型**很难使用后量化方法** (`Post-Training Quantization`, `PTQ`)，比如，使用简单的 `INT8 PTQ`，ImageNet 上的 `RepVGG` 模型的准确性会降低到 `54.55%`。
 
-`RepOpt` 对重参数化结构量化困难的问题进行了研究，发现重参数结构的分支融合和吸 `BN` 操作，显著放大了权重参数分布的标准差。**而异常的权重分布**又会产生了过大的网络激活层数值分布，从而进一步导致该层量化损失过大，因此模型精度损失严重。
-> 参考美团结束团队文章-[通用目标检测开源框架YOLOv6在美团的量化部署实战](https://tech.meituan.com/2022/09/22/yolov6-quantization-in-meituan.html)。
+`RepOptimizer` 对重参数化结构量化困难的问题进行了研究，发现重参数结构的分支融合和吸 `BN` 操作，显著放大了权重参数分布的标准差。**而异常的权重分布**又会产生了过大的网络激活层数值分布，从而进一步导致该层量化损失过大，因此模型精度损失严重。
+> 参考美团技术团队文章-[通用目标检测开源框架YOLOv6在美团的量化部署实战](https://tech.meituan.com/2022/09/22/yolov6-quantization-in-meituan.html)。
 
 后续改进论文 [RepOptimizer](https://arxiv.org/pdf/2205.15242.pdf) 中，直接量化 `RepOpt-VGG` 模型，`ImageNet` 上准确率仅会下降`2.5%`。
 > `RepOptimizer`：重参数化你的优化器：VGG 型架构 + 特定的优化器 = 快速模型训练 + 强悍性能。

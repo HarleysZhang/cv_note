@@ -90,6 +90,7 @@ Figure 4 中的“极限” Inception 模块与本文的主角-深度可分离�
 ![深度可分离卷积的计算步骤](../../data/images/mobilenetv1/深度可分离卷积的计算步骤.png)
 
 ![滤波器尺寸](../../data/images/mobilenetv1/滤波器尺寸.png)
+> 图片来源论文 [MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications](https://arxiv.org/pdf/1704.04861.pdf)。
 
 #### Depthwise 卷积
 
@@ -317,3 +318,4 @@ if __name__ == "__main__":
 6. [【CNN结构设计】深入理解深度可分离卷积](https://mp.weixin.qq.com/s/IZ-nbrCL8-9w32RSYeP_bg)
 7. [FLOPs与模型推理速度](https://zhuanlan.zhihu.com/p/122943688)
 8. [MobileDets: FLOPs不等于Latency，考量不同硬体的高效架构](https://medium.com/ai-blog-tw/mobiledets-flops%E4%B8%8D%E7%AD%89%E6%96%BClatency-%E8%80%83%E9%87%8F%E4%B8%8D%E5%90%8C%E7%A1%AC%E9%AB%94%E7%9A%84%E9%AB%98%E6%95%88%E6%9E%B6%E6%A7%8B-5bfc27d4c2c8)
+9. [MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications](https://arxiv.org/pdf/1704.04861.pdf)

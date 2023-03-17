@@ -1,6 +1,7 @@
 - [1、相关工作](#1相关工作)
   - [标准卷积](#标准卷积)
   - [分组卷积](#分组卷积)
+  - [DW 卷积](#dw-卷积)
   - [从 Inception module 到 depthwise separable convolutions](#从-inception-module-到-depthwise-separable-convolutions)
 - [2、MobileNets 结构](#2mobilenets-结构)
   - [2.1，深度可分离卷积](#21深度可分离卷积)
@@ -70,6 +71,37 @@ $$
 
 当分组卷积的分组数量 = 输入 feature map 数量 = 输出 feature map 数量，即 $g=c_1=c_2$，有 $c_1$ 个滤波器，且每个滤波器尺寸为 $1 \times K \times K$ 时，Group Convolution 就成了 Depthwise Convolution（DW 卷积），**`DW` 卷积的卷积核权重尺寸为** $(c_{1}, 1, K, K)$。
 > 常规卷积的卷积核权重 shape 都为（`C_out, C_in, kernel_height, kernel_width`），分组卷积的卷积核权重 `shape` 为（`C_out, C_in/g, kernel_height, kernel_width`），`DW` 卷积的卷积核权重 `shape` 为（`C_in, 1, kernel_height, kernel_width`）。
+
+对于分组卷积，存在**一定的限制**：**卷积层的输出通道数必须是分组数的整数倍**，即 $c_2$ 必须是 $g$ 的整数倍。这是因为分组卷积的输出特征图是将 $g$ 组卷积后的结果进行拼接得到的，所以 $c_2$ 必须是 $g$ 的整数倍。
+
+> 假设，$c_2$ 是输出通道数，$c_1$ 是输入通道数，$g$ 是分组数。
+
+### DW 卷积
+
+和标准卷积每个 Filter 内都有一个或多个卷积核 Kernal，对应每个输入通道(Input Channel)的特性不同，分组卷积和 DW 卷积的特点如下：
+- 分组卷积：分组卷积是将输入通道分成若干组，**每组的滤波器只与其同组的输入 feature map 进行卷积**，最终将每组的输出通道拼接在一起得到最终输出。
+- DW 卷积：每个 Filter 内只有一个卷积核 Kernal，对应每个输入通道(Input Channel)，即对于每个输入通道分别使用一个固定大小的卷积核进行卷积操作。
+
+分组卷积的极致是分组数数等于输入通道数，这其实就是 `DW` 卷积，可视化如下：
+
+![DW卷积](../../data/images/mobilenetv1/dw_conv.png)
+
+另外，对于 `pytorch` 的卷积层 api 是同时支持普通卷积、分组卷积/DW 卷积的。但值得注意的是，对于分组卷积，卷积层的输出通道数必须是分组数的整数倍，否则代码会报错！
+
+```python
+import torch
+input = torch.randn([20, 10, 224, 224]) # input_channels = 10
+conv3x3 = torch.nn.Conv2d(in_channels = 10, output_channels = 5, kernel_size=3, groups=5)
+output = conv3x3(input)
+print(conv3x3.weight.shape)
+print(output.shape)
+```
+
+如果将 `groups=5` 改为 `groups=6`或者将 `output_channels  = 5` 改为 `6`，则会报错：
+```bash
+ValueError: in_channels must be divisible by groups
+ValueError: out_channels must be divisible by groups
+```
 
 ### 从 Inception module 到 depthwise separable convolutions
 

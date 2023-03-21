@@ -50,7 +50,7 @@ CV 算法工程师成长之路
 
 ## 算法基础
 
-> 深度学习基础的一些面试题和 `Python` 编程相关的面试题，部分题目来源网上资料。
+> 深度学习基础的和 `Python` 编程基础知识总结。
 
 + [深度学习基础](5-deep_learning/深度学习基础总结.md)
 + [Python3 基础](2-programming_language/python3/python3编程总结.md)

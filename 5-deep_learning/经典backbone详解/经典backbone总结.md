@@ -1,15 +1,16 @@
 ## 目录
-  - [VGG](#vgg)
-  - [ResNet](#resnet)
-  - [Inceptionv3](#inceptionv3)
-  - [Resnetv2](#resnetv2)
-  - [ResNeXt](#resnext)
-  - [Darknet53](#darknet53)
-  - [DenseNet](#densenet)
-  - [CSPNet](#cspnet)
-  - [VoVNet](#vovnet)
-  - [一些结论](#一些结论)
-  - [参考资料](#参考资料)
+- [目录](#目录)
+- [VGG](#vgg)
+- [ResNet](#resnet)
+- [Inceptionv3](#inceptionv3)
+- [Resnetv2](#resnetv2)
+- [ResNeXt](#resnext)
+- [Darknet53](#darknet53)
+- [DenseNet](#densenet)
+- [CSPNet](#cspnet)
+- [VoVNet](#vovnet)
+- [一些结论](#一些结论)
+- [参考资料](#参考资料)
 
 ## VGG
 
@@ -38,6 +39,7 @@
 
 ![Inception模块](../../data/images/backbone/Inception模块.jpg)
 
+论文地址 [https://arxiv.org/pdf/1512.00567.pdf](https://arxiv.org/pdf/1512.00567.pdf)。
 ## Resnetv2
 
 作者总结出**恒等映射形式的快捷连接和预激活对于信号在网络中的顺畅传播至关重要**的结论。

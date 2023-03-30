@@ -35,6 +35,14 @@
 
 ## Inceptionv3
 
+Inception v3 是一种图像识别模型，经证实可以对 ImageNet 数据集实现 78.1% 以上的准确率。该模型是数年来多位研究人员提出的诸多想法积淀的成果。它以 Szegedy 等人发表的《Rethinking the Inception Architecture for Computer Vision》原创性论文为理论依据。
+
+模型本身由对称和非对称构建块组成，包括卷积、平均池化、最大池化、串联、丢弃、全连接层。批量归一化也在模型中广泛应用，同时用于激活输入。损失是通过 Softmax 计算的。
+
+以下是该模型的简要图示：
+
+![inceptionv3 model](../../data/images/backbone/inceptionv3onc--oview.png)
+
 常见的一种 `Inception Modules` 结构如下：
 
 ![Inception模块](../../data/images/backbone/Inception模块.jpg)

@@ -98,6 +98,21 @@ $ diff file1 file1  # 比较两个文件间的差别
 $ egrep "ls" log.txt  # 查找 log.txt 文件中包含 ls 字符串的行内容
 -rw-r--r--   1 root root       2009 Jan 13 06:56 ls.txt
 ```
+
+## 三，查看硬盘或指定目录空间大小
+
+* `df` ：查看**磁盘空间**占用情况
+* `du` ：查看**目录**占用的空间大小。
+
+```bash
+df -hT #查看硬盘使用情况。
+du -h --max-depth=1 floder_name # 查看当前目录下所有文件/文件夹的空间大小
+du -h -d 0 . # 查看当前目录空间大小
+du -sh foldername # 查看指定目录空间大小
+```
+
+![image](images/c62f2296-e82d-4d3c-bb6f-07c1d581fe6b.png)
+
 ## 三，总结
 利用 `ls -al` 命令查看文件属性及权限，已知了 `Linux` 系统内文件的三种身份(文件拥有者、文件所属群组与其他用户)，每种身份都有四种权限(`rwxs`)。可以使用 `chown`, `chgrp`, `chmod` 去修改这些权限与属性。文件是实际含有数据的地方，包括一般文本文件、数据库内容文件、二进制可执行文件(binary program)等等。
 

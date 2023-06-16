@@ -19,6 +19,7 @@ CV 算法工程师成长之路
 - [算法基础](#算法基础)
 - [可投递公司](#可投递公司)
 - [我的公众号](#我的公众号)
+- [Star History](#star-history)
 ## 前言
 
 > 本项目最初是当作 cv 算法工程师实习内推表、校招可投递公司汇总以及个人面经的汇总，后面逐步转变为个人 cv 算法工程师成长之路所记录的技术栈笔记、以及少部分面经等内容。
@@ -56,6 +57,7 @@ CV 算法工程师成长之路
 + [Python3 基础](2-programming_language/python3/python3编程总结.md)
 
 ## 可投递公司
+
 > 鉴于 2019 年写的春招算法实习岗位表绝大部分已经失效，本人也再无精力维护，故将其移除，故不在展示在仓库主页上。
 
 虽然算法工程师可投递的公司是较多的，但是岗位提供的 `hc` 是不及开发多的，这点需要注意。以下表格侧重于计算机视觉算法和算法优化/部署工程师岗位。
@@ -99,8 +101,13 @@ CV 算法工程师成长之路
 |无|猫眼娱乐/多牛传媒|轻舟智航|无|无|
 
 ## 我的公众号
+
 更多知识和最新博客，欢迎扫码关注我的公众号-**嵌入式视觉**，记录 `CV` 算法工程师成长之路，分享技术总结、读书笔记和个人感悟。
 
 <p align="center">
   <a href="#嵌入式视觉"><img src="./data/qcode.png" alt="公众号-嵌入式视觉"></a>
 </p>
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=HarleysZhang/cv_note&type=Date)](https://star-history.com/#HarleysZhang/cv_note&Date)

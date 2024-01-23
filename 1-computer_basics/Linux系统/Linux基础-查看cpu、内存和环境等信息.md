@@ -3,6 +3,7 @@
 1，**系统**信息查看常用命令如下：
 
 ```bash
+uname -m && cat /etc/*release # 查询 linux 服务器当前运行环境的操作系统架构及版本
 lsb_release -a         # 查看操作系统版本(裁剪版不一定支持) 
 cat /etc/os-release    # 查看操作系统版本 (适用于所有的linux，包括Redhat、SuSE、Debian等发行版，但是在debian下要安装lsb)   
 cat /proc/cpuinfo      # 查看CPU信息
@@ -50,7 +51,7 @@ crontab -l             # 查看当前用户的计划任务
 ```bash
 cat /etc/os-release # 适合所有linux系统，查看操作系统版本，显示信息比较全
 cat /etc/issue # 该命令适用于所有Linux系统，显示的版本信息较为简略，只有系统名称和对应版本号。
-uname -a # 查看linux 内核
+uname -a # 显示系统详细信息，包括内核版本号、硬件架构等
 cat /proc/version # 查看linux 内核
 nvcc -V # 查看 cuda 版本
 cat /usr/local/cuda/version.txt # 没有安装 nvcc 条件用
@@ -61,5 +62,8 @@ cmake -version # 查看 cmake 版本
 pkg-config --modversion opencv # 查看 opencv 版本
 ffmpeg -version # 查看 ffmpeg 版本
 ```
+
+`uname` 命令是用于显示系统信息的命令。它通常用于获取操作系统的一些基本信息。`uname -a` 这将显示包括内核名称、版本、硬件架构等在内的详细信息。uname 命令在 Linux 和类 Unix 系统上都是可用的。
+
 ### 参考资料
 [怎么查看Linux服务器硬件信息，这些命令告诉你](https://zhuanlan.zhihu.com/p/144368206)

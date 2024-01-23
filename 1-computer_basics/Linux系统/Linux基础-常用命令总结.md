@@ -64,6 +64,7 @@ du -sh foldername # 查看指定目录空间大小
 
 ```bash
 $ ls -lh .bashrc  # 能查看文件空间大小,不能查看目录大小
+$ find . -type l -delete # 删除当前目录下的符号链接
 ```
 
 ### 6，ctrl + r，反向查找历史命令

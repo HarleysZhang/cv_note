@@ -26,6 +26,8 @@ CV 算法工程师成长之路
 
 项目部分内容参考自 `github` 项目/网络博客/书籍和 [个人博客](http://www.armcvai.com/) 等，由于时间和精力有限，有些知识点还没有没有完成，请见谅。
 
+本项目正逐步废弃，大部分内容不再更新，关于深度学习和大模型推理的知识，欢迎移步[dl_note](https://github.com/HarleysZhang/dl_note) 和 [llm_inference](https://github.com/HarleysZhang/llm_inference) 仓库阅读。
+
 > `GitHub` 已经支持直接显示 `latex` 公式，部分公式如果显示不全，也可在谷歌浏览器安装 [MathJax Plugin for Github](https://chrome.google.com/webstore/detail/mathjax-plugin-for-github/ioemnmodlmafdkllaclgeombjnmnbima?hl=zh-CN) 插件访问(需要翻墙下载安装)，或者下载仓库到本地，使用 `Typora` 软件阅读，也可以使用安装了 `Markdown+Math` 插件的 `VSCode` 软件阅读。
 
 ## 目录
